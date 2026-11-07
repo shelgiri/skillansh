@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Excel Templates, MIS Resources &amp; Articles | Skillansh Growth Circle</title>
+  <meta name="description" content="Download free Excel Power Query templates, GSTR-2B reconciliation formats, MSME 45-day ageing MIS trackers, and read practical accounting automation articles.">
+  <meta name="theme-color" content="#1E3A5F">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/images/skillansh-favicon.png?v=2">
+  <link rel="shortcut icon" href="/favicon.ico?v=2">
+  <link rel="apple-touch-icon" href="/images/skillansh-favicon.png?v=2">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .resource-card {
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      box-shadow: 0 6px 20px rgba(30, 58, 95, 0.06);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .resource-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(30, 58, 95, 0.12);
+    }
+    .file-type-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      margin-bottom: 0.85rem;
+      width: fit-content;
+    }
+    .badge-excel {
+      background: #ECFDF5;
+      color: #065F46;
+      border: 1px solid #A7F3D0;
+    }
+    .badge-pdf {
+      background: #FEF2F2;
+      color: #991B1B;
+      border: 1px solid #FECACA;
+    }
+    .member-status-bar {
+      background: linear-gradient(90deg, #F8FAFC 0%, #EFF6FF 100%);
+      border: 1.5px solid #BFDBFE;
+      border-radius: 12px;
+      padding: 0.9rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .member-status-bar.logged-in {
+      background: linear-gradient(90deg, #ECFDF5 0%, #D1FAE5 100%);
+      border-color: #6EE7B7;
+    }
+    .cal-filter-bar {
+      display: flex;
+      gap: 0.6rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1.75rem;
+    }
+    .cal-filter-btn {
+      background: #ffffff;
+      border: 1.5px solid var(--color-border);
+      color: var(--color-text);
+      padding: 0.5rem 1.1rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      min-height: 38px;
+      transition: all 0.2s ease;
+    }
+    .cal-filter-btn.active,
+    .cal-filter-btn:hover {
+      background: var(--color-primary);
+      color: #ffffff;
+      border-color: var(--color-primary);
+    }
+    .cal-table-wrap {
+      overflow-x: auto;
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 6px 20px rgba(30, 58, 95, 0.06);
+    }
+    .cal-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.92rem;
+    }
+    .cal-table th {
+      background: var(--color-primary);
+      color: #ffffff;
+      padding: 0.9rem 1.15rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .cal-table td {
+      padding: 0.85rem 1.15rem;
+      border-bottom: 1px solid var(--color-border);
+      vertical-align: middle;
+    }
+    .cal-table tr:last-child td {
+      border-bottom: none;
+    }
+    .cal-table tr:hover td {
+      background: #F8FAFC;
+    }
+    .due-date-pill {
+      display: inline-block;
+      background: #FFFBEB;
+      color: #92400E;
+      border: 1px solid #FDE68A;
+      font-weight: 800;
+      font-size: 0.82rem;
+      padding: 0.22rem 0.65rem;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+    .cat-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+    .cat-gst { background: #EFF6FF; color: #1E40AF; }
+    .cat-it { background: #ECFDF5; color: #065F46; }
+    .cat-pf { background: #F5F3FF; color: #5B21B6; }
+    .portal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 0.85rem;
+      margin-top: 1.75rem;
+    }
+    .portal-link-card {
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      padding: 0.8rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .portal-link-card:hover {
+      border-color: var(--color-accent);
+      background: #FFFBEB;
+      transform: translateY(-2px);
+    }
+    .btn-download {
+      margin-top: 1.25rem;
+      background: var(--color-primary);
+      color: #ffffff !important;
+      padding: 0.7rem 1.1rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      width: 100%;
+    }
+    .btn-download:hover {
+      background: var(--color-primary-hover);
+    }
+    .article-card {
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 1.75rem;
+      box-shadow: 0 4px 16px rgba(30, 58, 95, 0.05);
+    }
+    .article-meta {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.4rem;
+      display: block;
+    }
+    .article-card h3 {
+      color: var(--color-primary);
+      margin-bottom: 0.75rem;
+      font-size: 1.35rem;
+    }
+    .article-card p {
+      max-width: 100%;
+      color: var(--color-text-muted);
+      margin-bottom: 0.85rem;
+    }
+    .article-takeaway {
+      background: #F8FAFC;
+      border-left: 4px solid var(--color-accent);
+      padding: 0.9rem 1.15rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.92rem;
+      color: var(--color-text);
+      margin-top: 1rem;
+    }
+    @media (max-width: 768px) {
+      .resource-grid {
+        grid-template-columns: 1fr;
+        gap: 1.15rem;
+        margin-top: 1.25rem;
+      }
+      .resource-card {
+        padding: 1.25rem 1.1rem;
+        border-radius: 14px;
+      }
+      .member-status-bar {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: left;
+        padding: 1rem;
+        gap: 0.85rem;
+      }
+      .member-status-bar > div:last-child,
+      .member-status-bar button {
+        width: 100%;
+        justify-content: center;
+      }
+      .cal-filter-bar {
+        gap: 0.45rem;
+        margin-bottom: 1.25rem;
+      }
+      .cal-filter-btn {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.78rem;
+        min-height: 36px;
+        flex: 1 1 calc(50% - 0.45rem);
+        text-align: center;
+      }
+      .cal-table th,
+      .cal-table td {
+        padding: 0.65rem 0.75rem;
+        font-size: 0.82rem;
+      }
+      .article-card {
+        padding: 1.25rem 1.1rem;
+        border-radius: 14px;
+        margin-bottom: 1.25rem;
+      }
+      .article-card h3 {
+        font-size: 1.15rem;
+      }
+      .article-takeaway {
+        padding: 0.75rem 0.9rem;
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header>
+    <div class="top-bar top-bar-offer">
+      <div class="container">
+        <span class="offer-pill-badge" data-en="🪔 Diwali &amp; Bhai Dooj Gift Offer" data-mr="🪔 दिवाळी व भाऊबीज गिफ्ट ऑफर">🪔 Diwali &amp; Bhai Dooj Gift Offer</span>
+        <span data-en="<strong>🎁 Gift a Skill &amp; Bring a Smile This Diwali:</strong> Join or Gift Our Excel, Power Query, Power BI &amp; MIS Program <strong>@ ₹51 Only</strong> — Open Till Bhai Dooj!" data-mr="<strong>🎁 या दिवाळीत आपल्या प्रियजनांना कौशल्याची भेट द्या:</strong> Excel, Power Query, Power BI आणि MIS प्रोग्राम <strong>फक्त ₹ 51/- मध्ये</strong> — भाऊबीजेपर्यंत सुरू!"><strong>🎁 Gift a Skill &amp; Bring a Smile This Diwali:</strong> Join or Gift Our Excel, Power Query, Power BI &amp; MIS Program <strong>@ ₹51 Only</strong> — Open Till Bhai Dooj!</span>
+        <a href="workshop.html#register" class="top-bar-cta" data-en="🎁 Join / Gift @ ₹51 &rarr;" data-mr="🎁 ₹ 51/- मध्ये जॉईन / गिफ्ट करा &rarr;">🎁 Join / Gift @ ₹51 &rarr;</a>
+      </div>
+    </div>
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand" aria-label="Skillansh Growth Circle home">
+        <img src="Skillansh Accounting Automation Logo.png" alt="Skillansh logo" width="140" height="42">
+        <span>Growth Circle</span>
+      </a>
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html" data-en="Home" data-mr="होम">Home</a></li>
+          <li><a href="workshop.html" data-en="Live Workshop" data-mr="लाइव्ह कार्यशाळा" style="color:var(--color-accent); font-weight:700;">Live Workshop</a></li>
+          <li><a href="resources.html" aria-current="page" data-en="Free Resources" data-mr="मोफत टेम्पलेट्स व लेख">Free Resources</a></li>
+          <li><a href="about.html" data-en="About &amp; Approach" data-mr="बदल व दृष्टिकोन">About &amp; Approach</a></li>
+          <li><a href="contact.html" data-en="Contact" data-mr="संपर्क">Contact</a></li>
+          <li class="mobile-menu-cta">
+            <a href="#" class="btn-primary" id="mobile-cta-book" data-en="Book Free Clarity Call" data-mr="मोफत स्पष्टता कॉल बुक करा">Book Free Clarity Call</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="nav-cta">
+        <a href="#" id="cta-book" class="btn-primary" data-en="Book My Free Clarity Call" data-mr="माझ्या मोफत स्पष्टता बोलण्यासाठी बुक करा">Book My Free Clarity Call</a>
+      </div>
+      <button class="mobile-menu-btn" id="mobile-menu" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
+        &#9776;
+      </button>
+      <div class="lang-switcher">
+        <button class="lang-btn lang-active" data-lang="en" id="lang-en">EN</button>
+        <button class="lang-btn" data-lang="mr" id="lang-mr">मराठी</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Section 0: Latest News, Tax Alerts & Updates Board (Driven by updates-data.js) -->
+    <section class="section section-green" id="latest-updates-board" style="padding:2.5rem 0;">
+      <div class="container">
+        <div class="section-head" style="margin-bottom:1.5rem;">
+          <span class="eyebrow" data-en="Live Notice Board" data-mr="ताज्या घडामोडी व सूचना">Live Notice Board</span>
+          <h2 data-en="📢 Latest Tax Updates, Circulars &amp; Batch Announcements" data-mr="📢 ताज्या कर सूचना (GST/Income Tax) आणि कार्यशाळा अपडेट्स">📢 Latest Tax Updates, Circulars &amp; Batch Announcements</h2>
+        </div>
+        <div id="dynamic-updates-grid" class="resource-grid" style="margin-top:1rem;"></div>
+      </div>
+    </section>
+
+    <!-- Section 1: Downloadable Templates -->
+    <section class="section section-white" id="downloads-section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow" data-en="Free Accounting, MIS &amp; Automation Hub" data-mr="मोफत अकाउंटिंग, MIS आणि ऑटोमेशन साधने">Free Accounting, MIS &amp; Automation Hub</span>
+          <h1 data-en="Download Ready-to-Use Excel, MIS &amp; AI Templates" data-mr="प्रत्यक्ष कामासाठी उपयुक्त Excel, MIS आणि AI टेम्पलेट्स डाउनलोड करा">Download Ready-to-Use Excel, MIS &amp; AI Templates</h1>
+          <p data-en="Practical worksheets, reconciliation datasets, monthly closing checklists, and safe AI prompt guides curated for Indian accountants, students, and business professionals." data-mr="भारतीय अकाउंटंट्स, विद्यार्थी आणि व्यावसायिकांसाठी तयार केलेले प्रॅक्टिकल Excel टेम्पलेट्स, GST रिकन्सिलिएशन डेटासेट्स आणि AI प्रॉम्प्ट गाइड्स.">Practical worksheets, reconciliation datasets, monthly closing checklists, and safe AI prompt guides curated for Indian accountants, students, and business professionals.</p>
+        </div>
+
+        <!-- Member Login Status Bar -->
+        <div class="member-status-bar" id="member-status-bar">
+          <div style="display:flex; align-items:center; gap:0.65rem;">
+            <span style="font-size:1.25rem;" id="member-status-icon">🔒</span>
+            <div>
+              <strong style="color:var(--color-primary); font-size:0.95rem;" id="member-status-title">Member Login Required for Free Downloads</strong>
+              <div style="font-size:0.82rem; color:var(--color-text-muted);" id="member-status-sub">Sign in once with your Name, WhatsApp &amp; Email to unlock all Excel, MIS &amp; Watermarked PDF templates.</div>
+            </div>
+          </div>
+          <div>
+            <button type="button" class="btn-primary" id="btn-open-login-modal" style="padding:0.5rem 1rem; font-size:0.85rem; min-height:38px;">👤 Member Login / Sign In</button>
+            <button type="button" class="btn-secondary" id="btn-member-logout" style="display:none; padding:0.45rem 0.9rem; font-size:0.82rem; min-height:36px;">Logout</button>
+          </div>
+        </div>
+
+        <div class="resource-grid">
+          <!-- Template 1 (Work in Progress) -->
+          <div class="resource-card">
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:center; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.85rem;">
+                <span class="file-type-badge badge-excel" style="margin-bottom:0;">📊 Excel / Power Query</span>
+                <span style="font-size:0.72rem; font-weight:800; background:#FFFBEB; color:#B45309; border:1px solid #FDE68A; padding:0.18rem 0.55rem; border-radius:999px;">⏳ Work in Progress</span>
+              </div>
+              <h4>GSTR-2B vs. Purchase Register Recon Sheet</h4>
+              <p style="font-size:0.9rem; color:var(--color-text-muted); margin-top:0.5rem;">
+                Automated Tally/ERP Purchase Register vs. GSTR-2B reconciliation template. <em>(Currently in progress — register below and we will notify you once ready!)</em>
+              </p>
+            </div>
+            <div>
+              <a href="# notify-gstr2b" data-work-in-progress="true" data-file-title="GSTR-2B vs Purchase Register Recon Sheet (Notify When Ready)" class="btn-download gated-download-btn">
+                🔔 Notify Me When Ready
+              </a>
+              <div class="wip-status-msg" style="display:none; margin-top:0.65rem; padding:0.65rem; background:#FFFBEB; border:1px solid #F59E0B; border-radius:8px; font-size:0.82rem; color:#92400E; font-weight:600; text-align:center;">
+                ⏳ Still in progress! We have noted your details and will let you know on WhatsApp/Email once done.
+              </div>
+            </div>
+          </div>
+
+          <!-- Template 2 (Work in Progress) -->
+          <div class="resource-card">
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:center; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.85rem;">
+                <span class="file-type-badge badge-excel" style="margin-bottom:0;">📈 Excel &amp; Power BI MIS</span>
+                <span style="font-size:0.72rem; font-weight:800; background:#FFFBEB; color:#B45309; border:1px solid #FDE68A; padding:0.18rem 0.55rem; border-radius:999px;">⏳ Work in Progress</span>
+              </div>
+              <h4>Debtors &amp; MSME 45-Day Ageing MIS Tracker</h4>
+              <p style="font-size:0.9rem; color:var(--color-text-muted); margin-top:0.5rem;">
+                Track 0–30, 31–60, 61–90, and 90+ days overdue receivables &amp; MSME Sec 43B(h) alerts. <em>(Currently in progress — we will let you know once done!)</em>
+              </p>
+            </div>
+            <div>
+              <a href="#notify-debtors" data-work-in-progress="true" data-file-title="Debtors & MSME 45-Day Ageing MIS Tracker (Notify When Ready)" class="btn-download gated-download-btn">
+                🔔 Notify Me When Ready
+              </a>
+              <div class="wip-status-msg" style="display:none; margin-top:0.65rem; padding:0.65rem; background:#FFFBEB; border:1px solid #F59E0B; border-radius:8px; font-size:0.82rem; color:#92400E; font-weight:600; text-align:center;">
+                ⏳ Still in progress! We have noted your details and will let you know on WhatsApp/Email once done.
+              </div>
+            </div>
+          </div>
+
+          <!-- Template 3 (Watermarked PDF) -->
+          <div class="resource-card">
+            <div>
+              <span class="file-type-badge badge-pdf">📕 Watermarked PDF Guide</span>
+              <h4>Safe AI Prompts for Accountants &amp; Tax Notices</h4>
+              <p style="font-size:0.9rem; color:var(--color-text-muted); margin-top:0.5rem;">
+                Official watermarked PDF containing Data-Masked AI prompts for Power Query M-code, Power BI DAX measures, and GST Section 73 / DRC-01A notice replies.
+              </p>
+            </div>
+            <a href="downloads/Safe-AI-Prompts-for-Accountants-and-Tax-Notices.pdf" data-file-url="downloads/Safe-AI-Prompts-for-Accountants-and-Tax-Notices.pdf" data-file-title="Safe AI Prompts for Accountants (Watermarked PDF)" download class="btn-download gated-download-btn">
+              🔒 Login to Download PDF (.pdf)
+            </a>
+          </div>
+
+          <!-- Template 4 -->
+          <div class="resource-card">
+            <div>
+              <span class="file-type-badge badge-excel">✅ Month-End Checklist</span>
+              <h4>Monthly Accounting &amp; MIS Closing Checklist</h4>
+              <p style="font-size:0.9rem; color:var(--color-text-muted); margin-top:0.5rem;">
+                A 13-step structured month-end closing checklist covering Bank Recon, GSTR-1/2B/3B, Form 26AS TDS matching, provisions, and Maker-Checker review.
+              </p>
+            </div>
+            <a href="downloads/Monthly-Accounting-and-MIS-Closing-Checklist.csv" data-file-url="downloads/Monthly-Accounting-and-MIS-Closing-Checklist.csv" data-file-title="Monthly Accounting & MIS Closing Checklist" download class="btn-download gated-download-btn">
+              🔒 Login to Download (.csv)
+            </a>
+          </div>
+
+          <!-- Template 5 (Watermarked Statutory Calendar PDF) -->
+          <div class="resource-card">
+            <div>
+              <span class="file-type-badge badge-pdf">📅 Watermarked PDF Chart</span>
+              <h4>Statutory GST, TDS &amp; Income Tax Due-Date Calendar</h4>
+              <p style="font-size:0.9rem; color:var(--color-text-muted); margin-top:0.5rem;">
+                Printable 1-page desk reference chart with monthly, quarterly &amp; annual GST, TDS/TCS, Income Tax, PF/ESIC due dates &amp; verified govt portal links.
+              </p>
+            </div>
+            <a href="downloads/Statutory-GST-TDS-IncomeTax-Compliance-Calendar.pdf" data-file-url="downloads/Statutory-GST-TDS-IncomeTax-Compliance-Calendar.pdf" data-file-title="Statutory GST, TDS & Income Tax Due-Date Calendar (PDF)" download class="btn-download gated-download-btn">
+              🔒 Login to Download PDF (.pdf)
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Interactive Statutory Compliance Due-Date Calendar & Verified Govt Portals -->
+    <section class="section section-green" id="compliance-calendar">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow" data-en="Indian Statutory Compliance Tracker" data-mr="भारतीय वैधानिक अनुपालन दिनदर्शिका">Indian Statutory Compliance Tracker</span>
+          <h2 data-en="GST, TDS, Income Tax &amp; Accounting Due-Date Calendar" data-mr="GST, TDS, आयकर (Income Tax) आणि अकाउंटिंग ड्यू-डेट कॅलेंडर">GST, TDS, Income Tax &amp; Accounting Due-Date Calendar</h2>
+          <p data-en="Standard statutory due dates and direct links to official Government of India portals for accountants, tax practitioners, students, and business owners." data-mr="अकाउंटंट्स, कर सल्लागार, विद्यार्थी आणि व्यावसायिकांसाठी अधिकृत सरकारी पोर्टल्सच्या थेट लिंक्ससह महत्त्वाच्या तारखा.">Standard statutory due dates and direct links to official Government of India portals for accountants, tax practitioners, students, and business owners.</p>
+        </div>
+
+        <!-- Category Filter Buttons -->
+        <div class="cal-filter-bar" role="tablist" aria-label="Filter compliance due dates">
+          <button type="button" class="cal-filter-btn active" data-cal-filter="all">All Statutory Due Dates</button>
+          <button type="button" class="cal-filter-btn" data-cal-filter="gst">📑 GST (CBIC)</button>
+          <button type="button" class="cal-filter-btn" data-cal-filter="it">⚖️ TDS &amp; Income Tax (CBDT)</button>
+          <button type="button" class="cal-filter-btn" data-cal-filter="pf">🏢 PF, ESIC, PT &amp; MSME</button>
+        </div>
+
+        <!-- Compliance Calendar Table -->
+        <div class="cal-table-wrap">
+          <table class="cal-table">
+            <thead>
+              <tr>
+                <th>Statutory Due Date</th>
+                <th>Category</th>
+                <th>Return / Form / Compliance</th>
+                <th>Applicable To &amp; Description</th>
+                <th>Governing Act / Authority</th>
+              </tr>
+            </thead>
+            <tbody id="compliance-cal-body">
+              <tr data-cal-cat="it">
+                <td><span class="due-date-pill">7th of Next Month</span></td>
+                <td><span class="cat-tag cat-it">TDS / TCS</span></td>
+                <td><strong>Challan ITNS 281</strong></td>
+                <td>Monthly deposit of TDS / TCS deducted or collected during the previous month (For March: <strong>30th April</strong>).</td>
+                <td>Income Tax Act (CBDT)</td>
+              </tr>
+              <tr data-cal-cat="gst">
+                <td><span class="due-date-pill">10th of Next Month</span></td>
+                <td><span class="cat-tag cat-gst">GST</span></td>
+                <td><strong>GSTR-7 &amp; GSTR-8</strong></td>
+                <td>Monthly return for GST TDS deductors (GSTR-7) and E-Commerce Operators collecting TCS (GSTR-8).</td>
+                <td>CGST Act (CBIC)</td>
+              </tr>
+              <tr data-cal-cat="gst">
+                <td><span class="due-date-pill">11th of Next Month</span></td>
+                <td><span class="cat-tag cat-gst">GST</span></td>
+                <td><strong>GSTR-1 (Monthly)</strong></td>
+                <td>Statement of Outward Supplies for taxpayers with turnover &gt; ₹5 Cr or opted out of QRMP scheme.</td>
+                <td>CGST Act (CBIC)</td>
+              </tr>
+              <tr data-cal-cat="gst">
+                <td><span class="due-date-pill">13th of Next Month</span></td>
+                <td><span class="cat-tag cat-gst">GST</span></td>
+                <td><strong>IFF (QRMP) &amp; GSTR-6</strong></td>
+                <td>Invoice Furnishing Facility (IFF) for QRMP taxpayers (Month 1 &amp; Month 2) and GSTR-6 for Input Service Distributors.</td>
+                <td>CGST Act (CBIC)</td>
+              </tr>
+              <tr data-cal-cat="gst">
+                <td><span class="due-date-pill">14th of Next Month</span></td>
+                <td><span class="cat-tag cat-gst">GST Recon</span></td>
+                <td><strong>GSTR-2B Auto-Generation</strong></td>
+                <td>Static monthly Input Tax Credit (ITC) statement generated for Purchase Register reconciliation.</td>
+                <td>CGST Act (CBIC)</td>
+              </tr>
+              <tr data-cal-cat="pf">
+                <td><span class="due-date-pill">15th of Next Month</span></td>
+                <td><span class="cat-tag cat-pf">PF &amp; ESIC</span></td>
+                <td><strong>EPF ECR &amp; ESIC Challan</strong></td>
+                <td>Monthly payment &amp; return of Employee Provident Fund (EPF) and ESIC contributions for previous month payroll.</td>
+                <td>EPFO &amp; ESIC</td>
+              </tr>
+              <tr data-cal-cat="gst">
+                <td><span class="due-date-pill">20th of Next Month</span></td>
+                <td><span class="cat-tag cat-gst">GST</span></td>
+                <td><strong>GSTR-3B (Monthly)</strong></td>
+                <td>Monthly summary GST return and payment of tax after reconciling Output Tax and eligible GSTR-2B ITC.</td>
+                <td>CGST Act (CBIC)</td>
+              </tr>
+              <tr data-cal-cat="gst">
+                <td><span class="due-date-pill">22nd / 24th (Quarterly)</span></td>
+                <td><span class="cat-tag cat-gst">GST QRMP</span></td>
+                <td><strong>GSTR-3B (QRMP Scheme)</strong></td>
+                <td>Quarterly GSTR-3B filing (<strong>22nd</strong> for Maharashtra &amp; Category-1 States; <strong>24th</strong> for Category-2 States).</td>
+                <td>CGST Act (CBIC)</td>
+              </tr>
+              <tr data-cal-cat="gst">
+                <td><span class="due-date-pill">25th of Next Month</span></td>
+                <td><span class="cat-tag cat-gst">GST QRMP</span></td>
+                <td><strong>PMT-06 Tax Payment</strong></td>
+                <td>Monthly tax payment for Month 1 &amp; Month 2 of the quarter for taxpayers opted into the QRMP scheme.</td>
+                <td>CGST Act (CBIC)</td>
+              </tr>
+              <tr data-cal-cat="pf">
+                <td><span class="due-date-pill">Last Day of Month</span></td>
+                <td><span class="cat-tag cat-pf">Prof. Tax</span></td>
+                <td><strong>PTRC Return (Maharashtra)</strong></td>
+                <td>Monthly Professional Tax (PTRC) return &amp; payment (if annual liability &ge; ₹1,00,000; otherwise 31st March).</td>
+                <td>State Profession Tax Act</td>
+              </tr>
+              <tr data-cal-cat="it">
+                <td><span class="due-date-pill">15 Jun / 15 Sep / 15 Dec / 15 Mar</span></td>
+                <td><span class="cat-tag cat-it">Income Tax</span></td>
+                <td><strong>Advance Tax Instalments</strong></td>
+                <td>Cumulative payment of Advance Tax: <strong>15%</strong> (15 Jun), <strong>45%</strong> (15 Sep), <strong>75%</strong> (15 Dec), and <strong>100%</strong> (15 Mar).</td>
+                <td>Income Tax Act (CBDT)</td>
+              </tr>
+              <tr data-cal-cat="it">
+                <td><span class="due-date-pill">31 Jul / 31 Oct / 31 Jan / 31 May</span></td>
+                <td><span class="cat-tag cat-it">TDS Returns</span></td>
+                <td><strong>Form 24Q, 26Q &amp; 27Q</strong></td>
+                <td>Quarterly TDS statements for Q1 (31 Jul), Q2 (31 Oct), Q3 (31 Jan), and Q4 (31 May). (TCS Form 27EQ: 15th of Jul/Oct/Jan/May).</td>
+                <td>Income Tax Act (CBDT)</td>
+              </tr>
+              <tr data-cal-cat="it">
+                <td><span class="due-date-pill">31st July (Annual)</span></td>
+                <td><span class="cat-tag cat-it">Income Tax</span></td>
+                <td><strong>ITR Filing (Non-Audit)</strong></td>
+                <td>Annual Income Tax Return (ITR-1 to ITR-4) for Individuals, HUFs, and Firms not subject to Tax Audit.</td>
+                <td>Income Tax Act (CBDT)</td>
+              </tr>
+              <tr data-cal-cat="it">
+                <td><span class="due-date-pill">30th Sep &amp; 31st Oct (Annual)</span></td>
+                <td><span class="cat-tag cat-it">Tax Audit</span></td>
+                <td><strong>Tax Audit (3CD) &amp; Audit ITR</strong></td>
+                <td><strong>30th September:</strong> Tax Audit Report (Form 3CA-3CD / 3CB-3CD u/s 44AB). <strong>31st October:</strong> ITR for Audit Cases &amp; Companies.</td>
+                <td>Income Tax Act (CBDT)</td>
+              </tr>
+              <tr data-cal-cat="gst">
+                <td><span class="due-date-pill">31st December (Annual)</span></td>
+                <td><span class="cat-tag cat-gst">GST Annual</span></td>
+                <td><strong>GSTR-9 &amp; GSTR-9C</strong></td>
+                <td>Annual GST Return (GSTR-9) and Self-Certified Reconciliation Statement (GSTR-9C) for the preceding Financial Year.</td>
+                <td>CGST Act (CBIC)</td>
+              </tr>
+              <tr data-cal-cat="pf">
+                <td><span class="due-date-pill">Within 15 / 45 Days</span></td>
+                <td><span class="cat-tag cat-pf">MSME 43B(h)</span></td>
+                <td><strong>MSME Supplier Payment Rule</strong></td>
+                <td>Mandatory payment to Udyam-registered Micro &amp; Small Enterprises within 15 days (no agreement) or max 45 days (written agreement) u/s 43B(h).</td>
+                <td>Income Tax Sec 43B(h) &amp; MSMED Act</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="text-align:center; font-size:0.78rem; color:#64748B; margin-top:1rem;">
+          *Note: Statutory due dates are provided for educational reference only and are subject to official CBIC / CBDT circulars and extensions.
+        </p>
+      </div>
+    </section>
+
+    <!-- Section 3: Practical Articles & Updates -->
+    <section class="section section-white" id="articles-section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow" data-en="Articles &amp; Practical Guides" data-mr="लेख आणि व्यावहारिक मार्गदर्शन">Articles &amp; Practical Guides</span>
+          <h2 data-en="Latest Insights on Accounting Automation, MIS &amp; Power BI" data-mr="अकाउंटिंग ऑटोमेशन, MIS आणि Power BI वरील उपयुक्त लेख">Latest Insights on Accounting Automation, MIS &amp; Power BI</h2>
+          <p data-en="Practical articles by Girish Shelar on simplifying monthly compliance, reporting, and spreadsheet workflows." data-mr="मासिक अनुपालन, रिपोर्टिंग आणि स्प्रेडशीटचे काम सोपे करण्यासाठी गिरीश शेलार यांचे मार्गदर्शनपर लेख.">Practical articles by Girish Shelar on simplifying monthly compliance, reporting, and spreadsheet workflows.</p>
+        </div>
+
+        <div style="max-width:860px; margin:0 auto;">
+          <!-- Article 1 -->
+          <article class="article-card">
+            <span class="article-meta">Excel &amp; Power Query · By Girish Shelar</span>
+            <h3>Why VLOOKUP Fails on Monthly GSTR-2B Reconciliations (And How Power Query Solves It in 1 Click)</h3>
+            <p>
+              Every month around the 14th, accountants and GST executives spend hours matching the Purchase Register exported from Tally Prime or Busy against the GSTR-2B Excel sheet downloaded from the GST portal. When you rely on manual <code>VLOOKUP</code> or <code>XLOOKUP</code>, two common problems break your sheet:
+            </p>
+            <p>
+              <strong>1. Invoice Number Formatting Differences:</strong> Your supplier uploads <code>INV-2026-0045</code> on the portal, while your accounts assistant entered <code>INV/2026/45</code> in Tally. VLOOKUP immediately returns <code>#N/A</code> even though the GSTIN and amount match.<br>
+              <strong>2. Multi-rate Invoices:</strong> A single invoice with both 12% and 18% items appears as multiple rows in GSTR-2B, causing duplicate lookup errors.
+            </p>
+            <div class="article-takeaway">
+              <strong>💡 The Automation Fix:</strong> Using <strong>Excel Power Query</strong>, you can group invoices by <code>Supplier GSTIN + Cleaned Invoice Number</code> (automatically stripping slashes, hyphens, and leading zeros) and merge both tables in 3 seconds. Next month, you simply drop the new file into a folder and click <strong>Refresh All</strong>.
+            </div>
+          </article>
+
+          <!-- Article 2 -->
+          <article class="article-card">
+            <span class="article-meta">MIS Reporting &amp; Power BI · By Girish Shelar</span>
+            <h3>Building a 1-Page Executive MIS &amp; MSME 45-Day Ageing Dashboard in Power BI</h3>
+            <p>
+              Business owners and CFOs rarely have time to read a 15-tab Excel workbook. When presenting monthly MIS (Management Information System) reports—or pitching your freelance accounting services to SME founders—clarity wins over complexity.
+            </p>
+            <p>
+              Especially after the introduction of <strong>Income Tax Section 43B(h)</strong> (which disallows deductions for payments to Micro and Small Enterprises delayed beyond 15/45 days), tracking creditor and debtor ageing buckets (<code>0–30</code>, <code>31–45</code>, <code>46–90</code>, and <code>90+ days</code>) has become a boardroom priority.
+            </p>
+            <div class="article-takeaway">
+              <strong>💡 The MIS Upgrade:</strong> Connect your Tally/Excel sales and purchase registers directly to <strong>Power BI Desktop</strong> to create a visual 1-page Executive Dashboard showing Cash Flow, Gross Margin Trends, and an instant red-flag list of MSME invoices approaching the 45-day mark.
+            </div>
+          </article>
+
+          <!-- Article 3 -->
+          <article class="article-card">
+            <span class="article-meta">AI &amp; Data Privacy · By Girish Shelar</span>
+            <h3>How CAs, Tax Practitioners &amp; Students Can Use AI Safely Without Exposing Client PAN/GSTIN</h3>
+            <p>
+              AI tools like ChatGPT and Claude can write complex Excel formulas, generate Power Query M-code, and draft structured replies to GST scrutiny notices in seconds. However, pasting real client names, PANs, GSTINs, or bank statements into public AI chats violates client confidentiality and India&rsquo;s <strong>Digital Personal Data Protection (DPDP) Act</strong> principles.
+            </p>
+            <div class="article-takeaway">
+              <strong>💡 The Data-Masking Rule:</strong> Always describe the <em>structure</em> of your columns (e.g., <em>&ldquo;Column A has 15-digit GSTIN, Column B has Invoice Date, Column C has Taxable Value&rdquo;</em>) and use placeholders like <code>[TAXPAYER_A]</code> and <code>[AMOUNT_X]</code> when drafting tax notice replies. You get 100% of the AI productivity benefit with 0% client data risk.
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="footer-brand" aria-label="Skillansh Growth Circle home">
+            <img src="Skillansh Accounting Automation Logo.png" alt="Skillansh logo" width="120" height="36">
+            <span data-en="Growth Circle">Growth Circle</span>
+          </a>
+        </div>
+        <div class="footer-col">
+          <h5 data-en="Program">Program</h5>
+          <ul>
+            <li><a href="index.html" data-en="Home">Home</a></li>
+            <li><a href="resources.html" aria-current="page" data-en="Free Resources">Free Resources</a></li>
+            <li><a href="about.html" data-en="About &amp; Approach">About &amp; Approach</a></li>
+            <li><a href="contact.html" data-en="Contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5 data-en="Explore">Explore</h5>
+          <ul>
+            <li><a href="index.html#program" data-en="30-Day Program">30-Day Program</a></li>
+            <li><a href="index.html#method" data-en="SMART Accounts Method">SMART Accounts Method</a></li>
+            <li><a href="index.html#investment" data-en="Program Investment">Program Investment</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5 data-en="Legal">Legal</h5>
+          <ul>
+            <li id="footer-privacy-item"><a href="privacy.html" id="footer-privacy-link" data-en="Privacy Information">Privacy Policy</a></li>
+            <li id="footer-terms-item"><a href="terms.html" id="footer-terms-link" data-en="Terms &amp; Conditions">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5 data-en="Contact">Contact</h5>
+          <ul>
+            <li><a href="https://chat.whatsapp.com/JPGdVKRxJ77G2paT6xl9nr" target="_blank" rel="noopener noreferrer" style="color:#25D366; font-weight:700;">💬 Join WhatsApp Community</a></li>
+            <li><a href="index.html#learner-enquiry-section" data-en="Learner Requirements Form">Learner Requirements Form</a></li>
+            <li><a href="workshop.html" data-en="Live Workshop (₹51 Diwali Offer)" data-mr="लाइव्ह कार्यशाळा (₹ 51/- दिवाळी ऑफर)">Live Workshop (₹51 Diwali Offer)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-note" style="border-top:1px solid var(--color-border); margin-top:2rem; padding-top:1.5rem; text-align:center; color:var(--color-text-muted); font-size:0.88rem;">
+        Practical accounting automation skills for Indian accounting professionals &middot; Skillansh Growth Circle &middot; 2026
+        <div style="font-size:0.76rem; color:#64748B; margin-top:0.4rem;">Disclaimer: Skillansh Growth Circle is an independent private skill-development platform. Templates, workflows, and certificates are for educational and productivity purposes only and do not constitute statutory audit, tax solicitation, or government/university affiliation.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Member Login / Sign-In Modal for Gated Downloads -->
+  <div class="upi-modal-overlay" id="resource-login-modal" role="dialog" aria-modal="true" aria-labelledby="resource-login-title">
+    <div class="upi-modal-box" style="text-align:left; max-width:460px;">
+      <button class="upi-close-btn" id="resource-login-close" aria-label="Close login modal">&times;</button>
+      <div style="text-align:center; margin-bottom:1.15rem;">
+        <span style="background:#EFF6FF; color:#1E40AF; font-weight:800; font-size:0.75rem; padding:0.25rem 0.75rem; border-radius:999px; border:1px solid #BFDBFE; display:inline-block; margin-bottom:0.5rem;">🔒 FREE MEMBER ACCESS</span>
+        <h3 id="resource-login-title">Sign In to Download Resources</h3>
+        <p style="font-size:0.86rem; color:var(--color-text-muted); margin-bottom:0;" id="resource-selected-file-label">Enter your details once to unlock instant access to all Excel, MIS &amp; PDF templates.</p>
+      </div>
+
+      <form id="resource-login-form" class="form-grid" style="gap:1rem;">
+        <div class="form-group">
+          <label for="member-name">Full Name *</label>
+          <input type="text" id="member-name" name="name" required placeholder="e.g. Rahul Sharma">
+        </div>
+
+        <div class="form-group">
+          <label for="member-whatsapp">WhatsApp Number *</label>
+          <input type="tel" id="member-whatsapp" name="whatsapp" required placeholder="+91 9922045007">
+        </div>
+
+        <div class="form-group">
+          <label for="member-email">Email Address *</label>
+          <input type="email" id="member-email" name="email" required placeholder="name@example.com">
+        </div>
+
+        <div class="form-group">
+          <label for="member-role">Current Profile / Profession *</label>
+          <select id="member-role" name="role" required>
+            <option value="" disabled selected>Select your profile</option>
+            <option value="College Student / Fresher">🎓 College Student / Fresher (B.Com, M.Com, MBA, etc.)</option>
+            <option value="Women Restarting Career">🌸 Woman Returning to Work / Career Restart</option>
+            <option value="Senior Accountant">💼 Accountant / Accounts Executive</option>
+            <option value="GST Executive">📑 GST Executive / Specialist</option>
+            <option value="Tax Practitioner">⚖️ Tax Practitioner / CA Finalist</option>
+            <option value="Business Owner / Founder">🏢 Business Owner / Entrepreneur</option>
+            <option value="Service Professional / Consultant">🤝 Service Professional / Consultant</option>
+            <option value="Freelancer">💻 Freelancer / Self-Employed</option>
+            <option value="Other">🌟 Other (Looking to learn automation)</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-primary" id="resource-login-submit" style="width:100%; justify-content:center; padding:0.9rem; font-size:1rem; font-weight:700; border:none; border-radius:8px; cursor:pointer;">
+          🔓 Sign In &amp; Download Now &rarr;
+        </button>
+
+        <p style="font-size:0.75rem; color:var(--color-text-muted); text-align:center; margin:0;">
+          100% Free Member Access · Unlocks all templates immediately.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="updates-data.js"></script>
+  <script src="script.js"></script>
+  <script>
+    (function() {
+      // Render Dynamic News & Updates from updates-data.js
+      const updatesGrid = document.getElementById('dynamic-updates-grid');
+      if (updatesGrid && Array.isArray(window.SKILLANSH_UPDATES)) {
+        const badgeStyles = {
+          amber: 'background:#FFFBEB; color:#92400E; border:1px solid #FDE68A;',
+          blue: 'background:#EFF6FF; color:#1E40AF; border:1px solid #BFDBFE;',
+          green: 'background:#ECFDF5; color:#065F46; border:1px solid #A7F3D0;'
+        };
+        updatesGrid.innerHTML = window.SKILLANSH_UPDATES.map(item => {
+          const bStyle = badgeStyles[item.badgeColor] || badgeStyles.blue;
+          const isExternal = item.linkUrl && item.linkUrl.startsWith('http');
+          const targetAttr = isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
+          return `
+            <div class="resource-card" style="padding:1.4rem;">
+              <div>
+                <div style="display:flex; justify-content:space-between; align-items:center; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.65rem;">
+                  <span class="file-type-badge" style="margin-bottom:0; ${bStyle}">${item.category || 'Update'}</span>
+                  <span style="font-size:0.78rem; font-weight:700; color:var(--color-text-muted);">${item.date || ''}</span>
+                </div>
+                <h4 style="color:var(--color-primary); margin-bottom:0.45rem; font-size:1.05rem;">${item.title || ''}</h4>
+                <p style="font-size:0.88rem; color:var(--color-text-muted); margin-bottom:0.75rem;">${item.message || ''}</p>
+              </div>
+              ${item.linkUrl ? `<a href="${item.linkUrl}"${targetAttr} style="font-size:0.88rem; font-weight:800; color:var(--color-primary); text-decoration:underline;">${item.linkText || 'Read More →'}</a>` : ''}
+            </div>
+          `;
+        }).join('');
+      }
+
+      const STORAGE_KEY = 'skillansh_member_session';
+      const loginModal = document.getElementById('resource-login-modal');
+      const loginClose = document.getElementById('resource-login-close');
+      const openLoginBtn = document.getElementById('btn-open-login-modal');
+      const logoutBtn = document.getElementById('btn-member-logout');
+      const loginForm = document.getElementById('resource-login-form');
+      const statusBar = document.getElementById('member-status-bar');
+      const statusIcon = document.getElementById('member-status-icon');
+      const statusTitle = document.getElementById('member-status-title');
+      const statusSub = document.getElementById('member-status-sub');
+      const fileLabel = document.getElementById('resource-selected-file-label');
+      const downloadBtns = document.querySelectorAll('.gated-download-btn');
+
+      let pendingDownloadUrl = null;
+      let pendingDownloadTitle = null;
+      let pendingWipBtn = null;
+
+      function getMemberSession() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          return raw ? JSON.parse(raw) : null;
+        } catch (e) {
+          return null;
+        }
+      }
+
+      function updateMemberUI() {
+        const member = getMemberSession();
+        if (member && member.name) {
+          statusBar.classList.add('logged-in');
+          statusIcon.textContent = '✅';
+          statusTitle.textContent = `Welcome, ${member.name}! Member Access Active`;
+          statusSub.textContent = `Signed in as ${member.email} · Click any template below to download or get notified.`;
+          if (openLoginBtn) openLoginBtn.style.display = 'none';
+          if (logoutBtn) logoutBtn.style.display = 'inline-flex';
+
+          downloadBtns.forEach(btn => {
+            const isWip = btn.getAttribute('data-work-in-progress') === 'true';
+            if (isWip) {
+              btn.innerHTML = '⏳ Still in Progress (Click to Notify Me)';
+              btn.style.background = '#D97706';
+            } else {
+              const url = btn.getAttribute('data-file-url') || '';
+              const ext = url.endsWith('.pdf') ? '.pdf' : '.csv';
+              btn.innerHTML = `📥 Download Now (${ext})`;
+              btn.style.background = '#10B981';
+            }
+          });
+        } else {
+          statusBar.classList.remove('logged-in');
+          statusIcon.textContent = '🔒';
+          statusTitle.textContent = 'Member Login Required for Free Downloads';
+          statusSub.textContent = 'Sign in once with your Name, WhatsApp & Email to unlock all Excel, MIS & Watermarked PDF templates.';
+          if (openLoginBtn) openLoginBtn.style.display = 'inline-flex';
+          if (logoutBtn) logoutBtn.style.display = 'none';
+
+          downloadBtns.forEach(btn => {
+            const isWip = btn.getAttribute('data-work-in-progress') === 'true';
+            if (isWip) {
+              btn.innerHTML = '🔔 Login to Get Notified Once Ready';
+              btn.style.background = '';
+            } else {
+              const url = btn.getAttribute('data-file-url') || '';
+              const ext = url.endsWith('.pdf') ? 'PDF (.pdf)' : '(.csv)';
+              btn.innerHTML = `🔒 Login to Download ${ext}`;
+              btn.style.background = '';
+            }
+          });
+        }
+      }
+
+      function showWipMessage(btn) {
+        if (!btn) return;
+        const msgBox = btn.parentElement.querySelector('.wip-status-msg');
+        if (msgBox) {
+          msgBox.style.display = 'block';
+        }
+        btn.innerHTML = '✅ Notification Requested (In Progress)';
+      }
+
+      function triggerFileDownload(url) {
+        if (!url) return;
+        const a = document.createElement('a');
+        a.href = url;
+        a.setAttribute('download', '');
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }
+
+      downloadBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          const member = getMemberSession();
+          const isWip = btn.getAttribute('data-work-in-progress') === 'true';
+          const url = btn.getAttribute('data-file-url');
+          const title = btn.getAttribute('data-file-title') || 'Resource Template';
+
+          if (!member) {
+            e.preventDefault();
+            pendingDownloadUrl = isWip ? null : url;
+            pendingDownloadTitle = title;
+            pendingWipBtn = isWip ? btn : null;
+            if (fileLabel) {
+              fileLabel.innerHTML = isWip
+                ? `<strong>${title}</strong> is still in progress. Sign in below and we will notify you once done!`
+                : `Sign in to download: <strong>${title}</strong>`;
+            }
+            if (loginModal) loginModal.classList.add('active');
+          } else if (isWip) {
+            e.preventDefault();
+            showWipMessage(btn);
+          }
+        });
+      });
+
+      if (openLoginBtn) {
+        openLoginBtn.addEventListener('click', function() {
+          pendingDownloadUrl = null;
+          pendingDownloadTitle = 'All Resource Templates';
+          if (fileLabel) {
+            fileLabel.textContent = 'Enter your details once to unlock instant access to all Excel, MIS & PDF templates.';
+          }
+          if (loginModal) loginModal.classList.add('active');
+        });
+      }
+
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', function() {
+          try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+          updateMemberUI();
+        });
+      }
+
+      if (loginClose && loginModal) {
+        loginClose.addEventListener('click', function() {
+          loginModal.classList.remove('active');
+        });
+        loginModal.addEventListener('click', function(e) {
+          if (e.target === loginModal) loginModal.classList.remove('active');
+        });
+      }
+
+      if (loginForm) {
+        loginForm.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          const submitBtn = document.getElementById('resource-login-submit');
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Signing In & Unlocking...';
+
+          const memberData = {
+            form_type: 'resource_member_login_download',
+            name: document.getElementById('member-name').value.trim(),
+            whatsapp: document.getElementById('member-whatsapp').value.trim(),
+            email: document.getElementById('member-email').value.trim(),
+            role: document.getElementById('member-role').value,
+            requested_resource: pendingDownloadTitle || 'General Member Login',
+            logged_in_at: new Date().toISOString()
+          };
+
+          const cfg = window.ACCOUNTPRO_CONFIG || {};
+          const endpoint = cfg.ENQUIRY_SUBMISSION_ENDPOINT || 'https://formspree.io/f/xqppyvgd';
+
+          try {
+            await fetch(endpoint, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+              body: JSON.stringify(memberData)
+            });
+          } catch (err) {
+            // Even if offline/local, unlock member session after form capture attempt
+          }
+
+          try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(memberData));
+          } catch (err) {}
+
+          updateMemberUI();
+          if (loginModal) loginModal.classList.remove('active');
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '🔓 Sign In &amp; Download Now &rarr;';
+
+          if (pendingWipBtn) {
+            showWipMessage(pendingWipBtn);
+            pendingWipBtn = null;
+          } else if (pendingDownloadUrl) {
+            const urlToDownload = pendingDownloadUrl;
+            pendingDownloadUrl = null;
+            triggerFileDownload(urlToDownload);
+          }
+        });
+      }
+
+      updateMemberUI();
+
+      // Compliance Calendar Category Filter
+      const filterBtns = document.querySelectorAll('.cal-filter-btn');
+      const calRows = document.querySelectorAll('#compliance-cal-body tr');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.getAttribute('data-cal-filter');
+
+          calRows.forEach(row => {
+            if (filter === 'all' || row.getAttribute('data-cal-cat') === filter) {
+              row.style.display = '';
+            } else {
+              row.style.display = 'none';
+            }
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,142 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 3045 >>
+stream
+q
+0.90 0.92 0.95 rg
+BT
+/F2 38 Tf
+0.7071 0.7071 -0.7071 0.7071 115 190 Tm
+(SKILLANSH GROWTH CIRCLE) Tj
+ET
+BT
+/F2 22 Tf
+0.7071 0.7071 -0.7071 0.7071 175 160 Tm
+(GIRISH SHELAR  |  +91 9922045007) Tj
+ET
+Q
+q
+0.12 0.23 0.37 rg
+50 760 495 45 re f
+1 1 1 rg
+BT
+/F2 13 Tf
+62 784 Td
+(SKILLANSH GROWTH CIRCLE - SAFE AI PROMPTS FOR ACCOUNTANTS) Tj
+/F1 10 Tf
+0 -16 Td
+(Mentor: Girish Shelar  |  WhatsApp: +91 9922045007  |  skillansh.com) Tj
+ET
+Q
+q
+0.96 0.62 0.04 RG
+1.5 w
+50 695 495 52 re S
+0.70 0.25 0.04 rg
+BT
+/F2 10 Tf
+60 732 Td
+(GOLDEN DATA-PRIVACY RULE \(DPDP ACT 2023 & ETHICS\):) Tj
+0.15 0.15 0.15 rg
+/F1 9.5 Tf
+0 -14 Td
+(Never paste real Client Names, PAN, GSTIN, or Bank Account Numbers into public AI tools.) Tj
+0 -13 Td
+(Always use Masked Variables like [CLIENT_A], [GSTIN_XXXX], and [AMOUNT_X] as shown below.) Tj
+ET
+Q
+BT
+0.12 0.23 0.37 rg
+/F2 11.5 Tf
+50 668 Td
+(1. Prompt for Cleaning Invoice Numbers in Power Query \(M-Code\)) Tj
+0.15 0.20 0.25 rg
+/F1 9.5 Tf
+0 -16 Td
+("I am using Excel Power Query. I have two tables: 'Books_Purchase' and 'GSTR_2B'.) Tj
+0 -13 Td
+(In 'Books_Purchase', invoice numbers look like 'INV/2026-27/0045', while in 'GSTR_2B') Tj
+0 -13 Td
+(they look like 'INV-2026-27-45'. Write a clean Power Query M-code custom column formula) Tj
+0 -13 Td
+(that strips special characters \('/', '-', spaces\) and leading zeros so both tables match.") Tj
+
+0.12 0.23 0.37 rg
+/F2 11.5 Tf
+0 -26 Td
+(2. Prompt for Drafting GST Section 73 / DRC-01A Difference Reply \(3B vs 2B\)) Tj
+0.15 0.20 0.25 rg
+/F1 9.5 Tf
+0 -16 Td
+("Act as an Indian GST compliance specialist. Draft a structured reply letter to the) Tj
+0 -13 Td
+(Proper Officer regarding a difference in Input Tax Credit \(ITC\) between GSTR-3B and) Tj
+0 -13 Td
+(GSTR-2B for FY [FY_YEAR] involving [AMOUNT_X]. Use placeholders [TAXPAYER_NAME] and) Tj
+0 -13 Td
+([GSTIN_NUMBER]. Include a reconciliation table structure showing: \(a\) ITC in 3B,) Tj
+0 -13 Td
+(\(b\) ITC as per 2B, \(c\) Previous period invoices claimed under Sec 16\(4\), \(d\) Reversals.") Tj
+
+0.12 0.23 0.37 rg
+/F2 11.5 Tf
+0 -26 Td
+(3. Prompt for Power BI DAX Measure \(Debtors & MSME 45-Day Ageing\)) Tj
+0.15 0.20 0.25 rg
+/F1 9.5 Tf
+0 -16 Td
+("Write a clean Power BI DAX measure to calculate 'Outstanding Receivables for 31-45 Days') Tj
+0 -13 Td
+(and '>45 Days MSME Section 43B\(h\) Risk' using an 'Invoices' table with columns:) Tj
+0 -13 Td
+([Invoice_Date], [Outstanding_Amount], [MSME_Status], and a dynamic Date Slicer table.") Tj
+
+0.12 0.23 0.37 rg
+/F2 11.5 Tf
+0 -26 Td
+(4. Prompt for Categorizing Messy Bank Statement Narrations in Excel) Tj
+0.15 0.20 0.25 rg
+/F1 9.5 Tf
+0 -16 Td
+("Write an Excel formula using XLOOKUP / SEARCH that reads a Bank Narration in cell C2) Tj
+0 -13 Td
+(\(containing strings like 'NEFT/UPI/SWIGGY', 'ACH/BAJAJ FINANCE', 'IMPS/MSEDCL'\) and) Tj
+0 -13 Td
+(automatically assigns the right Accounting Ledger Head from a Keyword_Map table.") Tj
+
+0.40 0.45 0.52 rg
+/F1 8.5 Tf
+0 -45 Td
+(Watermarked Copy - Skillansh Growth Circle \(c\) 2026 | Educational & Skill Development Use Only) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000251 00000 n 
+0000003348 00000 n 
+0000003418 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+3493
+%%EOF

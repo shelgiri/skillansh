@@ -1,0 +1,12 @@
+SKILLANSH GROWTH CIRCLE - DEBTORS & MSME 45-DAY AGEING MIS TRACKER (EXCEL & POWER BI READY),,,,,,,,,
+"Instructions: Use this structured dataset in Excel PivotTables or import into Power BI Desktop to build an interactive Debtors & MSME Section 43B(h) 45-Day Compliance Dashboard.",,,,,,,,,
+,,,,,,,,,
+Invoice_ID,Party_Name,Party_Type,MSME_Registered,Invoice_Date,Due_Date,Invoice_Amount_INR,Amount_Received_INR,Outstanding_Balance_INR,Days_Overdue,Ageing_Bucket,MSME_45_Day_Alert
+INV-1001,Sahyadri Auto Components Ltd,Corporate,No,2026-07-15,2026-08-14,340000,140000,200000,85,61-90 Days,Not Applicable
+INV-1002,Prगती Engineering Works,MSME - Micro,Yes,2026-09-10,2026-10-10,118000,0,118000,58,31-60 Days,CRITICAL: >45 Days (Sec 43B(h) Risk)
+INV-1003,Deccan Retail Distributors,SME,No,2026-10-05,2026-11-04,275000,175000,100000,33,31-60 Days,Not Applicable
+INV-1004,Vikas Precision Tools,MSME - Small,Yes,2026-10-18,2026-11-02,92000,0,92000,20,0-30 Days,Within 45 Days Limit
+INV-1005,Western Infra Projects Pvt Ltd,Corporate,No,2026-06-20,2026-07-20,510000,110000,400000,110,90+ Days (Critical),Not Applicable
+INV-1006,Kalyani Traders & Co,MSME - Micro,Yes,2026-09-01,2026-10-01,64000,0,64000,67,61-90 Days,CRITICAL: >45 Days (Sec 43B(h) Risk)
+INV-1007,Metro Logistics India,SME,No,2026-10-25,2026-11-24,145000,0,145000,13,0-30 Days,Not Applicable
+

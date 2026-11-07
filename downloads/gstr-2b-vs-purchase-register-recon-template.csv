@@ -1,0 +1,20 @@
+SKILLANSH GROWTH CIRCLE - GSTR-2B vs PURCHASE REGISTER AUTOMATION PRACTICE TEMPLATE,,,,,,
+"Instructions: Import Table 1 (Books Purchase Register) and Table 2 (GSTR-2B Portal Data) into Excel Power Query -> Merge Queries on (GSTIN + Invoice_No) -> Load Automated Reconciliation Report!",,,,,,
+,,,,,,
+TABLE 1: BOOKS PURCHASE REGISTER (TALLY / ERP EXPORT),,,,,,
+Sr_No,Supplier_GSTIN,Supplier_Name,Invoice_No,Invoice_Date,Taxable_Value_INR,Total_GST_INR,Books_Status
+1,27AABCU9603R1ZM,Shree Ganesh Enterprises,INV/2026/001,2026-10-04,125000,22500,Recorded in Books
+2,27AADCS0472N1Z1,Apex Industrial Supplies Pvt Ltd,APS-884,2026-10-08,84500,15210,Recorded in Books
+3,27AAFCV3321K1Z5,Mahalaxmi Logistics & Co,ML/26-27/112,2026-10-12,42000,7560,Recorded in Books
+4,27AABCT1234F1Z9,TechNova IT Solutions LLP,TN-2026-509,2026-10-15,210000,37800,Recorded in Books
+5,27AAHCA9988P1Z2,Omkar Packaging Works,OPW/445,2026-10-19,63000,11340,Recorded in Books
+6,27AABCU9603R1ZM,Shree Ganesh Enterprises,INV/2026/018,2026-10-24,95000,17100,Recorded in Books
+,,,,,,
+TABLE 2: GSTR-2B PORTAL DOWNLOAD,,,,,,
+Sr_No,Supplier_GSTIN,Supplier_Name,Invoice_No,Invoice_Date,Taxable_Value_INR,Total_GST_INR,ITC_Available
+1,27AABCU9603R1ZM,Shree Ganesh Enterprises,INV/2026/001,2026-10-04,125000,22500,Yes
+2,27AADCS0472N1Z1,Apex Industrial Supplies Pvt Ltd,APS-884,2026-10-08,84000,15120,Yes (Value Mismatch Rs.500)
+3,27AABCT1234F1Z9,TechNova IT Solutions LLP,TN-2026-509,2026-10-15,210000,37800,Yes
+4,27AAHCA9988P1Z2,Omkar Packaging Works,OPW-445,2026-10-19,63000,11340,Yes (Invoice Format Difference: OPW/445 vs OPW-445)
+5,27AAJCK7741M1Z8,Kulkarni Traders (Not in Books),KT/902,2026-10-28,55000,9900,Yes (In 2B Only - Missing in Books)
+
