@@ -1,0 +1,10 @@
+# Keep Home Page active only — redirect other pages to home
+/workshop.html   /   302
+/workshop        /   302
+/resources.html  /   302
+/resources       /   302
+/about.html      /   302
+/about           /   302
+/contact.html    /   302
+/contact         /   302
+

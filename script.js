@@ -1,7 +1,6 @@
-/* Growth Circle — Site Scripts */
+/* Site Scripts */
 /* Centralized configuration is loaded from config.js before this script. */
 
-let accountproSupabase = null;
 let formSubmitting = false;
 let lastSubmitTime = 0;
 let currentLang = 'en';
@@ -29,7 +28,7 @@ const translations = {
     'Please tell us briefly what you would like help with.': 'Please tell us briefly what you would like help with.',
     'Sending your enquiry…': 'Sending your enquiry…',
     'Your enquiry has been submitted successfully.': 'Your enquiry has been submitted successfully.',
-    'Thank you for contacting Growth Circle. Your enquiry has been recorded.': 'Thank you for contacting Growth Circle. Your enquiry has been recorded.',
+    'Thank you for contacting us. Your enquiry has been recorded.': 'Thank you for contacting us. Your enquiry has been recorded.',
     'We could not submit your enquiry.': 'We could not submit your enquiry.',
     'Your message has not been confirmed as submitted. Please try again or use a verified contact channel if one is available.': 'Your message has not been confirmed as submitted. Please try again or use a verified contact channel if one is available.',
     'Try Again': 'Try Again',
@@ -41,7 +40,7 @@ const translations = {
     'Program': 'Program',
     'Explore': 'Explore',
     'Legal': 'Legal',
-    'Growth Circle · 2026 · From idea to growth.': 'Growth Circle · 2026 · From idea to growth.'
+    '2026 · From idea to growth.': '2026 · From idea to growth.'
   },
   mr: {
     'Our approach': 'आमचा दृष्टिकोन',
@@ -49,10 +48,6 @@ const translations = {
     'Home': 'होम',
     'Live Workshop': 'लाइव्ह कार्यशाळा',
     'Live Workshop (₹51 Diwali Offer)': 'लाइव्ह कार्यशाळा (₹ 51/- दिवाळी ऑफर)',
-    'Learner Requirements Form': 'शिकणाऱ्यांच्या गरजांचा फॉर्म',
-    'Tell Us Your Learning Goals': 'तुमची शिकण्याची उद्दिष्टे सांगा',
-    'Customize Your Accounting Automation Roadmap': 'तुमचा अकाउंटिंग ऑटोमेशन रोडमॅप तयार करा',
-    'Select the skills and tools you want to master. We will review your requirements and provide you with a customized learning pathway and free automation templates.': 'तुम्हाला कोणती कौशल्ये आणि टूल्स शिकायची आहेत ते निवडा. आम्ही तुमच्या गरजा पाहून तुम्हाला योग्य मार्गदर्शन आणि मोफत ऑटोमेशन टेम्पलेट्स देऊ.',
     'Current Profile / Profession': 'सध्याचे प्रोफाइल / व्यवसाय',
     'Select Enquiry Topic (Optional)': 'विषय निवडा (पर्यायी)',
     'Your Message / Workflow Challenge': 'तुमचा संदेश / कामातील आव्हान',
@@ -93,7 +88,7 @@ const translations = {
     'Please tell us briefly what you would like help with.': 'कृपया संक्षिप्तपणे सांगा की तुम्हाला कशाबद्दल मदत हवी आहे.',
     'Sending your enquiry…': 'विचारणा पाठवत आहोत…',
     'Your enquiry has been submitted successfully.': 'तुमची विचारणा यशस्वीरित्या सादर केली आहे.',
-    'Thank you for contacting Growth Circle. Your enquiry has been recorded.': 'ग्रोथ सर्कलशी संपर्क साधल्याबद्दल धन्यवाद. तुमची विचारणा नोंदवली आहे.',
+    'Thank you for contacting us. Your enquiry has been recorded.': 'आमच्याशी संपर्क साधल्याबद्दल धन्यवाद. तुमची विचारणा नोंदवली आहे.',
     'We could not submit your enquiry.': 'आम्ही तुमची विचारणा सादर करू शकलो नाही.',
     'Your message has not been confirmed as submitted. Please try again or use a verified contact channel if one is available.': 'तुमचा संदेश सादर झाला असल्याचा कन्फर्म झाला नाही. कृपया पुन्हा प्रयत्न करा किंवा उपलब्ध असल्यास सत्यापित संपर्क माध्यम वापरा.',
     'Try Again': 'पुन्हा प्रयत्न करा',
@@ -106,9 +101,9 @@ const translations = {
     'This program may suit you if:': 'कार्यक्रम तुमच्यासाठी योग्य असू शकतो जर:',
     'You may need a different solution if:': 'तुम्हाला वेगळा उपाय हवा असू शकतो जर:',
     'The best starting point is a real task you want to improve and a willingness to work through the process.': 'सुरुवात करण्यासाठी सर्वोत्तम ठिकाण हा एक वास्तविक काम आहे जो तुम्हाला सुधारायचाय आहे आणि प्रक्रियेद्वारे काम करण्याची इच्छा आहे.',
-    'Growth Circle · 2026 · From idea to growth.': 'ग्रोथ सर्कल · २०२६ · कल्पनेपासून वाढ.',
+    '2026 · From idea to growth.': '२०२६ · कल्पनेपासून वाढ.',
     'Practical accounting automation skills for Indian accounting professionals.': 'भारतीय लेखा व्यावसायिकांसाठी व्यावहारिक लेखा स्वयंचलित कौशल्ये.',
-    'Growth Circle &mdash; 30-Day Accounting Automation Program': 'ग्रोथ सर्कल &mdash; 30-दिवस लेखा स्वयंचलित कार्यक्रम',
+    '30-Day Accounting Automation Program': '३०-दिवस लेखा स्वयंचलित कार्यक्रम',
     'Option 1 &mdash; One-time payment': 'पर्याय 1 &mdash; एकवेळ पेमेंट',
     'Option 2 &mdash; Two instalments': 'पर्याय 2 &mdash; दोन हप्ते',
     'Additional workflow-review support': 'अतिरिक्त कार्यप्रवाह-पुनरावलोकन समर्थन',
@@ -124,7 +119,7 @@ const translations = {
     'Program Investment': 'कार्यक्रम गुंतवणूक',
     'Privacy Information': 'गोपनीयता माहिती',
     'Terms & Conditions': 'अटी व शर्ती',
-    'Growth Circle · 2026 · From idea to growth.': 'ग्रोथ सर्कल · २०२६ · कल्पनेपासून वाढ.',
+    '2026 · From idea to growth.': '२०२६ · कल्पनेपासून वाढ.',
     'Does this sound familiar?': 'हे तुम्हाला परिचित वाटते का?',
     'Your accounting experience is valuable. Repetitive work shouldn&rsquo;t consume all your time.': 'तुमचे लेखा अनुभव मौल्यवान आहे. पुनरावृत्ती होणारे काम तुमचा सर्व वेळ घेत नये.',
     'You may already know how to prepare reconciliations, work with accounting data, manage GST-related tasks, and prepare reports. But when the same steps need to be repeated every month, it can be difficult to make time for learning new tools or exploring new opportunities.': 'तुम्हाला आधीच मिळवणी तयार करणे, लेखा डेटासह काम करणे, GST-संबंधित कार्ये करणे आणि अहवाल तयार करणे माहिती असू शकते. परंतु जेव्हा समान पायऱ्या प्रत्येक महिन्यात पुन्हा करायच्या असतात, तेव्हा नवीन साधने शिकण्यास किंवा नवीन संधी शोधण्यास वेळ काढणे कठीण होऊ शकते.',
@@ -146,7 +141,7 @@ const translations = {
     'Start with one real accounting problem. Build a practical solution. Review it before moving forward.': 'एखाद्या वास्तविक लेखा समस्येने सुरुवात करा. एक व्यावहारिक उपाय तयार करा. पुढे जाण्यापूर्वी त्याचे पुनरावलोकन करा.',
     'The accounting automation program': 'लेखा स्वयंचलित कार्यक्रम',
     'A focused 30-day program built around practical implementation.': 'व्यावहारिक अंमलबजावणीभोवती बांधलेला एक केंद्रित 30-दिवस कार्यक्रम.',
-    'Growth Circle combines workflow assessment, guided learning, practical projects, and implementation reviews to help you apply digital tools to accounting work.': 'ग्रोथ सर्कल कार्यप्रवाह मूल्यमापन, मार्गदर्शित शिक्षण, व्यावहारिक प्रकल्पे आणि अंमलबजावणी पुनरावलोकने मिसळते जेणेकरून तुम्हाला लेखा कार्यावर डिजिटल साधने लागू करण्यास मदत होईल.',
+    'This program combines workflow assessment, guided learning, practical projects, and implementation reviews to help you apply digital tools to accounting work.': 'हा कार्यक्रम कार्यप्रवाह मूल्यमापन, मार्गदर्शित शिक्षण, व्यावहारिक प्रकल्पे आणि अंमलबजावणी पुनरावलोकने मिसळते जेणेकरून तुम्हाला लेखा कार्यावर डिजिटल साधने लागू करण्यास मदत होईल.',
     'Additional resources': 'अतिरिक्त संसाधने',
     'Resources to support your next steps.': 'तुमच्या पुढील पायऱ्यांना समर्थन देण्यासाठी संसाधने.',
     'The program also includes three bonuses intended to support implementation, professional visibility, and service exploration.': 'कार्यक्रमामध्ये अंमलबजावणी, व्यावसायिक दृश्यमानता, आणि सेवा शोधण्यास समर्थन देण्यासाठी तीन बोनस समाविष्ट आहेत.',
@@ -238,31 +233,6 @@ function initLangSwitcher() {
       setLang(lang);
     });
   });
-}
-
-/* ---------- Initialize Supabase (only if configured) ---------- */
-function initSupabase() {
-  const cfg = window.ACCOUNTPRO_CONFIG || {};
-  const warning = document.getElementById('contact-config-warning');
-
-  // Already initialized — reuse existing client, don't create a second one
-  if (accountproSupabase) {
-    if (warning) warning.style.display = 'none';
-    return true;
-  }
-
-  if (cfg.ENABLE_SUPABASE && cfg.SUPABASE_URL && cfg.SUPABASE_ANON_KEY) {
-    if (window.supabase && window.supabase.createClient) {
-      accountproSupabase = window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY);
-      if (warning) warning.style.display = 'none';
-      return true;
-    }
-  }
-
-  // Only show warning if NEITHER Supabase nor Formspree is configured
-  const hasFormspree = Boolean(cfg.ENQUIRY_SUBMISSION_ENDPOINT);
-  if (warning) warning.style.display = hasFormspree ? 'none' : 'block';
-  return false;
 }
 
 /* ---------- Config-driven contact & legal links ---------- */
@@ -558,26 +528,6 @@ function isDuplicateSubmission() {
   return false;
 }
 
-async function submitToSupabase(formData) {
-  if (!accountproSupabase) throw new Error('Supabase client not initialized');
-
-  const { error } = await accountproSupabase
-    .from('enquiries')
-    .insert([
-      {
-        name: formData.name,
-        email: formData.contact_method === 'email' ? formData.contact_detail : null,
-        phone: formData.contact_method === 'phone' ? formData.contact_detail : null,
-        service_interest: formData.topic || null,
-        message: formData.message,
-        created_at: new Date().toISOString()
-      }
-    ]);
-
-  if (error) throw error;
-  return true;
-}
-
 async function submitToFormspree(formData) {
   const cfg = window.ACCOUNTPRO_CONFIG || {};
   const endpoint = cfg.ENQUIRY_SUBMISSION_ENDPOINT;
@@ -607,19 +557,13 @@ async function submitToFormspree(formData) {
 
 async function submitEnquiry(formData) {
   const cfg = window.ACCOUNTPRO_CONFIG || {};
-  const supabaseReady = initSupabase();
 
-  // Try Supabase first if enabled and ready
-  if (supabaseReady) {
-    return await submitToSupabase(formData);
-  }
-
-  // Fallback: Formspree endpoint
+  // Formspree endpoint (only submission method)
   if (cfg.ENQUIRY_SUBMISSION_ENDPOINT) {
     return await submitToFormspree(formData);
   }
 
-  throw new Error('No submission method configured. Set ENQUIRY_SUBMISSION_ENDPOINT or enable Supabase.');
+  throw new Error('No submission method configured. Set ENQUIRY_SUBMISSION_ENDPOINT.');
 }
 
 function bindForm() {
@@ -695,8 +639,8 @@ function initUpiPayment() {
   const mobileBarCta = document.getElementById('mobile-bar-cta');
 
   const cfg = window.ACCOUNTPRO_CONFIG || {};
-  const upiId = cfg.PAYMENT_UPI_ID || 's.giru07-4@oksbi';
-  const qrImage = cfg.PAYMENT_QR_IMAGE || 'images/upi-qr-code.jpg';
+  const upiId = cfg.PAYMENT_UPI_ID || '';
+  const qrImage = cfg.PAYMENT_QR_IMAGE || '';
 
   if (upiIdText) upiIdText.textContent = upiId;
   if (qrImg) {
@@ -735,7 +679,7 @@ function initUpiPayment() {
       const homeAutoBody = document.getElementById('home-auto-msg-body');
       const utrVal = homeUtr ? homeUtr.value.trim() : '';
       if (homeAutoBody && utrVal) {
-        homeAutoBody.innerHTML = `Thank you for completing your payment (UPI Ref: <strong>${utrVal}</strong>)! Welcome to the <strong>Skillansh Growth Circle</strong>. Please click the link below to join our official WhatsApp Community Group.`;
+        homeAutoBody.innerHTML = `Thank you for completing your payment (UPI Ref: <strong>${utrVal}</strong>)! Please click the link below to join our official WhatsApp Community Group.`;
       }
       if (homePayStep && homeAutoMsg) {
         homePayStep.style.display = 'none';
@@ -769,66 +713,6 @@ function initUpiPayment() {
     mobileBarCta.addEventListener('click', (e) => {
       e.preventDefault();
       routeClarityCall();
-    });
-  }
-}
-
-/* ---------- Learner Requirements Form Handler ---------- */
-function bindLearnerEnquiryForm() {
-  const form = document.getElementById('learner-enquiry-form');
-  const statusEl = document.getElementById('learner-form-status');
-
-  if (form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const submitBtn = form.querySelector('button[type="submit"]');
-      submitBtn.disabled = true;
-      submitBtn.innerText = 'Submitting Your Requirements...';
-
-      const selectedSkills = Array.from(form.querySelectorAll('input[name="skills"]:checked')).map(cb => cb.value);
-
-      const roleEl = document.getElementById('learner-role');
-      const payload = {
-        form_type: 'learner_requirements_enquiry',
-        name: document.getElementById('learner-name').value,
-        whatsapp: document.getElementById('learner-whatsapp').value,
-        email: document.getElementById('learner-email').value,
-        role: roleEl ? roleEl.value : '',
-        required_skills: selectedSkills.join(', '),
-        workflow_details: document.getElementById('learner-details').value,
-        submitted_at: new Date().toISOString()
-      };
-
-      const cfg = window.ACCOUNTPRO_CONFIG || {};
-      const endpoint = cfg.ENQUIRY_SUBMISSION_ENDPOINT || 'https://formspree.io/f/xqppyvgd';
-
-      try {
-        const resp = await fetch(endpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-
-        if (resp.ok) {
-          statusEl.style.display = 'block';
-          statusEl.style.background = '#ECFDF5';
-          statusEl.style.color = '#065F46';
-          statusEl.style.border = '1px solid #10B981';
-          statusEl.innerHTML = '🎉 <strong>Requirements received!</strong><br>We will review your requested topics (Advanced Excel / Power BI / AI) and share your personalized roadmap on WhatsApp.';
-          form.reset();
-        } else {
-          throw new Error('Submission failed');
-        }
-      } catch (err) {
-        statusEl.style.display = 'block';
-        statusEl.style.background = '#FEF2F2';
-        statusEl.style.color = '#991B1B';
-        statusEl.style.border = '1px solid #EF4444';
-        statusEl.innerHTML = '⚠️ Submission error. Please WhatsApp your requirements directly to +919922045007.';
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerText = 'Submit Requirements →';
-      }
     });
   }
 }
@@ -904,14 +788,11 @@ function initDiwaliCountdown() {
 /* ---------- Init ---------- */
 document.addEventListener('DOMContentLoaded', () => {
   initLangSwitcher();
-  initSupabase();
   applyContactConfig();
   bindCtas();
   bindForm();
   restoreFormValues();
   preselectTopic();
-  initUpiPayment();
-  bindLearnerEnquiryForm();
   initFaqAccordion();
   initDiwaliCountdown();
 });

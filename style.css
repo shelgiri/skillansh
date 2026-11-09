@@ -1,11 +1,11 @@
-/* AccountPro Growth Circle — Design System */
-/* Brand: Growth Circle Accounting Automation Program */
+/* AccountPro — Design System */
+/* Brand: Accounting Automation Program */
 /* Colors: #1E3A5F deep navy, #F7F9FC light cool grey, #FFFFFF white, #0F172A charcoal, #64748B slate, #F59E0B amber */
 
 :root {
   --color-primary: #1E3A5F;
   --color-primary-hover: #15304F;
-  --color-bg: #F8FAFC;
+  --color-bg: #FAF7F0;
   --color-surface: #FFFFFF;
   --color-text: #0F172A;
   --color-text-muted: #475569;
@@ -1577,17 +1577,38 @@ footer {
 }
 
 .upi-modal-box {
-  background: #ffffff;
+  background: linear-gradient(135deg, #3E2A2A 0%, #4A3A3A 50%, #3E2A2A 100%);
+  color: #FFFFFF;
+  border: 2px solid #FBBF24;
   border-radius: 20px;
   max-width: 500px; /* Expanded for optimal viewing on laptops and tablets */
   width: 95%;
   max-height: 90vh;
   overflow-y: auto;
   padding: 2.25rem 2rem;
-  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5), 0 0 25px rgba(251, 191, 36, 0.25);
   position: relative;
   text-align: center;
   animation: modalFadeIn 0.25s ease-out;
+}
+
+.upi-modal-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: repeating-linear-gradient(
+    90deg,
+    #FDE047 0px, #FDE047 10px,
+    #EA580C 10px, #EA580C 20px,
+    #10B981 20px, #10B981 30px,
+    #3B82F6 30px, #3B82F6 40px,
+    #A855F7 40px, #A855F7 50px
+  );
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
 }
 
 @keyframes modalFadeIn {
@@ -1599,26 +1620,28 @@ footer {
   position: absolute;
   top: 1rem;
   right: 1.25rem;
-  background: #f1f5f9;
-  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(251, 191, 36, 0.4);
   font-size: 1.6rem;
   cursor: pointer;
-  color: var(--color-text);
+  color: #FFFFFF;
   width: 36px;
   height: 36px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s;
+  transition: background 0.2s, color 0.2s;
+  z-index: 10;
 }
 
 .upi-close-btn:hover {
-  background: #e2e8f0;
+  background: rgba(255, 255, 255, 0.28);
+  color: #FDE047;
 }
 
 .upi-modal-box h3 {
-  color: var(--color-primary);
+  color: #FFFFFF;
   font-size: 1.45rem;
   font-weight: 800;
   margin-bottom: 0.35rem;
@@ -1628,9 +1651,9 @@ footer {
 .upi-amount-tag {
   font-size: 2.35rem; /* Larger, prominent & easy to read on laptop screens */
   font-weight: 800;
-  color: #10B981;
-  background: #ECFDF5;
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #FDE047;
+  background: rgba(245, 158, 11, 0.2);
+  border: 1.5px solid #F59E0B;
   border-radius: 12px;
   padding: 0.4rem 1.25rem;
   display: inline-block;
@@ -1643,10 +1666,10 @@ footer {
   margin: 1.25rem auto;
   padding: 12px;
   background: #ffffff;
-  border: 2px solid var(--color-border);
+  border: 2px solid #FBBF24;
   border-radius: 16px;
   display: inline-block;
-  box-shadow: 0 10px 25px -5px rgba(30, 58, 95, 0.1);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.35);
 }
 
 .upi-qr-img {
@@ -1660,13 +1683,13 @@ footer {
 }
 
 .upi-id-badge {
-  background: #f8fafc;
-  border: 1px solid #cbd5e1;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1.5px solid rgba(251, 191, 36, 0.4);
   padding: 0.75rem 1rem;
   border-radius: 10px;
   font-family: monospace;
   font-size: 1.05rem;
-  color: var(--color-primary);
+  color: #FDE047;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -1675,19 +1698,19 @@ footer {
 }
 
 .btn-copy-upi {
-  background: var(--color-primary);
-  color: #fff;
+  background: #F59E0B;
+  color: #1E1B4B;
   border: none;
   padding: 0.45rem 1rem;
   border-radius: 6px;
   cursor: pointer;
   font-size: 0.85rem;
-  font-weight: 700;
-  transition: background 0.2s ease;
+  font-weight: 800;
+  transition: all 0.2s ease;
 }
 
 .btn-copy-upi:hover {
-  background: var(--color-primary-hover);
+  background: #FDE047;
 }
 
 .upi-instructions {
@@ -2317,33 +2340,13 @@ p[style*="text-align: center"] {
   gap: 0.35rem;
 }
 
-.diwali-banner-title {
-  color: #FFFFFF;
-  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
-  font-weight: 800;
-  line-height: 1.25;
-  margin-bottom: 0.6rem;
-}
-
-.diwali-banner-title .gold-text {
-  color: #FDE047;
-  text-shadow: 0 2px 10px rgba(251, 191, 36, 0.45);
-}
-
-.diwali-banner-sub {
-  color: #FDE68A;
-  font-size: 0.95rem;
-  line-height: 1.55;
-  margin-bottom: 1rem;
-  max-width: 62ch;
-}
-
 /* Live Countdown & Seat Meter Row */
 .diwali-timer-row {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   flex-wrap: wrap;
+  margin-top: 1.5rem;
 }
 
 .diwali-countdown-box {
@@ -2429,6 +2432,14 @@ p[style*="text-align: center"] {
   animation: diyaAuraPulse 2s infinite ease-in-out;
 }
 
+/* Price with diyas on both sides */
+.price-with-diyas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem 0;
+}
+
 .diwali-price-main {
   line-height: 1;
 }
@@ -2510,15 +2521,6 @@ p[style*="text-align: center"] {
     gap: 1.15rem;
   }
 
-  .diwali-banner-title {
-    font-size: 1.3rem;
-  }
-
-  .diwali-banner-sub {
-    font-size: 0.86rem;
-    margin-bottom: 0.85rem;
-  }
-
   .diwali-timer-row {
     flex-direction: column;
     align-items: stretch;
@@ -2549,6 +2551,1084 @@ p[style*="text-align: center"] {
   .animated-diya-svg {
     width: 38px;
     height: 38px;
+  }
+}
+
+/* ==========================================================================
+   🪔 DIWALI & BHAI DOOJ HERO SHOWCASE (matches image design)
+   Colors: Maroon #3E1A1A, Gold #FDE047, Amber #F59E0B
+   ========================================================================== */
+.diwali-hero-showcase {
+  position: relative;
+  background: linear-gradient(135deg, #3E1A1A 0%, #5B2A1E 45%, #3E1A1A 100%);
+  color: #FFFFFF;
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  border: 2px solid #FDE047;
+  box-shadow: 0 20px 40px rgba(62, 26, 26, 0.4);
+}
+
+/* Golden toran border at top */
+.hero-toran {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: repeating-linear-gradient(
+    90deg,
+    #FDE047 0px, #FDE047 12px,
+    #EA580C 12px, #EA580C 24px,
+    #10B981 24px, #10B981 36px,
+    #3B82F6 36px, #3B82F6 48px,
+    #A855F7 48px, #A855F7 60px
+  );
+  z-index: 5;
+}
+
+.diwali-sparkles-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.diwali-sparkle {
+  position: absolute;
+  color: #FDE047;
+  font-size: 1.1rem;
+  animation: sparkleTwinkle 2.6s infinite ease-in-out;
+  user-select: none;
+  z-index: 2;
+}
+
+.diwali-sparkle.s1 { top: 10%; left: 48%; animation-delay: 0.2s; }
+.diwali-sparkle.s2 { top: 70%; left: 55%; animation-delay: 0.9s; font-size: 0.9rem; }
+.diwali-sparkle.s3 { top: 15%; right: 30%; animation-delay: 1.4s; font-size: 1.25rem; }
+.diwali-sparkle.s4 { bottom: 12%; left: 10%; animation-delay: 0.6s; font-size: 0.95rem; }
+.diwali-sparkle.s5 { top: 40%; right: 5%; animation-delay: 1.0s; font-size: 1.1rem; }
+.diwali-sparkle.s6 { bottom: 40%; left: 2%; animation-delay: 1.8s; font-size: 1rem; }
+
+.diwali-banner-grid {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 2rem;
+  align-items: start;
+}
+
+.hero-left { min-width: 0; }
+
+.diwali-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.diwali-festive-pill {
+  background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
+  color: #450A0A;
+  font-weight: 800;
+  font-size: 0.78rem;
+  padding: 0.28rem 0.85rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  box-shadow: 0 2px 10px rgba(245, 158, 11, 0.4);
+  border: 1px solid #FDE047;
+}
+
+.diwali-limited-tag {
+  background: linear-gradient(90deg, #F59E0B 0%, #FBBF24 50%, #F59E0B 100%);
+  color: #450A0A;
+  font-weight: 700;
+  font-size: 0.76rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.diwali-timer-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.diwali-countdown-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(251, 191, 36, 0.45);
+  padding: 0.45rem 0.75rem;
+  border-radius: 10px;
+}
+
+.diwali-countdown-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #FDE047;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-right: 0.2rem;
+}
+
+.cd-unit {
+  background: linear-gradient(180deg, #FBBF24 0%, #D97706 100%);
+  color: #450A0A;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.88rem;
+  padding: 0.18rem 0.45rem;
+  border-radius: 6px;
+  text-align: center;
+  min-width: 34px;
+}
+
+.cd-sep {
+  color: #FDE047;
+  font-weight: 800;
+}
+
+.diwali-seats-pill {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #FEF3C7;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.4rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Right: ₹51 Festive Shagun Card */
+.hero-right { min-width: 0; display: flex; justify-content: flex-end; }
+
+.diwali-offer-card {
+  background: linear-gradient(135deg, #2E1414 0%, #3E1A1A 100%);
+  border: 2px solid #FDE047;
+  border-radius: 16px;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+
+.offer-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.diya-icon { font-size: 1.1rem; }
+
+.offer-tag-label {
+  background: rgba(244, 163, 64, 0.15);
+  color: #FDE047;
+  border: 1px solid rgba(244, 163, 64, 0.35);
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.offer-price-big {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-weight: 800;
+  color: #FDE047;
+  margin: 0.5rem 0 0.5rem 0;
+  text-shadow: 0 2px 14px rgba(245, 158, 11, 0.6);
+  letter-spacing: -0.02em;
+}
+
+.offer-note-small {
+  font-size: 0.78rem;
+  color: #FDE68A;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.btn-diwali-claim {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: 100%;
+  background: linear-gradient(90deg, #FDE047 0%, #F59E0B 50%, #EA580C 100%);
+  color: #450A0A !important;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1rem;
+  padding: 0.8rem 1.25rem;
+  border-radius: 10px;
+  border: 1.5px solid #FEF08A;
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.45);
+  text-decoration: none !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-diwali-claim:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(245, 158, 11, 0.65);
+  color: #1E1B4B !important;
+}
+
+.offer-perks {
+  font-size: 0.74rem;
+  color: #E2E8F0;
+  margin-top: 0.75rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+  .diwali-banner-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .hero-right { justify-content: center; }
+  .offer-price-big { font-size: 2.2rem; }
+}
+
+@media (max-width: 480px) {
+  .diwali-hero-showcase { padding: 1.75rem 1rem; }
+  .diwali-timer-row { flex-direction: column; align-items: stretch; gap: 0.5rem; }
+  .diwali-countdown-box { justify-content: center; width: 100%; text-align: center; }
+  .diwali-seats-pill { text-align: center; width: 100%; }
+  .btn-diwali-claim { width: 100%; }
+}
+
+/* Program Highlights & Offer Elements */
+.festive-program-highlights {
+  margin-bottom: 1rem;
+}
+
+.festive-program-highlights h3 {
+  color: #FDE047;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.festive-program-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.festive-program-list li {
+  margin-bottom: 0.5rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: #FFFFFF;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.festive-program-list li::before {
+  content: "🪔";
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  font-size: 1rem;
+}
+
+.festive-hero-note {
+  color: #FDE68A;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  max-width: 560px;
+}
+
+.festive-offer-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: linear-gradient(90deg, #FDE047 0%, #F59E0B 50%, #EA580C 100%);
+  color: #450A0A;
+  border: 1px solid #FEF08A;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.75rem;
+  max-width: fit-content;
+  box-shadow: 0 2px 10px rgba(245, 158, 11, 0.4);
+}
+
+.festive-offer-price {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 800;
+  color: #FBBF24;
+  text-align: center;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 10px rgba(245, 158, 11, 0.45);
+}
+
+/* ==========================================================================
+   🪔 FESTIVE REGISTRATION FORM SECTION (Home Page — lighter than banner)
+   ========================================================================== */
+#festive-register {
+  background: linear-gradient(135deg, #3E2A2A 0%, #4A3A3A 50%, #3E2A2A 100%);
+  color: #FFFFFF;
+  border-radius: 24px;
+  padding: 2rem 1.5rem;
+  margin: 1.5rem auto;
+  max-width: 640px;
+  border: 2px solid #FBBF24;
+  box-shadow: 0 16px 32px rgba(62, 26, 26, 0.35);
+  overflow: hidden;
+}
+
+#festive-register .section-head {
+  text-align: center;
+}
+
+#festive-register .section-head h2 {
+  color: #FFFFFF;
+  font-size: clamp(1.5rem, 3vw, 1.8rem);
+  margin-bottom: 0.75rem;
+}
+
+#festive-register .section-head p {
+  color: #FDE68A;
+  font-size: 0.95rem;
+  max-width: 520px;
+  margin: 0 auto 1rem auto;
+}
+
+#festive-register .reg-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#festive-register .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#festive-register .form-group label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #FBBF24;
+  letter-spacing: 0.02em;
+}
+
+#festive-register .form-group input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 2px solid rgba(245, 158, 11, 0.3);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  color: #FFFFFF;
+  font-family: inherit;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+#festive-register .form-group input::placeholder {
+  color: rgba(244, 226, 233, 0.5);
+}
+
+#festive-register .form-group input:focus {
+  outline: none;
+  border-color: #FDE047;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+#festive-register .btn-reg-submit {
+  background: linear-gradient(135deg, #FDE047 0%, #F59E0B 50%, #EA580C 100%);
+  color: #450A0A;
+  border: none;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#festive-register .btn-reg-submit:hover {
+  background: #FFFFFF;
+  color: #7C2D12 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 35px rgba(245, 158, 11, 0.65);
+}
+
+#festive-register .btn-reg-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+#festive-register .reg-status {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+#festive-register .reg-status.success {
+  background: rgba(15, 118, 110, 0.15);
+  color: #10B981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+#festive-register .reg-status.failure {
+  background: rgba(180, 35, 24, 0.15);
+  color: #EF4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+#festive-register .upi-hint {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: #FDE68A;
+  text-align: center;
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  #festive-register {
+    padding: 2rem 1rem;
+    margin: 1.5rem 0.5rem;
+  }
+  #festive-register .reg-form {
+    gap: 0.8rem;
+  }
+  #festive-register .form-group label {
+    font-size: 0.85rem;
+  }
+  #festive-register .form-group input {
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+  }
+  #festive-register .btn-reg-submit {
+    padding: 0.9rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* ==========================================================================
+   🪔 FESTIVE REGISTRATION FORM (Centered on Home Page)
+   ========================================================================== */
+#festive-register {
+  background: linear-gradient(135deg, #3E2A2A 0%, #4A3A3A 50%, #3E2A2A 100%);
+  color: #FFFFFF;
+  border-radius: 24px;
+  padding: 3rem 2rem;
+  margin: 3rem auto;
+  max-width: 560px;
+  border: 2px solid #FBBF24;
+  box-shadow: 0 16px 32px rgba(62, 26, 26, 0.35);
+  position: relative;
+}
+
+#festive-register .section-head {
+  text-align: center;
+}
+
+#festive-register .section-head h2 {
+  color: #FFFFFF;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  margin-bottom: 0.75rem;
+}
+
+#festive-register .section-head p {
+  color: #FDE68A;
+  font-size: 1rem;
+  max-width: 480px;
+  margin: 0 auto 1.5rem auto;
+}
+
+.reg-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #FBBF24;
+  letter-spacing: 0.02em;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 2px solid rgba(245, 158, 11, 0.3);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  color: #FFFFFF;
+  font-family: inherit;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.form-group input::placeholder {
+  color: rgba(244, 226, 233, 0.5);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #FDE047;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.form-group input.error {
+  border-color: #EF4444;
+}
+
+.form-group input.error:focus {
+  border-color: #EF4444;
+}
+
+.btn-reg-submit {
+  background: linear-gradient(135deg, #FDE047 0%, #F59E0B 50%, #EA580C 100%);
+  color: #450A0A;
+  border: none;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-reg-submit:hover {
+  background: #FFFFFF;
+  color: #7C2D12 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 35px rgba(245, 158, 11, 0.65);
+}
+
+.btn-reg-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.reg-status {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.reg-status.success {
+  background: rgba(15, 118, 110, 0.15);
+  color: #10B981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.reg-status.failure {
+  background: rgba(180, 35, 24, 0.15);
+  color: #EF4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.upi-hint {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: #FDE68A;
+  text-align: center;
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  #festive-register {
+    padding: 2rem 1.5rem;
+    margin: 2rem 1rem;
+  }
+  .reg-form {
+    gap: 0.8rem;
+  }
+  .form-group label {
+    font-size: 0.85rem;
+  }
+  .form-group input {
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+  }
+.btn-reg-submit {
+    padding: 0.9rem 1.5rem;
+  }
+
+  .payment-buttons{
+    margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(20,43,74,0.08);display:flex;flex-direction:column;gap:1rem;background:var(--campaign-bg);}
+    .payment-btn{display:inline-flex;align-items:center;justify-content:center;padding:0.8rem 1.5rem;border-radius:12px;font-weight:700;font-size:0.95rem;transition:all 0.3s ease;min-height:50px;color:#1F2937;}
+    .payment-btn:hover{transform:translateY(-2px);}
+    .payment-btn.primary{background:var(--campaign-navy);color:#fff;}
+    .payment-btn.primary:hover{background:var(--campaign-navy-hover);}
+    .payment-btn.secondary{background:var(--campaign-white);border:2px solid var(--campaign-navy);color:var(--campaign-navy);}
+    .payment-btn.secondary:hover{border-color:var(--campaign-gold);color:var(--campaign-gold);}
+  }
+
+/* ==========================================================================
+   🪔 SEPARATE FESTIVE OFFER BANNER (below hero)
+   Matching but separate color scheme — deep maroon with gold accents
+   ========================================================================== */
+.festive-offer-banner {
+  background: linear-gradient(135deg, #3E2A2A 0%, #4A3A3A 50%, #3E2A2A 100%);
+  color: #FFFFFF;
+  border-radius: 20px;
+  padding: 1.5rem 1.25rem 1.25rem 1.25rem;
+  margin: 1.25rem auto;
+  max-width: 740px;
+  border: 2px solid #FBBF24;
+  box-shadow: 0 12px 28px rgba(62, 26, 26, 0.3);
+  overflow: hidden;
+  position: relative;
+}
+
+.festive-offer-banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: repeating-linear-gradient(
+    90deg,
+    #FDE047 0px, #FDE047 10px,
+    #EA580C 10px, #EA580C 20px,
+    #10B981 20px, #10B981 30px,
+    #3B82F6 30px, #3B82F6 40px,
+    #A855F7 40px, #A855F7 50px
+  );
+  z-index: 2;
+}
+
+.offer-banner-content {
+  position: relative;
+  z-index: 3;
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.offer-banner-head {
+  color: #FDE047;
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  font-weight: 800;
+  margin: 0 auto 0.75rem auto;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-align: center;
+  line-height: 1.35;
+}
+
+.offer-banner-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.65rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.45rem 1.25rem;
+  text-align: left;
+}
+
+.offer-banner-list li {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: #FFFFFF;
+  padding-left: 1.35rem;
+  position: relative;
+  margin-bottom: 0;
+}
+
+.offer-banner-list li::before {
+  content: "🪔";
+  position: absolute;
+  left: 0;
+  top: 0.05rem;
+  font-size: 0.85rem;
+}
+
+.offer-banner-note {
+  color: #FDE68A;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  margin: 0.25rem auto 0.45rem auto;
+  text-align: center;
+  max-width: 620px;
+}
+
+.offer-banner-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  background: linear-gradient(90deg, #FDE047 0%, #F59E0B 50%, #EA580C 100%);
+  color: #450A0A;
+  border: 1px solid #FEF08A;
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0 auto 0.5rem auto;
+  max-width: fit-content;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.35);
+}
+
+.offer-banner-price-with-diyas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.35rem 0 0.5rem 0;
+}
+
+.offer-banner-price {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 3vw, 1.75rem);
+  font-weight: 800;
+  color: #FBBF24;
+  text-align: center;
+  margin: 0;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);
+}
+
+/* Banner button with diyas on both sides */
+.banner-button-with-diyas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  margin: 0.5rem auto 0.4rem auto;
+  width: 100%;
+  max-width: 440px;
+}
+
+.banner-diya-left,
+.banner-diya-right {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-button-with-diyas .btn-offer-banner {
+  margin: 0;
+  flex: 1;
+  max-width: 320px;
+  padding: 0.85rem 1.4rem;
+  font-size: 0.95rem;
+}
+
+/* Banner countdown below button */
+.banner-countdown-with-diyas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.4rem auto 0 auto;
+  width: 100%;
+}
+
+.banner-countdown-with-diyas .diwali-countdown-box {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(251, 191, 36, 0.45);
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
+}
+
+.banner-countdown-with-diyas .diwali-countdown-label {
+  color: #FDE047;
+}
+
+.banner-countdown-with-diyas .cd-unit {
+  background: linear-gradient(180deg, #FBBF24 0%, #D97706 100%);
+  color: #450A0A;
+}
+
+.banner-countdown-with-diyas .cd-sep {
+  color: #FDE047;
+}
+
+.btn-offer-banner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #FDE047 0%, #F59E0B 100%);
+  color: #450A0A !important;
+  border: 1px solid #FEF08A;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  text-decoration: none !important;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.45);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-offer-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(245, 158, 11, 0.65);
+  color: #1E1B4B !important;
+}
+
+@media (max-width: 768px) {
+  .festive-offer-banner {
+    padding: 1.25rem 1rem;
+    margin: 1rem auto;
+  }
+  .offer-banner-list {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+  .offer-banner-head {
+    font-size: 1.15rem;
+  }
+  .offer-banner-price {
+    font-size: 1.45rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .festive-offer-banner {
+    padding: 1.15rem 0.85rem;
+    margin: 0.85rem auto;
+    border-radius: 14px;
+  }
+  .offer-banner-head {
+    font-size: 1.05rem;
+  }
+  .offer-banner-list li {
+    font-size: 0.8rem;
+  }
+  .offer-banner-price {
+    font-size: 1.3rem;
+  }
+  .banner-button-with-diyas {
+    gap: 0.35rem;
+  }
+  .banner-diya-left,
+  .banner-diya-right {
+    width: 28px;
+    height: 28px;
+  }
+  .btn-offer-banner {
+    font-size: 0.85rem;
+    padding: 0.75rem 0.9rem;
+  }
+}
+
+/* Festive Plan Selector & Payment Gateway Enhancements */
+.plan-selector-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+.plan-card-opt {
+  background: rgba(255, 255, 255, 0.06);
+  border: 2px solid rgba(245, 158, 11, 0.4);
+  border-radius: 14px;
+  padding: 0.95rem 0.8rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  user-select: none;
+}
+.plan-card-opt:hover {
+  border-color: #FDE047;
+  background: rgba(245, 158, 11, 0.12);
+  transform: translateY(-1px);
+}
+.plan-card-opt.active {
+  border-color: #F59E0B;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.28) 0%, rgba(180, 83, 9, 0.2) 100%);
+  box-shadow: 0 4px 18px rgba(245, 158, 11, 0.35);
+}
+.plan-card-opt .plan-badge {
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #FDE047;
+  display: block;
+}
+.plan-card-opt .plan-price {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0.25rem 0;
+  font-family: var(--font-heading);
+}
+.plan-card-opt .plan-desc {
+  font-size: 0.75rem;
+  color: #FDE68A;
+  line-height: 1.35;
+}
+@media (max-width: 520px) {
+  .plan-selector-grid {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+}
+
+/* Razorpay Payment Button Styling */
+.razorpay-payment-button {
+  background: linear-gradient(135deg, #0C2340 0%, #1E3A8A 50%, #2563EB 100%) !important;
+  color: #ffffff !important;
+  font-family: inherit !important;
+  font-weight: 800 !important;
+  font-size: 1.05rem !important;
+  padding: 0.95rem 1.6rem !important;
+  border-radius: 12px !important;
+  border: 2px solid #60A5FA !important;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.45) !important;
+  cursor: pointer !important;
+  transition: transform 0.2s, box-shadow 0.2s !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.razorpay-payment-button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.6) !important;
+}
+
+/* ==========================================================================
+   Meet Your Mentor Section
+   ========================================================================== */
+.mentor-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-left: 4px solid #F4A340;
+  border-radius: 18px;
+  padding: 1.75rem 2rem;
+  box-shadow: 0 10px 25px -5px rgba(20, 43, 74, 0.06), 0 4px 12px -2px rgba(20, 43, 74, 0.04);
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mentor-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px -5px rgba(20, 43, 74, 0.1);
+}
+
+.mentor-photo-wrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mentor-photo {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 3px solid #F4A340;
+  box-shadow: 0 6px 16px rgba(20, 43, 74, 0.12);
+  display: block;
+}
+
+.mentor-details {
+  flex: 1;
+}
+
+.mentor-name {
+  color: #142B4A;
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin: 0 0 0.25rem 0;
+  letter-spacing: -0.01em;
+}
+
+.mentor-title {
+  color: #0F766E;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem 0;
+}
+
+.mentor-bio {
+  color: #334155;
+  font-size: 0.94rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .mentor-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem 1.25rem;
+    gap: 1.25rem;
+    border-left: 1px solid #E2E8F0;
+    border-top: 4px solid #F4A340;
+  }
+  .mentor-photo {
+    width: 110px;
+    height: 110px;
+  }
+  .mentor-name {
+    font-size: 1.25rem;
+  }
+  .mentor-title {
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+  }
+  .mentor-bio {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    text-align: left;
   }
 }
 
