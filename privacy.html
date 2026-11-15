@@ -13,16 +13,16 @@
   <link rel="icon" type="image/x-icon" href="/skillansh-favicon-v4.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="/skillansh-apple-icon-v4.png">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="chatbot.css">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
 
   <header>
-    <div class="top-bar top-bar-offer">
+    <div class="top-bar">
       <div class="container">
-        <span class="offer-pill-badge">🪔 Diwali &amp; Bhai Dooj Gift Offer</span>
-        <span><strong>🎁 Gift a Skill &amp; Bring a Smile This Diwali:</strong> Join or Gift Our Excel, Power Query, Power BI &amp; MIS Program <strong>@ ₹51 Only</strong> — Open Till Bhai Dooj!</span>
-        <a href="workshop.html#register" class="top-bar-cta">🎁 Join / Gift @ ₹51 &rarr;</a>
+        <span data-en="Learn Excel, Power Query, Power BI &amp; MIS Automation from Industry Experts." data-mr="उद्योग तज्ञांकडून Excel, Power Query, Power BI आणि MIS ऑटोमेशन शिका.">Learn Excel, Power Query, Power BI &amp; MIS Automation from Industry Experts.</span>
+        <a href="workshop.html" class="top-bar-cta" data-en="Join Live Workshop &rarr;" data-mr="लाइव्ह कार्यशाळा पहा &rarr;">Join Live Workshop &rarr;</a>
       </div>
     </div>
     <div class="container nav-wrap">
@@ -31,11 +31,10 @@
       </a>
       <nav>
         <ul class="nav-links" id="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="index.html#festive-register" style="color:var(--color-accent); font-weight:700;">Festive Pass (₹51)</a></li>
-          <li><a href="index.html#program">The Program</a></li>
-          <li><a href="index.html#mentor">Meet Mentor</a></li>
-          <li><a href="index.html#faq">FAQs</a></li>
+          <li><a href="index.html"><span data-en="Home" data-mr="होम">Home</span></a></li>
+          <li><a href="workshop.html"><span data-en="Live Workshop" data-mr="लाइव्ह कार्यशाळा">Live Workshop</span><span class="nav-live-chip">LIVE</span></a></li>
+          <li><a href="about.html"><span data-en="About &amp; Approach" data-mr="बद्दल व दृष्टिकोन">About &amp; Approach</span></a></li>
+          <li><a href="contact.html"><span data-en="Contact" data-mr="संपर्क">Contact</span></a></li>
         </ul>
       </nav>
       <button class="mobile-menu-btn" id="mobile-menu" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
@@ -103,43 +102,71 @@
   </main>
 
   <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <a href="index.html" class="footer-brand" aria-label="Skillansh home">
-            <img src="Skillansh Accounting Automation Logo.png" alt="Skillansh logo" width="120" height="36">
-          </a>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <a href="index.html" class="footer-brand" aria-label="Skillansh home">
+              <img src="Skillansh Accounting Automation Logo.png" alt="Skillansh logo" width="120" height="36">
+            </a>
+          </div>
+          <div class="footer-col">
+            <h5 data-en="Navigation" data-mr="नेव्हिगेशन">Navigation</h5>
+            <ul>
+              <li><a href="index.html" data-en="Home" data-mr="होम">Home</a></li>
+              <li><a href="workshop.html" data-en="Live Workshop" data-mr="लाइव्ह कार्यशाळा">Live Workshop</a></li>
+              <li><a href="about.html" data-en="About &amp; Approach" data-mr="बद्दल व दृष्टिकोन">About &amp; Approach</a></li>
+              <li><a href="contact.html" data-en="Contact" data-mr="संपर्क">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5 data-en="Program" data-mr="प्रोग्राम">Program</h5>
+            <ul>
+              <li><a href="index.html#program" data-en="30-Day Data Program" data-mr="३० दिवसांचा डेटा प्रोग्राम">30-Day Data Program</a></li>
+              <li><a href="workshop.html" data-en="Live Workshop Enrolment" data-mr="कार्यशाळा नोंदणी">Live Workshop Enrolment</a></li>
+              <li><a href="index.html#mentor" data-en="Meet Your Mentor" data-mr="मार्गदर्शक">Meet Your Mentor</a></li>
+              <li><a href="index.html#faq" data-en="Frequently Asked Questions" data-mr="नेहमी विचारले जाणारे प्रश्न">FAQs</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5 data-en="Legal" data-mr="कायदेशीर">Legal</h5>
+            <ul>
+              <li id="footer-privacy-item"><a href="privacy.html" id="footer-privacy-link" aria-current="page" data-en="Privacy Policy" data-mr="गोपनीयता धोरण">Privacy Policy</a></li>
+              <li id="footer-terms-item"><a href="terms.html" id="footer-terms-link" data-en="Terms &amp; Conditions" data-mr="नियम आणि अटी">Terms &amp; Conditions</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5 data-en="Contact" data-mr="संपर्क">Contact</h5>
+            <ul>
+              <li>
+                <a href="https://chat.whatsapp.com/L70yQ3OXHdM3KCgDwxJsIU" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:0.45rem; color:#25D366; font-weight:700;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle; flex-shrink:0;" aria-hidden="true"><path fill="#25D366" d="M12.004 2C6.48 2 2 6.48 2 12.004c0 1.762.458 3.483 1.332 5.006L2 22l5.122-1.342c1.472.804 3.125 1.228 4.882 1.228h.004c5.524 0 10.004-4.48 10.004-10.004 0-2.67-1.04-5.18-2.93-7.07A9.94 9.94 0 0012.004 2z"/><path fill="#FFFFFF" d="M17.51 14.39c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.68.15-.2.3-.78.98-.95 1.18-.18.2-.35.23-.65.08-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.78-1.68-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.63-.93-2.24-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.53.08-.8.38-.28.3-1.05 1.03-1.05 2.51s1.08 2.91 1.23 3.11c.15.2 2.12 3.24 5.14 4.54.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.08-.12-.28-.2-.58-.35z"/></svg>
+                  <span data-en="Join WhatsApp Community" data-mr="WhatsApp कम्युनिटीमध्ये सामील व्हा">Join WhatsApp Community</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/@SkillAnsh" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:0.45rem; color:#EF4444; font-weight:700;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle; flex-shrink:0;" aria-hidden="true"><path fill="#EF4444" d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                  <span>Subscribe on YouTube (@SkillAnsh)</span>
+                </a>
+              </li>
+              <li>
+                <a href="contact.html" style="display:inline-flex; align-items:center; gap:0.45rem; color:#CBD5E1; font-weight:600;">
+                  <span>✉️</span>
+                  <span data-en="Contact &amp; Admissions Support" data-mr="संपर्क व ॲडमिशन सपोर्ट">Contact &amp; Admissions Support</span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="footer-col">
-          <h5 data-en="Quick Links">Quick Links</h5>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#festive-register">Festive Pass (₹51)</a></li>
-            <li><a href="index.html#mentor">Meet Your Mentor</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5 data-en="Legal">Legal</h5>
-          <ul>
-            <li><a href="privacy.html" data-en="Privacy Policy">Privacy Policy</a></li>
-            <li><a href="terms.html" data-en="Terms &amp; Conditions">Terms &amp; Conditions</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5 data-en="Support">Support</h5>
-          <ul>
-            <li><a href="https://chat.whatsapp.com/JPGdVKRxJ77G2paT6xl9nr" target="_blank" rel="noopener noreferrer" style="color:#25D366; font-weight:700;">💬 Join WhatsApp Community</a></li>
-            <li><a href="https://wa.me/919922045007?text=Hi%20Skillansh%20Team%2C%20I%20have%20an%20enquiry." target="_blank" rel="noopener noreferrer">💬 Chat on WhatsApp</a></li>
-          </ul>
+        <div class="footer-note" style="border-top:1px solid rgba(255, 255, 255, 0.12); margin-top:2rem; padding-top:1.5rem; text-align:center; color:#CBD5E1; font-size:0.88rem;">
+          <span data-en="Practical Excel, Automation &amp; Modern Data Skills for Students &amp; Working Professionals &middot; Skillansh &middot; 2026" data-mr="विद्यार्थी आणि नोकरदार व्यावसायिकांसाठी प्रॅक्टिकल एक्सेल, ऑटोमेशन आणि मॉडर्न डेटा स्किल्स &middot; Skillansh &middot; २०२६">Practical Excel, Automation &amp; Modern Data Skills for Students &amp; Working Professionals &middot; Skillansh &middot; 2026</span>
+          <div style="font-size:0.76rem; color:#94A3B8; margin-top:0.5rem; line-height:1.55;" data-en="Disclaimer: Skillansh is an independent private skill-development platform. Course curriculum, practical templates, workshops, and completion certificates are intended solely for educational and skill enhancement purposes; they do not represent university degrees, government-accredited diplomas, or guaranteed job placements. Microsoft Excel and Power BI are registered trademarks of Microsoft Corporation." data-mr="डिस्क्लेमर: Skillansh हे एक स्वतंत्र खाजगी कौशल्य-विकास व्यासपीठ आहे. अभ्यासक्रम, प्रॅक्टिकल मॉडेल्स, कार्यशाळा आणि सर्टिफिकेट्स केवळ कौशल्य वृद्धी व शैक्षणिक मार्गदर्शनासाठी आहेत; ते कोणतीही सरकारी पदवी/डिप्लोमा किंवा नोकरीची हमी दर्शवत नाहीत. Microsoft Excel आणि Power BI हे Microsoft Corporation चे नोंदणीकृत ट्रेडमार्क आहेत.">Disclaimer: Skillansh is an independent private skill-development platform. Course curriculum, practical templates, workshops, and completion certificates are intended solely for educational and skill enhancement purposes; they do not represent university degrees, government-accredited diplomas, or guaranteed job placements. Microsoft Excel and Power BI are registered trademarks of Microsoft Corporation.</div>
         </div>
       </div>
-      <div class="footer-note" style="border-top:1px solid var(--color-border); margin-top:2rem; padding-top:1.5rem; text-align:center; color:var(--color-text-muted); font-size:0.88rem;">
-        Practical accounting automation skills for Indian accounting professionals &middot; Skillansh &middot; 2026
-      </div>
-    </div>
-  </footer>
+    </footer>
 
   <script src="config.js"></script>
   <script src="script.js"></script>
+  <script src="chatbot.js" defer></script>
 </body>
 </html>

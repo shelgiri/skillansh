@@ -47,7 +47,7 @@ const translations = {
     'Build on your accounting knowledge. Develop the skills to work differently.': 'तुमच्या लेखा ज्ञानावर आधारित राहा. वेगळ्या पद्धतीने काम करण्याचे कौशल्य विकसित करूया.',
     'Home': 'होम',
     'Live Workshop': 'लाइव्ह कार्यशाळा',
-    'Live Workshop (₹51 Diwali Offer)': 'लाइव्ह कार्यशाळा (₹ 51/- दिवाळी ऑफर)',
+    'Live Workshop & Masterclass': 'लाइव्ह कार्यशाळा व मास्टरक्लास',
     'Current Profile / Profession': 'सध्याचे प्रोफाइल / व्यवसाय',
     'Select Enquiry Topic (Optional)': 'विषय निवडा (पर्यायी)',
     'Your Message / Workflow Challenge': 'तुमचा संदेश / कामातील आव्हान',
@@ -219,6 +219,17 @@ function setLang(lang) {
       } else if (dictMr) {
         el.innerHTML = dictMr;
       }
+    }
+  });
+
+  // Translate inputs with data-placeholder-en and data-placeholder-mr
+  document.querySelectorAll('[data-placeholder-en], [data-placeholder-mr]').forEach(el => {
+    if (lang === 'en') {
+      const enPh = el.getAttribute('data-placeholder-en');
+      if (enPh) el.placeholder = enPh;
+    } else if (lang === 'mr') {
+      const mrPh = el.getAttribute('data-placeholder-mr');
+      if (mrPh) el.placeholder = mrPh;
     }
   });
 }
@@ -515,7 +526,21 @@ function preselectTopic() {
     if (select) select.value = 'clarity-call';
     const message = document.getElementById('message');
     if (message && !message.value.trim()) {
-      message.value = 'I would like to book a free Accounting Automation Clarity Call to discuss which repetitive accounting tasks I can automate using Excel, Power Query, and AI.';
+      message.value = 'I would like to book a 1-on-1 Clarity Call to discuss my career goals and practical data skills.';
+    }
+  } else if (topic === 'workshop') {
+    const select = document.getElementById('topic');
+    if (select) select.value = 'workshop';
+    const message = document.getElementById('message');
+    if (message && !message.value.trim()) {
+      message.value = 'I have an enquiry regarding the Live Practical Masterclass and next batch schedule.';
+    }
+  } else if (topic === 'program') {
+    const select = document.getElementById('topic');
+    if (select) select.value = 'program';
+    const message = document.getElementById('message');
+    if (message && !message.value.trim()) {
+      message.value = 'I would like more information on enrolling in the 30-Day Practical Data & Automation Cohort.';
     }
   }
 }
@@ -558,12 +583,60 @@ async function submitToFormspree(formData) {
 async function submitEnquiry(formData) {
   const cfg = window.ACCOUNTPRO_CONFIG || {};
 
-  // Formspree endpoint (only submission method)
-  if (cfg.ENQUIRY_SUBMISSION_ENDPOINT) {
-    return await submitToFormspree(formData);
+  // 1. Post to Google Sheets Webhook
+  const googleSheetUrl = cfg.GOOGLE_SHEET_WEBHOOK_URL;
+  if (googleSheetUrl) {
+    try {
+      const parts = (formData.name || '').trim().split(' ');
+      const fn = parts[0] || '';
+      const ln = parts.slice(1).join(' ') || '';
+      const isEmail = formData.contact_method === 'email' || (formData.contact_detail || '').includes('@');
+      
+      const sheetPayload = {
+        name: formData.name,
+        fullName: formData.name,
+        firstName: fn,
+        firstname: fn,
+        first_name: fn,
+        surname: ln,
+        lastname: ln,
+        last_name: ln,
+        email: isEmail ? formData.contact_detail : '',
+        whatsapp: !isEmail ? formData.contact_detail : '',
+        phone: !isEmail ? formData.contact_detail : '',
+        mobile: !isEmail ? formData.contact_detail : '',
+        plan: `Enquiry: ${formData.topic || formData.role || 'General Guidance'}`,
+        promoCode: formData.message || 'General Enquiry',
+        message: formData.message || 'General Enquiry',
+        topic: formData.topic || 'General Enquiry',
+        role: formData.role || '',
+        source: 'Contact Page Form',
+        submitted_at: new Date().toISOString()
+      };
+
+      fetch(googleSheetUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(sheetPayload)
+      }).catch(err => console.warn('Google Sheet contact sync notice:', err));
+    } catch (e) {
+      console.warn('Google Sheet contact sync notice:', e);
+    }
   }
 
-  throw new Error('No submission method configured. Set ENQUIRY_SUBMISSION_ENDPOINT.');
+  // 2. Formspree endpoint (email alert)
+  if (cfg.ENQUIRY_SUBMISSION_ENDPOINT) {
+    try {
+      return await submitToFormspree(formData);
+    } catch (err) {
+      console.warn('Formspree notification notice (Google Sheet already recorded lead):', err);
+      return true;
+    }
+  }
+
+  return true;
 }
 
 function bindForm() {
@@ -718,6 +791,35 @@ function initUpiPayment() {
 }
 
 /* ---------- FAQ Accordion Handler ---------- */
+function filterFaq(category) {
+  const buttons = document.querySelectorAll('.faq-filter-btn');
+  buttons.forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-filter') === category);
+  });
+  const items = document.querySelectorAll('.faq-grid .faq-item');
+  items.forEach(item => {
+    const cat = item.getAttribute('data-category');
+    const show = (category === 'all' || cat === category);
+    item.classList.toggle('faq-hidden', !show);
+    if (!show && item.classList.contains('active')) {
+      item.classList.remove('active');
+      const btn = item.querySelector('.faq-question-btn');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+window.filterFaq = filterFaq;
+
+function initFaqFilters() {
+  const filterBtns = document.querySelectorAll('.faq-filter-btn');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter') || 'all';
+      filterFaq(filter);
+    });
+  });
+}
+
 function initFaqAccordion() {
   const faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(item => {
@@ -726,7 +828,7 @@ function initFaqAccordion() {
       btn.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
 
-        // Optional: close other open FAQs for a clean minimal view
+        // Close other open FAQs for a clean minimal view
         faqItems.forEach(otherItem => {
           if (otherItem !== item) {
             otherItem.classList.remove('active');
@@ -747,45 +849,519 @@ function initFaqAccordion() {
   });
 }
 
-/* ---------- Diwali & Bhai Dooj Offer Countdown Timer ---------- */
-function initDiwaliCountdown() {
-  const daysEl = document.getElementById('cd-days');
-  const hrsEl = document.getElementById('cd-hours');
-  const minsEl = document.getElementById('cd-mins');
-  const secsEl = document.getElementById('cd-secs');
-  if (!hrsEl || !minsEl || !secsEl) return;
-
-  // Bhai Dooj closing timestamp (Nov 11, 2026 23:59:59 IST)
-  // If viewed after that date, falls back to a 4-day Bhai Dooj window from first visit
-  const bhaiDoojTarget = new Date('2026-11-11T23:59:59+05:30').getTime();
-  const storageKey = 'skillansh_bhaidooj_offer_end';
-  let endTime = bhaiDoojTarget;
-
-  if (Date.now() >= bhaiDoojTarget) {
-    endTime = parseInt(localStorage.getItem(storageKey) || '0', 10);
-    if (!endTime || endTime <= Date.now()) {
-      endTime = Date.now() + (4 * 86400 + 11 * 3600 + 45 * 60) * 1000;
-      try { localStorage.setItem(storageKey, String(endTime)); } catch (e) {}
-    }
-  }
-
-  function updateClock() {
-    let diff = Math.max(0, Math.floor((endTime - Date.now()) / 1000));
-    const d = Math.floor(diff / 86400);
-    const h = Math.floor((diff % 86400) / 3600);
-    const m = Math.floor((diff % 3600) / 60);
-    const s = diff % 60;
-    if (daysEl) daysEl.textContent = String(d).padStart(2, '0') + 'd';
-    hrsEl.textContent = String(h).padStart(2, '0') + (daysEl ? 'h' : '');
-    minsEl.textContent = String(m).padStart(2, '0') + (daysEl ? 'm' : '');
-    secsEl.textContent = String(s).padStart(2, '0') + (daysEl ? 's' : '');
-  }
-
-  updateClock();
-  setInterval(updateClock, 1000);
+/* ---------- Countdown Timer (No-op) ---------- */
+function initCountdown() {
+  // Campaign closed
 }
 
 /* ---------- Init ---------- */
+
+/* ---------- Razorpay Enrolment Modal (Mandatory Learner Details & Plans) ---------- */
+function initEnrolModal() {
+  const openBtn = document.getElementById('open-enrol-modal-btn');
+  const overlay = document.getElementById('enrol-modal-overlay');
+  const closeBtn = document.getElementById('enrol-modal-close');
+  const form = document.getElementById('enrol-checkout-form');
+  const redirectBox = document.getElementById('enrol-redirect-box');
+  const submitBtn = document.getElementById('enrol-submit-btn');
+  const btnText = document.getElementById('enrol-btn-text');
+
+  if (!openBtn || !overlay) return;
+
+  const cfg = window.ACCOUNTPRO_CONFIG || {};
+  const plans = cfg.PAYMENT_PLANS || {
+    full: { id: 'full', name: 'Full 30-Day Cohort Access', amount: 9999, link: 'https://rzp.io/rzp/BVYNZBfG' },
+    special: { id: 'special', name: 'Special Batch Offer', amount: 5999, link: 'https://rzp.io/rzp/cUEB0E5K' },
+    inst1: { id: 'inst1', name: '1st Installment (Seat Booking)', amount: 5000, link: 'https://rzp.io/rzp/e1bWeKi' },
+    inst2: { id: 'inst2', name: 'Part Payment / Balance', amount: 4000, link: 'https://rzp.io/rzp/mfkvE1Px' },
+    spot: { id: 'spot', name: 'Spot Booking Token', amount: 500, link: 'https://rzp.io/rzp/enMyDgi' }
+  };
+
+  let selectedPlanId = 'full';
+  let appliedPromoCode = '';
+
+  function openModal() {
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    const firstInput = document.getElementById('enrol-firstname');
+    if (firstInput) setTimeout(() => firstInput.focus(), 150);
+  }
+
+  function closeModal() {
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  openBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    openModal();
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+  }
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('active')) {
+      closeModal();
+    }
+  });
+
+  // Function to update submit button label based on plan and language
+  function updateButtonLabel() {
+    if (!btnText) return;
+    const plan = plans[selectedPlanId] || plans.full;
+    const isMr = (typeof currentLang !== 'undefined' && currentLang === 'mr') || document.documentElement.lang === 'mr';
+    const amountStr = Number(plan.amount).toLocaleString('en-IN');
+    if (isMr) {
+      btnText.textContent = `Razorpay वर ₹${amountStr} भरण्यासाठी पुढे जा →`;
+    } else {
+      btnText.textContent = `Proceed to Pay ₹${amountStr} on Razorpay →`;
+    }
+  }
+
+  // Plan Selection Cards Logic
+  const planRadios = form ? form.querySelectorAll('input[name="payment_plan"]') : [];
+  planRadios.forEach(radio => {
+    radio.addEventListener('change', () => {
+      selectedPlanId = radio.value;
+      document.querySelectorAll('.enrol-plan-card').forEach(card => card.classList.remove('active'));
+      const activeCard = document.getElementById(`card-plan-${selectedPlanId}`);
+      if (activeCard) activeCard.classList.add('active');
+      updateButtonLabel();
+    });
+  });
+
+  // Make whole plan card clickable
+  document.querySelectorAll('.enrol-plan-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      const radio = card.querySelector('input[type="radio"]');
+      if (radio && !radio.checked) {
+        radio.checked = true;
+        radio.dispatchEvent(new Event('change'));
+      }
+    });
+  });
+
+  // Promo Code Application Logic (Secret Unlock for SPECIAL5999)
+  const promoInput = document.getElementById('enrol-promo-input');
+  const promoBtn = document.getElementById('enrol-promo-btn');
+  const promoFeedback = document.getElementById('enrol-promo-feedback');
+  const cardSpecial = document.getElementById('card-plan-special');
+
+  function applyPromoCode() {
+    if (!promoInput || !promoFeedback) return;
+    const entered = promoInput.value.trim().toUpperCase();
+    const isMr = (typeof currentLang !== 'undefined' && currentLang === 'mr') || document.documentElement.lang === 'mr';
+
+    if (!entered) {
+      promoFeedback.style.display = 'block';
+      promoFeedback.className = 'enrol-promo-feedback error';
+      promoFeedback.textContent = isMr ? 'कृपया प्रोमो कोड प्रविष्ट करा.' : 'Please enter a promo code.';
+      return;
+    }
+
+    const promoConfig = cfg.PROMO_CODES || {};
+    const matched = promoConfig[entered];
+
+    if (entered === 'SPECIAL5999' || matched) {
+      appliedPromoCode = entered;
+      // Unlock secret special offer card
+      if (cardSpecial) {
+        cardSpecial.style.display = 'flex';
+      }
+      // Check the special offer radio
+      const specialRadio = document.querySelector('input[name="payment_plan"][value="special"]');
+      if (specialRadio) {
+        specialRadio.checked = true;
+        specialRadio.dispatchEvent(new Event('change'));
+      }
+
+      // Show success feedback
+      promoFeedback.style.display = 'block';
+      promoFeedback.className = 'enrol-promo-feedback success';
+      if (isMr) {
+        promoFeedback.innerHTML = '🎉 <strong>प्रोमो कोड लागू झाला!</strong> ₹४,००० सवलतीसह स्पेशल बॅच ऑफर (₹५,९९९) सुरू झाली आहे!';
+      } else {
+        promoFeedback.innerHTML = '🎉 <strong>Promo code applied!</strong> Special Batch Offer (₹5,999) unlocked with ₹4,000 savings!';
+      }
+
+      if (promoBtn) {
+        promoBtn.classList.add('applied');
+        promoBtn.textContent = isMr ? 'लागू झाले ✓' : 'Applied ✓';
+        promoBtn.disabled = true;
+      }
+      promoInput.disabled = true;
+    } else {
+      promoFeedback.style.display = 'block';
+      promoFeedback.className = 'enrol-promo-feedback error';
+      promoFeedback.textContent = isMr 
+        ? 'अवैध प्रोमो कोड. कृपया तपासून पुन्हा प्रयत्न करा.' 
+        : 'Invalid promo code. Please check and try again.';
+    }
+  }
+
+  if (promoBtn) {
+    promoBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      applyPromoCode();
+    });
+  }
+
+  if (promoInput) {
+    promoInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        applyPromoCode();
+      }
+    });
+  }
+
+  // Real-time input clearing
+  const inputs = form ? form.querySelectorAll('input') : [];
+  inputs.forEach(inp => {
+    inp.addEventListener('input', () => {
+      inp.classList.remove('has-error');
+      const err = document.getElementById(`err-${inp.name}`);
+      if (err) err.style.display = 'none';
+    });
+  });
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const fn = document.getElementById('enrol-firstname');
+      const ln = document.getElementById('enrol-lastname');
+      const em = document.getElementById('enrol-email');
+      const ph = document.getElementById('enrol-phone');
+
+      let isValid = true;
+
+      // 1. First Name
+      if (!fn.value.trim()) {
+        fn.classList.add('has-error');
+        document.getElementById('err-firstname').style.display = 'block';
+        isValid = false;
+      }
+
+      // 2. Surname / Last Name
+      if (!ln.value.trim()) {
+        ln.classList.add('has-error');
+        document.getElementById('err-lastname').style.display = 'block';
+        isValid = false;
+      }
+
+      // 3. Email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!em.value.trim() || !emailRegex.test(em.value.trim())) {
+        em.classList.add('has-error');
+        document.getElementById('err-email').style.display = 'block';
+        isValid = false;
+      }
+
+      // 4. Phone (at least 10 digits)
+      const phoneDigits = ph.value.replace(/\D/g, '');
+      if (phoneDigits.length < 10) {
+        ph.classList.add('has-error');
+        document.getElementById('err-phone').style.display = 'block';
+        isValid = false;
+      }
+
+      if (!isValid) return;
+
+      // All mandatory details valid -> Proceed to Razorpay!
+      const currentPlan = plans[selectedPlanId] || plans.full;
+      const isMr = (typeof currentLang !== 'undefined' && currentLang === 'mr') || document.documentElement.lang === 'mr';
+
+      if (btnText) {
+        btnText.textContent = isMr ? 'माहिती सेव्ह होत आहे व जोडत आहोत...' : 'Saving Details & Connecting...';
+      }
+      submitBtn.disabled = true;
+
+      const payload = {
+        name: `${fn.value.trim()} ${ln.value.trim()}`,
+        firstname: fn.value.trim(),
+        firstName: fn.value.trim(),
+        lastname: ln.value.trim(),
+        surname: ln.value.trim(),
+        email: em.value.trim(),
+        phone: ph.value.trim(),
+        whatsapp: ph.value.trim(),
+        planId: currentPlan.id,
+        planName: currentPlan.name,
+        amount: currentPlan.amount,
+        plan: `${currentPlan.name} (₹${Number(currentPlan.amount).toLocaleString('en-IN')})`,
+        promoCode: appliedPromoCode || 'NONE',
+        topic: '30-Day Cohort Enrolment',
+        source: 'Home Page Cohort Card',
+        submitted_at: new Date().toISOString()
+      };
+
+      // 1. Send to Google Sheets Webhook (Direct to Private Learner Spreadsheet)
+      const googleSheetUrl = cfg.GOOGLE_SHEET_WEBHOOK_URL;
+      if (googleSheetUrl) {
+        try {
+          fetch(googleSheetUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            cache: 'no-cache',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify(payload)
+          }).catch(err => console.warn('Google Sheet background sync notice:', err));
+        } catch (err) {
+          console.warn('Google Sheet fetch notice:', err);
+        }
+      }
+
+      // 2. Send to Formspree endpoint in background (Instant Email Notification Backup)
+      const endpoint = cfg.ENQUIRY_SUBMISSION_ENDPOINT || 'https://formspree.io/f/xqppyvgd';
+      try {
+        fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        }).catch(err => console.warn('Formspree background sync warning:', err));
+      } catch (err) {
+        console.warn('Formspree fetch failed:', err);
+      }
+
+      // Open Razorpay payment link (specific plan link or fallback)
+      const payLink = currentPlan.link || cfg.RAZORPAY_PAYMENT_LINK || 'https://razorpay.me/@skillansh';
+      window.open(payLink, '_blank', 'noopener,noreferrer');
+
+      // Update manual payment button href in redirect box
+      const manualPayBtn = document.querySelector('.enrol-manual-pay-btn');
+      if (manualPayBtn) {
+        manualPayBtn.href = payLink;
+      }
+
+      // Switch modal to redirect box
+      form.style.display = 'none';
+      if (redirectBox) redirectBox.style.display = 'block';
+    });
+  }
+}
+
+/* ---------- Quick Enquiry Modal (Option A) ---------- */
+function initQuickEnquiryModal() {
+  const openDesktopBtn = document.getElementById('open-quick-enquiry-btn');
+  const openMobileBtn = document.getElementById('open-quick-enquiry-mobile-btn');
+  const overlay = document.getElementById('quick-enquiry-overlay');
+  const closeBtn = document.getElementById('quick-enquiry-close');
+  const doneBtn = document.getElementById('qe-done-btn');
+  const form = document.getElementById('quick-enquiry-form');
+  const successBox = document.getElementById('qe-success-box');
+  const submitBtn = document.getElementById('qe-submit-btn');
+  const btnText = document.getElementById('qe-btn-text');
+
+  if (!overlay) return;
+
+  function openModal() {
+    overlay.style.display = 'flex';
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    const firstInput = document.getElementById('qe-firstname');
+    if (firstInput) setTimeout(() => firstInput.focus(), 150);
+  }
+
+  function closeModal() {
+    overlay.classList.remove('active');
+    overlay.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  if (openDesktopBtn) {
+    openDesktopBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal();
+    });
+  }
+
+  if (openMobileBtn) {
+    openMobileBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const navLinks = document.getElementById('nav-links');
+      if (navLinks && navLinks.classList.contains('open')) {
+        navLinks.classList.remove('open');
+      }
+      openModal();
+    });
+  }
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (doneBtn) doneBtn.addEventListener('click', closeModal);
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('active')) {
+      closeModal();
+    }
+  });
+
+  // Real-time error clearing
+  const inputs = form ? form.querySelectorAll('input, select, textarea') : [];
+  inputs.forEach(inp => {
+    inp.addEventListener('input', () => {
+      inp.classList.remove('has-error');
+      const err = document.getElementById(`err-${inp.id}`);
+      if (err) err.style.display = 'none';
+    });
+  });
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const fnEl = document.getElementById('qe-firstname');
+      const lnEl = document.getElementById('qe-lastname');
+      const phoneEl = document.getElementById('qe-phone');
+      const emailEl = document.getElementById('qe-email');
+      const topicEl = document.getElementById('qe-topic');
+      const msgEl = document.getElementById('qe-message');
+
+      let isValid = true;
+
+      // 1. First Name validation
+      if (!fnEl || !fnEl.value.trim()) {
+        if (fnEl) fnEl.classList.add('has-error');
+        const err = document.getElementById('err-qe-firstname');
+        if (err) err.style.display = 'block';
+        isValid = false;
+      }
+
+      // 2. Surname / Last Name validation
+      if (!lnEl || !lnEl.value.trim()) {
+        if (lnEl) lnEl.classList.add('has-error');
+        const err = document.getElementById('err-qe-lastname');
+        if (err) err.style.display = 'block';
+        isValid = false;
+      }
+
+      // 3. Phone validation (at least 10 digits)
+      const phoneDigits = phoneEl ? phoneEl.value.replace(/\D/g, '') : '';
+      if (!phoneEl || phoneDigits.length < 10) {
+        if (phoneEl) phoneEl.classList.add('has-error');
+        const err = document.getElementById('err-qe-phone');
+        if (err) err.style.display = 'block';
+        isValid = false;
+      }
+
+      // 4. Email validation (if provided)
+      if (emailEl && emailEl.value.trim()) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(emailEl.value.trim())) {
+          emailEl.classList.add('has-error');
+          const err = document.getElementById('err-qe-email');
+          if (err) err.style.display = 'block';
+          isValid = false;
+        }
+      }
+
+      // 5. Message validation
+      if (!msgEl || !msgEl.value.trim()) {
+        if (msgEl) msgEl.classList.add('has-error');
+        const err = document.getElementById('err-qe-message');
+        if (err) err.style.display = 'block';
+        isValid = false;
+      }
+
+      if (!isValid) return;
+
+      const isMr = (typeof currentLang !== 'undefined' && currentLang === 'mr') || document.documentElement.lang === 'mr';
+      if (btnText) {
+        btnText.textContent = isMr ? 'विचारणा पाठवत आहोत...' : 'Sending Enquiry...';
+      }
+      submitBtn.disabled = true;
+
+      const fn = fnEl.value.trim();
+      const ln = lnEl.value.trim();
+      const fullName = `${fn} ${ln}`.trim();
+      const phoneVal = phoneEl.value.trim();
+      const emailVal = emailEl ? emailEl.value.trim() : '';
+      const topicVal = topicEl ? topicEl.value : 'General Guidance';
+      const msgVal = msgEl.value.trim();
+
+      const payload = {
+        firstName: fn,
+        firstname: fn,
+        first_name: fn,
+        surname: ln,
+        lastname: ln,
+        last_name: ln,
+        name: fullName,
+        fullName: fullName,
+        email: emailVal,
+        phone: phoneVal,
+        whatsapp: phoneVal,
+        mobile: phoneVal,
+        plan: `Enquiry: ${topicVal}`,
+        topic: topicVal,
+        message: msgVal,
+        promoCode: msgVal,
+        source: 'Home Navbar Enquiry Modal',
+        submitted_at: new Date().toISOString()
+      };
+
+      const cfg = window.ACCOUNTPRO_CONFIG || {};
+
+      // 1. Post to Google Sheets Webhook
+      const googleSheetUrl = cfg.GOOGLE_SHEET_WEBHOOK_URL;
+      if (googleSheetUrl) {
+        try {
+          fetch(googleSheetUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            cache: 'no-cache',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify(payload)
+          }).catch(err => console.warn('Google Sheet enquiry sync notice:', err));
+        } catch (sheetErr) {
+          console.warn('Google Sheet enquiry sync notice:', sheetErr);
+        }
+      }
+
+      // 2. Backup to Formspree endpoint if configured
+      if (cfg.ENQUIRY_SUBMISSION_ENDPOINT) {
+        try {
+          fetch(cfg.ENQUIRY_SUBMISSION_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              firstName: fn,
+              surname: ln,
+              name: fullName,
+              phone: phoneVal,
+              whatsapp: phoneVal,
+              email: emailVal,
+              topic: `Enquiry: ${topicVal}`,
+              message: `${msgVal}${emailVal ? ' | Email: ' + emailVal : ''}`
+            })
+          }).catch(err => console.warn('Formspree enquiry notice:', err));
+        } catch (fpErr) {
+          console.warn('Formspree enquiry notice:', fpErr);
+        }
+      }
+
+      setTimeout(() => {
+        form.style.display = 'none';
+        if (successBox) successBox.style.display = 'block';
+        submitBtn.disabled = false;
+        if (btnText) {
+          btnText.textContent = isMr ? 'विचारणा पाठवा \u2192' : 'Submit Enquiry \u2192';
+        }
+      }, 350);
+    });
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initLangSwitcher();
   applyContactConfig();
@@ -794,5 +1370,8 @@ document.addEventListener('DOMContentLoaded', () => {
   restoreFormValues();
   preselectTopic();
   initFaqAccordion();
-  initDiwaliCountdown();
+  initFaqFilters();
+  initCountdown();
+  initEnrolModal();
+  initQuickEnquiryModal();
 });

@@ -1,0 +1,18 @@
+SKILLANSH GROWTH CIRCLE - MONTHLY ACCOUNTING & MIS CLOSING CHECKLIST (INDIAN COMPLIANCE),,,,
+"Prepared by: Girish Shelar | Skillansh Growth Circle (https://skillansh.com)",,,,
+,,,,
+Step_No,Category,Task_Description,Automation_Tool_Used,Status_Check
+1,Bank & Cash,Download all Bank Statements (CSV/Excel) and clean blank/header rows,Excel Power Query,Pending
+2,Bank & Cash,Run automated Bank Reconciliation vs Tally/ERP Bank Ledger,Power Query Merge,Pending
+3,Bank & Cash,Verify Negative Cash Balance or Unusual Cash Withdrawals,Excel Conditional Check,Pending
+4,GST Compliance,Export Sales Register from Tally/ERP and validate GSTIN structure (15-digit check),Excel Formula / Power Query,Pending
+5,GST Compliance,Reconcile GSTR-1 Outward Supplies with Books Sales Ledger,Power Query Auto-Recon,Pending
+6,GST Compliance,Download GSTR-2B JSON/Excel and run 1-click match against Purchase Register,Power Query 2B Engine,Pending
+7,GST Compliance,Identify Blocked Credits under Section 17(5) and Reverse Charge (RCM) liabilities,AI Checklist + Maker-Checker,Pending
+8,TDS & Direct Tax,Match TDS Deducted in Books with Challans Paid & Form 26AS / AIS,Power Query Merge,Pending
+9,TDS & Direct Tax,Check MSME Creditors > 45 Days for Section 43B(h) Income Tax compliance,MIS Ageing Tracker,Pending
+10,Provisions & Payroll,Verify Monthly Salary, PF, ESIC, and Professional Tax (PT) entries,Standard Journal Template,Pending
+11,Provisions & Payroll,Book Monthly Depreciation & Prepaid Expense Amortization entries,Excel Schedule,Pending
+12,Executive MIS,Refresh Power BI Dashboard (Revenue, Gross Margin, Debtors/Creditors Ageing, Cash Flow),Power BI 1-Click Refresh,Pending
+13,Maker-Checker Review,Verify Control Totals (Trial Balance Debit = Credit & Balance Sheet tally),Human Review Sign-off,Pending
+

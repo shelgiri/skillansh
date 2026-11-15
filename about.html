@@ -3,48 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About &amp; Approach | Growth Circle</title>
-  <meta name="description" content="Explore the SMART Accounts Method and a practical approach to accounting automation, digital skills, and freelance service development.">
+  <title>About &amp; Approach | Skillansh</title>
+  <meta name="description" content="Skillansh — a practical data skills and career mentorship platform built on 15+ years of corporate experience in Excel, Power Query, Power BI, and automation.">
   <meta name="theme-color" content="#1E3A5F">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="/images/skillansh-favicon.png?v=2">
-  <link rel="shortcut icon" href="/favicon.ico?v=2">
-  <link rel="apple-touch-icon" href="/images/skillansh-favicon.png?v=2">
+  <link rel="icon" type="image/png" sizes="192x192" href="/skillansh-favicon-v4.png">
+  <link rel="icon" type="image/x-icon" href="/skillansh-favicon-v4.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/skillansh-apple-icon-v4.png">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="chatbot.css">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
 
   <header>
-    <div class="top-bar top-bar-offer">
+    <div class="top-bar">
       <div class="container">
-        <span class="offer-pill-badge" data-en="🪔 Diwali &amp; Bhai Dooj Gift Offer" data-mr="🪔 दिवाळी व भाऊबीज गिफ्ट ऑफर">🪔 Diwali &amp; Bhai Dooj Gift Offer</span>
-        <span data-en="<strong>🎁 Gift a Skill &amp; Bring a Smile This Diwali:</strong> Join or Gift Our Excel, Power Query, Power BI &amp; MIS Program <strong>@ ₹51 Only</strong> — Open Till Bhai Dooj!" data-mr="<strong>🎁 या दिवाळीत आपल्या प्रियजनांना कौशल्याची भेट द्या:</strong> Excel, Power Query, Power BI आणि MIS प्रोग्राम <strong>फक्त ₹ 51/- मध्ये</strong> — भाऊबीजेपर्यंत सुरू!"><strong>🎁 Gift a Skill &amp; Bring a Smile This Diwali:</strong> Join or Gift Our Excel, Power Query, Power BI &amp; MIS Program <strong>@ ₹51 Only</strong> — Open Till Bhai Dooj!</span>
-        <a href="workshop.html#register" class="top-bar-cta" data-en="🎁 Join / Gift @ ₹51 &rarr;" data-mr="🎁 ₹ 51/- मध्ये जॉईन / गिफ्ट करा &rarr;">🎁 Join / Gift @ ₹51 &rarr;</a>
+        <span data-en="Learn Excel, Power Query, Power BI &amp; MIS Automation from Industry Experts." data-mr="उद्योग तज्ञांकडून Excel, Power Query, Power BI आणि MIS ऑटोमेशन शिका.">Learn Excel, Power Query, Power BI &amp; MIS Automation from Industry Experts.</span>
+        <a href="workshop.html" class="top-bar-cta" data-en="Join Live Workshop &rarr;" data-mr="लाइव्ह कार्यशाळा पहा &rarr;">Join Live Workshop &rarr;</a>
       </div>
     </div>
     <div class="container nav-wrap">
-      <a href="index.html" class="brand" aria-label="Skillansh Growth Circle home">
+      <a href="index.html" class="brand" aria-label="Skillansh home">
         <img src="Skillansh Accounting Automation Logo.png" alt="Skillansh logo" width="140" height="42">
-        <span>Growth Circle</span>
       </a>
       <nav>
         <ul class="nav-links" id="nav-links">
-          <li><a href="index.html" data-en="Home">Home</a></li>
-          <li><a href="workshop.html" data-en="Live Workshop" style="color:var(--color-accent); font-weight:700;">Live Workshop</a></li>
-          <li><a href="resources.html" data-en="Free Resources" data-mr="मोफत टेम्पलेट्स व लेख">Free Resources</a></li>
-          <li><a href="about.html" aria-current="page" data-en="About &amp; Approach">About &amp; Approach</a></li>
-          <li><a href="contact.html" data-en="Contact">Contact</a></li>
-          <li class="mobile-menu-cta">
-            <a href="#" class="btn-primary" id="mobile-cta-book">Book Free Clarity Call</a>
-          </li>
+          <li><a href="index.html"><span data-en="Home" data-mr="होम">Home</span></a></li>
+          <li><a href="workshop.html"><span data-en="Live Workshop" data-mr="लाइव्ह कार्यशाळा">Live Workshop</span><span class="nav-live-chip">LIVE</span></a></li>
+          <li><a href="about.html" aria-current="page"><span data-en="About &amp; Approach" data-mr="बद्दल व दृष्टिकोन">About &amp; Approach</span></a></li>
+          <li><a href="contact.html"><span data-en="Contact" data-mr="संपर्क">Contact</span></a></li>
         </ul>
       </nav>
-      <div class="nav-cta">
-        <a href="#" id="cta-book" class="btn-primary" data-en="Book My Free Clarity Call">Book My Free Clarity Call</a>
-      </div>
       <button class="mobile-menu-btn" id="mobile-menu" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
         &#9776;
       </button>
@@ -56,232 +48,347 @@
   </header>
 
   <main id="main-content">
-    <!-- About Hero -->
-    <section class="section section-white" id="about-hero">
+    <!-- ============ SECTION 1: EXECUTIVE APPROACH (POINTWISE & COMPACT) ============ -->
+    <section class="section section-white" id="about-hero" style="padding: 3rem 0 2.5rem;">
       <div class="container">
-        <div class="section-head" style="text-align:left; margin-left:0; max-width:none; margin-bottom:2rem;">
-          <span class="eyebrow" data-en="Our approach" data-mr="आमचा दृष्टिकोन">Our approach</span>
-          <h1 style="font-size:2.25rem;" data-en="Build on your accounting knowledge. Develop the skills to work differently." data-mr="तुमच्या लेखा आणि व्यावसायिक ज्ञानावर आधारित राहा. स्मार्ट पद्धतीने काम करण्याचे कौशल्य विकसित करा.">Build on your accounting knowledge. Develop the skills to work differently.</h1>
-          <p data-en="Accounting professionals, students, and business learners already understand the importance of accurate data, repeatable processes, and careful review." data-mr="लेखा व्यावसायिक, विद्यार्थी आणि व्यावसायिकांना अचूक डेटा, वारंवार लागणाऱ्या प्रक्रिया आणि अचूकतेचे महत्त्व आधीच माहित आहे.">Accounting professionals, students, and business learners already understand the importance of accurate data, repeatable processes, and careful review.</p>
-          <p data-en="Growth Circle brings that practical mindset to digital skill development through real-world workflow analysis, guided hands-on labs, implementation reviews, and structured exploration of freelance services." data-mr="ग्रोथ सर्कल हेच व्यावहारिक विचार डिजिटल कौशल्य विकासामध्ये आणते—ज्यामध्ये कार्यप्रवाह विश्लेषण, प्रत्यक्ष सराव, अंमलबजावणी पुनरावलोकन आणि फ्रीलान्स सेवांचा समावेश आहे.">Growth Circle brings that practical mindset to digital skill development through real-world workflow analysis, guided hands-on labs, implementation reviews, and structured exploration of freelance services.</p>
-          <div style="margin-top:1.5rem;">
-            <button class="btn-primary" id="about-cta-book" data-en="Book My Free Clarity Call" data-mr="माझा मोफत स्पष्टता कॉल बुक करा">Book My Free Clarity Call</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Why this approach -->
-    <section class="section section-green" id="why-approach">
-      <div class="container">
-        <div class="section-head" style="text-align:left; margin-left:0; max-width:none;">
-          <span class="eyebrow" data-en="Why this approach" data-mr="हा दृष्टिकोन का महत्त्वाचा आहे?">Why this approach</span>
-          <h2 data-en="Start with your real work. Choose the right tool second." data-mr="पहिले तुमच्या प्रत्यक्ष कामापासून सुरुवात करा. त्यानंतर योग्य टूल निवडा.">Start with your real work. Choose the right tool second.</h2>
-          <p data-en="Most courses teach software formulas in isolation—leaving you unsure how to use them on messy real-world spreadsheets. We do the opposite: we start with the actual repetitive work you face every month (reconciliations, data cleaning, GST/tax matching, and MIS reporting) and show you how to automate it step by step." data-mr="बहुतेक कोर्सेस फक्त सॉफ्टवेअरचे फॉर्म्युले शिकवतात—ज्यामुळे प्रत्यक्ष कामात त्याचा वापर कसा करायचा हे समजत नाही. आम्ही याउलट करतो: आम्ही तुमच्या दरमहा होणाऱ्या प्रत्यक्ष कामापासून (जसे की बँक स्टेटमेंट क्लीनिंग, GST रिकन्सिलिएशन आणि MIS रिपोर्टिंग) सुरुवात करतो आणि ते टप्प्याटप्प्याने ऑटोमेट कसे करायचे हे शिकवतो.">Most courses teach software formulas in isolation—leaving you unsure how to use them on messy real-world spreadsheets. We do the opposite: we start with the actual repetitive work you face every month (reconciliations, data cleaning, GST/tax matching, and MIS reporting) and show you how to automate it step by step.</p>
-          <p data-en="Whether you are a working accountant, a college student building job-ready skills, a woman restarting your career, or a business professional—you learn to apply Excel Power Query, Power BI, and safe AI directly to real business data." data-mr="तुम्ही कार्यरत अकाउंटंट असाल, नोकरीसाठी कौशल्य शिकणारे विद्यार्थी असाल, करिअर पुन्हा सुरू करणाऱ्या महिला असाल किंवा व्यावसायिक—तुम्ही Excel Power Query, Power BI आणि सुरक्षित AI चा प्रत्यक्ष डेटावर वापर करायला शिकता.">Whether you are a working accountant, a college student building job-ready skills, a woman restarting your career, or a business professional—you learn to apply Excel Power Query, Power BI, and safe AI directly to real business data.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SMART Accounts Method -->
-    <section class="section section-white" id="about-method">
-      <div class="container">
-        <div class="section-head" style="text-align:left; margin-left:0; max-width:none;">
-          <span class="eyebrow" data-en="The SMART Accounts Method">The SMART Accounts Method</span>
-          <h2 data-en="A five-step method for making accounting work smarter.">A five-step method for making accounting work smarter.</h2>
-        </div>
-        <div class="method-grid">
-          <div class="method-stage">
-            <span class="letter">S</span>
-            <h4 data-en="Select">Select</h4>
-            <p data-en="Identify a repetitive accounting task.">Identify a repetitive accounting task.</p>
-          </div>
-          <div class="method-stage">
-            <span class="letter">M</span>
-            <h4 data-en="Map">Map</h4>
-            <p data-en="Understand the current process.">Understand the current process.</p>
-          </div>
-          <div class="method-stage">
-            <span class="letter">A</span>
-            <h4 data-en="Automate">Automate</h4>
-            <p data-en="Apply suitable digital tools.">Apply suitable digital tools.</p>
-          </div>
-          <div class="method-stage">
-            <span class="letter">R</span>
-            <h4 data-en="Review">Review</h4>
-            <p data-en="Test and refine the workflow.">Test and refine the workflow.</p>
-          </div>
-          <div class="method-stage">
-            <span class="letter">T</span>
-            <h4 data-en="Transform">Transform</h4>
-            <p data-en="Apply the learning to professional development and service exploration.">Apply the learning to professional development and service exploration.</p>
-          </div>
-        </div>
-        <p style="text-align:left; margin-top:2rem;" data-en="The method provides a practical structure for experimentation and improvement. It does not remove the need for accounting judgement, data protection, reconciliation, or human review.">The method provides a practical structure for experimentation and improvement. It does not remove the need for accounting judgement, data protection, reconciliation, or human review.</p>
-      </div>
-    </section>
-
-    <!-- How the program fits together -->
-    <section class="section section-green" id="how-fits">
-      <div class="container">
-        <div class="section-head" style="text-align:left; margin-left:0; max-width:none;">
-          <span class="eyebrow" data-en="How the program fits together">How the program fits together</span>
-          <h2 data-en="Learn, implement, review, and explore.">Learn, implement, review, and explore.</h2>
-        </div>
-        <div class="grid-4">
-          <div class="content-block">
-            <h4 data-en="Learn">Learn</h4>
-            <p data-en="The Excel and Power Query Lab, AI for Accounting Toolkit, and Power BI Starter Project support practical learning.">The Excel and Power Query Lab, AI for Accounting Toolkit, and Power BI Starter Project support practical learning.</p>
-          </div>
-          <div class="content-block">
-            <h4 data-en="Implement">Implement</h4>
-            <p data-en="The Accounting Workflow Audit and implementation reviews help participants focus on suitable tasks and work toward reusable workflows.">The Accounting Workflow Audit and implementation reviews help participants focus on suitable tasks and work toward reusable workflows.</p>
-          </div>
-          <div class="content-block">
-            <h4 data-en="Explore">Explore</h4>
-            <p data-en="The Freelance Service Blueprint supports the process of defining and testing a service based on existing accounting knowledge.">The Freelance Service Blueprint supports the process of defining and testing a service based on existing accounting knowledge.</p>
-          </div>
-          <div class="content-block">
-            <h4 data-en="Develop">Develop</h4>
-            <p data-en="The Career Visibility Pack and other supplied bonuses support professional visibility and service exploration.">The Career Visibility Pack and other supplied bonuses support professional visibility and service exploration.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Principles -->
-    <section class="section section-white" id="principles">
-      <div class="container">
-        <div class="section-head" style="text-align:left; margin-left:0; max-width:none;">
-          <span class="eyebrow" data-en="Principles">Principles</span>
-          <h2 data-en="Practical work over exaggerated promises.">Practical work over exaggerated promises.</h2>
-        </div>
-        <ul style="max-width:700px; margin:0 auto; padding-left:1.5rem; color:var(--color-text); font-size:1rem;">
-          <li style="margin-bottom:0.75rem;" data-en="Begin with real accounting tasks.">Begin with real accounting tasks.</li>
-          <li style="margin-bottom:0.75rem;" data-en="Use tools for suitable problems.">Use tools for suitable problems.</li>
-          <li style="margin-bottom:0.75rem;" data-en="Check the accuracy of outputs.">Check the accuracy of outputs.</li>
-          <li style="margin-bottom:0.75rem;" data-en="Build practical skills through implementation.">Build practical skills through implementation.</li>
-          <li style="margin-bottom:0.75rem;" data-en="Treat freelance services as something to test, not guaranteed income.">Treat freelance services as something to test, not guaranteed income.</li>
-          <li data-en="Explain program conditions clearly.">Explain program conditions clearly.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Tools & Dashboards Visual -->
-    <section class="section section-green" id="tools-visual">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow" data-en="Tools &amp; Dashboards">Tools &amp; Dashboards</span>
-          <h2 data-en="See the dashboards and charts you will work with.">See the dashboards and charts you will work with.</h2>
-          <p data-en="Illustrative visuals showing the types of outputs you will create during the program. Not actual client data.">Illustrative visuals showing the types of outputs you will create during the program. Not actual client data.</p>
-        </div>
-        <div class="grid-2">
-          <div class="deliverable tool-card">
-            <div class="deliverable-img-wrap">
-              <img src="images/excel-power-query.jpg" alt="Excel & Power Query Lab" class="deliverable-img" loading="lazy" width="600" height="340">
-            </div>
-            <div class="deliverable-body">
-              <h4 data-en="Excel &amp; Power Query Lab">Excel &amp; Power Query Lab</h4>
-              <p data-en="Practice data cleaning, reconciliation, and automation with real-world accounting spreadsheets.">Practice data cleaning, reconciliation, and automation with real-world accounting spreadsheets.</p>
+        <div class="about-hero-grid">
+          <div class="about-hero-left">
+            <span class="eyebrow" data-en="Our Philosophy &amp; Approach" data-mr="आमचा दृष्टिकोन व तत्त्वे">Our Philosophy &amp; Approach</span>
+            <h1 data-en="Master Practical Data Skills. Accelerate Your Career." data-mr="प्रॅक्टिकल डेटा स्किल्स शिका. करिअरला गती द्या.">Master Practical Data Skills. Accelerate Your Career.</h1>
+            <p data-en="Skillansh is a dedicated practical skills and career mentorship platform. Most courses teach formulas in isolation—leaving you unsure how to apply them. We do the opposite: we start with your real office spreadsheets and challenges, choosing the right digital tool second." data-mr="Skillansh हे प्रॅक्टिकल डेटा आणि करिअर मेंटॉरशिप व्यासपीठ आहे. बहुतांश कोर्सेस केवळ फॉर्म्युले तोंडपाठ करायला लावतात. आम्ही थेट तुमच्या रोजच्या ऑफिस स्प्रेडशीट्स आणि कामाच्या आव्हानांपासून सुरुवात करतो.">Skillansh is a dedicated practical skills and career mentorship platform. Most courses teach formulas in isolation—leaving you unsure how to apply them. We do the opposite: we start with your real office spreadsheets and challenges, choosing the right digital tool second.</p>
+            <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+              <a href="workshop.html" class="btn-primary" style="padding:0.65rem 1.35rem; font-size:0.92rem; font-weight:700; border-radius:10px;" data-en="Explore Live Masterclass &rarr;" data-mr="लाइव्ह मास्टरक्लास पहा &rarr;">Explore Live Masterclass &rarr;</a>
+              <a href="index.html#program" class="btn-secondary" style="padding:0.65rem 1.35rem; font-size:0.92rem; font-weight:700; border-radius:10px; border:1px solid var(--color-border); color:var(--color-primary); text-decoration:none;" data-en="View 30-Day Cohort" data-mr="३०-दिवसीय कोहॉर्ट पहा">View 30-Day Cohort</a>
             </div>
           </div>
-          <div class="deliverable tool-card">
-            <div class="deliverable-img-wrap">
-              <img src="images/power-bi-project.jpg" alt="Power BI Starter Project" class="deliverable-img" loading="lazy" width="600" height="340">
+
+          <!-- Right: 4 Pointwise Approach Pillars -->
+          <div class="approach-pillars-grid">
+            <div class="approach-pill-card">
+              <span class="approach-pill-icon">🎯</span>
+              <h4 data-en="Task-First, Not Tool-First" data-mr="कामापासून सुरुवात, टूल नंतर">Task-First, Not Tool-First</h4>
+              <p data-en="Start with real office data cleanup, MIS summaries, and reporting bottlenecks — apply the right tool second." data-mr="थेट रोजच्या ऑफिस फाइल्स व रिपोर्टिंग अडचणींपासून सुरुवात करून योग्य टूल वापरा.">Start with real office data cleanup, MIS summaries, and reporting bottlenecks — apply the right tool second.</p>
             </div>
-            <div class="deliverable-body">
-              <h4 data-en="Power BI Starter Project">Power BI Starter Project</h4>
-              <p data-en="Build interactive dashboards to visualize GST, revenue, and expense trends.">Build interactive dashboards to visualize GST, revenue, and expense trends.</p>
+            <div class="approach-pill-card">
+              <span class="approach-pill-icon">🛠</span>
+              <h4 data-en="No Isolated Formulas" data-mr="सुलभ बिझनेस वर्कफ्लो">No Isolated Formulas</h4>
+              <p data-en="Master complete, connected business workflows instead of memorizing 50 disconnected textbook functions." data-mr="५० सूत्रे तोंडपाठ करण्याऐवजी थेट एंड-टू-एंड बिझनेस वर्कफ्लो आणि ऑटोमेशन शिका.">Master complete, connected business workflows instead of memorizing 50 disconnected textbook functions.</p>
+            </div>
+            <div class="approach-pill-card">
+              <span class="approach-pill-icon">🚀</span>
+              <h4 data-en="Tangible Deliverables" data-mr="थेट कामातील आउटपुट">Tangible Deliverables</h4>
+              <p data-en="Every milestone produces an automated MIS tracker, a live Power BI dashboard, or an ATS portfolio project." data-mr="प्रत्येक सत्रानंतर एक ऑटोमेटेड रिपोर्ट, थेट डॅशबोर्ड किंवा ATS रेझ्युमे प्रोजेक्ट तयार होतो.">Every milestone produces an automated MIS tracker, a live Power BI dashboard, or an ATS portfolio project.</p>
+            </div>
+            <div class="approach-pill-card">
+              <span class="approach-pill-icon">👥</span>
+              <h4 data-en="Human Mentorship" data-mr="थेट मेंटॉर मार्गदर्शन">Human Mentorship</h4>
+              <p data-en="Direct 1-on-1 guidance, troubleshooting, and interview preparation from a 15+ year practitioner in Marathi, Hindi, &amp; English." data-mr="१५+ वर्षांचा अनुभव असलेल्या मेंटॉरकडून मराठी, हिंदी व इंग्रजीत थेट मार्गदर्शन व शंका निरसन.">Direct 1-on-1 guidance, troubleshooting, and interview preparation from a 15+ year practitioner in Marathi, Hindi, &amp; English.</p>
             </div>
           </div>
         </div>
-        <p style="text-align:center; margin-top:2rem; font-size:0.85rem; color:var(--color-text-muted);">Images are illustrative examples only. Actual outputs depend on your data and implementation.</p>
       </div>
     </section>
 
-    <!-- About the organization -->
-    <section class="section section-white" id="about-org">
+        <!-- ============ SECTION 2: THE SMART AUTOMATION METHOD (INTERACTIVE CONNECTED STEPPER) ============ -->
+    <section class="section section-green" id="about-method" style="padding: 2.75rem 0;">
       <div class="container">
-        <div style="display: flex; flex-wrap: wrap; gap: 3rem; align-items: center;">
-          <div style="flex: 1; min-width: 300px;">
-            <div class="about-photo-card">
-              <img src="Image.png" alt="Girish Shelar - Founder, Skillansh Growth Circle" class="about-photo" width="400" height="400" loading="lazy">
-              <div class="about-photo-caption">
-                <strong data-en="Girish Shelar">Girish Shelar</strong>
-                <span data-en="Founder, Skillansh &amp; Growth Circle | Automation Practitioner">Founder, Skillansh &amp; Growth Circle | Automation Practitioner</span>
+        <div class="section-head" style="text-align:center; max-width:720px; margin:0 auto 1.5rem;">
+          <span class="eyebrow" data-en="The SMART Automation Method" data-mr="स्मार्ट ऑटोमेशन पद्धत">The SMART Automation Method</span>
+          <h2 data-en="A Five-Step Framework for Working Smarter" data-mr="स्मार्टपणे काम करण्यासाठी ५-टप्प्यांची पद्धत">A Five-Step Framework for Working Smarter</h2>
+          <p data-en="Tap or hover over each step below to explore how this universal system eliminates repetitive office tasks:" data-mr="खालील प्रत्येक टप्प्यावर टॅप करा किंवा कर्सर नेऊन मॅन्युअल काम संपवणारी पद्धत समजून घ्या:">Tap or hover over each step below to explore how this universal system eliminates repetitive office tasks:</p>
+        </div>
+
+        <div class="smart-interactive-stepper" id="smart-stepper">
+          <!-- Step Buttons Track -->
+          <div class="smart-track-nav" role="tablist" aria-label="SMART Automation Steps">
+            <button type="button" class="smart-nav-btn active" role="tab" aria-selected="true" data-step="s" id="tab-step-s" aria-controls="panel-step-s">
+              <span class="smart-nav-letter">S</span>
+              <span class="smart-nav-label" data-en="Select" data-mr="Select">Select</span>
+            </button>
+            <div class="smart-track-line" aria-hidden="true"></div>
+            <button type="button" class="smart-nav-btn" role="tab" aria-selected="false" data-step="m" id="tab-step-m" aria-controls="panel-step-m">
+              <span class="smart-nav-letter">M</span>
+              <span class="smart-nav-label" data-en="Map &amp; Clean" data-mr="Map &amp; Clean">Map &amp; Clean</span>
+            </button>
+            <div class="smart-track-line" aria-hidden="true"></div>
+            <button type="button" class="smart-nav-btn" role="tab" aria-selected="false" data-step="a" id="tab-step-a" aria-controls="panel-step-a">
+              <span class="smart-nav-letter">A</span>
+              <span class="smart-nav-label" data-en="Automate" data-mr="Automate">Automate</span>
+            </button>
+            <div class="smart-track-line" aria-hidden="true"></div>
+            <button type="button" class="smart-nav-btn" role="tab" aria-selected="false" data-step="r" id="tab-step-r" aria-controls="panel-step-r">
+              <span class="smart-nav-letter">R</span>
+              <span class="smart-nav-label" data-en="Report" data-mr="Report">Report</span>
+            </button>
+            <div class="smart-track-line" aria-hidden="true"></div>
+            <button type="button" class="smart-nav-btn" role="tab" aria-selected="false" data-step="t" id="tab-step-t" aria-controls="panel-step-t">
+              <span class="smart-nav-letter">T</span>
+              <span class="smart-nav-label" data-en="Transform" data-mr="Transform">Transform</span>
+            </button>
+          </div>
+
+          <!-- Active Display Viewport -->
+          <div class="smart-display-viewport">
+            <!-- Panel S -->
+            <div class="smart-panel active" id="panel-step-s" role="tabpanel" aria-labelledby="tab-step-s">
+              <div class="smart-panel-head">
+                <span class="smart-panel-badge" data-en="Step 1 of 5" data-mr="टप्पा १ पैकी ५">Step 1 of 5</span>
+                <h4 data-en="S &mdash; Select: Identify Repetitive Bottlenecks" data-mr="S &mdash; Select: पुनरावृत्तीची कामे ओळखा">S &mdash; Select: Identify Repetitive Bottlenecks</h4>
+              </div>
+              <p data-en="Audit daily spreadsheets across MIS, attendance, trackers, and data consolidation to pinpoint repetitive tasks wasting 1&ndash;3 hours every day." data-mr="MIS अहवाल, हजेरी, ट्रॅकर्स आणि डेटा संकलन यामधील दररोज १ ते ३ तास वाया घालवणारी पुनरावृत्तीची कामे ओळखून निवडा.">Audit daily spreadsheets across MIS, attendance, trackers, and data consolidation to pinpoint repetitive tasks wasting 1&ndash;3 hours every day.</p>
+              <div class="smart-panel-chips">
+                <span class="smart-panel-chip" data-en="🎯 Workflow Audit" data-mr="🎯 वर्कफ्लो ऑडिट">🎯 Workflow Audit</span>
+                <span class="smart-panel-chip" data-en="⏱ 1-3 Hrs Wasted Daily" data-mr="⏱ रोज १-३ तास वाया">⏱ 1-3 Hrs Wasted Daily</span>
+                <span class="smart-panel-chip" data-en="📋 Bottleneck Checklist" data-mr="📋 बॉटलनेक चेकलिस्ट">📋 Bottleneck Checklist</span>
+              </div>
+            </div>
+
+            <!-- Panel M -->
+            <div class="smart-panel" id="panel-step-m" role="tabpanel" aria-labelledby="tab-step-m">
+              <div class="smart-panel-head">
+                <span class="smart-panel-badge" data-en="Step 2 of 5" data-mr="टप्पा २ पैकी ५">Step 2 of 5</span>
+                <h4 data-en="M &mdash; Map &amp; Clean: Transform Messy Data in Power Query" data-mr="M &mdash; Map &amp; Clean: Power Query द्वारे डेटा स्वच्छ करा">M &mdash; Map &amp; Clean: Transform Messy Data in Power Query</h4>
+              </div>
+              <p data-en="Connect directly to raw CSV, ERP, or multiple Excel sheets. Clean formats, unpivot columns, and remove errors without typing a single line of code." data-mr="कच्चा CSV, ERP किंवा वेगवेगळ्या एक्सेल फाइल्स जोडून कोडिंगशिवाय Power Query द्वारे डेटा क्षणार्धात स्वच्छ व मॅप करा.">Connect directly to raw CSV, ERP, or multiple Excel sheets. Clean formats, unpivot columns, and remove errors without typing a single line of code.</p>
+              <div class="smart-panel-chips">
+                <span class="smart-panel-chip" data-en="⚡ Power Query ETL" data-mr="⚡ Power Query ETL">⚡ Power Query ETL</span>
+                <span class="smart-panel-chip" data-en="🧹 Zero Manual Cleaning" data-mr="🧹 शून्य मॅन्युअल काम">🧹 Zero Manual Cleaning</span>
+                <span class="smart-panel-chip" data-en="🔄 Multi-Sheet Merge" data-mr="🔄 मल्टि-शीट एकत्रीकरण">🔄 Multi-Sheet Merge</span>
+              </div>
+            </div>
+
+            <!-- Panel A -->
+            <div class="smart-panel" id="panel-step-a" role="tabpanel" aria-labelledby="tab-step-a">
+              <div class="smart-panel-head">
+                <span class="smart-panel-badge" data-en="Step 3 of 5" data-mr="टप्पा ३ पैकी ५">Step 3 of 5</span>
+                <h4 data-en="A &mdash; Automate: 1-Click Refreshable Models" data-mr="A &mdash; Automate: १-क्लिक रिफ्रेश मॉडेल्स">A &mdash; Automate: 1-Click Refreshable Models</h4>
+              </div>
+              <p data-en="Build smart models using dynamic Excel formulas (XLOOKUP, SUMIFS), automated pivots, and 1-click refresh pipelines so new data updates instantly." data-mr="डायनॅमिक फॉर्म्युले (XLOOKUP, SUMIFS), ऑटो पिव्हट्स आणि १-क्लिक रिफ्रेश पाइपलाइन तयार करा जेणेकरून नवीन डेटा येताच अहवाल तयार होईल.">Build smart models using dynamic Excel formulas (XLOOKUP, SUMIFS), automated pivots, and 1-click refresh pipelines so new data updates instantly.</p>
+              <div class="smart-panel-chips">
+                <span class="smart-panel-chip" data-en="🚀 1-Click Auto-Refresh" data-mr="🚀 १-क्लिक ऑटो-रिफ्रेश">🚀 1-Click Auto-Refresh</span>
+                <span class="smart-panel-chip" data-en="📐 Modern Formulas" data-mr="📐 आधुनिक फॉर्म्युले">📐 Modern Formulas</span>
+                <span class="smart-panel-chip" data-en="🛡 Maker-Checker Checks" data-mr="🛡 अचूक पडताळणी">🛡 Maker-Checker Checks</span>
+              </div>
+            </div>
+
+            <!-- Panel R -->
+            <div class="smart-panel" id="panel-step-r" role="tabpanel" aria-labelledby="tab-step-r">
+              <div class="smart-panel-head">
+                <span class="smart-panel-badge" data-en="Step 4 of 5" data-mr="टप्पा ४ पैकी ५">Step 4 of 5</span>
+                <h4 data-en="R &mdash; Report: Interactive Power BI &amp; Excel Dashboards" data-mr="R &mdash; Report: संवादात्मक डॅशबोर्ड्स">R &mdash; Report: Interactive Power BI &amp; Excel Dashboards</h4>
+              </div>
+              <p data-en="Turn boring rows of numbers into executive-level visual dashboards with dynamic slicers, KPI trends, and clean management summary views." data-mr="साध्या नंबर टेबल्सचे रूपांतर थेट एक्झिक्युटिव्ह लेव्हल Power BI आणि Excel डॅशबोर्ड्समध्ये करा, ज्यामध्ये डायनॅमिक स्लाइसर्स व ट्रेंड्स असतील.">Turn boring rows of numbers into executive-level visual dashboards with dynamic slicers, KPI trends, and clean management summary views.</p>
+              <div class="smart-panel-chips">
+                <span class="smart-panel-chip" data-en="📊 Interactive Slicers" data-mr="📊 इंटरॅक्टिव्ह स्लाइसर्स">📊 Interactive Slicers</span>
+                <span class="smart-panel-chip" data-en="📈 Executive KPIs" data-mr="📈 एक्झिक्युटिव्ह KPIs">📈 Executive KPIs</span>
+                <span class="smart-panel-chip" data-en="📱 Management View" data-mr="📱 मॅनेजमेंट व्ह्यू">📱 Management View</span>
+              </div>
+            </div>
+
+            <!-- Panel T -->
+            <div class="smart-panel" id="panel-step-t" role="tabpanel" aria-labelledby="tab-step-t">
+              <div class="smart-panel-head">
+                <span class="smart-panel-badge" data-en="Step 5 of 5" data-mr="टप्पा ५ पैकी ५">Step 5 of 5</span>
+                <h4 data-en="T &mdash; Transform: Career Acceleration &amp; ATS Resume" data-mr="T &mdash; Transform: करिअर वाढ व ATS रेझ्युमे">T &mdash; Transform: Career Acceleration &amp; ATS Resume</h4>
+              </div>
+              <p data-en="Showcase your live portfolio projects, add verified credentials to your ATS resume and LinkedIn, and command higher-paying modern data roles." data-mr="तुमचे थेट प्रोजेक्ट्स पोर्टफोलिओमध्ये दाखवा, ATS रेझ्युमे व LinkedIn प्रोफाइल अपग्रेड करा आणि उत्तम पगाराच्या संधी मिळवा.">Showcase your live portfolio projects, add verified credentials to your ATS resume and LinkedIn, and command higher-paying modern data roles.</p>
+              <div class="smart-panel-chips">
+                <span class="smart-panel-chip" data-en="📄 ATS Resume Points" data-mr="📄 ATS रेझ्युमे पॉईंट्स">📄 ATS Resume Points</span>
+                <span class="smart-panel-chip" data-en="💼 LinkedIn Optimization" data-mr="💼 LinkedIn ऑप्टिमायझेशन">💼 LinkedIn Optimization</span>
+                <span class="smart-panel-chip" data-en="🎓 Verified Portfolio" data-mr="🎓 प्रोजेक्ट पोर्टफोलिओ">🎓 Verified Portfolio</span>
               </div>
             </div>
           </div>
-          <div class="section-head" style="text-align:left; margin-left:0; max-width:none; flex: 1; min-width: 300px;">
-            <span class="eyebrow">About the Mentor &amp; Community</span>
-            <h2 data-en="A practical community for accounting professionals, students, and business learners.">A practical community for accounting professionals, students, and business learners.</h2>
-            <p data-en="Growth Circle is built around a straightforward idea: accounting professionals, students, and service professionals can build on their existing knowledge by developing practical digital skills, sharing a focus on real-world work, and exploring new ways to apply what they know.">Growth Circle is built around a straightforward idea: accounting professionals, students, and service professionals can build on their existing knowledge by developing practical digital skills, sharing a focus on real-world work, and exploring new ways to apply what they know.</p>
-            <p style="font-size:0.95rem; color:var(--color-text-muted); margin-top:0.75rem;">Led by <strong>Girish Shelar</strong> (Pune, Maharashtra), who brings hands-on experience in accounting operations, GST compliance, and modern data automation tools (Excel Power Query, Power BI, and safe AI workflows) to help learners eliminate repetitive manual work.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SECTION 3: HOW THE PROGRAM FITS TOGETHER & GUIDING PRINCIPLES ============ -->
+    <section class="section section-white" id="how-fits" style="padding: 2.75rem 0;">
+      <div class="container">
+        <div class="section-head" style="text-align:center; max-width:720px; margin:0 auto 1.5rem;">
+          <span class="eyebrow" data-en="How The Program Fits Together" data-mr="प्रोग्रामचा रोडमॅप">How The Program Fits Together</span>
+          <h2 data-en="Learn, Implement, Showcase &amp; Grow" data-mr="शिका, अंमलबजावणी करा, पोर्टफोलिओ बनवा आणि वाढा">Learn, Implement, Showcase &amp; Grow</h2>
+          <p data-en="A step-by-step progression that takes you from zero spreadsheet foundation to portfolio-ready mastery:" data-mr="बेसिक स्प्रेडशीटपासून ते पोर्टफोलिओ-रेडी कौशल्यांपर्यंतचा टप्प्याटप्प्याचा प्रवास:">A step-by-step progression that takes you from zero spreadsheet foundation to portfolio-ready mastery:</p>
+        </div>
+
+        <div class="roadmap-stepper-4col">
+          <div class="roadmap-step-box">
+            <div class="roadmap-step-num">Step 01</div>
+            <h4 data-en="Learn Core Tools" data-mr="आवश्यक टूल्स शिका">Learn Core Tools</h4>
+            <p data-en="Master 25+ essential Excel corporate formulas, dynamic arrays, and Power Query ETL basics." data-mr="२५+ आवश्यक कॉर्पोरेट एक्सेल सूत्रे, डायनॅमिक ॲरेज आणि Power Query शिका.">Master 25+ essential Excel corporate formulas, dynamic arrays, and Power Query ETL basics.</p>
+          </div>
+          <div class="roadmap-step-box">
+            <div class="roadmap-step-num">Step 02</div>
+            <h4 data-en="Automate Workflows" data-mr="वर्कफ्लो ऑटोमेट करा">Automate Workflows</h4>
+            <p data-en="Connect multi-file spreadsheets, automate bank reconciliations, and eliminate manual routines." data-mr="मल्टी-शीट फाइल्स जोडून बँक रेकन्सिलेशन आणि दैनिक रिपोर्टिंग स्वयंचलित करा.">Connect multi-file spreadsheets, automate bank reconciliations, and eliminate manual routines.</p>
+          </div>
+          <div class="roadmap-step-box">
+            <div class="roadmap-step-num">Step 03</div>
+            <h4 data-en="Build Dashboards" data-mr="लाइव्ह डॅशबोर्ड बनवा">Build Dashboards</h4>
+            <p data-en="Design interactive Power BI KPI dashboards with dynamic slicers to present executive business trends." data-mr="थेट एक्झिक्युटिव्ह KPI डॅशबोर्ड्स बनवून बिझनेस ट्रेंड्स प्रभावीपणे सादर करा.">Design interactive Power BI KPI dashboards with dynamic slicers to present executive business trends.</p>
+          </div>
+          <div class="roadmap-step-box">
+            <div class="roadmap-step-num">Step 04</div>
+            <h4 data-en="Career &amp; ATS Makeover" data-mr="रेझ्युमे व करिअर मेकओव्हर">Career &amp; ATS Makeover</h4>
+            <p data-en="Translate live data projects into bulletproof ATS resume lines, LinkedIn makeover, and interview clarity." data-mr="लाइव्ह प्रोजेक्ट्सच्या जोरावर ATS रेझ्युमे आणि लिंक्डइन प्रोफाइल मजबूत करा.">Translate live data projects into bulletproof ATS resume lines, LinkedIn makeover, and interview clarity.</p>
+          </div>
+        </div>
+
+        <!-- Guiding Principles Trust Strip (Compact & Zero Fluff) -->
+        <div class="principles-trust-strip">
+          <div class="principle-chip">
+            <span class="chk">✔</span>
+            <span data-en="100% Real-World Business Workflows" data-mr="१००% प्रॅक्टिकल बिझनेस वर्कफ्लो">100% Real-World Business Workflows</span>
+          </div>
+          <div class="principle-chip">
+            <span class="chk">✔</span>
+            <span data-en="Zero Hype or Exaggerated Promises" data-mr="खोट्या दाव्यांशिवाय संपूर्ण पारदर्शकता">Zero Hype or Exaggerated Promises</span>
+          </div>
+          <div class="principle-chip">
+            <span class="chk">✔</span>
+            <span data-en="Output Accuracy &amp; Quality First" data-mr="डेटा अचूकता आणि गुणवत्तेला प्राधान्य">Output Accuracy &amp; Quality First</span>
+          </div>
+          <div class="principle-chip">
+            <span class="chk">✔</span>
+            <span data-en="Direct 1-on-1 Practitioner Mentorship" data-mr="१५+ वर्षे अनुभवी मेंटॉरकडून थेट मार्गदर्शन">Direct 1-on-1 Practitioner Mentorship</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Final CTA -->
-    <section class="final-cta" id="about-final-cta">
+    <!-- ============ SECTION 4: ABOUT YOUR MENTOR & PLATFORM (COMPACT EXECUTIVE CARD) ============ -->
+    <section class="section section-green" id="about-org" style="padding: 3rem 0 3.5rem;">
       <div class="container">
-        <h2 data-en="What could you improve in your current accounting workflow?">What could you improve in your current accounting workflow?</h2>
-        <p data-en="Bring one repetitive task or process you would like to examine. Start with a clarity call to discuss possible automation approaches and program suitability.">Bring one repetitive task or process you would like to examine. Start with a clarity call to discuss possible automation approaches and program suitability.</p>
-        <button class="btn-primary" id="about-final-cta-book" data-en="Book My Free Clarity Call">Book My Free Clarity Call</button>
-        <p class="final-line" data-en="Select a convenient time slot on our booking page to confirm your 1-on-1 clarity call.">Select a convenient time slot on our booking page to confirm your 1-on-1 clarity call.</p>
+        <div class="mentor-executive-card">
+          <div class="mentor-avatar-wrap">
+            <img src="Image.png" alt="Girish Shelar - Founder &amp; Mentor, Skillansh" class="mentor-avatar-img" width="160" height="160" loading="lazy">
+            <span class="mentor-badge-pill" data-en="Founder &amp; Mentor" data-mr="संस्थापक व मार्गदर्शक">Founder &amp; Mentor</span>
+          </div>
+          <div class="mentor-executive-content">
+            <span class="eyebrow" data-en="About Your Mentor &amp; Platform" data-mr="तुमचे मार्गदर्शक व प्लॅटफॉर्म">About Your Mentor &amp; Platform</span>
+            <h3 data-en="Practical Data &amp; Career Mentorship Built on 15+ Years of Corporate Experience" data-mr="१५+ वर्षांच्या कॉर्पोरेट अनुभवावर आधारित प्रॅक्टिकल डेटा व करिअर मेंटॉरशिप">Practical Data &amp; Career Mentorship Built on 15+ Years of Corporate Experience</h3>
+            <span class="mentor-cred-line" data-en="Girish Shelar — Data Skills &amp; Career Growth Mentor | 15+ Years Corporate Practitioner" data-mr="गिरीश शेलार — डेटा स्किल्स व करिअर मेंटॉर | १५+ वर्षे कॉर्पोरेट प्रॅक्टिशनर">Girish Shelar — Data Skills &amp; Career Growth Mentor | 15+ Years Corporate Practitioner</span>
+            <p data-en="Skillansh is a dedicated practical skills and career mentorship platform founded by Girish Shelar. Having spent over 15 years in corporate business reporting, operations, and financial analysis, Girish observed that thousands of talented students, freshers, and working professionals across all sectors struggle with manual spreadsheet bottlenecks and uncompetitive resumes." data-mr="Skillansh हे गिरीश शेलार यांनी सुरू केलेले एक समर्पित कौशल्य आणि करिअर मार्गदर्शन प्लॅटफॉर्म आहे. बिझनेस रिपोर्टिंग आणि ऑटोमेशनमधील १५+ वर्षांच्या अनुभवात, गिरीश सरांनी पाहिले की सर्व क्षेत्रांतील हुशार विद्यार्थी व नोकरदार मॅन्युअल एक्सेलच्या कामात आणि अप्रभावी रेझ्युमेमुळे अडकून राहतात.">Skillansh is a dedicated practical skills and career mentorship platform founded by Girish Shelar. Having spent over 15 years in corporate business reporting, operations, and financial analysis, Girish observed that thousands of talented students, freshers, and working professionals across all sectors struggle with manual spreadsheet bottlenecks and uncompetitive resumes.</p>
+            <p style="font-size:0.9rem; color:var(--color-text-muted); margin-bottom:1rem;" data-en="His mission is to bridge this gap: teaching practical Excel, Power Query, Power BI, and ATS-friendly resume building through simple, approachable mentorship in Marathi, Hindi, and English. No prior coding or tech background required." data-mr="हा फरक दूर करणे हे त्यांचे ध्येय आहे: मराठी, हिंदी आणि इंग्रजीतून सोप्या पद्धतीने प्रॅक्टिकल Excel, Power Query, Power BI आणि ATS रेझ्युमे बिल्डिंग शिकवणे. कोणत्याही पूर्व कोडिंगची आवश्यकता नाही.">His mission is to bridge this gap: teaching practical Excel, Power Query, Power BI, and ATS-friendly resume building through simple, approachable mentorship in Marathi, Hindi, and English. No prior coding or tech background required.</p>
+            
+            <div class="mentor-proof-strip">
+              <span class="mentor-proof-chip" data-en="⚡ 15+ Years Corporate Experience" data-mr="⚡ १५+ वर्षे कॉर्पोरेट अनुभव">⚡ 15+ Years Corporate Experience</span>
+              <span class="mentor-proof-chip" data-en="🎯 100% Practical Implementation" data-mr="🎯 १००% प्रॅक्टिकल अंमलबजावणी">🎯 100% Practical Implementation</span>
+              <span class="mentor-proof-chip" data-en="🗣 Marathi, Hindi &amp; English" data-mr="🗣 मराठी, हिंदी व इंग्रजी">🗣 Marathi, Hindi &amp; English</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <a href="index.html" class="footer-brand" aria-label="Skillansh Growth Circle home">
-            <img src="Skillansh Accounting Automation Logo.png" alt="Skillansh logo" width="120" height="36">
-            <span data-en="Growth Circle">Growth Circle</span>
-          </a>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <a href="index.html" class="footer-brand" aria-label="Skillansh home">
+              <img src="Skillansh Accounting Automation Logo.png" alt="Skillansh logo" width="120" height="36">
+            </a>
+          </div>
+          <div class="footer-col">
+            <h5 data-en="Navigation" data-mr="नेव्हिगेशन">Navigation</h5>
+            <ul>
+              <li><a href="index.html" data-en="Home" data-mr="होम">Home</a></li>
+              <li><a href="workshop.html" data-en="Live Workshop" data-mr="लाइव्ह कार्यशाळा">Live Workshop</a></li>
+              <li><a href="about.html" aria-current="page" data-en="About &amp; Approach" data-mr="बद्दल व दृष्टिकोन">About &amp; Approach</a></li>
+              <li><a href="contact.html" data-en="Contact" data-mr="संपर्क">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5 data-en="Program" data-mr="प्रोग्राम">Program</h5>
+            <ul>
+              <li><a href="index.html#program" data-en="30-Day Data Program" data-mr="३० दिवसांचा डेटा प्रोग्राम">30-Day Data Program</a></li>
+              <li><a href="workshop.html" data-en="Live Workshop Enrolment" data-mr="कार्यशाळा नोंदणी">Live Workshop Enrolment</a></li>
+              <li><a href="index.html#mentor" data-en="Meet Your Mentor" data-mr="मार्गदर्शक">Meet Your Mentor</a></li>
+              <li><a href="index.html#faq" data-en="Frequently Asked Questions" data-mr="नेहमी विचारले जाणारे प्रश्न">FAQs</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5 data-en="Legal" data-mr="कायदेशीर">Legal</h5>
+            <ul>
+              <li id="footer-privacy-item"><a href="privacy.html" id="footer-privacy-link" data-en="Privacy Policy" data-mr="गोपनीयता धोरण">Privacy Policy</a></li>
+              <li id="footer-terms-item"><a href="terms.html" id="footer-terms-link" data-en="Terms &amp; Conditions" data-mr="नियम आणि अटी">Terms &amp; Conditions</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5 data-en="Contact" data-mr="संपर्क">Contact</h5>
+            <ul>
+              <li>
+                <a href="https://chat.whatsapp.com/L70yQ3OXHdM3KCgDwxJsIU" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:0.45rem; color:#25D366; font-weight:700;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle; flex-shrink:0;" aria-hidden="true"><path fill="#25D366" d="M12.004 2C6.48 2 2 6.48 2 12.004c0 1.762.458 3.483 1.332 5.006L2 22l5.122-1.342c1.472.804 3.125 1.228 4.882 1.228h.004c5.524 0 10.004-4.48 10.004-10.004 0-2.67-1.04-5.18-2.93-7.07A9.94 9.94 0 0012.004 2z"/><path fill="#FFFFFF" d="M17.51 14.39c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.68.15-.2.3-.78.98-.95 1.18-.18.2-.35.23-.65.08-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.78-1.68-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.63-.93-2.24-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.53.08-.8.38-.28.3-1.05 1.03-1.05 2.51s1.08 2.91 1.23 3.11c.15.2 2.12 3.24 5.14 4.54.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.08-.12-.28-.2-.58-.35z"/></svg>
+                  <span data-en="Join WhatsApp Community" data-mr="WhatsApp कम्युनिटीमध्ये सामील व्हा">Join WhatsApp Community</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/@SkillAnsh" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:0.45rem; color:#EF4444; font-weight:700;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle; flex-shrink:0;" aria-hidden="true"><path fill="#EF4444" d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                  <span>Subscribe on YouTube (@SkillAnsh)</span>
+                </a>
+              </li>
+              <li>
+                <a href="contact.html" style="display:inline-flex; align-items:center; gap:0.45rem; color:#CBD5E1; font-weight:600;">
+                  <span>✉️</span>
+                  <span data-en="Contact &amp; Admissions Support" data-mr="संपर्क व ॲडमिशन सपोर्ट">Contact &amp; Admissions Support</span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="footer-col">
-          <h5 data-en="Program">Program</h5>
-          <ul>
-            <li><a href="index.html" data-en="Home">Home</a></li>
-            <li><a href="about.html" aria-current="page" data-en="About &amp; Approach">About &amp; Approach</a></li>
-            <li><a href="contact.html" data-en="Contact">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5 data-en="Explore">Explore</h5>
-          <ul>
-            <li><a href="index.html#program" data-en="30-Day Program">30-Day Program</a></li>
-            <li><a href="index.html#method" data-en="SMART Accounts Method">SMART Accounts Method</a></li>
-            <li><a href="index.html#investment" data-en="Program Investment">Program Investment</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5 data-en="Legal">Legal</h5>
-          <ul>
-            <li id="footer-privacy-item"><a href="privacy.html" id="footer-privacy-link" data-en="Privacy Information">Privacy Policy</a></li>
-            <li id="footer-terms-item"><a href="terms.html" id="footer-terms-link" data-en="Terms &amp; Conditions">Terms &amp; Conditions</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5 data-en="Contact">Contact</h5>
-          <ul>
-            <li><a href="https://chat.whatsapp.com/JPGdVKRxJ77G2paT6xl9nr" target="_blank" rel="noopener noreferrer" style="color:#25D366; font-weight:700;">💬 Join WhatsApp Community</a></li>
-            <li><a href="index.html#learner-enquiry-section" data-en="Learner Requirements Form">Learner Requirements Form</a></li>
-            <li><a href="workshop.html" data-en="Live Workshop (₹51 Diwali Offer)" data-mr="लाइव्ह कार्यशाळा (₹ 51/- दिवाळी ऑफर)">Live Workshop (₹51 Diwali Offer)</a></li>
-          </ul>
+        <div class="footer-note" style="border-top:1px solid rgba(255, 255, 255, 0.12); margin-top:2rem; padding-top:1.5rem; text-align:center; color:#CBD5E1; font-size:0.88rem;">
+          <span data-en="Practical Excel, Automation &amp; Modern Data Skills for Students &amp; Working Professionals &middot; Skillansh &middot; 2026" data-mr="विद्यार्थी आणि नोकरदार व्यावसायिकांसाठी प्रॅक्टिकल एक्सेल, ऑटोमेशन आणि मॉडर्न डेटा स्किल्स &middot; Skillansh &middot; २०२६">Practical Excel, Automation &amp; Modern Data Skills for Students &amp; Working Professionals &middot; Skillansh &middot; 2026</span>
+          <div style="font-size:0.76rem; color:#94A3B8; margin-top:0.5rem; line-height:1.55;" data-en="Disclaimer: Skillansh is an independent private skill-development platform. Course curriculum, practical templates, workshops, and completion certificates are intended solely for educational and skill enhancement purposes; they do not represent university degrees, government-accredited diplomas, or guaranteed job placements. Microsoft Excel and Power BI are registered trademarks of Microsoft Corporation." data-mr="डिस्क्लेमर: Skillansh हे एक स्वतंत्र खाजगी कौशल्य-विकास व्यासपीठ आहे. अभ्यासक्रम, प्रॅक्टिकल मॉडेल्स, कार्यशाळा आणि सर्टिफिकेट्स केवळ कौशल्य वृद्धी व शैक्षणिक मार्गदर्शनासाठी आहेत; ते कोणतीही सरकारी पदवी/डिप्लोमा किंवा नोकरीची हमी दर्शवत नाहीत. Microsoft Excel आणि Power BI हे Microsoft Corporation चे नोंदणीकृत ट्रेडमार्क आहेत.">Disclaimer: Skillansh is an independent private skill-development platform. Course curriculum, practical templates, workshops, and completion certificates are intended solely for educational and skill enhancement purposes; they do not represent university degrees, government-accredited diplomas, or guaranteed job placements. Microsoft Excel and Power BI are registered trademarks of Microsoft Corporation.</div>
         </div>
       </div>
-      <div class="footer-note" style="border-top:1px solid var(--color-border); margin-top:2rem; padding-top:1.5rem; text-align:center; color:var(--color-text-muted); font-size:0.88rem;">
-        Practical accounting automation skills for Indian accounting professionals &middot; Skillansh Growth Circle &middot; 2026
-        <div style="font-size:0.76rem; color:#64748B; margin-top:0.4rem;">Disclaimer: Skillansh Growth Circle is an independent private skill-development platform. Templates, workflows, and certificates are for educational and productivity purposes only and do not constitute statutory audit, tax solicitation, or government/university affiliation.</div>
-      </div>
-    </div>
-  </footer>
+    </footer>
 
   <script src="config.js"></script>
   <script src="script.js"></script>
+  <script src="chatbot.js" defer></script>
+  <script>
+    function initSmartStepper() {
+      var stepper = document.getElementById('smart-stepper');
+      if (!stepper) return;
+      var btns = stepper.querySelectorAll('.smart-nav-btn');
+      var panels = stepper.querySelectorAll('.smart-panel');
+      function activateStep(stepKey) {
+        btns.forEach(function(btn) {
+          var isTarget = btn.getAttribute('data-step') === stepKey;
+          btn.classList.toggle('active', isTarget);
+          btn.setAttribute('aria-selected', isTarget ? 'true' : 'false');
+        });
+        panels.forEach(function(panel) {
+          var isTarget = panel.id === 'panel-step-' + stepKey;
+          panel.classList.toggle('active', isTarget);
+        });
+      }
+      btns.forEach(function(btn) {
+        var stepKey = btn.getAttribute('data-step');
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          activateStep(stepKey);
+        });
+        btn.addEventListener('mouseenter', function() {
+          activateStep(stepKey);
+        });
+        btn.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            activateStep(stepKey);
+          }
+        });
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSmartStepper);
+    } else {
+      initSmartStepper();
+    }
+  </script>
 </body>
 </html>

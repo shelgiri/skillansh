@@ -1,10 +1,9 @@
-# Keep Home Page active only — redirect other pages to home
-/workshop.html   /   302
-/workshop        /   302
-/resources.html  /   302
-/resources       /   302
-/about.html      /   302
-/about           /   302
-/contact.html    /   302
-/contact         /   302
+# Skillansh - Clean Redirects Configuration
+# Multi-page navigation: /workshop.html, /about.html, /contact.html
+/workshop         /workshop.html    200
+/about            /about.html       200
+/contact          /contact.html     200
 
+# Resources redirected gracefully to workshop
+/resources        /workshop.html    302
+/resources.html   /workshop.html    302
