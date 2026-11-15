@@ -5047,6 +5047,7 @@ p[style*="text-align: center"] {
   box-shadow: 0 24px 50px -10px rgba(15, 23, 42, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.05);
   color: #F8FAFC;
   overflow: hidden;
+  overflow: clip;
   position: relative;
   top: 0 !important;
   align-self: start;
@@ -5236,11 +5237,11 @@ p[style*="text-align: center"] {
 
 @media (max-width: 991px) {
   .cohort-split-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.75rem;
   }
   .cohort-pricing-card {
-    position: static;
+    position: relative;
     margin-top: 0.5rem;
   }
   .cohort-acc-body {
