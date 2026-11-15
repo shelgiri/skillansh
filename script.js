@@ -856,9 +856,44 @@ function initCountdown() {
 
 /* ---------- Init ---------- */
 
+/* ---------- Global Enrolment & Navigation Helpers ---------- */
+function scrollToCohort(event) {
+  if (event && event.preventDefault) event.preventDefault();
+  const el = document.getElementById('program');
+  if (el) {
+    const nav = document.querySelector('header');
+    const navOffset = (nav ? nav.offsetHeight : 70) + 15;
+    const elTop = el.getBoundingClientRect().top + window.pageYOffset - navOffset;
+    window.scrollTo({ top: elTop, behavior: 'smooth' });
+  } else {
+    window.location.href = 'index.html#program';
+  }
+}
+window.scrollToCohort = scrollToCohort;
+
+function openEnrolModal(event) {
+  if (event && event.preventDefault) event.preventDefault();
+  const overlay = document.getElementById('enrol-modal-overlay');
+  if (!overlay) return;
+  overlay.style.display = 'flex';
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  const firstInput = document.getElementById('enrol-firstname');
+  if (firstInput) setTimeout(() => firstInput.focus(), 150);
+}
+window.openEnrolModal = openEnrolModal;
+
+function closeEnrolModal() {
+  const overlay = document.getElementById('enrol-modal-overlay');
+  if (!overlay) return;
+  overlay.classList.remove('active');
+  overlay.style.display = 'none';
+  document.body.style.overflow = '';
+}
+window.closeEnrolModal = closeEnrolModal;
+
 /* ---------- Razorpay Enrolment Modal (Mandatory Learner Details & Plans) ---------- */
 function initEnrolModal() {
-  const openBtn = document.getElementById('open-enrol-modal-btn');
   const overlay = document.getElementById('enrol-modal-overlay');
   const closeBtn = document.getElementById('enrol-modal-close');
   const form = document.getElementById('enrol-checkout-form');
@@ -866,7 +901,7 @@ function initEnrolModal() {
   const submitBtn = document.getElementById('enrol-submit-btn');
   const btnText = document.getElementById('enrol-btn-text');
 
-  if (!openBtn || !overlay) return;
+  if (!overlay) return;
 
   const cfg = window.ACCOUNTPRO_CONFIG || {};
   const plans = cfg.PAYMENT_PLANS || {
@@ -880,36 +915,25 @@ function initEnrolModal() {
   let selectedPlanId = 'full';
   let appliedPromoCode = '';
 
-  function openModal() {
-    overlay.style.display = 'flex';
-    overlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    const firstInput = document.getElementById('enrol-firstname');
-    if (firstInput) setTimeout(() => firstInput.focus(), 150);
-  }
-
-  function closeModal() {
-    overlay.classList.remove('active');
-    overlay.style.display = 'none';
-    document.body.style.overflow = '';
-  }
-
-  openBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    openModal();
+  const openButtons = document.querySelectorAll('#open-enrol-modal-btn, .cohort-enrol-btn, [data-open-enrol-modal]');
+  openButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openEnrolModal(e);
+    });
   });
 
   if (closeBtn) {
-    closeBtn.addEventListener('click', closeModal);
+    closeBtn.addEventListener('click', closeEnrolModal);
   }
 
   overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) closeModal();
+    if (e.target === overlay) closeEnrolModal();
   });
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && overlay.classList.contains('active')) {
-      closeModal();
+      closeEnrolModal();
     }
   });
 
@@ -1364,7 +1388,7 @@ function initQuickEnquiryModal() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function initAll() {
   initLangSwitcher();
   applyContactConfig();
   bindCtas();
@@ -1376,4 +1400,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initCountdown();
   initEnrolModal();
   initQuickEnquiryModal();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAll);
+} else {
+  initAll();
+}

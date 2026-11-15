@@ -23,12 +23,18 @@
   --sa-font: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 }
 
-/* Floating Launcher Button */
+/* Floating Chatbot Wrapper */
+#sa-chatbot-wrapper {
+  position: static !important;
+  z-index: 99999 !important;
+}
+
+/* Floating Launcher Button - Hardware-accelerated, zero-jitter on scroll */
 #sa-chatbot-launcher {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 999;
+  position: fixed !important;
+  bottom: 24px !important;
+  right: 24px !important;
+  z-index: 99999 !important;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -43,17 +49,20 @@
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.2px;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
   user-select: none;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: box-shadow 0.2s ease, opacity 0.2s ease;
 }
 
 #sa-chatbot-launcher:hover {
-  transform: translateY(-3px) scale(1.03);
   box-shadow: 0 14px 30px rgba(15, 118, 110, 0.45);
 }
 
 #sa-chatbot-launcher:active {
-  transform: translateY(0) scale(0.98);
+  box-shadow: 0 8px 18px rgba(15, 118, 110, 0.35);
 }
 
 .sa-launcher-avatar {
@@ -530,10 +539,12 @@
    =================================================================== */
 @media (max-width: 768px) {
   #sa-chatbot-launcher {
-    bottom: 74px; /* Clearly above the 56px sticky bar */
-    right: 14px;
+    bottom: calc(74px + env(safe-area-inset-bottom, 0px)) !important; /* Clearly above the 56px sticky bar */
+    right: 14px !important;
     padding: 8px 14px 8px 10px;
     font-size: 13px;
+    -webkit-transform: translate3d(0, 0, 0) !important;
+    transform: translate3d(0, 0, 0) !important;
   }
 
   .sa-launcher-sub {
@@ -541,11 +552,17 @@
   }
 
   #sa-chatbot-dialog {
-    bottom: 130px;
-    right: 12px;
+    bottom: calc(130px + env(safe-area-inset-bottom, 0px)) !important;
+    right: 12px !important;
     width: calc(100vw - 24px);
     height: 480px;
     max-height: calc(100vh - 160px);
+    z-index: 100000 !important;
+  }
+
+  #sa-chatbot-dialog.sa-active {
+    -webkit-transform: translate3d(0, 0, 0) !important;
+    transform: translate3d(0, 0, 0) !important;
   }
 }
 
