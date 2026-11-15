@@ -6552,12 +6552,7 @@ p[style*="text-align: center"] {
 
 @media (max-width: 768px) {
   .nav-enquiry-btn {
-    display: inline-flex;
-    padding: 0.32rem 0.65rem;
-    font-size: 0.76rem;
-    gap: 0.3rem;
-    order: 2;
-    margin-left: auto;
+    display: none !important;
   }
 }
 

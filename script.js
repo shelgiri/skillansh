@@ -881,6 +881,7 @@ function initEnrolModal() {
   let appliedPromoCode = '';
 
   function openModal() {
+    overlay.style.display = 'flex';
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
     const firstInput = document.getElementById('enrol-firstname');
@@ -889,6 +890,7 @@ function initEnrolModal() {
 
   function closeModal() {
     overlay.classList.remove('active');
+    overlay.style.display = 'none';
     document.body.style.overflow = '';
   }
 
