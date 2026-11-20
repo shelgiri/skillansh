@@ -7086,13 +7086,14 @@ p[style*="text-align: center"] {
   user-select: none;
 }
 
-/* Instant blur shield when PrintScreen or screenshot shortcut is pressed */
+/* Instant blur & overlay shield when Snipping Tool, Snapshot app, or PrintScreen is active */
 body.skillansh-capture-shield .bento-card,
 body.skillansh-capture-shield .cohort-modules-column,
 body.skillansh-capture-shield .smart-visible-card,
-body.skillansh-capture-shield .curriculum-card-stage {
-  filter: blur(14px) !important;
-  transition: filter 0.05s ease !important;
+body.skillansh-capture-shield .curriculum-card-stage,
+body.skillansh-capture-shield .cohort-pricing-card {
+  filter: blur(18px) brightness(0.92) !important;
+  transition: none !important;
 }
 
 /* Block Save-as-PDF / Print scraping of curriculum cards */

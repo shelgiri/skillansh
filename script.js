@@ -1518,14 +1518,38 @@ function initContentCopyProtection() {
     }, 2600);
   };
 
-  const triggerCurriculumBlurFlash = () => {
+  const triggerCurriculumBlurFlash = (holdUntilFocus) => {
     document.body.classList.add('skillansh-capture-shield');
     showSecurityShieldNotice('🔒 Screenshot & Screen Capture Restricted — © Skillansh Practical Curriculum');
     clearTimeout(window.__skillanshBlurTimer);
-    window.__skillanshBlurTimer = setTimeout(() => {
-      document.body.classList.remove('skillansh-capture-shield');
-    }, 1800);
+    if (!holdUntilFocus) {
+      window.__skillanshBlurTimer = setTimeout(() => {
+        if (document.hasFocus()) {
+          document.body.classList.remove('skillansh-capture-shield');
+        }
+      }, 2200);
+    }
   };
+
+  // Instant Snipping Tool / External Snapshot App Shield:
+  // When user clicks Snipping Tool, Lightshot, or presses Win+Shift+S, the browser window loses focus (blur).
+  // Immediately blur all curriculum cards while the browser is unfocused, and unblur when user clicks back!
+  window.addEventListener('blur', () => {
+    document.body.classList.add('skillansh-capture-shield');
+  });
+
+  window.addEventListener('focus', () => {
+    clearTimeout(window.__skillanshBlurTimer);
+    document.body.classList.remove('skillansh-capture-shield');
+  });
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      document.body.classList.add('skillansh-capture-shield');
+    } else if (document.hasFocus()) {
+      document.body.classList.remove('skillansh-capture-shield');
+    }
+  });
 
   // 1. Block Right-Click & Image/Card Dragging on Curriculum Sections
   document.addEventListener('contextmenu', (e) => {
@@ -1576,8 +1600,8 @@ function initContentCopyProtection() {
       }
       return;
     }
-    // Windows Snipping Tool (Meta+Shift+S) or Mac Screenshot (Meta+Shift+3/4/5)
-    if (e.metaKey && e.shiftKey && (key === 's' || key === '3' || key === '4' || key === '5')) {
+    // Windows Snipping Tool (Meta+Shift+S) or Mac Screenshot (Meta+Shift+3/4/5) or Alt+PrintScreen
+    if (e.key === 'Meta' || e.key === 'OS' || (e.metaKey && e.shiftKey) || (e.altKey && e.key === 'PrintScreen')) {
       triggerCurriculumBlurFlash();
       return;
     }
