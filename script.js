@@ -905,11 +905,17 @@ function initEnrolModal() {
 
   const cfg = window.ACCOUNTPRO_CONFIG || {};
   const plans = cfg.PAYMENT_PLANS || {
-    full: { id: 'full', name: 'Full 30-Day Cohort Access', amount: 9999, link: 'https://rzp.io/rzp/BVYNZBfG' },
-    special: { id: 'special', name: 'Special Batch Offer', amount: 5999, link: 'https://rzp.io/rzp/cUEB0E5K' },
-    inst1: { id: 'inst1', name: '1st Installment (Seat Booking)', amount: 5000, link: 'https://rzp.io/rzp/e1bWeKi' },
+    full: { id: 'full', name: 'All-In-One 5-Step Mastery Program (35 Days)', amount: 14999, link: 'https://rzp.io/rzp/BVYNZBfG' },
+    step1: { id: 'step1', name: 'Step 01: Smart Excel (Zero to Pro - 7 Days)', amount: 1999, link: 'https://razorpay.me/@skillansh' },
+    step2: { id: 'step2', name: 'Step 02: Practical MIS & 1-Page Dashboards (7 Days)', amount: 2499, link: 'https://razorpay.me/@skillansh' },
+    step3: { id: 'step3', name: 'Step 03: Excel VBA & 1-Click Macro Buttons (7 Days)', amount: 2999, link: 'https://razorpay.me/@skillansh' },
+    step4: { id: 'step4', name: 'Step 04: Power Query & Power BI Visual Reports (7 Days)', amount: 3499, link: 'https://razorpay.me/@skillansh' },
+    step5: { id: 'step5', name: 'Step 05: Smart AI Automation & Exact AI Prompts (7 Days)', amount: 4499, link: 'https://razorpay.me/@skillansh' },
+    student: { id: 'student', name: 'Student Track: Job-Ready Resume & Interview Lab (5 Days)', amount: 1499, link: 'https://razorpay.me/@skillansh' },
+    special: { id: 'special', name: 'Live Session Scholarship Offer (All-In-One Program)', amount: 9999, link: 'https://rzp.io/rzp/BVYNZBfG' },
+    inst1: { id: 'inst1', name: '1st Installment (All-In-One Program Seat Booking)', amount: 7500, link: 'https://rzp.io/rzp/e1bWeKi' },
     inst2: { id: 'inst2', name: 'Part Payment / Balance', amount: 4000, link: 'https://rzp.io/rzp/mfkvE1Px' },
-    spot: { id: 'spot', name: 'Spot Booking Token', amount: 500, link: 'https://rzp.io/rzp/enMyDgi' }
+    spot: { id: 'spot', name: 'Spot Booking Token (Locks 1st Batch Rate)', amount: 500, link: 'https://rzp.io/rzp/enMyDgi' }
   };
 
   let selectedPlanId = 'full';
@@ -1011,9 +1017,9 @@ function initEnrolModal() {
       promoFeedback.style.display = 'block';
       promoFeedback.className = 'enrol-promo-feedback success';
       if (isMr) {
-        promoFeedback.innerHTML = '🎉 <strong>प्रोमो कोड लागू झाला!</strong> ₹४,००० सवलतीसह स्पेशल बॅच ऑफर (₹५,९९९) सुरू झाली आहे!';
+        promoFeedback.innerHTML = (matched && matched.messageMr) ? matched.messageMr : '🎉 <strong>स्कॉलरशिप कोड लागू झाला!</strong> ₹५,००० सवलतीसह ऑल-इन-वन प्रोग्राम ऑफर (₹९,९९९) सुरू झाली आहे!';
       } else {
-        promoFeedback.innerHTML = '🎉 <strong>Promo code applied!</strong> Special Batch Offer (₹5,999) unlocked with ₹4,000 savings!';
+        promoFeedback.innerHTML = (matched && matched.messageEn) ? matched.messageEn : '🎉 <strong>Scholarship code applied!</strong> Live Session Offer (₹9,999) unlocked with ₹5,000 savings!';
       }
 
       if (promoBtn) {
@@ -1495,6 +1501,32 @@ function initQuickEnquiryModal() {
   }
 }
 
+function initContentCopyProtection() {
+  document.addEventListener('contextmenu', (e) => {
+    const target = e.target;
+    if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) {
+      return;
+    }
+    if (target && target.closest && target.closest('.protected-copy-zone, .bento-card, .cohort-split-layout, .smart-visible-card, .curriculum-card-stage')) {
+      e.preventDefault();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    const target = e.target;
+    if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) {
+      return;
+    }
+    const key = (e.key || '').toLowerCase();
+    if ((e.ctrlKey || e.metaKey) && (key === 'u' || key === 's' || key === 'c')) {
+      const sel = window.getSelection ? window.getSelection().toString() : '';
+      if (key === 'u' || key === 's' || sel.length > 120) {
+        e.preventDefault();
+      }
+    }
+  });
+}
+
 function initAll() {
   ensureQuickEnquiryModalInjected();
   initLangSwitcher();
@@ -1508,6 +1540,7 @@ function initAll() {
   initCountdown();
   initEnrolModal();
   initQuickEnquiryModal();
+  initContentCopyProtection();
 }
 
 if (document.readyState === 'loading') {

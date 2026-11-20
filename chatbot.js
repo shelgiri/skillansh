@@ -27,151 +27,154 @@
   const KB = {
     greetings: {
       en: {
-        text: `Hello! 👋 Welcome to <strong>Skillansh</strong>. I am <strong>Skillmitra</strong>, your official 24/7 AI Career & Automation Guide.<br><br>How can I help you today? You can explore our <strong>30-Day Master Cohort</strong>, view the <strong>Course Structure</strong>, book an instant <strong>Spot Token (₹500)</strong>, or chat with our mentor team.`,
-        chips: ['📚 30-Day Course Structure', '🚀 Cohort Fees & Plans', '🎯 Spot Booking (₹500)', '🎟️ Have a Promo Code?', '👨‍🏫 Mentor Team', '💬 WhatsApp Team']
+        text: `Hello! 👋 Welcome to <strong>Skillansh</strong>. I am <strong>Skillmitra</strong>, your 24/7 AI Guide.<br><br>🔥 <strong>1st Batch Introductory Pricing is Live!</strong> You can join our <strong>Free 90-Min Live Workshop (Worth ₹1,099)</strong>, explore our <strong>5-Step Practical Courses (from ₹1,999)</strong>, or lock your 1st Batch seat with a <strong>₹500 Spot Token</strong>.`,
+        chips: ['🟢 Free Live Workshop', '📚 5-Step Course Structure', '🚀 1st Batch Fees & Plans', '🎯 Spot Booking (₹500)', '👨‍🏫 Mentor Team', '💬 WhatsApp Team']
       },
       mr: {
-        text: `नमस्कार! 👋 <strong>Skillansh</strong> मध्ये आपले स्वागत आहे. मी <strong>Skillmitra</strong>, आपला अधिकृत 24/7 AI करिअर मित्र आहे.<br><br>मी आपल्याला कशी मदत करू? आपण आमच्या <strong>३० दिवसांच्या कोहॉर्टची रचना</strong>, फी प्लॅन्स, इन्स्टंट <strong>स्पॉट बुकिंग (₹५००)</strong>, किंवा मेंटर टीमशी संपर्काबद्दल विचारू शकता.`,
-        chips: ['📚 अभ्यासक्रम रचना पहा', '🚀 कोहॉर्ट फी व प्लॅन्स', '🎯 स्पॉट बुकिंग (₹५००)', '🎟️ प्रोमो कोड आहे का?', '👨‍🏫 मेंटर टीम माहिती', '💬 WhatsApp टीम']
+        text: `नमस्कार! 👋 <strong>Skillansh</strong> मध्ये आपले स्वागत आहे. मी <strong>Skillmitra</strong>, आपला 24/7 AI गाइड आहे.<br><br>🔥 <strong>१ल्या बॅचसाठी विशेष प्रारंभिक फी सुरू आहे!</strong> आपण आमच्या <strong>मोफत लाइव्ह कार्यशाळेत (मूल्य ₹१,०९९)</strong> सहभागी होऊ शकता, <strong>५-स्टेप कोर्सेस (₹१,९९९ पासून)</strong> पाहू शकता किंवा <strong>₹५०० स्पॉट टोकनने</strong> आपली जागा लॉक करू शकता.`,
+        chips: ['🟢 मोफत लाइव्ह कार्यशाळा', '📚 ५-स्टेप अभ्यासक्रम रचना', '🚀 १ली बॅच फी व प्लॅन्स', '🎯 स्पॉट बुकिंग (₹५००)', '👨‍🏫 मेंटर टीम माहिती', '💬 WhatsApp टीम']
       },
       hi: {
-        text: `नमस्ते! 👋 <strong>Skillansh</strong> में आपका स्वागत है। मैं <strong>Skillmitra</strong>, आपका ऑफिशियल 24/7 एआई गाइड हूँ।<br><br>मैं आपकी क्या मदद कर सकता हूँ? आप हमारे <strong>30-दिवसीय कोर्स स्ट्रक्चर</strong>, फीस और प्लांस, इंस्टेंट <strong>स्पॉट बुकिंग (₹500)</strong> या मेंटर टीम के बारे में पूछ सकते हैं।`,
-        chips: ['📚 30-डे कोर्स स्ट्रक्चर', '🚀 कोहॉर्ट फीस व प्लान्स', '🎯 स्पॉट बुकिंग (₹500)', '🎟️ प्रोमो कोड', '👨‍🏫 मेंटर टीम', '💬 WhatsApp टीम']
+        text: `नमस्ते! 👋 <strong>Skillansh</strong> में आपका स्वागत है। मैं <strong>Skillmitra</strong>, आपका 24/7 एआई गाइड हूँ।<br><br>🔥 <strong>पहले बैच (1st Batch) की विशेष शुरुआती फीस लागू है!</strong> आप हमारी <strong>फ्री लाइव वर्कशॉप (मूल्य ₹1,099)</strong>, <strong>5-स्टेप कोर्सेस (₹1,999 से शुरू)</strong> या <strong>₹500 स्पॉट बुकिंग</strong> के बारे में पूछ सकते हैं।`,
+        chips: ['🟢 फ्री लाइव वर्कशॉप', '📚 5-स्टेप कोर्स स्ट्रक्चर', '🚀 1st बैच फीस व प्लान्स', '🎯 स्पॉट बुकिंग (₹500)', '👨‍🏫 मेंटर टीम', '💬 WhatsApp टीम']
       }
     },
 
     curriculum: {
       en: {
-        text: `<strong>📚 30-Day Practical Course Structure:</strong><br><br>
-The cohort is organized into <strong>6 Real-World Implementation Modules</strong>:<br>
-• <strong>Module 01:</strong> Business & Data Workflow Audit<br>
-• <strong>Module 02:</strong> Modern Excel Mastery (Dynamic Arrays, XLOOKUP)<br>
-• <strong>Module 03:</strong> Power Query Automation (1-click bank & ledger reconciliations)<br>
-• <strong>Module 04:</strong> MIS & Executive Financial Reporting (Auto P&L, KPIs)<br>
-• <strong>Module 05:</strong> Power BI Interactive Dashboards<br>
-• <strong>Module 06:</strong> Career Transition & ATS Resume Restructuring<br><br>
-Click below to view the interactive module breakdown directly on the page:`,
-        cta: { text: `📚 View 6-Module Course Structure ↓`, action: 'view_curriculum' },
-        chips: ['🚀 Cohort Fees & Plans', '🎯 Spot Booking (₹500)', '👨‍🏫 Mentor Team', '💬 WhatsApp Support']
+        text: `<strong>📚 Skillansh 5-Step Practical Learning Ladder (+ Separate Student Track):</strong><br><br>
+We complete your full Excel mastery first, move to Power BI, and crown it with Smart AI Prompts:<br>
+• <strong>Step 01 (Week 1 · ₹1,999):</strong> Smart Excel — Zero to Pro (25+ Office Formulas & Pivots)<br>
+• <strong>Step 02 (Week 2 · ₹2,499):</strong> Practical MIS & 1-Page Business Dashboards<br>
+• <strong>Step 03 (Week 3 · ₹2,999):</strong> Excel VBA & 1-Click Macro Buttons (Before Power BI!)<br>
+• <strong>Step 04 (Week 4 · ₹3,499):</strong> Power Query & Power BI Visual Reports (DAX & Slicers)<br>
+• <strong>Step 05 (Week 5 · ₹4,499):</strong> Smart AI Automation & Exact AI Prompts (Premium Capstone)<br>
+• <strong>🎓 Separate Student Track (5 Days · ₹1,499):</strong> Job-Ready Resume & Office Interview Lab<br><br>
+Every step includes hands-on practice datasets and a <strong>Verified Skillansh Certificate</strong>!`,
+        cta: { text: `📚 View 5-Step Course Structure ↓`, action: 'view_curriculum' },
+        chips: ['🚀 1st Batch Fees & Plans', '🎯 Spot Booking (₹500)', '🟢 Free Live Workshop', '💬 WhatsApp Support']
       },
       mr: {
-        text: `<strong>📚 ३० दिवसांच्या प्रात्यक्षिक अभ्यासक्रमाची रचना:</strong><br><br>
-हा संपूर्ण कोहॉर्ट <strong>६ प्रॅक्टिकल मॉड्यूल्स</strong>मध्ये विभागलेला आहे:<br>
-• <strong>मॉड्यूल ०१:</strong> बिझनेस आणि डेटा वर्कफ्लो ऑडिट<br>
-• <strong>मॉड्यूल ०२:</strong> मॉडर्न एक्सेल मास्टरी (XLOOKUP, डायनामिक ॲरेज)<br>
-• <strong>मॉड्यूल ०३:</strong> पॉवर क्वेरी ऑटोमेशन (१-क्लिक बँक व लेजर रिकॉन्सिलिएशन)<br>
-• <strong>मॉड्यूल ०४:</strong> एमआयएस आणि फायनान्शियल रिपोर्टिंग (ऑटो P&L, ताळेबंद)<br>
-• <strong>मॉड्यूल ०५:</strong> पॉवर बीआय इंटरॅक्टिव्ह डॅशबोर्ड्स<br>
-• <strong>मॉड्यूल ०६:</strong> करिअर ग्रोथ आणि ATS रेझ्युमे मेकओव्हर<br><br>
-वेबसाईटवरील सविस्तर अभ्यासक्रम पाहण्यासाठी खालील बटनावर क्लिक करा:`,
-        cta: { text: `📚 ६-मॉड्यूल अभ्यासक्रम रचना पहा ↓`, action: 'view_curriculum' },
-        chips: ['🚀 कोहॉर्ट फी व प्लॅन्स', '🎯 स्पॉट बुकिंग (₹५००)', '👨‍🏫 मेंटर टीम', '💬 WhatsApp सपोर्ट']
+        text: `<strong>📚 Skillansh ५-स्टेप प्रात्यक्षिक अभ्यासक्रम (+ स्वतंत्र विद्यार्थी ट्रॅक):</strong><br><br>
+आधी Excel मध्ये पूर्ण पकड, त्यानंतर Power BI आणि शेवटी स्मार्ट AI प्रॉम्प्ट्स:<br>
+• <strong>स्टेप ०१ (आठवडा १ · ₹१,९९९):</strong> स्मार्ट Excel — शून्य ते एक्सपर्ट (२५+ फॉर्म्युले व पिव्हट्स)<br>
+• <strong>स्टेप ०२ (आठवडा २ · ₹२,४९९):</strong> प्रॅक्टिकल MIS आणि १-पेज डॅशबोर्ड्स<br>
+• <strong>स्टेप ०३ (आठवडा ३ · ₹२,९९९):</strong> Excel VBA आणि १-क्लिक मॅक्रो बटणे (Power BI पूर्वी!)<br>
+• <strong>स्टेप ०४ (आठवडा ४ · ₹३,४९९):</strong> Power Query आणि Power BI व्हिज्युअल रिपोर्ट्स<br>
+• <strong>स्टेप ०५ (आठवडा ५ · ₹४,४९९):</strong> स्मार्ट AI ऑटोमेशन आणि अचूक प्रॉम्प्ट्स (प्रीमियम AI कोर्स)<br>
+• <strong>🎓 स्वतंत्र विद्यार्थी ट्रॅक (५ दिवस · ₹१,४९९):</strong> जॉब-रेडी रेझ्युमे व इंटरव्ह्यू लॅब<br><br>
+प्रत्येक स्टेपमध्ये प्रॅक्टिस डेटा शीट्स आणि <strong>अधिकृत Skillansh सर्टिफिकेट</strong> समाविष्ट!`,
+        cta: { text: `📚 ५-स्टेप अभ्यासक्रम रचना पहा ↓`, action: 'view_curriculum' },
+        chips: ['🚀 १ली बॅच फी व प्लॅन्स', '🎯 स्पॉट बुकिंग (₹५००)', '🟢 मोफत लाइव्ह कार्यशाळा', '💬 WhatsApp सपोर्ट']
       },
       hi: {
-        text: `<strong>📚 30-दिवसीय प्रैक्टिकल कोर्स स्ट्रक्चर:</strong><br><br>
-यह कोहॉर्ट <strong>6 रियल-वर्ल्ड मॉड्यूल्स</strong> में संरचित है:<br>
-• <strong>मॉड्यूल 01:</strong> बिजनेस और डेटा वर्कफ्लो ऑडिट<br>
-• <strong>मॉड्यूल 02:</strong> मॉडर्न एक्सेल मास्टरी (XLOOKUP, डायनामिक एरेज़)<br>
-• <strong>मॉड्यूल 03:</strong> पावर क्वेरी ऑटोमेशन (1-क्लिक बैंक व लेजर रिकॉन्सिलिएशन)<br>
-• <strong>मॉड्यूल 04:</strong> एमआईएस और एग्जीक्यूटिव रिपोर्टिंग (ऑटो P&L, KPIs)<br>
-• <strong>मॉड्यूल 05:</strong> पावर बीआई इंटरैक्टिव डैशबोर्ड्स<br>
-• <strong>मॉड्यूल 06:</strong> करियर अपग्रेड और एटीएस रिज्यूमे रीस्ट्रक्चरिंग<br><br>
-पेज पर सीधे 6 मॉड्यूल्स देखने के लिए नीचे क्लिक करें:`,
-        cta: { text: `📚 6-मॉड्यूल कोर्स स्ट्रक्चर देखें ↓`, action: 'view_curriculum' },
-        chips: ['🚀 कोहॉर्ट फीस व प्लान्स', '🎯 स्पॉट बुकिंग (₹500)', '👨‍🏫 मेंटर टीम', '💬 WhatsApp सहायता']
+        text: `<strong>📚 Skillansh 5-स्टेप प्रैक्टिकल कोर्स स्ट्रक्चर (+ स्टूडेंट ट्रैक):</strong><br><br>
+• <strong>स्टेप 01 (सप्ताह 1 · ₹1,999):</strong> स्मार्ट एक्सेल — जीरो से प्रो (25+ फॉर्मूले व पिवट)<br>
+• <strong>स्टेप 02 (सप्ताह 2 · ₹2,499):</strong> प्रैक्टिकल MIS और 1-पेज डैशबोर्ड्स<br>
+• <strong>स्टेप 03 (सप्ताह 3 · ₹2,999):</strong> एक्सेल VBA और 1-क्लिक मैक्रो बटन्स (Power BI से पहले!)<br>
+• <strong>स्टेप 04 (सप्ताह 4 · ₹3,499):</strong> पावर क्वेरी और पावर बीआई विजुअल रिपोर्ट्स<br>
+• <strong>स्टेप 05 (सप्ताह 5 · ₹4,499):</strong> स्मार्ट AI ऑटोमेशन व स्ट्रक्चर्ड प्रॉम्प्ट इंजीनियरिंग<br>
+• <strong>🎓 स्टूडेंट करियर ट्रैक (5 दिन · ₹1,499):</strong> एटीएस रिज्यूमे और इंटरव्यू लैब<br><br>
+हर स्टेप के साथ प्रैक्टिस डेटा शीट्स और <strong>वेरिफाइड सर्टिफिकेट</strong> शामिल है!`,
+        cta: { text: `📚 5-स्टेप कोर्स स्ट्रक्चर देखें ↓`, action: 'view_curriculum' },
+        chips: ['🚀 1st बैच फीस व प्लान्स', '🎯 स्पॉट बुकिंग (₹500)', '🟢 फ्री लाइव वर्कशॉप', '💬 WhatsApp सहायता']
       }
     },
 
     pricing: {
       en: {
-        text: `Here is our transparent fee structure for the <strong>Skillansh 30-Day Comprehensive Data Cohort</strong>:<br><br>
-• <strong>Full Cohort Access:</strong> ₹9,999 (Complete 30-day mentorship, live practicals, ATS resume & bonuses)<br>
-• <strong>🎯 Instant Spot Booking Token:</strong> ₹500 (Instant seat lock &middot; balance before cohort starts)<br>
-• <strong>1st Installment (Seat Booking):</strong> ₹5,000<br>
-• <strong>Part Payment / Balance:</strong> ₹4,000<br>
-• <strong>🔒 Special Batch Offer:</strong> ₹5,999 (Exclusively unlocked with secret promo code <strong>SPECIAL5999</strong> saving ₹4,000!)`,
-        cta: { text: `🚀 Enrol Now & Choose Plan`, action: 'enrol_cohort' },
-        chips: ['📚 30-Day Course Structure', '🎯 Spot Booking (₹500)', '🎟️ How to use Promo Code?', '💬 WhatsApp Support']
+        text: `<strong>🔥 1st Founding Batch Introductory Fees (Limited to 15–20 Seats/Batch):</strong><br><br>
+• <strong>🏆 All-In-One 5-Step Mastery Program (35 Days):</strong> <strong>₹14,999</strong> (Includes all 5 Steps + Career Lab + 1-on-1 Mentorship + Master Certificate &middot; Individual sum ₹16,994)<br>
+• <strong>🎯 Instant Spot Booking Token:</strong> <strong>₹500</strong> (Locks your 1st Batch introductory fee today &middot; 100% deducted from total fee)<br>
+• <strong>Individual Stepwise Courses:</strong><br>
+  - Step 01 (Smart Excel): <strong>₹1,999</strong><br>
+  - Step 02 (Practical MIS): <strong>₹2,499</strong><br>
+  - Step 03 (Excel VBA Macros): <strong>₹2,999</strong><br>
+  - Step 04 (Power Query & Power BI): <strong>₹3,499</strong><br>
+  - Step 05 (Smart AI & Prompts): <strong>₹4,499</strong><br>
+  - Student Resume & Interview Lab: <strong>₹1,499</strong><br><br>
+<em>⚠️ Hurry: Once 1st Batch seats are filled, prices will increase for next batches!</em>`,
+        cta: { text: `🚀 Book Your 1st Batch Seat Now`, action: 'enrol_cohort' },
+        chips: ['📚 5-Step Course Structure', '🎯 Spot Booking (₹500)', '🟢 Free Live Workshop', '💬 WhatsApp Support']
       },
       mr: {
-        text: `येथे <strong>Skillansh ३०-दिवसीय कोहॉर्ट</strong>ची अधिकृत फी रचना आहे:<br><br>
-• <strong>Full Cohort Access:</strong> ₹९,९९९ (संपूर्ण ३० दिवसांचे प्रॅक्टिकल मार्गदर्शन, ATS रेझ्युमे व सर्व बोनस)<br>
-• <strong>🎯 इन्स्टंट स्पॉट बुकिंग टोकन:</strong> ₹५०० (जागा तात्काळ लॉक करा &middot; उर्वरित रक्कम नंतर)<br>
-• <strong>पहिला हप्ता (Seat Booking):</strong> ₹५,०००<br>
-• <strong>अंशतः पेमेंट / उर्वरित रक्कम:</strong> ₹४,०००<br>
-• <strong>🔒 स्पेशल बॅच ऑफर:</strong> ₹५,९९९ (फक्त <strong>SPECIAL5999</strong> हा गुप्त प्रोमो कोड वापरल्यास ₹४,००० ची थेट सवलत!)`,
-        cta: { text: `🚀 प्रवेश घ्या व प्लॅन निवडा`, action: 'enrol_cohort' },
-        chips: ['📚 अभ्यासक्रम रचना पहा', '🎯 स्पॉट बुकिंग (₹५००)', '🎟️ प्रोमो कोड कसा वापरायचा?', '💬 WhatsApp सपोर्ट']
+        text: `<strong>🔥 १ल्या बॅचसाठी विशेष प्रारंभिक फी (फक्त १५–२० जागा प्रति बॅच):</strong><br><br>
+• <strong>🏆 ऑल-इन-वन ५-स्टेप मास्टरी प्रोग्राम (३५ दिवस):</strong> <strong>₹१४,९९९</strong> (सर्व ५ स्टेप्स + करिअर लॅब + १-ऑन-१ मार्गदर्शन + मास्टर सर्टिफिकेट &middot; स्वतंत्र एकूण ₹१६,९९४)<br>
+• <strong>🎯 इन्स्टंट स्पॉट बुकिंग टोकन:</strong> <strong>₹५००</strong> (आजच १ल्या बॅचची फी लॉक करा &middot; मुख्य फीमधून १००% वजा)<br>
+• <strong>स्वतंत्र स्टेपनुसार फी:</strong><br>
+  - स्टेप ०१ (स्मार्ट Excel): <strong>₹१,९९९</strong><br>
+  - स्टेप ०२ (प्रॅक्टिकल MIS): <strong>₹२,४९९</strong><br>
+  - स्टेप ०३ (Excel VBA मॅक्रो): <strong>₹२,९९९</strong><br>
+  - स्टेप ०४ (Power Query व Power BI): <strong>₹३,४९९</strong><br>
+  - स्टेप ०५ (स्मार्ट AI व प्रॉम्प्ट्स): <strong>₹४,४९९</strong><br>
+  - विद्यार्थी रेझ्युमे व इंटरव्ह्यू लॅब: <strong>₹१,४९९</strong><br><br>
+<em>⚠️ घाई करा: पहिल्या बॅचच्या जागा पूर्ण होताच पुढील बॅचची फी वाढेल!</em>`,
+        cta: { text: `🚀 १ल्या बॅचमध्ये प्रवेश घ्या`, action: 'enrol_cohort' },
+        chips: ['📚 ५-स्टेप अभ्यासक्रम रचना', '🎯 स्पॉट बुकिंग (₹५००)', '🟢 मोफत लाइव्ह कार्यशाळा', '💬 WhatsApp सपोर्ट']
       },
       hi: {
-        text: `यहाँ <strong>Skillansh 30-दिवसीय कोहॉर्ट</strong> की पारदर्शी फीस संरचना है:<br><br>
-• <strong>फुल कोहॉर्ट एक्सेस:</strong> ₹9,999 (सम्पूर्ण 30-दिन प्रैक्टिकल मेंटरशिप, एटीएस रिज्यूमे और बोनस)<br>
-• <strong>🎯 इंस्टेंट स्पॉट बुकिंग टोकन:</strong> ₹500 (सीट तुरंत लॉक करें &middot; बाकी फीस बाद में)<br>
-• <strong>पहला हफ्ता (सीट बुकिंग):</strong> ₹5,000<br>
-• <strong>पार्ट पेमेंट / बैलेंस:</strong> ₹4,000<br>
-• <strong>🔒 स्पेशल बैच ऑफर:</strong> ₹5,999 (सीक्रेट प्रोमो कोड <strong>SPECIAL5999</strong> डालने पर ₹4,000 की छूट!)`,
-        cta: { text: `🚀 एनरोल करें व प्लान चुनें`, action: 'enrol_cohort' },
-        chips: ['📚 30-डे कोर्स स्ट्रक्चर', '🎯 स्पॉट बुकिंग (₹500)', '🎟️ प्रोमो कोड कैसे लगाएं?', '💬 WhatsApp सहायता']
+        text: `<strong>🔥 पहले बैच (1st Batch) की विशेष शुरुआती फीस (सीमित 15–20 सीटें):</strong><br><br>
+• <strong>🏆 ऑल-इन-वन 5-स्टेप मास्टरी प्रोग्राम (35 दिन):</strong> <strong>₹14,999</strong> (सभी 5 स्टेप्स + करियर लैब + 1-ऑन-1 मेंटरशिप + मास्टर सर्टिफिकेट)<br>
+• <strong>🎯 इंस्टेंट स्पॉट बुकिंग टोकन:</strong> <strong>₹500</strong> (1st बैच की फीस आज ही लॉक करें &middot; कुल फीस से 100% समायोजित)<br>
+• <strong>स्टेप-बाय-स्टेप कोर्स फीस:</strong><br>
+  - स्टेप 01 (स्मार्ट एक्सेल): <strong>₹1,999</strong> | स्टेप 02 (MIS): <strong>₹2,499</strong><br>
+  - स्टेप 03 (VBA मैक्रो): <strong>₹2,999</strong> | स्टेप 04 (Power BI): <strong>₹3,499</strong><br>
+  - स्टेप 05 (स्मार्ट AI व प्रॉम्प्ट्स): <strong>₹4,499</strong> | स्टूडेंट ट्रैक: <strong>₹1,499</strong><br><br>
+<em>⚠️ जल्दी करें: 1st बैच की सीटें भरने के बाद अगले बैच की फीस बढ़ जाएगी!</em>`,
+        cta: { text: `🚀 अपनी 1st बैच सीट बुक करें`, action: 'enrol_cohort' },
+        chips: ['📚 5-स्टेप कोर्स स्ट्रक्चर', '🎯 स्पॉट बुकिंग (₹500)', '🟢 फ्री लाइव वर्कशॉप', '💬 WhatsApp सहायता']
       }
     },
 
     spot: {
       en: {
-        text: `<strong>🎯 Instant Spot Booking Token (₹500):</strong><br><br>
-During webinars, clarity calls, or preview sessions, you can lock your seat instantly by paying just <strong>₹500</strong> token amount!<br><br>
-• Your seat in the upcoming cohort is officially reserved.<br>
-• You lock any eligible scholarship & all fast-track bonuses.<br>
-• The remaining balance can be paid before the cohort starts.`,
-        cta: { text: `🎯 Lock Your Seat for ₹500 Now`, action: 'spot_booking', url: SPOT_BOOKING_URL },
-        chips: ['📚 30-Day Course Structure', '🚀 Full Cohort Fees', '💬 Chat on WhatsApp']
+        text: `<strong>🎯 Instant Spot Booking Token (₹500 — Locks 1st Batch Rate):</strong><br><br>
+Because our 1st Founding Batch has only 15–20 seats per section, you can lock your seat and today's introductory fee instantly by paying just <strong>₹500</strong>!<br><br>
+• Your seat in the 1st Batch is officially reserved.<br>
+• The ₹500 token is <strong>100% deducted</strong> from your course or All-In-One program fee.<br>
+• Protects you from next-batch price increases.`,
+        cta: { text: `🎯 Lock Your 1st Batch Seat for ₹500`, action: 'spot_booking', url: SPOT_BOOKING_URL },
+        chips: ['📚 5-Step Course Structure', '🚀 1st Batch Fees & Plans', '💬 Chat on WhatsApp']
       },
       mr: {
-        text: `<strong>🎯 इन्स्टंट स्पॉट बुकिंग टोकन (₹५००):</strong><br><br>
-वेबिनार, स्पष्टता सत्र किंवा विशेष ऑफरदरम्यान आपण फक्त <strong>₹५०० टोकन</strong> भरून आपली जागा त्वरित रिझर्व्ह करू शकता!<br><br>
-• आगामी बॅचमधील आपली जागा अधिकृतपणे आरक्षित होते.<br>
-• स्कॉलरशिप व फास्ट-ट्रॅक बोनसेस सुरक्षित होतात.<br>
-• उर्वरित रक्कम बॅच सुरू होण्यापूर्वी भरता येते.`,
+        text: `<strong>🎯 इन्स्टंट स्पॉट बुकिंग टोकन (₹५०० — १ली बॅच फी लॉक करा):</strong><br><br>
+पहिल्या बॅचमध्ये फक्त १५-२० जागा असल्याने, आपण केवळ <strong>₹५०० टोकन</strong> भरून आपली जागा आणि १ल्या बॅचची विशेष फी त्वरित सुरक्षित करू शकता!<br><br>
+• हे ₹५०० तुमच्या मुख्य कोर्स फीमधून <strong>१००% वजा</strong> केले जातात.<br>
+• पुढील बॅचच्या दरवाढीपासून तुमचे संरक्षण होते.`,
         cta: { text: `🎯 आताच ₹५०० मध्ये जागा लॉक करा`, action: 'spot_booking', url: SPOT_BOOKING_URL },
-        chips: ['📚 अभ्यासक्रम रचना पहा', '🚀 संपूर्ण कोहॉर्ट फी', '💬 WhatsApp वर बोला']
+        chips: ['📚 ५-स्टेप अभ्यासक्रम रचना', '🚀 १ली बॅच फी व प्लॅन्स', '💬 WhatsApp वर बोला']
       },
       hi: {
-        text: `<strong>🎯 इंस्टेंट स्पॉट बुकिंग टोकन (₹500):</strong><br><br>
-वेबिनार या डेमो सेशन के दौरान आप केवल <strong>₹500 टोकन</strong> देकर अपनी सीट तुरंत रिजर्व कर सकते हैं!<br><br>
-• आगामी बैच में आपकी सीट तुरंत बुक हो जाती है।<br>
-• स्कॉलरशिप और सभी बोनसेस सुरक्षित रहते हैं।<br>
-• बाकी बची फीस बैच शुरू होने से पहले दी जा सकती है।`,
+        text: `<strong>🎯 इंस्टेंट स्पॉट बुकिंग टोकन (₹500 — 1st बैच फीस लॉक करें):</strong><br><br>
+केवल <strong>₹500 टोकन</strong> देकर आप 1st बैच में अपनी सीट और शुरुआती फीस तुरंत लॉक कर सकते हैं!<br><br>
+• यह ₹500 आपकी मुख्य फीस से <strong>100% घटा (adjust)</strong> दिया जाता है।<br>
+• अगले बैच की बढ़ी हुई फीस से आपकी बचत होती है।`,
         cta: { text: `🎯 ₹500 में अपनी सीट लॉक करें`, action: 'spot_booking', url: SPOT_BOOKING_URL },
-        chips: ['📚 30-डे कोर्स स्ट्रक्चर', '🚀 फुल कोहॉर्ट फीस', '💬 WhatsApp पर पूछें']
+        chips: ['📚 5-स्टेप कोर्स स्ट्रक्चर', '🚀 1st बैच फीस व प्लान्स', '💬 WhatsApp पर पूछें']
       }
     },
 
     promocode: {
       en: {
-        text: `<strong>🎟️ Secret Promo Code: SPECIAL5999</strong><br><br>
-If you have an exclusive batch invite, enter promo code <strong>SPECIAL5999</strong> inside our Enrolment Form to unlock:<br><br>
-• <strong>Special Batch Offer: ₹5,999</strong> (Save ₹4,000 instantly off regular ₹9,999!)<br>
-• Includes full 30-day cohort access, live practicals, and all fast-track bonuses.<br><br>
-Click below to open the form, apply the code, and claim your offer!`,
-        cta: { text: `🚀 Open Enrolment & Apply Code`, action: 'enrol_cohort' },
-        chips: ['📚 30-Day Course Structure', '💰 Other Payment Options', '🎯 Spot Booking (₹500)', '💬 WhatsApp Support']
+        text: `<strong>🟢 Free 90-Min Live Workshop (Worth ₹1,099/- &rarr; FREE) &amp; Live Attendee Scholarships:</strong><br><br>
+Attend our next <strong>90-Min Live Practical Masterclass for FREE</strong> to see how 3 hours of messy office work is finished in 10 minutes!<br><br>
+• Live attendees also receive our exclusive <strong>Live Session Scholarship Code</strong> to apply inside the Enrolment Form.`,
+        cta: { text: `🟢 Claim Free Live Workshop Seat`, action: 'workshop_page' },
+        chips: ['📚 5-Step Course Structure', '🚀 1st Batch Fees & Plans', '🎯 Spot Booking (₹500)', '💬 WhatsApp Support']
       },
       mr: {
-        text: `<strong>🎟️ गुप्त प्रोमो कोड: SPECIAL5999</strong><br><br>
-जर आपल्याकडे विशेष बॅच आमंत्रण असेल, तर नोंदणी फॉर्ममध्ये <strong>SPECIAL5999</strong> हा प्रोमो कोड टाकून अनलॉक करा:<br><br>
-• <strong>स्पेशल बॅच ऑफर: ₹५,९९९</strong> (नियमित ₹९,९९९ वर ₹४,००० ची थेट बचत!)<br>
-• संपूर्ण ३० दिवसांचा कोहॉर्ट, प्रॅक्टिकल्स आणि सर्व बोनसेस समाविष्ट.<br><br>
-खालील बटनावर क्लिक करून फॉर्म उघडा आणि कोड लागू करा!`,
-        cta: { text: `🚀 फॉर्म उघडा व कोड लागू करा`, action: 'enrol_cohort' },
-        chips: ['📚 अभ्यासक्रम रचना पहा', '💰 इतर पेमेंट पर्याय', '🎯 स्पॉट बुकिंग (₹५००)', '💬 WhatsApp सपोर्ट']
+        text: `<strong>🟢 मोफत ९०-मिनिटे लाइव्ह कार्यशाळा (मूल्य ₹१,०९९/- &rarr; १००% मोफत):</strong><br><br>
+३ तासांचे ऑफिसचे काम १० मिनिटांत कसे पूर्ण होते हे प्रत्यक्ष पाहण्यासाठी आमच्या आगामी <strong>मोफत लाइव्ह मास्टरक्लासमध्ये</strong> सहभागी व्हा!<br><br>
+• लाइव्ह सत्रातील सहभागींना नोंदणी फॉर्मसाठी विशेष <strong>स्कॉलरशिप प्रोमो कोड</strong> देखील दिला जातो.`,
+        cta: { text: `🟢 मोफत कार्यशाळेत जागा बुक करा`, action: 'workshop_page' },
+        chips: ['📚 ५-स्टेप अभ्यासक्रम रचना', '🚀 १ली बॅच फी व प्लॅन्स', '🎯 स्पॉट बुकिंग (₹५००)', '💬 WhatsApp सपोर्ट']
       },
       hi: {
-        text: `<strong>🎟️ सीक्रेट प्रोमो कोड: SPECIAL5999</strong><br><br>
-यदि आपके पास स्पेशल इनवाइट है, तो हमारे एनरोलमेंट फॉर्म में <strong>SPECIAL5999</strong> प्रोमो कोड डालें और पाएं:<br><br>
-• <strong>स्पेशल बैच ऑफर: ₹5,999</strong> (रेगुलर ₹9,999 पर सीधे ₹4,000 की बचत!)<br>
-• सम्पूर्ण 30-दिवसीय एक्सेस और सभी बोनस शामिल।<br><br>
-नीचे क्लिक करके फॉर्म खोलें और कोड अप्लाई करें!`,
-        cta: { text: `🚀 फॉर्म खोलें और कोड लगाएं`, action: 'enrol_cohort' },
-        chips: ['📚 30-डे कोर्स स्ट्रक्चर', '💰 अन्य पेमेंट विकल्प', '🎯 स्पॉट बुकिंग (₹500)', '💬 WhatsApp सहायता']
+        text: `<strong>🟢 फ्री 90-मिनट लाइव वर्कशॉप (मूल्य ₹1,099/- &rarr; FREE):</strong><br><br>
+3 घंटे का ऑफिस एक्सेल काम 10 मिनट में कैसे पूरा होता है, यह लाइव देखने के लिए हमारी अगली <strong>फ्री लाइव वर्कशॉप</strong> जॉइन करें!<br><br>
+• लाइव सेशन में भाग लेने वालों को विशेष <strong>स्कॉलरशिप प्रोमो कोड</strong> भी मिलता है।`,
+        cta: { text: `🟢 फ्री वर्कशॉप सीट बुक करें`, action: 'workshop_page' },
+        chips: ['📚 5-स्टेप कोर्स स्ट्रक्चर', '🚀 1st बैच फीस व प्लान्स', '🎯 स्पॉट बुकिंग (₹500)', '💬 WhatsApp सहायता']
       }
     },
 
@@ -346,8 +349,8 @@ Would you like to speak directly with our Skillansh Support Team on WhatsApp?`,
       return 'spot';
     }
 
-    // 2. Promo code / discount / coupon / offer / special
-    if (q.includes('promo') || q.includes('code') || q.includes('coupon') || q.includes('discount') || q.includes('special') || q.includes('offer') || q.includes('प्रोमो') || q.includes('सवलत') || q.includes('ऑफिस') || q.includes('ऑफर')) {
+    // 2. Promo code / discount / coupon / offer / special / free workshop
+    if (q.includes('promo') || q.includes('code') || q.includes('coupon') || q.includes('discount') || q.includes('special') || q.includes('offer') || q.includes('workshop') || q.includes('masterclass') || q.includes('free') || q.includes('मोफत') || q.includes('कार्यशाळा') || q.includes('प्रोमो') || q.includes('सवलत') || q.includes('ऑफिस') || q.includes('ऑफर') || q.includes('वर्कशॉप')) {
       return 'promocode';
     }
 

@@ -1,0 +1,19 @@
+# ==============================================================================
+# SKILLANSH PRACTICAL WORKBOOK — STEP 01: SMART EXCEL (ZERO TO PRO)
+# Official Practice Dataset | www.skillansh.com | Mentor: Girish Shelar (+91 9922045007)
+# Copyright (c) 2026 Skillansh. Watermarked Educational Dataset — Do Not Redistribute.
+# Tasks to Practice: 1) XLOOKUP Branch & Tax Rate 2) SUMIFS Region Sales 3) IF/IFS Bonus Status 4) Pivot Table Summary
+# ==============================================================================
+Invoice_ID,Invoice_Date,Customer_Company,Branch_City,Department,Product_Service_Code,Units_Sold,Unit_Price_INR,Discount_Pct,Sales_Executive,Payment_Status,Verifier_Watermark
+SKL-2026-101,2026-11-01,Skillansh Enterprises Pune,Pune,Accounts & MIS,EXL-AUTO-01,12,1500,5,Rahul Kulkarni,Received,Skillansh.com | +91-9922045007
+SKL-2026-102,2026-11-02,Sahyadri Components Pvt Ltd,Pimpri-Chinchwad,Operations,PBI-DASH-02,8,2800,0,Sneha Patil,Pending,Skillansh.com | +91-9922045007
+SKL-2026-103,2026-11-03,Deccan Logistics & Supply,Mumbai,Sales & Billing,VBA-MAC-03,15,1950,10,Amit Deshmukh,Received,Skillansh.com | +91-9922045007
+SKL-2026-104,2026-11-04,MahaTech Manufacturing Ltd,Chakan,Finance,EXL-AUTO-01,20,1500,8,Priya Joshi,Received,Skillansh.com | +91-9922045007
+SKL-2026-105,2026-11-05,Kothrud Retail Hub,Pune,Accounts & MIS,MIS-REP-04,10,2200,0,Rahul Kulkarni,Overdue,Skillansh.com | +91-9922045007
+SKL-2026-106,2026-11-06,Hinjewadi IT Services LLP,Pune,HR & Admin,AI-PRMT-05,25,3200,12,Sneha Patil,Received,Skillansh.com | +91-9922045007
+SKL-2026-107,2026-11-07,Nashik Agro Traders,Nashik,Sales & Billing,EXL-AUTO-01,18,1500,5,Vikram Shinde,Pending,Skillansh.com | +91-9922045007
+SKL-2026-108,2026-11-08,Aurangabad Auto Parts,Chhatrapati Sambhajinagar,Operations,VBA-MAC-03,14,1950,0,Amit Deshmukh,Received,Skillansh.com | +91-9922045007
+SKL-2026-109,2026-11-09,Thane Commercial Agency,Mumbai,Finance,PBI-DASH-02,9,2800,5,Priya Joshi,Received,Skillansh.com | +91-9922045007
+SKL-2026-110,2026-11-10,Kolhapur Foundry Works,Kolhapur,Operations,MIS-REP-04,16,2200,10,Vikram Shinde,Overdue,Skillansh.com | +91-9922045007
+SKL-2026-111,2026-11-11,Nagpur Regional Distributors,Nagpur,Sales & Billing,AI-PRMT-05,11,3200,5,Rahul Kulkarni,Received,Skillansh.com | +91-9922045007
+SKL-2026-112,2026-11-12,Skillansh Training Labs India,Pune,Accounts & MIS,PBI-DASH-02,30,2800,15,Sneha Patil,Received,Skillansh.com | +91-9922045007

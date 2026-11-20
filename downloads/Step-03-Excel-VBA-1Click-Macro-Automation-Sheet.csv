@@ -1,0 +1,15 @@
+# ==============================================================================
+# SKILLANSH PRACTICAL WORKBOOK — STEP 03: EXCEL VBA & 1-CLICK MACRO BUTTONS
+# Official Practice Dataset | www.skillansh.com | Mentor: Girish Shelar (+91 9922045007)
+# Copyright (c) 2026 Skillansh. Watermarked Educational Dataset — Do Not Redistribute.
+# Tasks to Practice: 1) 1-Click Auto-Format & Highlight Overdue Macro 2) Split Sheet by Branch_City Macro 3) Export Summary to PDF Button
+# ==============================================================================
+Record_ID,Branch_City,Cost_Center,Voucher_Date,Party_Ledger_Name,Expense_Category,Taxable_Amount_INR,GST_18_Pct_INR,Total_Voucher_INR,Approval_Status,Macro_Batch_Tag
+SKL-VBA-01,Pune,CC-101,2026-11-01,Skillansh Cloud Infrastructure,IT & Software,25000,4500,29500,Approved,www.skillansh.com
+SKL-VBA-02,Mumbai,CC-204,2026-11-02,Western Express Logistics,Freight & Transport,18400,3312,21712,Pending Review,www.skillansh.com
+SKL-VBA-03,Pune,CC-101,2026-11-03,Baner Office Utilities,Admin & Facility,12000,2160,14160,Approved,www.skillansh.com
+SKL-VBA-04,Nagpur,CC-309,2026-11-04,Vidarbha Packaging Supplies,Raw Material,42000,7560,49560,Approved,www.skillansh.com
+SKL-VBA-05,Mumbai,CC-204,2026-11-05,Andheri Corporate Services,Professional Fees,35000,6300,41300,Hold - Missing Bill,www.skillansh.com
+SKL-VBA-06,Nashik,CC-412,2026-11-06,Godavari Electricals Ltd,Maintenance,15600,2808,18408,Approved,www.skillansh.com
+SKL-VBA-07,Pune,CC-101,2026-11-07,Skillansh Digital Media Lab,Marketing & Training,28000,5040,33040,Approved,www.skillansh.com
+SKL-VBA-08,Nagpur,CC-309,2026-11-08,Central India Couriers,Freight & Transport,9500,1710,11210,Pending Review,www.skillansh.com
