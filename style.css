@@ -7055,7 +7055,7 @@ p[style*="text-align: center"] {
   }
 }
 
-/* Content & Curriculum Structure Anti-Copy Protection */
+/* Content & Curriculum Structure Anti-Copy & Anti-Screenshot Deterrent Protection */
 .bento-card,
 .cohort-modules-column,
 .smart-visible-card,
@@ -7066,7 +7066,54 @@ p[style*="text-align: center"] {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  -webkit-touch-callout: none;
+  position: relative;
 }
+
+/* Subtle embedded brand watermark against mobile camera photos & screenshots */
+.bento-card::after,
+.smart-visible-card::after,
+.cohort-mod-item::after {
+  content: "© Skillansh · www.skillansh.com";
+  position: absolute;
+  bottom: 6px;
+  right: 12px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: rgba(30, 58, 95, 0.16);
+  pointer-events: none;
+  letter-spacing: 0.03em;
+  user-select: none;
+}
+
+/* Instant blur shield when PrintScreen or screenshot shortcut is pressed */
+body.skillansh-capture-shield .bento-card,
+body.skillansh-capture-shield .cohort-modules-column,
+body.skillansh-capture-shield .smart-visible-card,
+body.skillansh-capture-shield .curriculum-card-stage {
+  filter: blur(14px) !important;
+  transition: filter 0.05s ease !important;
+}
+
+/* Block Save-as-PDF / Print scraping of curriculum cards */
+@media print {
+  .bento-ribbon-grid,
+  .cohort-split-layout,
+  .visible-steps-grid,
+  .curriculum-card-stage {
+    display: none !important;
+  }
+  body::before {
+    content: "Protected 5-Step Practical Curriculum © Skillansh (www.skillansh.com) by Girish Shelar. Printing and PDF export of course modules are disabled.";
+    display: block;
+    padding: 3rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+    color: #1E3A5F;
+  }
+}
+
 input, textarea, select, a[href^="mailto:"], a[href^="tel:"] {
   -webkit-user-select: text !important;
   -moz-user-select: text !important;

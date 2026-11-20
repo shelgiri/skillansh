@@ -1502,6 +1502,32 @@ function initQuickEnquiryModal() {
 }
 
 function initContentCopyProtection() {
+  const showSecurityShieldNotice = (reason) => {
+    let badge = document.getElementById('skillansh-security-toast');
+    if (!badge) {
+      badge = document.createElement('div');
+      badge.id = 'skillansh-security-toast';
+      badge.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#0F172A;color:#F8FAFC;border:1.5px solid #F59E0B;padding:0.65rem 1.25rem;border-radius:999px;font-size:0.82rem;font-weight:700;z-index:999999;box-shadow:0 10px 25px rgba(15,23,42,0.45);pointer-events:none;opacity:0;transition:opacity 0.2s ease;';
+      document.body.appendChild(badge);
+    }
+    badge.textContent = reason || '🔒 Protected Curriculum © Skillansh (www.skillansh.com) — Copying & Screenshots Restricted';
+    badge.style.opacity = '1';
+    clearTimeout(window.__skillanshToastTimer);
+    window.__skillanshToastTimer = setTimeout(() => {
+      if (badge) badge.style.opacity = '0';
+    }, 2600);
+  };
+
+  const triggerCurriculumBlurFlash = () => {
+    document.body.classList.add('skillansh-capture-shield');
+    showSecurityShieldNotice('🔒 Screenshot & Screen Capture Restricted — © Skillansh Practical Curriculum');
+    clearTimeout(window.__skillanshBlurTimer);
+    window.__skillanshBlurTimer = setTimeout(() => {
+      document.body.classList.remove('skillansh-capture-shield');
+    }, 1800);
+  };
+
+  // 1. Block Right-Click & Image/Card Dragging on Curriculum Sections
   document.addEventListener('contextmenu', (e) => {
     const target = e.target;
     if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) {
@@ -1509,19 +1535,63 @@ function initContentCopyProtection() {
     }
     if (target && target.closest && target.closest('.protected-copy-zone, .bento-card, .cohort-split-layout, .smart-visible-card, .curriculum-card-stage')) {
       e.preventDefault();
+      showSecurityShieldNotice('🔒 Curriculum Protected © Skillansh (www.skillansh.com)');
     }
   });
 
+  document.addEventListener('dragstart', (e) => {
+    const target = e.target;
+    if (target && (target.tagName === 'IMG' || (target.closest && target.closest('.bento-card, .smart-visible-card, .cohort-split-layout')))) {
+      e.preventDefault();
+    }
+  });
+
+  // 2. Intercept Copy event — replace any copied curriculum text with copyright attribution
+  document.addEventListener('copy', (e) => {
+    const target = e.target;
+    if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) {
+      return;
+    }
+    const sel = window.getSelection ? window.getSelection().toString() : '';
+    if (sel && sel.length > 60) {
+      if (e.clipboardData) {
+        e.clipboardData.setData('text/plain', 'Protected 5-Step Practical Curriculum © Skillansh (www.skillansh.com) by Girish Shelar. Unauthorized reproduction prohibited.');
+        e.preventDefault();
+        showSecurityShieldNotice('🔒 Copying Restricted — © Skillansh (www.skillansh.com)');
+      }
+    }
+  });
+
+  // 3. Detect PrintScreen, Snipping shortcuts (Win+Shift+S, Cmd+Shift+3/4), Ctrl+P, Ctrl+S, Ctrl+U
   document.addEventListener('keydown', (e) => {
     const target = e.target;
     if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) {
       return;
     }
     const key = (e.key || '').toLowerCase();
-    if ((e.ctrlKey || e.metaKey) && (key === 'u' || key === 's' || key === 'c')) {
-      const sel = window.getSelection ? window.getSelection().toString() : '';
-      if (key === 'u' || key === 's' || sel.length > 120) {
-        e.preventDefault();
+    if (e.key === 'PrintScreen' || e.keyCode === 44) {
+      triggerCurriculumBlurFlash();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText('Protected Content © Skillansh (www.skillansh.com)').catch(() => {});
+      }
+      return;
+    }
+    // Windows Snipping Tool (Meta+Shift+S) or Mac Screenshot (Meta+Shift+3/4/5)
+    if (e.metaKey && e.shiftKey && (key === 's' || key === '3' || key === '4' || key === '5')) {
+      triggerCurriculumBlurFlash();
+      return;
+    }
+    if ((e.ctrlKey || e.metaKey) && (key === 'u' || key === 's' || key === 'p')) {
+      e.preventDefault();
+      triggerCurriculumBlurFlash();
+    }
+  });
+
+  document.addEventListener('keyup', (e) => {
+    if (e.key === 'PrintScreen' || e.keyCode === 44) {
+      triggerCurriculumBlurFlash();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText('Protected Content © Skillansh (www.skillansh.com)').catch(() => {});
       }
     }
   });

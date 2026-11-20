@@ -83,7 +83,7 @@ Every step includes hands-on practice datasets and a <strong>Verified Skillansh 
 
     pricing: {
       en: {
-        text: `<strong>🔥 1st Founding Batch Introductory Fees (Limited to 15–20 Seats/Batch):</strong><br><br>
+        text: `<strong>🔥 1st Founding Batch Introductory Fees (First 51 Learners &middot; 15–20 per Live Batch):</strong><br><br>
 • <strong>🏆 All-In-One 5-Step Mastery Program (35 Days):</strong> <strong>₹14,999</strong> (Includes all 5 Steps + Career Lab + 1-on-1 Mentorship + Master Certificate &middot; Individual sum ₹16,994)<br>
 • <strong>🎯 Instant Spot Booking Token:</strong> <strong>₹500</strong> (Locks your 1st Batch introductory fee today &middot; 100% deducted from total fee)<br>
 • <strong>Individual Stepwise Courses:</strong><br>
@@ -93,12 +93,12 @@ Every step includes hands-on practice datasets and a <strong>Verified Skillansh 
   - Step 04 (Power Query & Power BI): <strong>₹3,499</strong><br>
   - Step 05 (Smart AI & Prompts): <strong>₹4,499</strong><br>
   - Student Resume & Interview Lab: <strong>₹1,499</strong><br><br>
-<em>⚠️ Hurry: Once 1st Batch seats are filled, prices will increase for next batches!</em>`,
+<em>⚠️ Hurry: Valid for First 51 Learners only — once seats fill, prices will increase for next batches!</em>`,
         cta: { text: `🚀 Book Your 1st Batch Seat Now`, action: 'enrol_cohort' },
         chips: ['📚 5-Step Course Structure', '🎯 Spot Booking (₹500)', '🟢 Free Live Workshop', '💬 WhatsApp Support']
       },
       mr: {
-        text: `<strong>🔥 १ल्या बॅचसाठी विशेष प्रारंभिक फी (फक्त १५–२० जागा प्रति बॅच):</strong><br><br>
+        text: `<strong>🔥 १ल्या बॅचसाठी विशेष प्रारंभिक फी (पहिले ५१ विद्यार्थी &middot; १५–२० प्रति लाइव्ह बॅच):</strong><br><br>
 • <strong>🏆 ऑल-इन-वन ५-स्टेप मास्टरी प्रोग्राम (३५ दिवस):</strong> <strong>₹१४,९९९</strong> (सर्व ५ स्टेप्स + करिअर लॅब + १-ऑन-१ मार्गदर्शन + मास्टर सर्टिफिकेट &middot; स्वतंत्र एकूण ₹१६,९९४)<br>
 • <strong>🎯 इन्स्टंट स्पॉट बुकिंग टोकन:</strong> <strong>₹५००</strong> (आजच १ल्या बॅचची फी लॉक करा &middot; मुख्य फीमधून १००% वजा)<br>
 • <strong>स्वतंत्र स्टेपनुसार फी:</strong><br>
@@ -108,19 +108,19 @@ Every step includes hands-on practice datasets and a <strong>Verified Skillansh 
   - स्टेप ०४ (Power Query व Power BI): <strong>₹३,४९९</strong><br>
   - स्टेप ०५ (स्मार्ट AI व प्रॉम्प्ट्स): <strong>₹४,४९९</strong><br>
   - विद्यार्थी रेझ्युमे व इंटरव्ह्यू लॅब: <strong>₹१,४९९</strong><br><br>
-<em>⚠️ घाई करा: पहिल्या बॅचच्या जागा पूर्ण होताच पुढील बॅचची फी वाढेल!</em>`,
+<em>⚠️ घाई करा: पहिल्या ५१ विद्यार्थ्यांच्या जागा पूर्ण होताच पुढील बॅचची फी वाढेल!</em>`,
         cta: { text: `🚀 १ल्या बॅचमध्ये प्रवेश घ्या`, action: 'enrol_cohort' },
         chips: ['📚 ५-स्टेप अभ्यासक्रम रचना', '🎯 स्पॉट बुकिंग (₹५००)', '🟢 मोफत लाइव्ह कार्यशाळा', '💬 WhatsApp सपोर्ट']
       },
       hi: {
-        text: `<strong>🔥 पहले बैच (1st Batch) की विशेष शुरुआती फीस (सीमित 15–20 सीटें):</strong><br><br>
+        text: `<strong>🔥 पहले बैच (1st Batch) की विशेष शुरुआती फीस (प्रथम 51 शिक्षार्थी &middot; 15–20 प्रति लाइव बैच):</strong><br><br>
 • <strong>🏆 ऑल-इन-वन 5-स्टेप मास्टरी प्रोग्राम (35 दिन):</strong> <strong>₹14,999</strong> (सभी 5 स्टेप्स + करियर लैब + 1-ऑन-1 मेंटरशिप + मास्टर सर्टिफिकेट)<br>
 • <strong>🎯 इंस्टेंट स्पॉट बुकिंग टोकन:</strong> <strong>₹500</strong> (1st बैच की फीस आज ही लॉक करें &middot; कुल फीस से 100% समायोजित)<br>
 • <strong>स्टेप-बाय-स्टेप कोर्स फीस:</strong><br>
   - स्टेप 01 (स्मार्ट एक्सेल): <strong>₹1,999</strong> | स्टेप 02 (MIS): <strong>₹2,499</strong><br>
   - स्टेप 03 (VBA मैक्रो): <strong>₹2,999</strong> | स्टेप 04 (Power BI): <strong>₹3,499</strong><br>
   - स्टेप 05 (स्मार्ट AI व प्रॉम्प्ट्स): <strong>₹4,499</strong> | स्टूडेंट ट्रैक: <strong>₹1,499</strong><br><br>
-<em>⚠️ जल्दी करें: 1st बैच की सीटें भरने के बाद अगले बैच की फीस बढ़ जाएगी!</em>`,
+<em>⚠️ जल्दी करें: प्रथम 51 सीटें भरने के बाद अगले बैच की फीस बढ़ जाएगी!</em>`,
         cta: { text: `🚀 अपनी 1st बैच सीट बुक करें`, action: 'enrol_cohort' },
         chips: ['📚 5-स्टेप कोर्स स्ट्रक्चर', '🎯 स्पॉट बुकिंग (₹500)', '🟢 फ्री लाइव वर्कशॉप', '💬 WhatsApp सहायता']
       }
@@ -129,7 +129,7 @@ Every step includes hands-on practice datasets and a <strong>Verified Skillansh 
     spot: {
       en: {
         text: `<strong>🎯 Instant Spot Booking Token (₹500 — Locks 1st Batch Rate):</strong><br><br>
-Because our 1st Founding Batch has only 15–20 seats per section, you can lock your seat and today's introductory fee instantly by paying just <strong>₹500</strong>!<br><br>
+Because our 1st Founding Batch introductory fee is limited to the First 51 Learners (15–20 per live batch), you can lock your seat and today's introductory fee instantly by paying just <strong>₹500</strong>!<br><br>
 • Your seat in the 1st Batch is officially reserved.<br>
 • The ₹500 token is <strong>100% deducted</strong> from your course or All-In-One program fee.<br>
 • Protects you from next-batch price increases.`,
@@ -138,7 +138,7 @@ Because our 1st Founding Batch has only 15–20 seats per section, you can lock 
       },
       mr: {
         text: `<strong>🎯 इन्स्टंट स्पॉट बुकिंग टोकन (₹५०० — १ली बॅच फी लॉक करा):</strong><br><br>
-पहिल्या बॅचमध्ये फक्त १५-२० जागा असल्याने, आपण केवळ <strong>₹५०० टोकन</strong> भरून आपली जागा आणि १ल्या बॅचची विशेष फी त्वरित सुरक्षित करू शकता!<br><br>
+पहिल्या बॅचची प्रारंभिक फी फक्त पहिल्या ५१ विद्यार्थ्यांसाठी (१५-२० प्रति लाइव्ह बॅच) मर्यादित असल्याने, आपण केवळ <strong>₹५०० टोकन</strong> भरून आपली जागा आणि १ल्या बॅचची विशेष फी त्वरित सुरक्षित करू शकता!<br><br>
 • हे ₹५०० तुमच्या मुख्य कोर्स फीमधून <strong>१००% वजा</strong> केले जातात.<br>
 • पुढील बॅचच्या दरवाढीपासून तुमचे संरक्षण होते.`,
         cta: { text: `🎯 आताच ₹५०० मध्ये जागा लॉक करा`, action: 'spot_booking', url: SPOT_BOOKING_URL },
