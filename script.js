@@ -1174,7 +1174,114 @@ function initEnrolModal() {
 }
 
 /* ---------- Quick Enquiry Modal (Option A) ---------- */
+function ensureQuickEnquiryModalInjected() {
+  if (!document.getElementById('open-quick-enquiry-btn')) {
+    const navWrap = document.querySelector('.nav-wrap');
+    const mobileMenuBtn = document.getElementById('mobile-menu');
+    if (navWrap) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'nav-enquiry-btn';
+      btn.id = 'open-quick-enquiry-btn';
+      btn.setAttribute('aria-label', 'Quick Enquiry');
+      btn.innerHTML = '<span class="nav-enquiry-icon">✉️</span><span data-en="Quick Enquiry" data-mr="त्वरित विचारणा">Quick Enquiry</span>';
+      if (mobileMenuBtn) {
+        navWrap.insertBefore(btn, mobileMenuBtn);
+      } else {
+        navWrap.appendChild(btn);
+      }
+    }
+  }
+
+  const navLinks = document.getElementById('nav-links');
+  if (navLinks && !document.getElementById('open-quick-enquiry-mobile-btn')) {
+    const li = document.createElement('li');
+    li.className = 'mobile-menu-cta';
+    li.innerHTML = '<button type="button" class="nav-enquiry-btn" id="open-quick-enquiry-mobile-btn" style="width:100%; justify-content:center; padding:0.65rem 1rem; font-size:0.92rem; min-height:42px;"><span class="nav-enquiry-icon">✉️</span><span data-en="Quick Enquiry" data-mr="त्वरित विचारणा">Quick Enquiry</span></button>';
+    navLinks.appendChild(li);
+  }
+
+  if (!document.getElementById('quick-enquiry-overlay')) {
+    const modalWrapper = document.createElement('div');
+    modalWrapper.className = 'quick-enquiry-overlay';
+    modalWrapper.id = 'quick-enquiry-overlay';
+    modalWrapper.setAttribute('role', 'dialog');
+    modalWrapper.setAttribute('aria-modal', 'true');
+    modalWrapper.setAttribute('aria-labelledby', 'quick-enquiry-title');
+    modalWrapper.style.display = 'none';
+    modalWrapper.innerHTML = `
+    <div class="quick-enquiry-box">
+      <button type="button" class="quick-enquiry-close" id="quick-enquiry-close" aria-label="Close enquiry popup">&times;</button>
+      <div class="quick-enquiry-header">
+        <span class="quick-enquiry-badge" data-en="⚡ Fast Response" data-mr="⚡ जलद प्रतिसाद">⚡ Fast Response</span>
+        <h3 id="quick-enquiry-title" data-en="Enquiry" data-mr="विचारणा करा">Enquiry</h3>
+        <p class="quick-enquiry-sub" data-en="Have questions about the 30-Day Cohort, Live Workshop, batch timing, or fees? Send your details and our mentor team will connect with you." data-mr="३०-दिवसीय कोहॉर्ट, लाइव्ह कार्यशाळा, बॅचची वेळ किंवा शुल्काबद्दल काही प्रश्न आहेत? तुमची माहिती पाठवा, आमची मेंटर टीम संपर्क करेल.">Have questions about the 30-Day Cohort, Live Workshop, batch timing, or fees? Send your details and our mentor team will connect with you.</p>
+      </div>
+      <form id="quick-enquiry-form" novalidate>
+        <div class="qe-form-row">
+          <div class="qe-form-group">
+            <label for="qe-firstname" data-en="First Name *" data-mr="नाव *">First Name *</label>
+            <input type="text" id="qe-firstname" name="firstname" required placeholder="e.g. Rahul" autocomplete="given-name">
+            <span class="qe-field-error" id="err-qe-firstname" data-en="Please enter your first name." data-mr="कृपया तुमचे नाव प्रविष्ट करा.">Please enter your first name.</span>
+          </div>
+          <div class="qe-form-group">
+            <label for="qe-lastname" data-en="Surname / Last Name *" data-mr="आडनाव *">Surname / Last Name *</label>
+            <input type="text" id="qe-lastname" name="lastname" required placeholder="e.g. Sharma" autocomplete="family-name">
+            <span class="qe-field-error" id="err-qe-lastname" data-en="Please enter your surname." data-mr="कृपया तुमचे आडनाव प्रविष्ट करा.">Please enter your surname.</span>
+          </div>
+        </div>
+        <div class="qe-form-row">
+          <div class="qe-form-group">
+            <label for="qe-phone" data-en="WhatsApp / Phone *" data-mr="व्हॉट्सॲप / मोबाइल नंबर *">WhatsApp / Phone *</label>
+            <input type="tel" id="qe-phone" name="phone" required placeholder="+91 98765 43210" autocomplete="tel">
+            <span class="qe-field-error" id="err-qe-phone" data-en="Please enter a valid 10-digit number." data-mr="कृपया वैध १०-अंकी मोबाइल नंबर प्रविष्ट करा.">Please enter a valid 10-digit number.</span>
+          </div>
+          <div class="qe-form-group">
+            <label for="qe-email" data-en="Email Address (Optional)" data-mr="ईमेल पत्ता (ऐच्छिक)">Email Address (Optional)</label>
+            <input type="email" id="qe-email" name="email" placeholder="name@example.com" autocomplete="email">
+            <span class="qe-field-error" id="err-qe-email" data-en="Please enter a valid email." data-mr="कृपया वैध ईमेल प्रविष्ट करा.">Please enter a valid email.</span>
+          </div>
+        </div>
+        <div class="qe-form-group">
+          <label for="qe-topic" data-en="What are you enquiring about?" data-mr="तुम्हाला कशाबद्दल विचारणा करायची आहे?">What are you enquiring about?</label>
+          <select id="qe-topic" name="topic" class="qe-select">
+            <option value="30-Day Practical Cohort" selected data-en="30-Day Practical Cohort (Excel, Automation &amp; MIS)" data-mr="३०-दिवसीय प्रॅक्टिकल कोहॉर्ट (Excel, ऑटोमेशन व MIS)">30-Day Practical Cohort (Excel, Automation &amp; MIS)</option>
+            <option value="Weekend Masterclass / Workshop" data-en="Weekend Masterclass / Workshop" data-mr="वीकेंड मास्टरक्लास / कार्यशाळा">Weekend Masterclass / Workshop</option>
+            <option value="Fees, Installments &amp; Offers" data-en="Fees, Installments &amp; Offers" data-mr="फी, हप्ते व विशेष ऑफर्स">Fees, Installments &amp; Offers</option>
+            <option value="Curriculum &amp; Syllabus Details" data-en="Curriculum &amp; Syllabus Details" data-mr="अभ्यासक्रम व सिलॅबस माहिती">Curriculum &amp; Syllabus Details</option>
+            <option value="1-on-1 Career Consultation" data-en="1-on-1 Career Consultation" data-mr="१-ऑन-१ करिअर मार्गदर्शन">1-on-1 Career Consultation</option>
+            <option value="General Query" data-en="Other Questions" data-mr="इतर प्रश्न">Other Questions</option>
+          </select>
+        </div>
+        <div class="qe-form-group">
+          <label for="qe-message" data-en="Your Question / Message *" data-mr="तुमचा प्रश्न / संदेश *">Your Question / Message *</label>
+          <textarea id="qe-message" name="message" rows="3" required placeholder="Type your question or query here..." data-placeholder-en="Type your question or query here..." data-placeholder-mr="तुमचा प्रश्न किंवा विचारणा येथे टाईप करा..."></textarea>
+          <span class="qe-field-error" id="err-qe-message" data-en="Please write your question." data-mr="कृपया तुमचा प्रश्न लिहा.">Please write your question.</span>
+        </div>
+        <div class="qe-trust-note">
+          <span data-en="🔒 Direct to Google Sheets &middot; 100% Privacy Protected" data-mr="🔒 थेट गुगल शीटमध्ये सुरक्षित &middot; १००% गोपनीयता">🔒 Direct to Google Sheets &middot; 100% Privacy Protected</span>
+        </div>
+        <button type="submit" class="qe-submit-btn" id="qe-submit-btn">
+          <span id="qe-btn-text" data-en="Submit Enquiry &rarr;" data-mr="विचारणा पाठवा &rarr;">Submit Enquiry &rarr;</span>
+        </button>
+      </form>
+      <div class="qe-contact-link-row">
+        <span data-en="Need more options or detailed form?" data-mr="अधिक पर्याय किंवा सविस्तर फॉर्म हवा आहे?">Need more options or detailed form?</span>
+        <a href="contact.html" class="qe-contact-page-link" data-en="Go to Full Contact Page &rarr;" data-mr="संपूर्ण संपर्क पेजवर जा &rarr;">Go to Full Contact Page &rarr;</a>
+      </div>
+      <div class="qe-success-box" id="qe-success-box" style="display:none;">
+        <div style="font-size:2.5rem; margin-bottom:0.4rem;">🎉</div>
+        <h4 style="color:#065F46; font-size:1.25rem; font-weight:800; margin-bottom:0.35rem;" data-en="Enquiry Submitted Successfully!" data-mr="विचारणा यशस्वीरित्या पाठवली!">Enquiry Submitted Successfully!</h4>
+        <p style="color:#047857; font-size:0.88rem; line-height:1.55; margin-bottom:1.15rem;" data-en="Thank you! Your enquiry has been recorded in our system. Our mentor team will connect with you shortly on WhatsApp or phone." data-mr="धन्यवाद! तुमची विचारणा आमच्या सिस्टीममध्ये नोंदवली गेली आहे. आमची मेंटर टीम लवकरच तुमच्याशी व्हॉट्सॲप किंवा फोनवर संपर्क साधेल.">Thank you! Your enquiry has been recorded in our system. Our mentor team will connect with you shortly on WhatsApp or phone.</p>
+        <button type="button" class="qe-done-btn" id="qe-done-btn" data-en="Close" data-mr="बंद करा">Close</button>
+      </div>
+    </div>`;
+    document.body.appendChild(modalWrapper);
+  }
+}
+
 function initQuickEnquiryModal() {
+  ensureQuickEnquiryModalInjected();
   const openDesktopBtn = document.getElementById('open-quick-enquiry-btn');
   const openMobileBtn = document.getElementById('open-quick-enquiry-mobile-btn');
   const overlay = document.getElementById('quick-enquiry-overlay');
@@ -1389,6 +1496,7 @@ function initQuickEnquiryModal() {
 }
 
 function initAll() {
+  ensureQuickEnquiryModalInjected();
   initLangSwitcher();
   applyContactConfig();
   bindCtas();
