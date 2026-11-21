@@ -7121,3 +7121,216 @@ input, textarea, select, a[href^="mailto:"], a[href^="tel:"] {
   -ms-user-select: text !important;
   user-select: text !important;
 }
+
+/* ============ ORIGINAL SKILLANSH NON-HUMAN BEFORE vs AFTER UI SCREEN MOCKUPS ============ */
+.sk-ui-mini-window {
+  margin-top: 0.65rem;
+  border-radius: 10px;
+  overflow: hidden;
+  font-family: 'Plus Jakarta Sans', monospace, sans-serif;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.25);
+}
+
+.sk-ui-before-win {
+  background: #1C1926;
+  border: 1px solid rgba(248, 113, 113, 0.45);
+  color: #F8FAFC;
+}
+
+.sk-ui-after-win {
+  background: #0C231E;
+  border: 1px solid rgba(52, 211, 153, 0.5);
+  color: #F8FAFC;
+}
+
+.sk-ui-win-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  padding: 0.35rem 0.6rem;
+  background: rgba(0, 0, 0, 0.35);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sk-ui-dots {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.sk-ui-dots i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+  background: #64748B;
+}
+
+.sk-ui-dots i:nth-child(1) { background: #EF4444; }
+.sk-ui-dots i:nth-child(2) { background: #F59E0B; }
+.sk-ui-dots i:nth-child(3) { background: #10B981; }
+
+.sk-ui-win-title {
+  font-size: 0.66rem;
+  color: #CBD5E1;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sk-ui-clock-bad {
+  background: rgba(239, 68, 68, 0.22);
+  color: #FCA5A5;
+  border: 1px solid rgba(248, 113, 113, 0.4);
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.64rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.sk-ui-clock-good {
+  background: rgba(16, 185, 129, 0.24);
+  color: #6EE7B7;
+  border: 1px solid rgba(52, 211, 153, 0.45);
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.64rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.sk-ui-grid-table {
+  padding: 0.4rem 0.55rem;
+}
+
+.sk-ui-row {
+  display: grid;
+  grid-template-columns: 36px 1.2fr 1.1fr 68px;
+  gap: 0.35rem;
+  align-items: center;
+  padding: 0.22rem 0.3rem;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.07);
+  font-size: 0.68rem;
+}
+
+.sk-ui-row.sk-ui-head {
+  color: #94A3B8;
+  font-weight: 700;
+  font-size: 0.63rem;
+  text-transform: uppercase;
+}
+
+.sk-err-cell {
+  color: #FCA5A5;
+  font-weight: 800;
+  font-family: monospace;
+}
+
+.sk-err-tag {
+  background: #7F1D1D;
+  color: #FECACA;
+  text-align: center;
+  border-radius: 4px;
+  padding: 0.08rem 0.3rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+}
+
+.sk-ui-ai-bad {
+  background: rgba(127, 29, 29, 0.4);
+  color: #FECACA;
+  padding: 0.32rem 0.6rem;
+  font-size: 0.66rem;
+  border-top: 1px solid rgba(248, 113, 113, 0.25);
+}
+
+.sk-ui-kpi-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem;
+  padding: 0.45rem 0.55rem;
+  flex-wrap: wrap;
+}
+
+.sk-ui-kpi-box {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(52, 211, 153, 0.28);
+  border-radius: 7px;
+  padding: 0.28rem 0.5rem;
+  flex: 1;
+  min-width: 105px;
+}
+
+.sk-kpi-lbl {
+  display: block;
+  font-size: 0.58rem;
+  color: #A7F3D0;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.sk-kpi-val {
+  font-size: 0.78rem;
+  color: #FFFFFF;
+  font-weight: 800;
+}
+
+.sk-kpi-val small {
+  color: #34D399;
+  font-size: 0.62rem;
+  font-weight: 700;
+}
+
+.sk-ui-macro-btn {
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  color: #0F172A;
+  font-weight: 800;
+  font-size: 0.66rem;
+  padding: 0.38rem 0.6rem;
+  border-radius: 7px;
+  white-space: nowrap;
+  box-shadow: 0 3px 10px rgba(245, 158, 11, 0.3);
+}
+
+.sk-ui-bars-strip {
+  padding: 0.2rem 0.6rem 0.4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.sk-bar-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.64rem;
+  color: #CBD5E1;
+}
+
+.sk-bar-track {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.sk-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #10B981, #34D399);
+  border-radius: 999px;
+}
+
+.sk-ui-ai-good {
+  background: rgba(6, 95, 70, 0.55);
+  color: #A7F3D0;
+  padding: 0.32rem 0.6rem;
+  font-size: 0.66rem;
+  font-weight: 700;
+  border-top: 1px solid rgba(52, 211, 153, 0.28);
+}
