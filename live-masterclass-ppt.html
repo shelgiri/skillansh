@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Skillansh Live Masterclass Presentation Deck | Girish Shelar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0A1628;
+      --bg-card: #112240;
+      --gold: #F59E0B;
+      --gold-light: #FDE68A;
+      --emerald: #10B981;
+      --emerald-light: #A7F3D0;
+      --text-white: #F8FAFC;
+      --text-muted: #94A3B8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-white);
+      overflow-x: hidden;
+    }
+    .deck-topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 58px;
+      background: rgba(10, 22, 40, 0.95);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+    .deck-brand {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .deck-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .deck-btn {
+      background: #1E3A5F;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.45rem 1rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+    .deck-btn:hover { background: var(--gold); color: #0A1628; }
+    .slide-counter { font-size: 0.88rem; color: var(--text-muted); font-weight: 600; }
+
+    .slides-wrapper {
+      margin-top: 58px;
+      min-height: calc(100vh - 58px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .slide {
+      display: none;
+      width: 100%;
+      max-width: 1140px;
+      min-height: 620px;
+      background: linear-gradient(145deg, #112240 0%, #0D1B33 100%);
+      border: 1.5px solid rgba(245, 158, 11, 0.28);
+      border-radius: 24px;
+      padding: 3.2rem 3.5rem;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.55);
+      position: relative;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .slide.active { display: flex; }
+    .slide-tag {
+      display: inline-block;
+      background: rgba(245, 158, 11, 0.16);
+      color: var(--gold-light);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      padding: 0.3rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+    .slide h1, .slide h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.9rem, 3.3vw, 2.75rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: #FFFFFF;
+    }
+    .slide h1 span, .slide h2 span { color: var(--gold-light); }
+    .slide p.lead {
+      font-size: 1.12rem;
+      color: #CBD5E1;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+    .card-box {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 1.35rem;
+    }
+    .card-box h3 {
+      font-size: 1.15rem;
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+    }
+    .card-box p { font-size: 0.94rem; color: #CBD5E1; line-height: 1.55; }
+
+    .value-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.5rem 0 1rem;
+    }
+    .value-table th, .value-table td {
+      padding: 0.7rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.95rem;
+    }
+    .value-table th { color: var(--gold-light); font-weight: 800; }
+    .value-table td.val-col { text-align: right; font-weight: 800; color: #FDE68A; font-size: 1.05rem; }
+
+    .price-reveal-banner {
+      background: linear-gradient(90deg, rgba(16,185,129,0.2) 0%, rgba(245,158,11,0.25) 100%);
+      border: 2px solid var(--gold);
+      border-radius: 18px;
+      padding: 1.35rem 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 0.75rem;
+    }
+    .old-val {
+      font-size: 1.4rem;
+      color: #F87171;
+      text-decoration: line-through;
+      font-weight: 700;
+    }
+    .new-val {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #34D399;
+      font-family: 'Outfit', sans-serif;
+    }
+    .slide-footer {
+      margin-top: 1.5rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    @media print {
+      .deck-topbar { display: none; }
+      .slides-wrapper { display: block; margin: 0; padding: 0; }
+      .slide { display: flex !important; page-break-after: always; margin-bottom: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="deck-topbar">
+    <div class="deck-brand">
+      <span>⚡ SKILLANSH LIVE MASTERCLASS PPT DECK</span>
+      <span style="font-size:0.78rem; color:#94A3B8; font-weight:500;">(Presenter: Girish Shelar · Use Left/Right Arrow Keys)</span>
+    </div>
+    <div class="deck-controls">
+      <button class="deck-btn" onclick="prevSlide()">&larr; Prev Slide</button>
+      <span class="slide-counter" id="slide-counter">Slide 1 / 10</span>
+      <button class="deck-btn" onclick="nextSlide()">Next Slide &rarr;</button>
+      <button class="deck-btn" onclick="window.print()">🖨️ Save as PDF</button>
+    </div>
+  </div>
+
+  <div class="slides-wrapper">
+
+    <!-- SLIDE 1: WELCOME & DAILY LIFE PROMISE -->
+    <div class="slide active">
+      <div>
+        <span class="slide-tag">90-Min Live Practical Masterclass</span>
+        <h1>Learn Only What You Use in <span>Daily Practical Life</span> — Make Your Work &amp; Lifestyle Easy.</h1>
+        <p class="lead">Welcome! Today is NOT a boring college lecture. In the next 90 minutes, you will see how 3 hours of daily office headache finishes in 10 minutes—so you can leave office at 6 PM stress-free.</p>
+        <div class="grid-3">
+          <div class="card-box">
+            <h3>1. See the Magic First</h3>
+            <p>We don't start with theory. In the next 10 minutes, you will watch a messy 3-hour office file get automated in 10 seconds live on screen.</p>
+          </div>
+          <div class="card-box">
+            <h3>2. Only Daily-Life Skills</h3>
+            <p>90% of textbook formulas are never used in real jobs. We teach ONLY the 10% practical tools that save you 2–3 hours every single day.</p>
+          </div>
+          <div class="card-box">
+            <h3>3. Save AI Subscription Money</h3>
+            <p>Stop paying ₹2,000/month for AI tools out of confusion. Learn how to command free AI accurately with structured prompts.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Guided by Girish Shelar (15+ Years Industry Experience)</span>
+        <span>www.skillansh.com · Confidential Live Presentation</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: WHY PEOPLE STRUGGLE EVERY DAY -->
+    <div class="slide">
+      <div>
+        <span class="slide-tag">The Daily Office Reality</span>
+        <h2>Why Do Hardworking People Still Work Late Until <span>8:00 PM Every Day?</span></h2>
+        <p class="lead">It is not because you lack talent. It is because nobody ever taught you how real office data flows in daily life:</p>
+        <div class="grid-2">
+          <div class="card-box">
+            <h3>❌ The Old Stressful Lifestyle</h3>
+            <p>• Typing &amp; fixing broken VLOOKUPs manually for 3 hours daily.<br>
+               • Copy-pasting 12 different branch or Tally files every month-end.<br>
+               • Panicking at 5:30 PM when the Boss asks for an urgent summary.<br>
+               • Buying paid AI subscriptions with half-knowledge and getting wrong numbers.</p>
+          </div>
+          <div class="card-box" style="border-color: rgba(16,185,129,0.5);">
+            <h3 style="color:#34D399;">✅ The Skillansh 10-Minute Lifestyle</h3>
+            <p>• Clean, error-proof tables that calculate automatically.<br>
+               • 1-Click buttons inside Excel that finish your morning routine while you drink tea.<br>
+               • 1-Page visual dashboards your boss understands in 10 seconds.<br>
+               • Free AI writing your formulas, macros, and emails accurately.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Skill First &rarr; Stress-Free Workday &rarr; Promotions Chase You</span>
+        <span>Slide 2 / 10</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: LIVE DEMO 1 - THE 10-SECOND REVERSE FLOW -->
+    <div class="slide">
+      <div>
+        <span class="slide-tag">Live Demo #1 · Reverse-Flow Teaching</span>
+        <h2>Watch 3 Hours of Messy Office Work Finish in <span>10 Seconds Flat</span></h2>
+        <p class="lead">Most mentors bore you with 40 hours of definitions first. In our Reverse-Flow method, you see the finished 1-click magic first—and then build it with your own hands.</p>
+        <div class="grid-3">
+          <div class="card-box">
+            <h3>Step A: Raw Messy File</h3>
+            <p>5,000+ rows of unformatted sales, billing, ageing, and duplicate entries exported from Tally/ERP.</p>
+          </div>
+          <div class="card-box">
+            <h3>Step B: 1-Click Action</h3>
+            <p>Zero manual copy-pasting. One click triggers our automated data cleaning &amp; summary rules.</p>
+          </div>
+          <div class="card-box">
+            <h3>Step C: 10-Sec Dashboard</h3>
+            <p>Instant regional P&amp;L, party ageing, and KPI visual dashboard ready to present to management.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Live Screen-Share Demonstration by Girish Shelar</span>
+        <span>Slide 3 / 10</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: LIVE DEMO 2 - THE TRUTH ABOUT AI & PROMPT ENGINEERING -->
+    <div class="slide">
+      <div>
+        <span class="slide-tag">Live Demo #2 · Stop Wasting Money on AI</span>
+        <h2>Why 95% of People Get Wrong Answers from AI (And Waste <span>₹24,000/Year</span> on Subscriptions)</h2>
+        <p class="lead">Everyone is hyping AI today. Because of half-knowledge, common people buy expensive monthly AI subscriptions—yet still get broken formulas!</p>
+        <div class="grid-2">
+          <div class="card-box">
+            <h3>❌ Unstructured Prompt (Half-Knowledge)</h3>
+            <p><em>"Write an Excel formula to find party overdue amount from my sheet."</em><br><br>
+            <strong>Result:</strong> Generic formula that gives <code>#VALUE!</code> or wrong totals because AI doesn't know your columns or edge cases.</p>
+          </div>
+          <div class="card-box" style="border-color: rgba(16,185,129,0.5);">
+            <h3 style="color:#34D399;">✅ Skillansh 4-Part Structured Prompt</h3>
+            <p><strong>[Role] + [Exact Columns] + [Business Rule] + [Output Format]</strong><br><br>
+            <strong>Result:</strong> Free AI generates the exact error-wrapped XLOOKUP/SUMIFS formula, VBA macro, or DAX code in 5 seconds—saving you ₹2,000/month!</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Give Real Value First &middot; Save Hard-Earned Money</span>
+        <span>Slide 4 / 10</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 5: CONFIDENTIAL 5-STEP PROGRESSIVE ROADMAP REVEAL -->
+    <div class="slide">
+      <div>
+        <span class="slide-tag">🔒 Exclusive Live Reveal · Not Shown on Public Website</span>
+        <h2>The Complete 35-Day <span>5-Step Practical Mastery Roadmap</span></h2>
+        <p class="lead">We complete your full Excel mastery first (Phases 1, 2 &amp; 3), move to visual Power BI (Phase 4), and crown it with Smart AI &amp; Prompt Engineering (Phase 5):</p>
+        <div class="grid-3">
+          <div class="card-box">
+            <h3>Phase 01 (Week 1 · 7 Days)</h3>
+            <p><strong>Smart Excel: Zero to Pro</strong><br>Only the 25+ everyday office formulas, dynamic tables &amp; Pivot summaries you actually use daily.</p>
+          </div>
+          <div class="card-box">
+            <h3>Phase 02 (Week 2 · 7 Days)</h3>
+            <p><strong>Practical MIS &amp; 1-Page Dashboards</strong><br>Automated monthly MIS, ageing trackers, Maker-Checker controls &amp; 1-page boss dashboards.</p>
+          </div>
+          <div class="card-box">
+            <h3>Phase 03 (Week 3 · 7 Days)</h3>
+            <p><strong>Excel VBA &amp; 1-Click Macro Buttons</strong><br><em>(Before Power BI!)</em> Build 1-click buttons inside Excel to format, split sheets &amp; export PDFs.</p>
+          </div>
+          <div class="card-box">
+            <h3>Phase 04 (Week 4 · 7 Days)</h3>
+            <p><strong>Power Query &amp; Power BI Visuals</strong><br>Combine 12+ messy CSV/Tally files in 1 click and build interactive Power BI dashboards with DAX.</p>
+          </div>
+          <div class="card-box" style="border-color: #C084FC;">
+            <h3 style="color:#E9D5FF;">Phase 05 (Week 5 · Capstone)</h3>
+            <p><strong>Smart AI &amp; Exact Prompt Engineering</strong><br>Master structured prompts across top AI tools to generate formulas, VBA, M-Code &amp; DAX in seconds.</p>
+          </div>
+          <div class="card-box" style="border-color: #34D399;">
+            <h3 style="color:#A7F3D0;">Bonus Career &amp; Interview Lab</h3>
+            <p><strong>ATS Resume, Hiring Tests &amp; Certificate</strong><br>Real company Excel hiring tests, LinkedIn makeover, 1-on-1 review &amp; Verified Master Certificate.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>100% Practical Hands-On Datasets &middot; English, मराठी &amp; हिंदी Support</span>
+        <span>Slide 5 / 10</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 6: WHY VBA BEFORE POWER BI & AI AT CAPSTONE -->
+    <div class="slide">
+      <div>
+        <span class="slide-tag">Why Our Sequence Works 10x Better</span>
+        <h2>Why We Teach <span>VBA Before Power BI</span> — And Keep <span>Smart AI as Phase 05</span></h2>
+        <p class="lead">Everything in our 35-day journey is designed around how you actually work at your desk every day:</p>
+        <div class="grid-3">
+          <div class="card-box">
+            <h3>1. Full Excel Mastery First (Weeks 1–3)</h3>
+            <p>Instead of jumping between tools and confusing your mind, you master Formulas (Week 1) &rarr; MIS Dashboards (Week 2) &rarr; 1-Click VBA Macros (Week 3) inside Excel first.</p>
+          </div>
+          <div class="card-box">
+            <h3>2. Multi-File BI Next (Week 4)</h3>
+            <p>Once your Excel &amp; Macro base is rock-solid, stepping into Power Query &amp; Power BI in Week 4 feels effortless and natural.</p>
+          </div>
+          <div class="card-box">
+            <h3>3. Smart AI Multiplies Everything (Week 5)</h3>
+            <p>When you reach Phase 05, you already understand Excel, MIS, VBA &amp; Power BI—so you can command AI to build 10x faster and verify every single number!</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Zero Confusion &middot; Step-by-Step Lifestyle Upgrade</span>
+        <span>Slide 6 / 10</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 7: THE ₹34,000 VALUE STACK SLIDE -->
+    <div class="slide">
+      <div>
+        <span class="slide-tag">Complete Program Value Breakdown</span>
+        <h2>What Is the Real Market Value of All <span>5 Phases + Mentorship?</span></h2>
+        <table class="value-table">
+          <thead>
+            <tr>
+              <th>Practical Phase / Included Deliverable</th>
+              <th style="text-align:right;">Real Market Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Phase 01 (Week 1):</strong> Smart Excel Speed System (Zero to Pro in 7 Days + Practice Datasets)</td>
+              <td class="val-col">₹5,000/-</td>
+            </tr>
+            <tr>
+              <td><strong>Phase 02 (Week 2):</strong> Practical MIS Reporting &amp; 1-Page Executive Dashboards</td>
+              <td class="val-col">₹6,000/-</td>
+            </tr>
+            <tr>
+              <td><strong>Phase 03 (Week 3):</strong> Excel VBA &amp; 1-Click Macro Automation Buttons (Before Power BI)</td>
+              <td class="val-col">₹7,000/-</td>
+            </tr>
+            <tr>
+              <td><strong>Phase 04 (Week 4):</strong> Power Query 1-Click Multi-File Cleaning &amp; Power BI Visuals</td>
+              <td class="val-col">₹7,500/-</td>
+            </tr>
+            <tr>
+              <td><strong>Phase 05 (Week 5 · Capstone):</strong> Smart AI Automation &amp; Structured Prompt Engineering</td>
+              <td class="val-col">₹8,500/-</td>
+            </tr>
+            <tr>
+              <td><strong>Included Career Track:</strong> Company Excel Hiring Test Lab, ATS Resume, 1-on-1 Review &amp; Verified Master Certificate</td>
+              <td class="val-col">Included Free</td>
+            </tr>
+            <tr style="background:rgba(245,158,11,0.12);">
+              <td style="font-size:1.15rem; font-weight:800; color:#FFFFFF;">TOTAL STANDARD PROGRAM VALUE (All 5 Phases + Career Lab)</td>
+              <td class="val-col" style="font-size:1.45rem; color:#F59E0B;">₹34,000/-</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="slide-footer">
+        <span>Next Slide: Exclusive Live Workshop Attendee 50% Founding Grant</span>
+        <span>Slide 7 / 10</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 8: THE 50% OFF LIVE WORKSHOP OFFER (₹34,000 -> ₹17,000) -->
+    <div class="slide">
+      <div>
+        <span class="slide-tag">🔥 Live Workshop Attendee Exclusive Grant</span>
+        <h2>50% Founding Batch Scholarship for Our <span>First 51 Learners Only!</span></h2>
+        <p class="lead">Because you attended this live session and took action to upgrade your daily life, you do NOT pay ₹34,000 today:</p>
+
+        <div class="price-reveal-banner">
+          <div>
+            <div style="font-size:0.9rem; color:#FDE68A; font-weight:700; text-transform:uppercase;">Standard Total Program Fee: <span class="old-val">₹34,000/-</span></div>
+            <div style="font-size:1.25rem; font-weight:800; color:#FFFFFF; margin-top:0.25rem;">🎉 Flat 50% Live Attendee Scholarship (Use Code: <span style="color:#34D399;">LIVE50</span>)</div>
+            <div style="font-size:0.88rem; color:#CBD5E1; margin-top:0.2rem;">Valid strictly for First 51 Learners (15–20 Seats per Live Batch for 1-on-1 Personal Attention)</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:0.8rem; color:#A7F3D0; font-weight:700;">YOUR LIVE SCHOLARSHIP FEE</div>
+            <div class="new-val">₹17,000/-</div>
+            <div style="font-size:0.8rem; color:#FDE68A;">(Or 2 Easy Parts of ₹8,500 × 2)</div>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top:1.25rem;">
+          <div class="card-box" style="border:2px solid #F59E0B;">
+            <h3>🎯 Option A: Lock Your Seat Now with Just ₹500 Spot Token!</h3>
+            <p>Don't have ₹17,000 ready right this minute during the live call? Pay just <strong>₹500 Spot Booking Token</strong> right now to officially reserve 1 of the 51 seats and lock your 50% OFF (₹17,000) rate! (₹500 is 100% deducted from your ₹17,000 fee).</p>
+          </div>
+          <div class="card-box" style="border:2px solid #10B981;">
+            <h3 style="color:#34D399;">🚀 Option B: Direct Full or 2-Part Enrolment</h3>
+            <p>Enrol directly at the 50% Scholarship fee of <strong>₹17,000</strong> (or pay <strong>₹8,500 1st Installment</strong> today and ₹8,500 midway) and get immediate onboarding + practice datasets.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Once First 51 Learner Seats Fill, Fee Reverts to ₹34,000</span>
+        <span>Slide 8 / 10</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 9: HOW TO LOCK YOUR SEAT RIGHT NOW IN 60 SECONDS -->
+    <div class="slide">
+      <div>
+        <span class="slide-tag">Action Step · Takes 60 Seconds</span>
+        <h2>How to Lock Your <span>50% Scholarship Seat</span> Right Now</h2>
+        <p class="lead">Follow these 3 simple steps while we are live on the call:</p>
+        <div class="grid-3">
+          <div class="card-box">
+            <h3>Step 1: Open Website</h3>
+            <p>Go to <strong>www.skillansh.com</strong> and click the gold button:<br><br>
+            <strong>"🔑 Already Attended Live Class? Unlock 50% Scholarship / ₹500 Seat Lock"</strong></p>
+          </div>
+          <div class="card-box">
+            <h3>Step 2: Choose Option</h3>
+            <p>Select either:<br>
+            • <strong>₹500 Spot Booking Token</strong> (to lock your ₹17,000 rate today), OR<br>
+            • <strong>₹17,000 (50% Live Scholarship)</strong> / <strong>₹8,500 (1st Installment)</strong></p>
+          </div>
+          <div class="card-box">
+            <h3>Step 3: Instant Receipt</h3>
+            <p>Complete payment securely via UPI / GPay / PhonePe / Card on Razorpay. Our system automatically logs your receipt and sends your confirmation!</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>WhatsApp Support Desk: +91 9922045007 &middot; support@skillansh.com</span>
+        <span>Slide 9 / 10</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 10: LIVE Q&A & PERSONAL COMMITMENT -->
+    <div class="slide">
+      <div>
+        <span class="slide-tag">Live Q&amp;A With Girish Shelar</span>
+        <h2>One Last Question: Where Will Your Daily Workday Be <span>35 Days From Today?</span></h2>
+        <p class="lead">You can either continue spending 3 hours every day struggling with manual sheets and late evenings—or take 35 days with me to make your work effortless for the rest of your career.</p>
+        <div class="grid-2">
+          <div class="card-box">
+            <h3>📜 What You Walk Away With</h3>
+            <p>✔ 5 Practical Daily-Life Skill Phases (Excel, MIS, VBA, Power BI &amp; Smart AI)<br>
+               ✔ Hands-On Watermarked Office Practice Datasets<br>
+               ✔ Verified Skillansh Master Certificate with Unique ID<br>
+               ✔ Direct 1-on-1 Guidance in English, मराठी &amp; हिंदी</p>
+          </div>
+          <div class="card-box" style="border-color: var(--gold);">
+            <h3>🔥 Lock Your Seat Before Batch Closes</h3>
+            <p><strong>Standard Program Value:</strong> <span style="text-decoration:line-through; color:#F87171;">₹34,000/-</span><br>
+               <strong>Live Attendee 50% Scholarship:</strong> <span style="color:#34D399; font-weight:800; font-size:1.3rem;">₹17,000/- Only</span><br>
+               <strong>Instant Seat Lock Token Today:</strong> <span style="color:#FDE68A; font-weight:800; font-size:1.3rem;">₹500/- Only</span><br>
+               <strong>WhatsApp Help:</strong> +91 9922045007</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Thank You! Let's Open the Floor for Live Questions &amp; Spot Bookings</span>
+        <span>Slide 10 / 10</span>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const counter = document.getElementById('slide-counter');
+
+    function showSlide(index) {
+      if (index < 0) index = 0;
+      if (index >= slides.length) index = slides.length - 1;
+      currentSlide = index;
+      slides.forEach((s, i) => s.classList.toggle('active', i === currentSlide));
+      counter.textContent = `Slide ${currentSlide + 1} / ${slides.length}`;
+    }
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function prevSlide() { showSlide(currentSlide - 1); }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        prevSlide();
+      }
+    });
+  </script>
+</body>
+</html>

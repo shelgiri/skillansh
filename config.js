@@ -21,56 +21,33 @@ window.ACCOUNTPRO_CONFIG = {
   RAZORPAY_KEY_ID: 'rzp_test_TxynQtDHnvxC1V',
   RAZORPAY_BUTTON_ID: '',
   RAZORPAY_PAYMENT_LINK: 'https://rzp.io/rzp/BVYNZBfG',
-  PROGRAM_PRICE_INR: 14999,
+  PROGRAM_PRICE_INR: 34000,
 
-  // 1st Founding Batch Stepwise & All-In-One Payment Plans Configuration
+  // Live Workshop Attendee Scholarship & Payment Plans Configuration
+  // Public website hides pricing/structure; these plans are used in the Live Workshop Checkout Portal (₹34,000 Value -> ₹17,000 50% Grant)
   PAYMENT_PLANS: {
     full: {
       id: 'full',
-      name: 'All-In-One 5-Step Mastery Program (1st Batch Introductory Fee)',
-      amount: 14999,
+      name: 'Complete Practical Office & Lifestyle Mastery Program (Standard Fee)',
+      amount: 34000,
+      link: 'https://razorpay.me/@skillansh'
+    },
+    special: {
+      id: 'special',
+      name: 'Live Workshop 50% Founding Scholarship (All Phases + Career Lab)',
+      amount: 17000,
       link: 'https://rzp.io/rzp/BVYNZBfG'
     },
-    step1: {
-      id: 'step1',
-      name: 'Step 01: Smart Excel (Zero to Pro - 7 Days)',
-      amount: 1999,
-      link: 'https://razorpay.me/@skillansh'
-    },
-    step2: {
-      id: 'step2',
-      name: 'Step 02: Practical MIS & 1-Page Dashboards (7 Days)',
-      amount: 2499,
-      link: 'https://razorpay.me/@skillansh'
-    },
-    step3: {
-      id: 'step3',
-      name: 'Step 03: Excel VBA & 1-Click Macro Buttons (7 Days)',
-      amount: 2999,
-      link: 'https://razorpay.me/@skillansh'
-    },
-    step4: {
-      id: 'step4',
-      name: 'Step 04: Power Query & Power BI Visual Reports (7 Days)',
-      amount: 3499,
-      link: 'https://razorpay.me/@skillansh'
-    },
-    step5: {
-      id: 'step5',
-      name: 'Step 05: Smart AI Automation & Exact AI Prompts (7 Days)',
-      amount: 4499,
-      link: 'https://razorpay.me/@skillansh'
-    },
-    student: {
-      id: 'student',
-      name: 'Student Track: Job-Ready Resume & Office Interview Lab (5 Days)',
-      amount: 1499,
-      link: 'https://razorpay.me/@skillansh'
+    spot: {
+      id: 'spot',
+      name: 'Spot Booking Token (Locks ₹17,000 Live Workshop 50% Scholarship Seat)',
+      amount: 500,
+      link: 'https://rzp.io/rzp/enMyDgi'
     },
     inst1: {
       id: 'inst1',
-      name: '1st Installment (All-In-One Program Seat Booking)',
-      amount: 7500,
+      name: '1st Installment (50% Easy Split of ₹17,000 Live Scholarship)',
+      amount: 8500,
       link: 'https://rzp.io/rzp/e1bWeKi'
     },
     inst2: {
@@ -78,34 +55,34 @@ window.ACCOUNTPRO_CONFIG = {
       name: 'Part Payment / Fee Balance',
       amount: 4000,
       link: 'https://rzp.io/rzp/mfkvE1Px'
-    },
-    spot: {
-      id: 'spot',
-      name: 'Spot Booking Token (Locks 1st Batch Introductory Rate)',
-      amount: 500,
-      link: 'https://rzp.io/rzp/enMyDgi'
-    },
-    special: {
-      id: 'special',
-      name: 'Live Session Scholarship Offer (All-In-One Program)',
-      amount: 9999,
-      link: 'https://rzp.io/rzp/BVYNZBfG'
     }
   },
 
-  // Secret Promo Codes for Unlocking Live Session Scholarship Offers
+  // Secret Promo Codes for Unlocking the ₹17,000 (50% OFF from ₹34,000) Live Workshop Scholarship
   PROMO_CODES: {
-    'SPECIAL5999': {
+    'LIVE50': {
       planId: 'special',
-      discount: 5000,
-      messageEn: '🎉 Live Session Scholarship Applied! ₹5,000 Scholarship Unlocked on the All-In-One Program.',
-      messageMr: '🎉 लाइव्ह सत्र स्कॉलरशिप कोड लागू झाला! ₹५,००० विशेष सवलत अनलॉक झाली.'
+      discount: 17000,
+      messageEn: '🎉 50% Live Workshop Scholarship Applied! ₹17,000 Grant Unlocked (Pay ₹17,000 instead of ₹34,000).',
+      messageMr: '🎉 ५०% लाइव्ह वर्कशॉप स्कॉलरशिप कोड लागू झाला! ₹१७,००० विशेष सवलत अनलॉक झाली (₹३४,००० ऐवजी फक्त ₹१७,०००).'
+    },
+    'FIRST51': {
+      planId: 'special',
+      discount: 17000,
+      messageEn: '🎉 First 51 Learners 50% Scholarship Code Applied! ₹17,000 Off Unlocked!',
+      messageMr: '🎉 पहिले ५१ विद्यार्थी ५०% स्कॉलरशिप कोड लागू झाला! ₹१७,००० सवलत अनलॉक झाली!'
     },
     'FIRSTBATCH': {
       planId: 'special',
-      discount: 5000,
-      messageEn: '🎉 1st Batch Scholarship Code FIRSTBATCH Applied! ₹5,000 Off Unlocked!',
-      messageMr: '🎉 पहिली बॅच स्कॉलरशिप कोड FIRSTBATCH लागू झाला! ₹५,००० सवलत अनलॉक झाली!'
+      discount: 17000,
+      messageEn: '🎉 1st Batch 50% Scholarship Code FIRSTBATCH Applied! ₹17,000 Off Unlocked!',
+      messageMr: '🎉 पहिली बॅच ५०% स्कॉलरशिप कोड FIRSTBATCH लागू झाला! ₹१७,००० सवलत अनलॉक झाली!'
+    },
+    'SPECIAL5999': {
+      planId: 'special',
+      discount: 17000,
+      messageEn: '🎉 Live Session 50% Scholarship Applied! ₹17,000 Off Unlocked!',
+      messageMr: '🎉 लाइव्ह सत्र ५०% स्कॉलरशिप लागू झाली! ₹१७,००० सवलत अनलॉक झाली!'
     }
   },
 

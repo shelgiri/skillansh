@@ -27,120 +27,103 @@
   const KB = {
     greetings: {
       en: {
-        text: `Hello! 👋 Welcome to <strong>Skillansh</strong>. I am <strong>Skillmitra</strong>, your 24/7 AI Guide.<br><br>🔥 <strong>1st Batch Introductory Pricing is Live!</strong> You can join our <strong>Free 90-Min Live Workshop (Worth ₹1,099)</strong>, explore our <strong>5-Step Practical Courses (from ₹1,999)</strong>, or lock your 1st Batch seat with a <strong>₹500 Spot Token</strong>.`,
-        chips: ['🟢 Free Live Workshop', '📚 5-Step Course Structure', '🚀 1st Batch Fees & Plans', '🎯 Spot Booking (₹500)', '👨‍🏫 Mentor Team', '💬 WhatsApp Team']
+        text: `Hello! 👋 Welcome to <strong>Skillansh</strong>. I am <strong>Skillmitra</strong>, your 24/7 AI Guide.<br><br>🟢 <strong>We teach only what makes your daily office &amp; practical life easy!</strong> Join our <strong>Free 90-Min Live Practical Masterclass (Worth ₹1,099 &rarr; FREE)</strong> to experience our 10-second live demo and unlock our confidential roadmap &amp; <strong>50% Live Attendee Scholarship</strong>.`,
+        chips: ['🟢 Free 90-Min Live Class', '🏡 How Daily Life Gets Easy', '🔑 50% Live Class Scholarship', '🎯 Spot Booking (₹500)', '👨‍🏫 Mentor Team', '💬 WhatsApp Team']
       },
       mr: {
-        text: `नमस्कार! 👋 <strong>Skillansh</strong> मध्ये आपले स्वागत आहे. मी <strong>Skillmitra</strong>, आपला 24/7 AI गाइड आहे.<br><br>🔥 <strong>१ल्या बॅचसाठी विशेष प्रारंभिक फी सुरू आहे!</strong> आपण आमच्या <strong>मोफत लाइव्ह कार्यशाळेत (मूल्य ₹१,०९९)</strong> सहभागी होऊ शकता, <strong>५-स्टेप कोर्सेस (₹१,९९९ पासून)</strong> पाहू शकता किंवा <strong>₹५०० स्पॉट टोकनने</strong> आपली जागा लॉक करू शकता.`,
-        chips: ['🟢 मोफत लाइव्ह कार्यशाळा', '📚 ५-स्टेप अभ्यासक्रम रचना', '🚀 १ली बॅच फी व प्लॅन्स', '🎯 स्पॉट बुकिंग (₹५००)', '👨‍🏫 मेंटर टीम माहिती', '💬 WhatsApp टीम']
+        text: `नमस्कार! 👋 <strong>Skillansh</strong> मध्ये आपले स्वागत आहे. मी <strong>Skillmitra</strong>, आपला 24/7 AI गाइड आहे.<br><br>🟢 <strong>आम्ही फक्त रोजचे काम आणि जीवन सोपे करणाऱ्याच गोष्टी शिकवतो!</strong> आमच्या <strong>मोफत ९०-मिनिटे लाइव्ह मास्टरक्लासमध्ये (मूल्य ₹१,०९९ &rarr; मोफत)</strong> सहभागी व्हा आणि आमचा संपूर्ण रोडमॅप व <strong>५०% लाइव्ह स्कॉलरशिप</strong> जाणून घ्या.`,
+        chips: ['🟢 मोफत लाइव्ह कार्यशाळा', '🏡 रोजचे काम कसे सोपे होईल?', '🔑 ५०% लाइव्ह स्कॉलरशिप', '🎯 स्पॉट बुकिंग (₹५००)', '👨‍🏫 मेंटर टीम माहिती', '💬 WhatsApp टीम']
       },
       hi: {
-        text: `नमस्ते! 👋 <strong>Skillansh</strong> में आपका स्वागत है। मैं <strong>Skillmitra</strong>, आपका 24/7 एआई गाइड हूँ।<br><br>🔥 <strong>पहले बैच (1st Batch) की विशेष शुरुआती फीस लागू है!</strong> आप हमारी <strong>फ्री लाइव वर्कशॉप (मूल्य ₹1,099)</strong>, <strong>5-स्टेप कोर्सेस (₹1,999 से शुरू)</strong> या <strong>₹500 स्पॉट बुकिंग</strong> के बारे में पूछ सकते हैं।`,
-        chips: ['🟢 फ्री लाइव वर्कशॉप', '📚 5-स्टेप कोर्स स्ट्रक्चर', '🚀 1st बैच फीस व प्लान्स', '🎯 स्पॉट बुकिंग (₹500)', '👨‍🏫 मेंटर टीम', '💬 WhatsApp टीम']
+        text: `नमस्ते! 👋 <strong>Skillansh</strong> में आपका स्वागत है। मैं <strong>Skillmitra</strong>, आपका 24/7 एआई गाइड हूँ।<br><br>🟢 <strong>हम केवल वही सिखाते हैं जो आपके रोज़मर्रा के काम और जीवन को आसान बनाए!</strong> हमारी <strong>फ्री 90-मिनट लाइव वर्कशॉप (मूल्य ₹1,099 &rarr; FREE)</strong> जॉइन करें और पूरा रोडमैप व <strong>50% लाइव स्कॉलरशिप</strong> अनलॉक करें।`,
+        chips: ['🟢 फ्री लाइव वर्कशॉप', '🏡 रोज़ का काम कैसे आसान होगा?', '🔑 50% लाइव स्कॉलरशिप', '🎯 स्पॉट बुकिंग (₹500)', '👨‍🏫 मेंटर टीम', '💬 WhatsApp टीम']
       }
     },
 
     curriculum: {
       en: {
-        text: `<strong>📚 Skillansh 5-Step Practical Learning Ladder (+ Separate Student Track):</strong><br><br>
-We complete your full Excel mastery first, move to Power BI, and crown it with Smart AI Prompts:<br>
-• <strong>Step 01 (Week 1 · ₹1,999):</strong> Smart Excel — Zero to Pro (25+ Office Formulas & Pivots)<br>
-• <strong>Step 02 (Week 2 · ₹2,499):</strong> Practical MIS & 1-Page Business Dashboards<br>
-• <strong>Step 03 (Week 3 · ₹2,999):</strong> Excel VBA & 1-Click Macro Buttons (Before Power BI!)<br>
-• <strong>Step 04 (Week 4 · ₹3,499):</strong> Power Query & Power BI Visual Reports (DAX & Slicers)<br>
-• <strong>Step 05 (Week 5 · ₹4,499):</strong> Smart AI Automation & Exact AI Prompts (Premium Capstone)<br>
-• <strong>🎓 Separate Student Track (5 Days · ₹1,499):</strong> Job-Ready Resume & Office Interview Lab<br><br>
-Every step includes hands-on practice datasets and a <strong>Verified Skillansh Certificate</strong>!`,
-        cta: { text: `📚 View 5-Step Course Structure ↓`, action: 'view_curriculum' },
-        chips: ['🚀 1st Batch Fees & Plans', '🎯 Spot Booking (₹500)', '🟢 Free Live Workshop', '💬 WhatsApp Support']
+        text: `<strong>🏡 Only Daily-Life Practical Skills — Zero Useless Textbook Theory:</strong><br><br>
+Instead of overwhelming you with 500 academic formulas you never use, we solve your 6 biggest everyday struggles:<br>
+• <strong>1. Zero Formula Fear:</strong> Finish 2 hours of daily tallying in 5 minutes without #N/A panic.<br>
+• <strong>2. 10-Second Boss Reports:</strong> Turn daily logs into self-updating 1-page visual summaries.<br>
+• <strong>3. 1-Click Morning Routine:</strong> Put boring daily formatting & PDF splitting on a 1-click button.<br>
+• <strong>4. Zero Copy-Paste:</strong> Combine 12+ messy files in 1 click into visual dashboards.<br>
+• <strong>5. Smart Free AI:</strong> Stop wasting ₹2,000/mo on paid AI subscriptions—use exact structured prompts.<br>
+• <strong>6. Peaceful Work-Life:</strong> Leave office on time at 6 PM and let promotions chase you!<br><br>
+🔒 <em>Our confidential step-by-step mastery structure is revealed live via PPT inside the Free 90-Min Masterclass!</em>`,
+        cta: { text: `🟢 Join Free 90-Min Live Class to See Full Roadmap`, action: 'workshop_page' },
+        chips: ['🔑 50% Live Class Scholarship', '🎯 Spot Booking (₹500)', '🟢 Free Live Workshop', '💬 WhatsApp Support']
       },
       mr: {
-        text: `<strong>📚 Skillansh ५-स्टेप प्रात्यक्षिक अभ्यासक्रम (+ स्वतंत्र विद्यार्थी ट्रॅक):</strong><br><br>
-आधी Excel मध्ये पूर्ण पकड, त्यानंतर Power BI आणि शेवटी स्मार्ट AI प्रॉम्प्ट्स:<br>
-• <strong>स्टेप ०१ (आठवडा १ · ₹१,९९९):</strong> स्मार्ट Excel — शून्य ते एक्सपर्ट (२५+ फॉर्म्युले व पिव्हट्स)<br>
-• <strong>स्टेप ०२ (आठवडा २ · ₹२,४९९):</strong> प्रॅक्टिकल MIS आणि १-पेज डॅशबोर्ड्स<br>
-• <strong>स्टेप ०३ (आठवडा ३ · ₹२,९९९):</strong> Excel VBA आणि १-क्लिक मॅक्रो बटणे (Power BI पूर्वी!)<br>
-• <strong>स्टेप ०४ (आठवडा ४ · ₹३,४९९):</strong> Power Query आणि Power BI व्हिज्युअल रिपोर्ट्स<br>
-• <strong>स्टेप ०५ (आठवडा ५ · ₹४,४९९):</strong> स्मार्ट AI ऑटोमेशन आणि अचूक प्रॉम्प्ट्स (प्रीमियम AI कोर्स)<br>
-• <strong>🎓 स्वतंत्र विद्यार्थी ट्रॅक (५ दिवस · ₹१,४९९):</strong> जॉब-रेडी रेझ्युमे व इंटरव्ह्यू लॅब<br><br>
-प्रत्येक स्टेपमध्ये प्रॅक्टिस डेटा शीट्स आणि <strong>अधिकृत Skillansh सर्टिफिकेट</strong> समाविष्ट!`,
-        cta: { text: `📚 ५-स्टेप अभ्यासक्रम रचना पहा ↓`, action: 'view_curriculum' },
-        chips: ['🚀 १ली बॅच फी व प्लॅन्स', '🎯 स्पॉट बुकिंग (₹५००)', '🟢 मोफत लाइव्ह कार्यशाळा', '💬 WhatsApp सपोर्ट']
+        text: `<strong>🏡 फक्त दैनंदिन जीवनात उपयोगी पडणारे कौशल्य — पुस्तकी ज्ञान नाही:</strong><br><br>
+कधीही न वापरले जाणारे ५०० फॉर्म्युले शिकवण्याऐवजी आम्ही तुमच्या रोजच्या ६ अडचणी सोडवतो:<br>
+• <strong>१. फॉर्म्युल्यांची भीती नाही:</strong> २ तासांचे काम ५ मिनिटांत पूर्ण करा.<br>
+• <strong>२. १०-सेकंदांत बॉससाठी रिपोर्ट:</strong> आपोआप अपडेट होणारे १-पेज रिपोर्ट्स.<br>
+• <strong>३. १-क्लिकवर रोजचे काम:</strong> कंटाळवाणे फॉरमॅटिंग आणि PDF एका बटणावर.<br>
+• <strong>४. कॉपी-पेस्ट बंद:</strong> १२+ फाइल्स १-क्लिकमध्ये जोडा.<br>
+• <strong>५. पैसे न घालवता स्मार्ट AI:</strong> महागडे सबस्क्रिप्शन न घेता मोफत AI चा अचूक वापर.<br>
+• <strong>६. तणावमुक्त जीवन:</strong> संध्याकाळी ६ वाजता वेळेवर घरी जा!<br><br>
+🔒 <em>आमचा संपूर्ण स्टेप-बाय-स्टेप रोडमॅप मोफत लाइव्ह मास्टरक्लासमध्ये PPT द्वारे सादर केला जातो!</em>`,
+        cta: { text: `🟢 संपूर्ण रोडमॅपसाठी मोफत लाइव्ह क्लास जॉइन करा`, action: 'workshop_page' },
+        chips: ['🔑 ५०% लाइव्ह स्कॉलरशिप', '🎯 स्पॉट बुकिंग (₹५००)', '🟢 मोफत लाइव्ह कार्यशाळा', '💬 WhatsApp सपोर्ट']
       },
       hi: {
-        text: `<strong>📚 Skillansh 5-स्टेप प्रैक्टिकल कोर्स स्ट्रक्चर (+ स्टूडेंट ट्रैक):</strong><br><br>
-• <strong>स्टेप 01 (सप्ताह 1 · ₹1,999):</strong> स्मार्ट एक्सेल — जीरो से प्रो (25+ फॉर्मूले व पिवट)<br>
-• <strong>स्टेप 02 (सप्ताह 2 · ₹2,499):</strong> प्रैक्टिकल MIS और 1-पेज डैशबोर्ड्स<br>
-• <strong>स्टेप 03 (सप्ताह 3 · ₹2,999):</strong> एक्सेल VBA और 1-क्लिक मैक्रो बटन्स (Power BI से पहले!)<br>
-• <strong>स्टेप 04 (सप्ताह 4 · ₹3,499):</strong> पावर क्वेरी और पावर बीआई विजुअल रिपोर्ट्स<br>
-• <strong>स्टेप 05 (सप्ताह 5 · ₹4,499):</strong> स्मार्ट AI ऑटोमेशन व स्ट्रक्चर्ड प्रॉम्प्ट इंजीनियरिंग<br>
-• <strong>🎓 स्टूडेंट करियर ट्रैक (5 दिन · ₹1,499):</strong> एटीएस रिज्यूमे और इंटरव्यू लैब<br><br>
-हर स्टेप के साथ प्रैक्टिस डेटा शीट्स और <strong>वेरिफाइड सर्टिफिकेट</strong> शामिल है!`,
-        cta: { text: `📚 5-स्टेप कोर्स स्ट्रक्चर देखें ↓`, action: 'view_curriculum' },
-        chips: ['🚀 1st बैच फीस व प्लान्स', '🎯 स्पॉट बुकिंग (₹500)', '🟢 फ्री लाइव वर्कशॉप', '💬 WhatsApp सहायता']
+        text: `<strong>🏡 केवल रोज़मर्रा के काम आने वाले प्रैक्टिकल स्किल्स — कोई किताबी ज्ञान नहीं:</strong><br><br>
+• <strong>1. फॉर्मूलों का डर खत्म:</strong> 2 घंटे का काम 5 मिनट में पूरा करें।<br>
+• <strong>2. 10-सेकंड बॉस रिपोर्ट्स:</strong> अपने आप अपडेट होने वाले 1-पेज डैशबोर्ड।<br>
+• <strong>3. 1-क्लिक मॉर्निंग रूटीन:</strong> रोज़ का बोरिंग काम एक बटन पर।<br>
+• <strong>4. कॉपी-पेस्ट बंद:</strong> 12+ फाइलों को 1 क्लिक में जोड़ें।<br>
+• <strong>5. स्मार्ट फ्री AI:</strong> महंगे AI सब्सक्रिप्शन का पैसा बचाएं।<br>
+• <strong>6. तनाव-मुक्त जीवन:</strong> शाम 6 बजे समय पर घर जाएं!<br><br>
+🔒 <em>हमारा पूरा कोर्स रोडमैप फ्री 90-मिनट लाइव वर्कशॉप में PPT के माध्यम से दिखाया जाता है!</em>`,
+        cta: { text: `🟢 फ्री 90-मिनट लाइव क्लास जॉइन करें`, action: 'workshop_page' },
+        chips: ['🔑 50% लाइव स्कॉलरशिप', '🎯 स्पॉट बुकिंग (₹500)', '🟢 फ्री लाइव वर्कशॉप', '💬 WhatsApp सहायता']
       }
     },
 
     pricing: {
       en: {
-        text: `<strong>🔥 1st Founding Batch Introductory Fees (First 51 Learners &middot; 15–20 per Live Batch):</strong><br><br>
-• <strong>🏆 All-In-One 5-Step Mastery Program (35 Days):</strong> <strong>₹14,999</strong> (Includes all 5 Steps + Career Lab + 1-on-1 Mentorship + Master Certificate &middot; Individual sum ₹16,994)<br>
-• <strong>🎯 Instant Spot Booking Token:</strong> <strong>₹500</strong> (Locks your 1st Batch introductory fee today &middot; 100% deducted from total fee)<br>
-• <strong>Individual Stepwise Courses:</strong><br>
-  - Step 01 (Smart Excel): <strong>₹1,999</strong><br>
-  - Step 02 (Practical MIS): <strong>₹2,499</strong><br>
-  - Step 03 (Excel VBA Macros): <strong>₹2,999</strong><br>
-  - Step 04 (Power Query & Power BI): <strong>₹3,499</strong><br>
-  - Step 05 (Smart AI & Prompts): <strong>₹4,499</strong><br>
-  - Student Resume & Interview Lab: <strong>₹1,499</strong><br><br>
-<em>⚠️ Hurry: Valid for First 51 Learners only — once seats fill, prices will increase for next batches!</em>`,
-        cta: { text: `🚀 Book Your 1st Batch Seat Now`, action: 'enrol_cohort' },
-        chips: ['📚 5-Step Course Structure', '🎯 Spot Booking (₹500)', '🟢 Free Live Workshop', '💬 WhatsApp Support']
+        text: `<strong>🔒 Why We Reveal Pricing Inside the Free 90-Min Live Masterclass:</strong><br><br>
+We want you to experience our teaching <strong>100% FREE first</strong> before spending a rupee!<br><br>
+• <strong>Step 1:</strong> Attend the <strong>90-Min Live Practical Masterclass for FREE</strong> (Regular Worth ₹1,099).<br>
+• <strong>Step 2:</strong> At the end of the live session, we present our confidential Mastery Roadmap PPT (Total Program Value <strong>₹34,000/-</strong>) and unlock a <strong>Flat 50% Founding Batch Scholarship (₹17,000/- only)</strong> for the <strong>First 51 Learners (15–20 per Live Batch)</strong>.<br>
+• <strong>🎯 Already Attended Live Class?</strong> You can lock your 50% Scholarship seat right now with a <strong>₹500 Spot Token</strong>!`,
+        cta: { text: `🟢 Join Free Live Class First (or Unlock 50% Grant)`, action: 'workshop_page' },
+        chips: ['🎯 Spot Booking (₹500)', '🏡 How Daily Life Gets Easy', '💬 WhatsApp Support']
       },
       mr: {
-        text: `<strong>🔥 १ल्या बॅचसाठी विशेष प्रारंभिक फी (पहिले ५१ विद्यार्थी &middot; १५–२० प्रति लाइव्ह बॅच):</strong><br><br>
-• <strong>🏆 ऑल-इन-वन ५-स्टेप मास्टरी प्रोग्राम (३५ दिवस):</strong> <strong>₹१४,९९९</strong> (सर्व ५ स्टेप्स + करिअर लॅब + १-ऑन-१ मार्गदर्शन + मास्टर सर्टिफिकेट &middot; स्वतंत्र एकूण ₹१६,९९४)<br>
-• <strong>🎯 इन्स्टंट स्पॉट बुकिंग टोकन:</strong> <strong>₹५००</strong> (आजच १ल्या बॅचची फी लॉक करा &middot; मुख्य फीमधून १००% वजा)<br>
-• <strong>स्वतंत्र स्टेपनुसार फी:</strong><br>
-  - स्टेप ०१ (स्मार्ट Excel): <strong>₹१,९९९</strong><br>
-  - स्टेप ०२ (प्रॅक्टिकल MIS): <strong>₹२,४९९</strong><br>
-  - स्टेप ०३ (Excel VBA मॅक्रो): <strong>₹२,९९९</strong><br>
-  - स्टेप ०४ (Power Query व Power BI): <strong>₹३,४९९</strong><br>
-  - स्टेप ०५ (स्मार्ट AI व प्रॉम्प्ट्स): <strong>₹४,४९९</strong><br>
-  - विद्यार्थी रेझ्युमे व इंटरव्ह्यू लॅब: <strong>₹१,४९९</strong><br><br>
-<em>⚠️ घाई करा: पहिल्या ५१ विद्यार्थ्यांच्या जागा पूर्ण होताच पुढील बॅचची फी वाढेल!</em>`,
-        cta: { text: `🚀 १ल्या बॅचमध्ये प्रवेश घ्या`, action: 'enrol_cohort' },
-        chips: ['📚 ५-स्टेप अभ्यासक्रम रचना', '🎯 स्पॉट बुकिंग (₹५००)', '🟢 मोफत लाइव्ह कार्यशाळा', '💬 WhatsApp सपोर्ट']
+        text: `<strong>🔒 आम्ही कोर्सची फी मोफत लाइव्ह मास्टरक्लासमध्येच का जाहीर करतो:</strong><br><br>
+तुम्ही एकही रुपया खर्च करण्यापूर्वी आमची शिकवण्याची पद्धत <strong>१००% मोफत अनुभवावी</strong> अशी आमची इच्छा आहे!<br><br>
+• <strong>पाऊल १:</strong> आमच्या <strong>९०-मिनिटांच्या लाइव्ह प्रॅक्टिकल मास्टरक्लासला मोफत</strong> उपस्थित रहा (मूल्य ₹१,०९९).<br>
+• <strong>पाऊल २:</strong> लाइव्ह सत्राच्या शेवटी आम्ही PPT द्वारे संपूर्ण प्रोग्राम (नियमित मूल्य <strong>₹३४,०००/-</strong>) सादर करतो आणि पहिल्या ५१ विद्यार्थ्यांसाठी <strong>थेट ५०% स्कॉलरशिप (फक्त ₹१७,०००/-)</strong> अनलॉक करतो.<br>
+• <strong>🎯 लाइव्ह क्लास पूर्ण केला का?</strong> तुम्ही केवळ <strong>₹५०० स्पॉट टोकनने</strong> तुमची ५०% स्कॉलरशिप जागा आजच लॉक करू शकता!`,
+        cta: { text: `🟢 मोफत लाइव्ह क्लासमध्ये जागा बुक करा`, action: 'workshop_page' },
+        chips: ['🎯 स्पॉट बुकिंग (₹५००)', '🏡 रोजचे काम कसे सोपे होईल?', '💬 WhatsApp सपोर्ट']
       },
       hi: {
-        text: `<strong>🔥 पहले बैच (1st Batch) की विशेष शुरुआती फीस (प्रथम 51 शिक्षार्थी &middot; 15–20 प्रति लाइव बैच):</strong><br><br>
-• <strong>🏆 ऑल-इन-वन 5-स्टेप मास्टरी प्रोग्राम (35 दिन):</strong> <strong>₹14,999</strong> (सभी 5 स्टेप्स + करियर लैब + 1-ऑन-1 मेंटरशिप + मास्टर सर्टिफिकेट)<br>
-• <strong>🎯 इंस्टेंट स्पॉट बुकिंग टोकन:</strong> <strong>₹500</strong> (1st बैच की फीस आज ही लॉक करें &middot; कुल फीस से 100% समायोजित)<br>
-• <strong>स्टेप-बाय-स्टेप कोर्स फीस:</strong><br>
-  - स्टेप 01 (स्मार्ट एक्सेल): <strong>₹1,999</strong> | स्टेप 02 (MIS): <strong>₹2,499</strong><br>
-  - स्टेप 03 (VBA मैक्रो): <strong>₹2,999</strong> | स्टेप 04 (Power BI): <strong>₹3,499</strong><br>
-  - स्टेप 05 (स्मार्ट AI व प्रॉम्प्ट्स): <strong>₹4,499</strong> | स्टूडेंट ट्रैक: <strong>₹1,499</strong><br><br>
-<em>⚠️ जल्दी करें: प्रथम 51 सीटें भरने के बाद अगले बैच की फीस बढ़ जाएगी!</em>`,
-        cta: { text: `🚀 अपनी 1st बैच सीट बुक करें`, action: 'enrol_cohort' },
-        chips: ['📚 5-स्टेप कोर्स स्ट्रक्चर', '🎯 स्पॉट बुकिंग (₹500)', '🟢 फ्री लाइव वर्कशॉप', '💬 WhatsApp सहायता']
+        text: `<strong>🔒 हम कोर्स की फीस फ्री लाइव वर्कशॉप में ही क्यों बताते हैं:</strong><br><br>
+हम चाहते हैं कि आप पहले हमारी प्रैक्टिकल टीचिंग <strong>100% FREE</strong> अनुभव करें!<br><br>
+• <strong>स्टेप 1:</strong> <strong>90-मिनट की लाइव वर्कशॉप FREE</strong> अटेंड करें (मूल्य ₹1,099)।<br>
+• <strong>स्टेप 2:</strong> लाइव क्लास के अंत में हम PPT में पूरा रोडमैप (कुल मूल्य <strong>₹34,000/-</strong>) दिखाते हैं और प्रथम 51 शिक्षार्थियों (15–20 प्रति बैच) के लिए <strong>50% फाउंडिंग स्कॉलरशिप (केवल ₹17,000/-)</strong> देते हैं।<br>
+• <strong>🎯 लाइव क्लास अटेंड कर चुके हैं?</strong> आप <strong>₹500 स्पॉट टोकन</strong> से अपनी 50% स्कॉलरशिप सीट तुरंत लॉक कर सकते हैं!`,
+        cta: { text: `🟢 फ्री लाइव वर्कशॉप सीट बुक करें`, action: 'workshop_page' },
+        chips: ['🎯 स्पॉट बुकिंग (₹500)', '🏡 रोज़ का काम कैसे आसान होगा?', '💬 WhatsApp सहायता']
       }
     },
 
     spot: {
       en: {
-        text: `<strong>🎯 Instant Spot Booking Token (₹500 — Locks 1st Batch Rate):</strong><br><br>
-Because our 1st Founding Batch introductory fee is limited to the First 51 Learners (15–20 per live batch), you can lock your seat and today's introductory fee instantly by paying just <strong>₹500</strong>!<br><br>
-• Your seat in the 1st Batch is officially reserved.<br>
-• The ₹500 token is <strong>100% deducted</strong> from your course or All-In-One program fee.<br>
-• Protects you from next-batch price increases.`,
-        cta: { text: `🎯 Lock Your 1st Batch Seat for ₹500`, action: 'spot_booking', url: SPOT_BOOKING_URL },
-        chips: ['📚 5-Step Course Structure', '🚀 1st Batch Fees & Plans', '💬 Chat on WhatsApp']
+        text: `<strong>🎯 Instant Spot Booking Token (₹500 — Locks 50% Live Scholarship Seat):</strong><br><br>
+Attended our Free Live Masterclass? Because our 50% Founding Scholarship (₹34,000 &rarr; <strong>₹17,000</strong>) is strictly limited to the <strong>First 51 Learners (15–20 per live batch)</strong>, you can lock your seat and 50% grant right now by paying just <strong>₹500</strong>!<br><br>
+• Your seat in the First 51 Learners batch is officially reserved.<br>
+• The ₹500 token is <strong>100% deducted</strong> from your ₹17,000 scholarship fee.`,
+        cta: { text: `🎯 Lock Your 50% Scholarship Seat for ₹500`, action: 'spot_booking', url: SPOT_BOOKING_URL },
+        chips: ['🟢 Free 90-Min Live Class', '🔑 50% Live Class Scholarship', '💬 Chat on WhatsApp']
       },
       mr: {
-        text: `<strong>🎯 इन्स्टंट स्पॉट बुकिंग टोकन (₹५०० — १ली बॅच फी लॉक करा):</strong><br><br>
-पहिल्या बॅचची प्रारंभिक फी फक्त पहिल्या ५१ विद्यार्थ्यांसाठी (१५-२० प्रति लाइव्ह बॅच) मर्यादित असल्याने, आपण केवळ <strong>₹५०० टोकन</strong> भरून आपली जागा आणि १ल्या बॅचची विशेष फी त्वरित सुरक्षित करू शकता!<br><br>
-• हे ₹५०० तुमच्या मुख्य कोर्स फीमधून <strong>१००% वजा</strong> केले जातात.<br>
-• पुढील बॅचच्या दरवाढीपासून तुमचे संरक्षण होते.`,
+        text: `<strong>🎯 इन्स्टंट स्पॉट बुकिंग टोकन (₹५०० — ५०% स्कॉलरशिप जागा लॉक करा):</strong><br><br>
+मोफत लाइव्ह मास्टरक्लास पूर्ण केला का? आमची ५०% स्कॉलरशिप (₹३४,००० &rarr; <strong>₹१७,०००</strong>) फक्त <strong>पहिल्या ५१ विद्यार्थ्यांसाठी (१५-२० प्रति लाइव्ह बॅच)</strong> मर्यादित असल्याने, आपण केवळ <strong>₹५०० टोकन</strong> भरून आपली जागा त्वरित सुरक्षित करू शकता!<br><br>
+• हे ₹५०० तुमच्या ₹१७,००० स्कॉलरशिप फीमधून <strong>१००% वजा</strong> केले जातात.`,
         cta: { text: `🎯 आताच ₹५०० मध्ये जागा लॉक करा`, action: 'spot_booking', url: SPOT_BOOKING_URL },
         chips: ['📚 ५-स्टेप अभ्यासक्रम रचना', '🚀 १ली बॅच फी व प्लॅन्स', '💬 WhatsApp वर बोला']
       },

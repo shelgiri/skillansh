@@ -905,20 +905,14 @@ function initEnrolModal() {
 
   const cfg = window.ACCOUNTPRO_CONFIG || {};
   const plans = cfg.PAYMENT_PLANS || {
-    full: { id: 'full', name: 'All-In-One 5-Step Mastery Program (35 Days)', amount: 14999, link: 'https://rzp.io/rzp/BVYNZBfG' },
-    step1: { id: 'step1', name: 'Step 01: Smart Excel (Zero to Pro - 7 Days)', amount: 1999, link: 'https://razorpay.me/@skillansh' },
-    step2: { id: 'step2', name: 'Step 02: Practical MIS & 1-Page Dashboards (7 Days)', amount: 2499, link: 'https://razorpay.me/@skillansh' },
-    step3: { id: 'step3', name: 'Step 03: Excel VBA & 1-Click Macro Buttons (7 Days)', amount: 2999, link: 'https://razorpay.me/@skillansh' },
-    step4: { id: 'step4', name: 'Step 04: Power Query & Power BI Visual Reports (7 Days)', amount: 3499, link: 'https://razorpay.me/@skillansh' },
-    step5: { id: 'step5', name: 'Step 05: Smart AI Automation & Exact AI Prompts (7 Days)', amount: 4499, link: 'https://razorpay.me/@skillansh' },
-    student: { id: 'student', name: 'Student Track: Job-Ready Resume & Interview Lab (5 Days)', amount: 1499, link: 'https://razorpay.me/@skillansh' },
-    special: { id: 'special', name: 'Live Session Scholarship Offer (All-In-One Program)', amount: 9999, link: 'https://rzp.io/rzp/BVYNZBfG' },
-    inst1: { id: 'inst1', name: '1st Installment (All-In-One Program Seat Booking)', amount: 7500, link: 'https://rzp.io/rzp/e1bWeKi' },
+    spot: { id: 'spot', name: 'Spot Booking Token (Locks ₹17,000 Live Workshop 50% Scholarship Seat)', amount: 500, link: 'https://rzp.io/rzp/enMyDgi' },
+    special: { id: 'special', name: 'Live Workshop 50% Founding Scholarship (All Phases + Career Lab)', amount: 17000, link: 'https://rzp.io/rzp/BVYNZBfG' },
+    inst1: { id: 'inst1', name: '1st Installment (50% Easy Split of ₹17,000 Live Scholarship)', amount: 8500, link: 'https://rzp.io/rzp/e1bWeKi' },
     inst2: { id: 'inst2', name: 'Part Payment / Balance', amount: 4000, link: 'https://rzp.io/rzp/mfkvE1Px' },
-    spot: { id: 'spot', name: 'Spot Booking Token (Locks 1st Batch Rate)', amount: 500, link: 'https://rzp.io/rzp/enMyDgi' }
+    full: { id: 'full', name: 'Complete Practical Office & Lifestyle Mastery Program (Standard Fee)', amount: 34000, link: 'https://razorpay.me/@skillansh' }
   };
 
-  let selectedPlanId = 'full';
+  let selectedPlanId = 'spot';
   let appliedPromoCode = '';
 
   const openButtons = document.querySelectorAll('#open-enrol-modal-btn, .cohort-enrol-btn, [data-open-enrol-modal]');
