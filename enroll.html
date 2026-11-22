@@ -501,7 +501,7 @@
         </div>
       </div>
 
-      <!-- TAB 2: SEQUENTIAL LMS ACCESS PORTAL, RESUME PENDING PAYMENT & 2ND INSTALMENT (₹14,999) CHECKOUT -->
+      <!-- TAB 2: SEQUENTIAL LMS ACCESS PORTAL, RESUME PENDING PAYMENT & 2ND INSTALMENT CHECKOUT -->
       <div id="pane-lms" style="display:none; max-width:1080px; margin:0 auto;">
         <div class="reg-card">
           <h3 style="color:#1E3A5F; font-size:1.22rem; font-weight:800; margin-bottom:0.35rem;">Check Sequential Course Access, Resume Pending Payment, or Pay 2nd Instalment</h3>
@@ -540,15 +540,15 @@
               </button>
             </div>
 
-            <!-- 2nd Instalment Pay Now Alert Box (Visible only when PARTIALLY_PAID and Balance Due = ₹14,999) -->
+            <!-- 2nd Instalment Pay Now Alert Box (Visible only when PARTIALLY_PAID and Balance Due > 0) -->
             <div id="lms-pay-balance-box" style="display:none; background:linear-gradient(90deg, #FEF3C7 0%, #FFFBEB 100%); border:2px solid #F59E0B; border-radius:14px; padding:1.25rem 1.5rem; margin-bottom:1.5rem; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
               <div style="flex:1; min-width:260px;">
                 <div style="font-size:0.78rem; font-weight:800; color:#B45309; text-transform:uppercase;">🔓 Sequential Course Progression Notice</div>
                 <h4 style="color:#78350F; font-size:1.08rem; font-weight:800; margin:0.2rem 0;">Ready to Start DRISHTI – MIS &amp; Dashboards?</h4>
-                <p style="color:#92400E; font-size:0.86rem; line-height:1.5;">You have paid the 1st Instalment (₹2,000) and unlocked <strong>ADHAAR – Excel Foundation</strong>. Complete your 2nd Instalment balance of <strong>₹14,999</strong> before starting DRISHTI to mark your package as <strong>PAID</strong> and immediately unlock <strong>DRISHTI, PRAVAH &amp; BODH</strong>.</p>
+                <p style="color:#92400E; font-size:0.86rem; line-height:1.5;" id="lms-pay-balance-desc">You have completed the 1st Instalment and unlocked <strong>ADHAAR – Excel Foundation</strong>. Complete your 2nd Instalment balance before starting DRISHTI to mark your package as <strong>PAID</strong> and immediately unlock <strong>DRISHTI, PRAVAH &amp; BODH</strong>.</p>
               </div>
-              <button type="button" onclick="paySecondInstalmentNow()" style="background:#D97706; color:#FFFFFF; border:none; padding:0.85rem 1.5rem; border-radius:10px; font-weight:800; font-size:0.94rem; cursor:pointer; white-space:nowrap; box-shadow:0 6px 16px rgba(217,119,6,0.3);">
-                Pay 2nd Instalment (₹14,999) Now &rarr;
+              <button type="button" id="lms-pay-balance-btn" onclick="paySecondInstalmentNow()" style="background:#D97706; color:#FFFFFF; border:none; padding:0.85rem 1.5rem; border-radius:10px; font-weight:800; font-size:0.94rem; cursor:pointer; white-space:nowrap; box-shadow:0 6px 16px rgba(217,119,6,0.3);">
+                Pay 2nd Instalment Now &rarr;
               </button>
             </div>
 
@@ -577,7 +577,7 @@
     </div>
   </main>
 
-  <script src="config.js?v=20261122c"></script>
+  <script src="config.js?v=20261122d"></script>
   <script>
     const CFG = window.ACCOUNTPRO_CONFIG || {};
     const PLANS = CFG.PAYMENT_PLANS || {};
@@ -585,7 +585,7 @@
 
     // Step 1 Course Key ('package', 'adhaar', 'drishti', 'pravah', 'bodh', 'kriya')
     let selectedCourseKey = 'package';
-    // Step 2 Activated Registration Context (Populated ONLY after valid registration submission)
+    // Step 2 Activated Registration Context (Populated ONLY after valid backend registration submission)
     let activeRegistration = null;
     // Step 2 Selected Payment Option ID ('pkg_full', 'pkg_inst1', 'adhaar', 'drishti', 'pravah', 'bodh', 'kriya')
     let selectedPaymentPlanId = null;
@@ -608,64 +608,6 @@
       if (c === 'bodh' || c === 'course4') return 'bodh';
       if (c === 'kriya' || c === 'course5' || c === 'vba') return 'kriya';
       return 'package';
-    }
-
-    // Strict Payment Mapping per Section 4
-    function buildLocalEligibleOptions(courseKey) {
-      const norm = normalizeCourseKey(courseKey);
-      if (norm === 'package') {
-        const fullP = PLANS.pkg_full;
-        const instP = PLANS.pkg_inst1;
-        return {
-          courseKey: 'package',
-          courseTitle: COURSE_DISPLAY_NAMES.package,
-          defaultPlanId: 'pkg_full',
-          eligibleOptions: [
-            {
-              planId: 'pkg_full',
-              title: 'Option A – Full One-Time Payment',
-              description: 'One-time payment. Unlocks all 4 package courses (ADHAAR, DRISHTI, PRAVAH & BODH) immediately after payment verification.',
-              payableNowInr: fullP.amount,
-              payableNowPaise: Number(fullP.amount) * 100,
-              totalPackageAmountInr: fullP.totalPackageAmount,
-              balanceDueAfterInr: 0,
-              unlocks: fullP.unlockedCourses,
-              statusOnSuccess: 'PAID'
-            },
-            {
-              planId: 'pkg_inst1',
-              title: 'Option B – Instalment Package (₹16,999 Total · 2 Payments)',
-              description: '1st Instalment: ₹2,000 today (Unlocks ADHAAR only · PARTIALLY_PAID). 2nd Instalment: ₹14,999 due before DRISHTI starts (Unlocks DRISHTI, PRAVAH & BODH).',
-              payableNowInr: instP.amount,
-              payableNowPaise: Number(instP.amount) * 100,
-              totalPackageAmountInr: instP.totalPackageAmount,
-              balanceDueAfterInr: instP.balanceDueAfter,
-              unlocks: instP.unlockedCourses,
-              statusOnSuccess: 'PARTIALLY_PAID'
-            }
-          ]
-        };
-      }
-
-      const p = PLANS[norm];
-      return {
-        courseKey: norm,
-        courseTitle: COURSE_DISPLAY_NAMES[norm] || p.name,
-        defaultPlanId: norm,
-        eligibleOptions: [
-          {
-            planId: norm,
-            title: (COURSE_DISPLAY_NAMES[norm] || p.name) + ' – Full Course Fee',
-            description: 'Unlocks ' + (p.unlockedCourses || []).join(', ') + ' immediately upon payment verification.',
-            payableNowInr: p.amount,
-            payableNowPaise: Number(p.amount) * 100,
-            totalPackageAmountInr: p.totalPackageAmount,
-            balanceDueAfterInr: 0,
-            unlocks: p.unlockedCourses,
-            statusOnSuccess: 'PAID'
-          }
-        ]
-      };
     }
 
     function switchPortalTab(tab) {
@@ -734,24 +676,7 @@
       btn.disabled = true;
       btnTxt.textContent = 'Saving Registration & Retrieving Payment Options...';
 
-      const localMapping = buildLocalEligibleOptions(selectedCourseKey);
-      let regResponse = {
-        status: 'success',
-        message: 'Your Skillansh registration has been received.',
-        registrationId: 'SKL-REG-' + new Date().toISOString().slice(0,10).replace(/-/g,'') + '-' + Math.floor(1000 + Math.random() * 9000),
-        learnerId: 'SKL-LRN-' + ph10.slice(-6) + '-' + Math.floor(100 + Math.random() * 900),
-        learnerName: `${fn} ${ln}`,
-        firstName: fn,
-        surname: ln,
-        email: em,
-        phone: ph10,
-        promoCode: promo,
-        courseKey: localMapping.courseKey,
-        courseTitle: localMapping.courseTitle,
-        defaultPlanId: localMapping.defaultPlanId,
-        eligibleOptions: localMapping.eligibleOptions,
-        paymentStatus: 'PAYMENT_PENDING'
-      };
+      let regResponse = null;
 
       if (WEBHOOK_URL) {
         try {
@@ -780,12 +705,19 @@
             lookupLmsAccess();
             return;
           }
-          if (json && json.status === 'success') {
-            regResponse = Object.assign(regResponse, json);
+          if (json && json.status === 'success' && json.eligibleOptions) {
+            regResponse = json;
           }
         } catch (err) {
           console.warn('Backend registration sync notice:', err);
         }
+      }
+
+      if (!regResponse) {
+        alert('Could not retrieve payment options from the secure backend. Please ensure the latest Google Apps Script backend is deployed or contact us on WhatsApp at 9922045007.');
+        btn.disabled = false;
+        btnTxt.textContent = 'Complete Registration & Unlock Payment Option →';
+        return;
       }
 
       activeRegistration = regResponse;
@@ -805,7 +737,7 @@
         planId: regResponse.defaultPlanId,
         eligibleOptions: regResponse.eligibleOptions,
         paymentStatus: 'PAYMENT_PENDING',
-        balanceDueInr: (regResponse.eligibleOptions[0] && regResponse.eligibleOptions[0].totalPackageAmountInr) || 14999,
+        balanceDueInr: (regResponse.eligibleOptions[0] && regResponse.eligibleOptions[0].totalPackageAmountInr) || 0,
         courses: { ADHAAR: 'LOCKED', DRISHTI: 'LOCKED', PRAVAH: 'LOCKED', BODH: 'LOCKED', KRIYA: 'LOCKED' }
       };
       currentLearnerState = pendingState;
@@ -1223,10 +1155,12 @@
         resumeBox.style.display = 'none';
       }
 
-      // Show 2nd Instalment Pay Now box when PARTIALLY_PAID & Balance Due = ₹14,999
+      // Show 2nd Instalment Pay Now box when PARTIALLY_PAID & Balance Due > 0
       const payBalBox = document.getElementById('lms-pay-balance-box');
       if (st === 'PARTIALLY_PAID' && bal > 0) {
         payBalBox.style.display = 'flex';
+        const btnEl = document.getElementById('lms-pay-balance-btn');
+        if (btnEl) btnEl.textContent = `Pay 2nd Instalment (₹${bal.toLocaleString('en-IN')}) Now →`;
       } else {
         payBalBox.style.display = 'none';
       }
@@ -1237,7 +1171,7 @@
       container.innerHTML = '';
 
       courseOrder.forEach(code => {
-        const cInfo = cat[code] || { title: code, price: 0, description: '' };
+        const cInfo = cat[code] || { title: code, description: '' };
         const cStatus = (state.courses && state.courses[code]) ? state.courses[code] : 'LOCKED';
         const isActive = (cStatus === 'ACTIVE');
 
@@ -1253,7 +1187,7 @@
           ${isActive
             ? `<a href="resources.html" style="display:inline-block; background:#0F766E; color:#FFFFFF; text-decoration:none; padding:0.5rem 1rem; border-radius:8px; font-size:0.82rem; font-weight:800;">Enter Course Modules &amp; Practice Sheets &rarr;</a>`
             : (st === 'PARTIALLY_PAID' && cInfo.inFourCoursePackage
-                ? `<button type="button" onclick="paySecondInstalmentNow()" style="background:#D97706; color:#FFFFFF; border:none; padding:0.5rem 1rem; border-radius:8px; font-size:0.8rem; font-weight:800; cursor:pointer;">Unlock with 2nd Instalment (₹14,999) &rarr;</button>`
+                ? `<button type="button" onclick="paySecondInstalmentNow()" style="background:#D97706; color:#FFFFFF; border:none; padding:0.5rem 1rem; border-radius:8px; font-size:0.8rem; font-weight:800; cursor:pointer;">Unlock with 2nd Instalment &rarr;</button>`
                 : `<a href="enroll.html?course=${code.toLowerCase()}" onclick="selectCourseFromLms('${code.toLowerCase()}'); return false;" style="font-size:0.78rem; color:#1E3A5F; font-weight:800; text-decoration:underline;">Register for ${cInfo.title} &rarr;</a>`)
           }
         `;
@@ -1272,9 +1206,8 @@
 
     // Resume a PAYMENT_PENDING registration directly into Step 2 Conditional Payment Activation
     function resumePendingRegistrationCheckout() {
-      if (!currentLearnerState) return;
+      if (!currentLearnerState || !currentLearnerState.eligibleOptions) return;
       const cKey = normalizeCourseKey(currentLearnerState.courseKey || currentLearnerState.planId || 'package');
-      const localMap = buildLocalEligibleOptions(cKey);
       const names = (currentLearnerState.learnerName || 'Skillansh Learner').split(' ');
 
       activeRegistration = {
@@ -1285,10 +1218,10 @@
         surname: currentLearnerState.surname || names.slice(1).join(' ') || 'Skillansh',
         email: currentLearnerState.email,
         phone: currentLearnerState.phone,
-        courseKey: localMap.courseKey,
-        courseTitle: currentLearnerState.packageName || localMap.courseTitle,
-        defaultPlanId: currentLearnerState.planId || localMap.defaultPlanId,
-        eligibleOptions: currentLearnerState.eligibleOptions || localMap.eligibleOptions,
+        courseKey: cKey,
+        courseTitle: currentLearnerState.packageName || COURSE_DISPLAY_NAMES[cKey],
+        defaultPlanId: currentLearnerState.planId || (currentLearnerState.eligibleOptions[0] && currentLearnerState.eligibleOptions[0].planId),
+        eligibleOptions: currentLearnerState.eligibleOptions,
         paymentStatus: 'PAYMENT_PENDING'
       };
       selectedPaymentPlanId = activeRegistration.defaultPlanId;
@@ -1297,49 +1230,49 @@
       renderConditionalPaymentActivation(activeRegistration);
     }
 
-    // Pay 2nd Instalment (₹14,999) before starting DRISHTI
+    // Pay 2nd Instalment before starting DRISHTI (Amount dynamically retrieved from backend)
     async function paySecondInstalmentNow() {
-      if (!currentLearnerState) return;
-      const plan = PLANS.pkg_inst2;
-      let orderId = '';
-      if (WEBHOOK_URL) {
-        try {
-          const names = (currentLearnerState.learnerName || 'Skillansh Learner').split(' ');
-          const resp = await fetch(WEBHOOK_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-            body: JSON.stringify({
-              action: 'create_payment_order',
-              registrationId: currentLearnerState.registrationId,
-              learnerId: currentLearnerState.learnerId,
-              learnerName: currentLearnerState.learnerName,
-              firstName: names[0] || 'Learner',
-              surname: names.slice(1).join(' ') || 'Skillansh',
-              email: currentLearnerState.email,
-              whatsapp: currentLearnerState.phone,
-              planId: 'pkg_inst2'
-            })
-          });
-          const json = await resp.json();
-          if (json && json.orderId) orderId = json.orderId;
-        } catch (e) {}
-      }
+      if (!currentLearnerState || !WEBHOOK_URL) return;
+      const plan = PLANS.pkg_inst2 || {};
+      const names = (currentLearnerState.learnerName || 'Skillansh Learner').split(' ');
 
-      launchRazorpayStandardCheckout({
-        keyId: CFG.RAZORPAY_KEY_ID,
-        orderId: orderId,
-        amountPaise: 1499900,
-        amountInr: 14999,
-        registrationId: currentLearnerState.registrationId,
-        learnerId: currentLearnerState.learnerId,
-        planId: 'pkg_inst2',
-        courseName: plan.name,
-        learnerName: currentLearnerState.learnerName,
-        firstName: (currentLearnerState.learnerName || '').split(' ')[0] || 'Learner',
-        surname: (currentLearnerState.learnerName || '').split(' ').slice(1).join(' ') || 'Skillansh',
-        email: currentLearnerState.email,
-        phone: currentLearnerState.phone
-      });
+      try {
+        const resp = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            action: 'create_payment_order',
+            registrationId: currentLearnerState.registrationId,
+            learnerId: currentLearnerState.learnerId,
+            learnerName: currentLearnerState.learnerName,
+            firstName: names[0] || 'Learner',
+            surname: names.slice(1).join(' ') || 'Skillansh',
+            email: currentLearnerState.email,
+            whatsapp: currentLearnerState.phone,
+            planId: 'pkg_inst2'
+          })
+        });
+        const json = await resp.json();
+        if (json && json.status === 'success') {
+          launchRazorpayStandardCheckout({
+            keyId: json.keyId || CFG.RAZORPAY_KEY_ID,
+            orderId: json.orderId || '',
+            amountPaise: json.amountPaise,
+            amountInr: json.amountInr,
+            registrationId: currentLearnerState.registrationId,
+            learnerId: currentLearnerState.learnerId,
+            planId: 'pkg_inst2',
+            courseName: json.courseName || plan.name,
+            learnerName: currentLearnerState.learnerName,
+            firstName: names[0] || 'Learner',
+            surname: names.slice(1).join(' ') || 'Skillansh',
+            email: currentLearnerState.email,
+            phone: currentLearnerState.phone
+          });
+        }
+      } catch (e) {
+        alert('Could not initialize 2nd instalment order. Please contact Skillansh Support on WhatsApp at 9922045007.');
+      }
     }
 
     // Auto-preselect course from ?course=... or ?plan=... URL parameter (passed from ENROL NOW buttons)

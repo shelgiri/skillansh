@@ -165,7 +165,7 @@ const translations = {
     'Q7. What happens if I cannot complete a workflow?': 'Q7. मी कार्यप्रवाह पूर्ण करू शकलो नाही तर काय होते?',
     'Eligible participants who meet the published participation requirements but cannot complete one working workflow may receive up to two additional workflow-review sessions. The published participation requirements must be provided and reviewed before enrolment.': 'प्रकाशित सहभागीता आवश्यकतांचे पालन करणारे पात्र सहभागी परंतु एक कार्यशील कार्यप्रवाह पूर्ण करू शकले नाहीत त्यांना दोन पर्यंत अतिरिक्त कार्यप्रवाह-पुनरावलोकन सत्रे मिळू शकतात. नोंदणीपूर्वी प्रकाशित सहभागीता आवश्यकता पुरविल्या व पुनरावलोकन केल्या जाणे आवश्यक आहे.',
     'Q8. Can I pay in instalments?': 'Q8. मी हप्त्यांमध्ये पेमेंट करू शकतो का?',
-    'The offer lists a one-time payment of &rsquo;9,999 or two instalments of approximately &rsquo;5,000 and &rsquo;4,999. Confirm the exact payment schedule and conditions before making payment.': 'ऑफरमध्ये एकवेळ पेमेंट &rsquo;9,999 किंवा दोन हप्ते अंदाजे &rsquo;5,000 आणि &rsquo;4,999 नमूद केले आहेत. पेमेंट करू नयेत पूर्वी अचूक पेमेंट वेळापत्रक व अटी確認 करा.',
+    'Applicable payment options (including Full Payment and 2-Instalment options for the 4-Course Package) are displayed after you complete course registration.': 'कोर्स नोंदणी पूर्ण केल्यानंतर लागू पेमेंट पर्याय (४-कोर्स पॅकेजसाठी पूर्ण पेमेंट आणि २-हप्ते पर्यायांसह) दर्शविले जातात.',
     'Q9. Is this an advanced Power BI or AI certification program?': 'Q9. हे प्रगत Power BI किंवा AI प्रमाणन कार्यक्रम आहे का?',
     'The documented offer includes a Power BI Starter Project and practical accounting automation resources. An advanced certification or formal qualification is not specified.': 'दस्तऐवजीकृत ऑफरमध्ये Power Bi स्टार्टर प्रकल्प आणि व्यावहारिक लेखा स्वयंचलित संसाधने समाविष्ट आहेत. प्रगत प्रमाणन किंवा औपचारिक पात्रता नमूद केलेली नाही.',
     'Q10. How do I know which accounting task I should automate first?': 'Q10. मी कोणता लेखा कार्य पहिले स्वयंचलित करायचे हे कसे जाणून घेईन?',
@@ -309,7 +309,7 @@ document.addEventListener('keydown', (e) => {
 });
 document.addEventListener('click', (e) => {
   if (navLinks && navLinks.classList.contains('open') &&
-      !navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+    !navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
     closeMobileMenu();
   }
 });
@@ -494,7 +494,7 @@ function preserveFormValues() {
     message: form.elements['message'].value,
     contact_method: Array.from(form.elements['contact_method']).find(r => r.checked)?.value
   };
-  try { sessionStorage.setItem('accountpro_form_values', JSON.stringify(values)); } catch (e) {}
+  try { sessionStorage.setItem('accountpro_form_values', JSON.stringify(values)); } catch (e) { }
 }
 
 function restoreFormValues() {
@@ -511,11 +511,11 @@ function restoreFormValues() {
     if (values.contact_method) {
       Array.from(form.elements['contact_method']).forEach(r => { r.checked = r.value === values.contact_method; });
     }
-  } catch (e) {}
+  } catch (e) { }
 }
 
 function clearFormValues() {
-  try { sessionStorage.removeItem('accountpro_form_values'); } catch (e) {}
+  try { sessionStorage.removeItem('accountpro_form_values'); } catch (e) { }
 }
 
 function preselectTopic() {
@@ -591,7 +591,7 @@ async function submitEnquiry(formData) {
       const fn = parts[0] || '';
       const ln = parts.slice(1).join(' ') || '';
       const isEmail = formData.contact_method === 'email' || (formData.contact_detail || '').includes('@');
-      
+
       const sheetPayload = {
         name: formData.name,
         fullName: formData.name,
@@ -887,359 +887,16 @@ function closeEnrolModal() {
 }
 window.closeEnrolModal = closeEnrolModal;
 
-/* ---------- Razorpay Enrolment Modal (Mandatory Learner Details & Plans) ---------- */
+/* ---------- Course Registration & Conditional Payment Redirect ---------- */
 function initEnrolModal() {
-  const overlay = document.getElementById('enrol-modal-overlay');
-  const closeBtn = document.getElementById('enrol-modal-close');
-  const form = document.getElementById('enrol-checkout-form');
-  const redirectBox = document.getElementById('enrol-redirect-box');
-  const submitBtn = document.getElementById('enrol-submit-btn');
-  const btnText = document.getElementById('enrol-btn-text');
-
-  if (!overlay) return;
-
-  const cfg = window.ACCOUNTPRO_CONFIG || {};
-  const plans = cfg.PAYMENT_PLANS || {
-    pkg_full: { id: 'pkg_full', name: 'Complete 4-Course Package (ADHAAR + DRISHTI + PRAVAH + BODH) – Option A: Full Payment', amount: 14999, totalPackageAmount: 14999, balanceDueAfter: 0, unlockedCourses: ['ADHAAR', 'DRISHTI', 'PRAVAH', 'BODH'], paymentStatusOnSuccess: 'PAID', link: 'https://rzp.io/rzp/BVYNZBfG' },
-    pkg_inst1: { id: 'pkg_inst1', name: 'Complete 4-Course Package – Option B: 1st Instalment (Unlocks ADHAAR)', amount: 2000, totalPackageAmount: 16999, balanceDueAfter: 14999, unlockedCourses: ['ADHAAR'], paymentStatusOnSuccess: 'PARTIALLY_PAID', link: 'https://razorpay.me/@skillansh' },
-    pkg_inst2: { id: 'pkg_inst2', name: 'Complete 4-Course Package – Option B: 2nd Instalment Balance (Unlocks DRISHTI, PRAVAH & BODH)', amount: 14999, totalPackageAmount: 16999, balanceDueAfter: 0, unlockedCourses: ['ADHAAR', 'DRISHTI', 'PRAVAH', 'BODH'], paymentStatusOnSuccess: 'PAID', link: 'https://rzp.io/rzp/BVYNZBfG' },
-    adhaar: { id: 'adhaar', name: 'ADHAAR – Excel Foundation', amount: 1999, totalPackageAmount: 1999, balanceDueAfter: 0, unlockedCourses: ['ADHAAR'], paymentStatusOnSuccess: 'PAID', link: 'https://razorpay.me/@skillansh' },
-    drishti: { id: 'drishti', name: 'DRISHTI – MIS & Dashboards', amount: 3999, totalPackageAmount: 3999, balanceDueAfter: 0, unlockedCourses: ['DRISHTI'], paymentStatusOnSuccess: 'PAID', link: 'https://razorpay.me/@skillansh' },
-    pravah: { id: 'pravah', name: 'PRAVAH – Power Query', amount: 6999, totalPackageAmount: 6999, balanceDueAfter: 0, unlockedCourses: ['PRAVAH'], paymentStatusOnSuccess: 'PAID', link: 'https://razorpay.me/@skillansh' },
-    bodh: { id: 'bodh', name: 'BODH – Power BI & AI', amount: 7999, totalPackageAmount: 7999, balanceDueAfter: 0, unlockedCourses: ['BODH'], paymentStatusOnSuccess: 'PAID', link: 'https://razorpay.me/@skillansh' },
-    kriya: { id: 'kriya', name: 'KRIYA – VBA & Automation (Standalone Course)', amount: 4999, totalPackageAmount: 4999, balanceDueAfter: 0, unlockedCourses: ['KRIYA'], paymentStatusOnSuccess: 'PAID', link: 'https://razorpay.me/@skillansh' }
-  };
-
-  let selectedPlanId = 'pkg_full';
-  let appliedPromoCode = '';
-
   const openButtons = document.querySelectorAll('#open-enrol-modal-btn, .cohort-enrol-btn, [data-open-enrol-modal]');
   openButtons.forEach(btn => {
+    if (btn.tagName === 'A') return;
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       openEnrolModal(e);
     });
   });
-
-  if (closeBtn) {
-    closeBtn.addEventListener('click', closeEnrolModal);
-  }
-
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) closeEnrolModal();
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && overlay.classList.contains('active')) {
-      closeEnrolModal();
-    }
-  });
-
-  // Function to update submit button label based on plan and language
-  function updateButtonLabel() {
-    if (!btnText) return;
-    const plan = plans[selectedPlanId] || plans.full;
-    const isMr = (typeof currentLang !== 'undefined' && currentLang === 'mr') || document.documentElement.lang === 'mr';
-    const amountStr = Number(plan.amount).toLocaleString('en-IN');
-    if (isMr) {
-      btnText.textContent = `Razorpay वर ₹${amountStr} भरण्यासाठी पुढे जा →`;
-    } else {
-      btnText.textContent = `Proceed to Pay ₹${amountStr} on Razorpay →`;
-    }
-  }
-
-  // Plan Selection Cards Logic
-  const planRadios = form ? form.querySelectorAll('input[name="payment_plan"]') : [];
-  planRadios.forEach(radio => {
-    radio.addEventListener('change', () => {
-      selectedPlanId = radio.value;
-      document.querySelectorAll('.enrol-plan-card').forEach(card => card.classList.remove('active'));
-      const activeCard = document.getElementById(`card-plan-${selectedPlanId}`);
-      if (activeCard) activeCard.classList.add('active');
-      updateButtonLabel();
-    });
-  });
-
-  // Make whole plan card clickable
-  document.querySelectorAll('.enrol-plan-card').forEach(card => {
-    card.addEventListener('click', (e) => {
-      const radio = card.querySelector('input[type="radio"]');
-      if (radio && !radio.checked) {
-        radio.checked = true;
-        radio.dispatchEvent(new Event('change'));
-      }
-    });
-  });
-
-  // Promo Code Application Logic (Secret Unlock for SPECIAL5999)
-  const promoInput = document.getElementById('enrol-promo-input');
-  const promoBtn = document.getElementById('enrol-promo-btn');
-  const promoFeedback = document.getElementById('enrol-promo-feedback');
-  const cardSpecial = document.getElementById('card-plan-special');
-
-  function applyPromoCode() {
-    if (!promoInput || !promoFeedback) return;
-    const entered = promoInput.value.trim().toUpperCase();
-    const isMr = (typeof currentLang !== 'undefined' && currentLang === 'mr') || document.documentElement.lang === 'mr';
-
-    if (!entered) {
-      promoFeedback.style.display = 'block';
-      promoFeedback.className = 'enrol-promo-feedback error';
-      promoFeedback.textContent = isMr ? 'कृपया प्रोमो कोड प्रविष्ट करा.' : 'Please enter a promo code.';
-      return;
-    }
-
-    const promoConfig = cfg.PROMO_CODES || {};
-    const matched = promoConfig[entered];
-
-    if (entered === 'SPECIAL5999' || matched) {
-      appliedPromoCode = entered;
-      // Unlock secret special offer card
-      if (cardSpecial) {
-        cardSpecial.style.display = 'flex';
-      }
-      // Check the special offer radio
-      const specialRadio = document.querySelector('input[name="payment_plan"][value="special"]');
-      if (specialRadio) {
-        specialRadio.checked = true;
-        specialRadio.dispatchEvent(new Event('change'));
-      }
-
-      // Show success feedback
-      promoFeedback.style.display = 'block';
-      promoFeedback.className = 'enrol-promo-feedback success';
-      if (isMr) {
-        promoFeedback.innerHTML = (matched && matched.messageMr) ? matched.messageMr : '🎉 <strong>स्कॉलरशिप कोड लागू झाला!</strong> ₹५,००० सवलतीसह ऑल-इन-वन प्रोग्राम ऑफर (₹९,९९९) सुरू झाली आहे!';
-      } else {
-        promoFeedback.innerHTML = (matched && matched.messageEn) ? matched.messageEn : '🎉 <strong>Scholarship code applied!</strong> Live Session Offer (₹9,999) unlocked with ₹5,000 savings!';
-      }
-
-      if (promoBtn) {
-        promoBtn.classList.add('applied');
-        promoBtn.textContent = isMr ? 'लागू झाले ✓' : 'Applied ✓';
-        promoBtn.disabled = true;
-      }
-      promoInput.disabled = true;
-    } else {
-      promoFeedback.style.display = 'block';
-      promoFeedback.className = 'enrol-promo-feedback error';
-      promoFeedback.textContent = isMr 
-        ? 'अवैध प्रोमो कोड. कृपया तपासून पुन्हा प्रयत्न करा.' 
-        : 'Invalid promo code. Please check and try again.';
-    }
-  }
-
-  if (promoBtn) {
-    promoBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      applyPromoCode();
-    });
-  }
-
-  if (promoInput) {
-    promoInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        applyPromoCode();
-      }
-    });
-  }
-
-  // Real-time input clearing
-  const inputs = form ? form.querySelectorAll('input') : [];
-  inputs.forEach(inp => {
-    inp.addEventListener('input', () => {
-      inp.classList.remove('has-error');
-      const err = document.getElementById(`err-${inp.name}`);
-      if (err) err.style.display = 'none';
-    });
-  });
-
-  if (form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const fn = document.getElementById('enrol-firstname');
-      const ln = document.getElementById('enrol-lastname');
-      const em = document.getElementById('enrol-email');
-      const ph = document.getElementById('enrol-phone');
-
-      let isValid = true;
-
-      // 1. First Name
-      if (!fn.value.trim()) {
-        fn.classList.add('has-error');
-        document.getElementById('err-firstname').style.display = 'block';
-        isValid = false;
-      }
-
-      // 2. Surname / Last Name
-      if (!ln.value.trim()) {
-        ln.classList.add('has-error');
-        document.getElementById('err-lastname').style.display = 'block';
-        isValid = false;
-      }
-
-      // 3. Email
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!em.value.trim() || !emailRegex.test(em.value.trim())) {
-        em.classList.add('has-error');
-        document.getElementById('err-email').style.display = 'block';
-        isValid = false;
-      }
-
-      // 4. Phone (at least 10 digits)
-      const phoneDigits = ph.value.replace(/\D/g, '');
-      if (phoneDigits.length < 10) {
-        ph.classList.add('has-error');
-        document.getElementById('err-phone').style.display = 'block';
-        isValid = false;
-      }
-
-      if (!isValid) return;
-
-      // All mandatory details valid -> Proceed to Razorpay!
-      const currentPlan = plans[selectedPlanId] || plans.full;
-      const isMr = (typeof currentLang !== 'undefined' && currentLang === 'mr') || document.documentElement.lang === 'mr';
-
-      if (btnText) {
-        btnText.textContent = isMr ? 'माहिती सेव्ह होत आहे व जोडत आहोत...' : 'Saving Details & Connecting...';
-      }
-      submitBtn.disabled = true;
-
-      const payload = {
-        name: `${fn.value.trim()} ${ln.value.trim()}`,
-        firstname: fn.value.trim(),
-        firstName: fn.value.trim(),
-        lastname: ln.value.trim(),
-        surname: ln.value.trim(),
-        email: em.value.trim(),
-        phone: ph.value.trim(),
-        whatsapp: ph.value.trim(),
-        planId: currentPlan.id,
-        planName: currentPlan.name,
-        amount: currentPlan.amount,
-        plan: `${currentPlan.name} (₹${Number(currentPlan.amount).toLocaleString('en-IN')})`,
-        promoCode: appliedPromoCode || 'NONE',
-        topic: '30-Day Cohort Enrolment',
-        source: 'Home Page Cohort Card',
-        submitted_at: new Date().toISOString()
-      };
-
-      // 1. Request Razorpay Order ID & Unique Registration ID from Server-Side Authoritative Catalogue
-      const googleSheetUrl = cfg.GOOGLE_SHEET_WEBHOOK_URL;
-      let orderData = {
-        registrationId: 'SKL-REG-' + new Date().toISOString().slice(0, 10).replace(/-/g, '') + '-' + Math.floor(1000 + Math.random() * 9000),
-        learnerId: 'SKL-LRN-' + phoneDigits.slice(-6) + '-' + Math.floor(100 + Math.random() * 900),
-        keyId: cfg.RAZORPAY_KEY_ID || 'rzp_test_TxynQtDHnvxC1V',
-        orderId: '',
-        amountInr: currentPlan.amount,
-        amountPaise: Number(currentPlan.amount) * 100
-      };
-
-      if (googleSheetUrl) {
-        try {
-          const ordResp = await fetch(googleSheetUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-            body: JSON.stringify({
-              action: 'create_order',
-              firstName: fn.value.trim(),
-              surname: ln.value.trim(),
-              email: em.value.trim(),
-              whatsapp: phoneDigits.slice(-10),
-              planId: currentPlan.id,
-              promoCode: appliedPromoCode || 'NONE',
-              emailConsent: document.getElementById('enrol-consent-email') ? document.getElementById('enrol-consent-email').checked : true,
-              whatsappConsent: document.getElementById('enrol-consent-whatsapp') ? document.getElementById('enrol-consent-whatsapp').checked : true
-            })
-          });
-          const ordJson = await ordResp.json();
-          if (ordJson && ordJson.status === 'success') {
-            orderData = Object.assign(orderData, ordJson);
-          }
-        } catch (err) {
-          console.warn('Order API notice (using Standard Checkout):', err);
-        }
-      }
-
-      // 2. Send backup notification to Formspree
-      const endpoint = cfg.ENQUIRY_SUBMISSION_ENDPOINT || 'https://formspree.io/f/xqppyvgd';
-      try {
-        fetch(endpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(Object.assign({}, payload, { registrationId: orderData.registrationId, learnerId: orderData.learnerId }))
-        }).catch(() => {});
-      } catch (err) {}
-
-      // 3. Launch Razorpay Standard Checkout Automatically (Paise conversion + prefill + verification handler)
-      if (typeof window.Razorpay === 'function') {
-        const rzpOpts = {
-          key: orderData.keyId || cfg.RAZORPAY_KEY_ID,
-          amount: orderData.amountPaise,
-          currency: 'INR',
-          name: 'Skillansh',
-          description: `${currentPlan.name} (${orderData.registrationId})`,
-          image: 'https://www.skillansh.com/skillansh-logo.png',
-          prefill: {
-            name: `${fn.value.trim()} ${ln.value.trim()}`,
-            email: em.value.trim(),
-            contact: '+91' + phoneDigits.slice(-10)
-          },
-          notes: {
-            registration_id: orderData.registrationId,
-            learner_id: orderData.learnerId,
-            plan_id: currentPlan.id
-          },
-          theme: { color: '#1E3A5F' },
-          handler: async function (rzpResponse) {
-            if (btnText) btnText.textContent = 'Verifying Payment & Activating LMS...';
-            if (googleSheetUrl) {
-              try {
-                await fetch(googleSheetUrl, {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                  body: JSON.stringify({
-                    action: 'verify_payment',
-                    registrationId: orderData.registrationId,
-                    learnerId: orderData.learnerId,
-                    planId: currentPlan.id,
-                    learnerName: `${fn.value.trim()} ${ln.value.trim()}`,
-                    firstName: fn.value.trim(),
-                    surname: ln.value.trim(),
-                    email: em.value.trim(),
-                    whatsapp: phoneDigits.slice(-10),
-                    razorpay_order_id: rzpResponse.razorpay_order_id || orderData.orderId || '',
-                    razorpay_payment_id: rzpResponse.razorpay_payment_id || '',
-                    razorpay_signature: rzpResponse.razorpay_signature || ''
-                  })
-                });
-              } catch (vErr) {
-                console.warn('Payment verification sync notice:', vErr);
-              }
-            }
-            window.location.href = `enroll.html?regId=${encodeURIComponent(orderData.registrationId)}`;
-          },
-          modal: {
-            ondismiss: function () {
-              submitBtn.disabled = false;
-              updateButtonLabel();
-            }
-          }
-        };
-        if (orderData.orderId) {
-          rzpOpts.order_id = orderData.orderId;
-        }
-        const rzp = new window.Razorpay(rzpOpts);
-        rzp.open();
-        return;
-      }
-
-      // Fallback if checkout.js blocked by adblocker: redirect to enroll.html
-      window.location.href = `enroll.html?plan=${encodeURIComponent(currentPlan.id)}`;
-    });
-  }
 }
 
 /* ---------- Quick Enquiry Modal (Option A) ---------- */
@@ -1659,7 +1316,7 @@ function initContentCopyProtection() {
     if (e.key === 'PrintScreen' || e.keyCode === 44) {
       triggerCurriculumBlurFlash();
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText('Protected Content © Skillansh (www.skillansh.com)').catch(() => {});
+        navigator.clipboard.writeText('Protected Content © Skillansh (www.skillansh.com)').catch(() => { });
       }
       return;
     }
@@ -1678,7 +1335,7 @@ function initContentCopyProtection() {
     if (e.key === 'PrintScreen' || e.keyCode === 44) {
       triggerCurriculumBlurFlash();
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText('Protected Content © Skillansh (www.skillansh.com)').catch(() => {});
+        navigator.clipboard.writeText('Protected Content © Skillansh (www.skillansh.com)').catch(() => { });
       }
     }
   });
