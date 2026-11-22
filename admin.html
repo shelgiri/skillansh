@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>Skillansh Admin Dashboard | Learners, Registrations, Payment Tracker &amp; LMS Access</title>
+  <title>Skillansh Admin Dashboard | Learners, Payment Tracker, LMS, Notifications &amp; Templates</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -34,46 +34,87 @@
     .admin-brand {
       font-family: 'Outfit', sans-serif;
       font-weight: 800;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       color: #FDE68A;
     }
     .admin-container {
-      max-width: 1280px;
-      margin: 1.75rem auto;
+      max-width: 1320px;
+      margin: 1.5rem auto;
       padding: 0 1.25rem;
     }
     .kpi-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-      margin-bottom: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+      gap: 0.9rem;
+      margin-bottom: 1.25rem;
     }
     .kpi-card {
       background: #FFFFFF;
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 1.15rem 1.35rem;
+      padding: 1rem 1.2rem;
       box-shadow: 0 4px 12px rgba(15,23,42,0.04);
     }
-    .kpi-lbl { font-size: 0.75rem; font-weight: 800; color: #64748B; text-transform: uppercase; }
-    .kpi-val { font-family: 'Outfit', sans-serif; font-size: 1.75rem; font-weight: 800; color: #0F172A; margin-top: 0.25rem; }
+    .kpi-lbl { font-size: 0.72rem; font-weight: 800; color: #64748B; text-transform: uppercase; }
+    .kpi-val { font-family: 'Outfit', sans-serif; font-size: 1.65rem; font-weight: 800; color: #0F172A; margin-top: 0.2rem; }
+    .admin-tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+    .admin-tab-btn {
+      padding: 0.6rem 1.15rem;
+      border-radius: 10px;
+      border: 1.5px solid #CBD5E1;
+      background: #FFFFFF;
+      color: #1E3A5F;
+      font-weight: 800;
+      font-size: 0.84rem;
+      cursor: pointer;
+    }
+    .admin-tab-btn.active {
+      background: #1E3A5F;
+      color: #FFFFFF;
+      border-color: #1E3A5F;
+    }
     .panel-card {
       background: #FFFFFF;
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 1.5rem;
+      padding: 1.4rem;
       margin-bottom: 1.5rem;
       box-shadow: 0 4px 14px rgba(15,23,42,0.04);
       overflow-x: auto;
     }
-    table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
-    th, td { padding: 0.7rem 0.75rem; text-align: left; border-bottom: 1px solid #E2E8F0; white-space: nowrap; }
-    th { background: #F8FAFC; color: #334155; font-weight: 800; font-size: 0.76rem; text-transform: uppercase; }
+    .filter-pills {
+      display: flex;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .filter-pill {
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid #CBD5E1;
+      background: #F8FAFC;
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .filter-pill.active {
+      background: #0F766E;
+      color: #FFFFFF;
+      border-color: #0F766E;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    th, td { padding: 0.65rem 0.7rem; text-align: left; border-bottom: 1px solid #E2E8F0; white-space: nowrap; }
+    th { background: #F8FAFC; color: #334155; font-weight: 800; font-size: 0.74rem; text-transform: uppercase; }
     .badge {
       display: inline-block;
-      padding: 0.18rem 0.55rem;
+      padding: 0.16rem 0.52rem;
       border-radius: 999px;
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 800;
     }
     .badge-paid { background: #DCFCE7; color: #065F46; }
@@ -84,7 +125,7 @@
       padding: 0.35rem 0.7rem;
       border-radius: 6px;
       border: none;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 700;
       cursor: pointer;
       text-decoration: none;
@@ -93,11 +134,12 @@
     .btn-wa { background: #25D366; color: #fff; }
     .btn-remind { background: #D97706; color: #fff; }
     .btn-unlock { background: #0F766E; color: #fff; }
+    .btn-navy { background: #1E3A5F; color: #fff; }
   </style>
 </head>
 <body>
   <header class="admin-header">
-    <div class="admin-brand">🛡️ SKILLANSH ADMIN DASHBOARD &middot; PAYMENT TRACKER &amp; SEQUENTIAL LMS CONTROL</div>
+    <div class="admin-brand">🛡️ SKILLANSH ADMIN DASHBOARD &middot; PAYMENT TRACKER, SEQUENTIAL LMS &amp; AUTOMATED NOTIFICATION ENGINE</div>
     <div style="display:flex; gap:0.75rem; align-items:center;">
       <a href="enroll.html" style="color:#A7F3D0; font-size:0.85rem; font-weight:700; text-decoration:none;">Open Registration &amp; LMS Portal &rarr;</a>
       <a href="index.html" style="color:#CBD5E1; font-size:0.85rem; text-decoration:none;">Main Website</a>
@@ -105,85 +147,202 @@
   </header>
 
   <div class="admin-container">
-    <!-- Auth Bar -->
-    <div class="panel-card" style="display:flex; gap:0.75rem; align-items:center; flex-wrap:wrap;">
-      <strong style="font-size:0.9rem;">🔑 Admin Passcode:</strong>
-      <input type="password" id="admin-pin" value="SKILLANSH2026" placeholder="Enter Admin Passcode" style="padding:0.55rem 0.9rem; border:1.5px solid #CBD5E1; border-radius:8px; font-size:0.88rem;">
-      <button type="button" onclick="loadAdminData()" class="btn-sm btn-unlock" style="padding:0.6rem 1.2rem; font-size:0.85rem;">Sync Live Records from Google Sheet &rarr;</button>
+    <!-- Auth & Quick Actions Bar -->
+    <div class="panel-card" style="display:flex; gap:0.75rem; align-items:center; flex-wrap:wrap; justify-content:space-between;">
+      <div style="display:flex; gap:0.65rem; align-items:center; flex-wrap:wrap;">
+        <strong style="font-size:0.88rem;">🔑 Admin Passcode:</strong>
+        <input type="password" id="admin-pin" value="SKILLANSH2026" placeholder="Enter Admin Passcode" style="padding:0.5rem 0.85rem; border:1.5px solid #CBD5E1; border-radius:8px; font-size:0.86rem;">
+        <button type="button" onclick="loadAdminData()" class="btn-sm btn-unlock" style="padding:0.55rem 1.1rem; font-size:0.84rem;">Sync Live Records &rarr;</button>
+        <button type="button" onclick="triggerScheduledRemindersNow()" class="btn-sm btn-remind" style="padding:0.55rem 1rem; font-size:0.82rem;">⚡ Run 30m/24h/72h Unpaid Reminder Queue</button>
+        <button type="button" onclick="run15VerificationTests()" class="btn-sm btn-navy" style="padding:0.55rem 1rem; font-size:0.82rem;">🧪 Run All 15 Automated Tests</button>
+      </div>
       <span id="admin-sync-msg" style="font-size:0.82rem; color:#0F766E; font-weight:700;"></span>
     </div>
 
     <!-- KPI Summary -->
     <div class="kpi-grid">
       <div class="kpi-card">
-        <div class="kpi-lbl">Total Registrations</div>
-        <div class="kpi-val" id="kpi-total-reg">0</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-lbl">Fully Paid (PAID)</div>
-        <div class="kpi-val" id="kpi-paid" style="color:#059669;">0</div>
+        <div class="kpi-lbl">Unpaid (PENDING)</div>
+        <div class="kpi-val" id="kpi-unpaid" style="color:#64748B;">0</div>
       </div>
       <div class="kpi-card">
         <div class="kpi-lbl">1st Instalment (PARTIALLY_PAID)</div>
         <div class="kpi-val" id="kpi-partial" style="color:#D97706;">0</div>
       </div>
       <div class="kpi-card">
-        <div class="kpi-lbl">Pending 2nd Instalment Balance</div>
+        <div class="kpi-lbl">Fully Paid (PAID)</div>
+        <div class="kpi-val" id="kpi-paid" style="color:#059669;">0</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-lbl">Outstanding Instalment Balances</div>
         <div class="kpi-val" id="kpi-balance-due" style="color:#B45309;">₹0</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-lbl">Pending Scheduled Reminders</div>
+        <div class="kpi-val" id="kpi-sched-notif" style="color:#1E40AF;">0</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-lbl">Delivered / Failed Messages</div>
+        <div class="kpi-val" id="kpi-deliv-fail" style="font-size:1.35rem;">0 / 0</div>
       </div>
     </div>
 
-    <!-- Table 1: Sequential LMS Course Access & 2nd Instalment Reminders -->
-    <div class="panel-card">
-      <h3 style="font-size:1.1rem; font-weight:800; color:#0F172A; margin-bottom:0.35rem;">1. Sequential LMS Course Access &amp; 2nd Instalment Actions</h3>
-      <p style="font-size:0.82rem; color:#64748B; margin-bottom:1rem;">For learners on the 2-Instalment Plan (`PARTIALLY_PAID`), only `ADHAAR` is `ACTIVE`. Send a 1-click Email or WhatsApp payment reminder for the `₹14,999` balance before `DRISHTI` starts.</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Reg ID</th>
-            <th>Learner Name</th>
-            <th>Contact</th>
-            <th>Package</th>
-            <th>Status</th>
-            <th>Balance Due</th>
-            <th>ADHAAR</th>
-            <th>DRISHTI</th>
-            <th>PRAVAH</th>
-            <th>BODH</th>
-            <th>KRIYA</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="lms-table-body">
-          <tr><td colspan="12" style="text-align:center; color:#64748B; padding:1.5rem;">Click "Sync Live Records from Google Sheet" to load learners.</td></tr>
-        </tbody>
-      </table>
+    <!-- Main Admin Navigation Tabs (Section 8) -->
+    <div class="admin-tabs">
+      <button type="button" class="admin-tab-btn active" id="atab-learners" onclick="switchAdminTab('learners')">1. Learners, Payment Status &amp; Sequential LMS</button>
+      <button type="button" class="admin-tab-btn" id="atab-notifications" onclick="switchAdminTab('notifications')">2. Notification Delivery History, Pending Reminders &amp; Resend</button>
+      <button type="button" class="admin-tab-btn" id="atab-templates" onclick="switchAdminTab('templates')">3. Course Commencement Dates &amp; Email/WhatsApp Templates</button>
+      <button type="button" class="admin-tab-btn" id="atab-tests" onclick="switchAdminTab('tests')">4. 15-Requirement Automated Test Report</button>
     </div>
 
-    <!-- Table 2: Payment Tracker -->
-    <div class="panel-card">
-      <h3 style="font-size:1.1rem; font-weight:800; color:#0F172A; margin-bottom:0.35rem;">2. Authoritative Payment Tracker</h3>
-      <p style="font-size:0.82rem; color:#64748B; margin-bottom:1rem;">Tracks every Registration ID, Total Package Amount, Amount Received, Balance Due, and Razorpay Order/Payment IDs.</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Registration ID</th>
-            <th>Learner ID</th>
-            <th>Learner Name</th>
-            <th>Selected Course / Package</th>
-            <th>Total Pkg</th>
-            <th>Received</th>
-            <th>Balance Due</th>
-            <th>Status</th>
-            <th>Razorpay Order / Payment ID</th>
-            <th>Last Updated</th>
-            <th>WhatsApp</th>
-          </tr>
-        </thead>
-        <tbody id="pt-table-body">
-          <tr><td colspan="11" style="text-align:center; color:#64748B; padding:1.5rem;">Click "Sync Live Records from Google Sheet" to load payment history.</td></tr>
-        </tbody>
-      </table>
+    <!-- TAB 1: LEARNERS, PAYMENT TRACKER & SEQUENTIAL LMS -->
+    <div id="apane-learners">
+      <div class="panel-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; margin-bottom:0.85rem;">
+          <div>
+            <h3 style="font-size:1.08rem; font-weight:800; color:#0F172A;">Learners, Payment Status &amp; Sequential Course Access</h3>
+            <p style="font-size:0.8rem; color:#64748B;">Filter by Unpaid (`PENDING`), Partially Paid (`PARTIALLY_PAID` – ₹14,999 due before `DRISHTI`), or Fully Paid (`PAID`).</p>
+          </div>
+          <div class="filter-pills">
+            <button type="button" class="filter-pill active" onclick="filterLearners('ALL', this)">All Learners</button>
+            <button type="button" class="filter-pill" onclick="filterLearners('PENDING', this)">Unpaid (PENDING)</button>
+            <button type="button" class="filter-pill" onclick="filterLearners('PARTIALLY_PAID', this)">Partially Paid (₹14,999 Due)</button>
+            <button type="button" class="filter-pill" onclick="filterLearners('PAID', this)">Fully Paid (PAID)</button>
+          </div>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Reg ID</th>
+              <th>Learner Name</th>
+              <th>Contact</th>
+              <th>Course / Package</th>
+              <th>Status</th>
+              <th>Balance Due</th>
+              <th>ADHAAR</th>
+              <th>DRISHTI</th>
+              <th>PRAVAH</th>
+              <th>BODH</th>
+              <th>KRIYA</th>
+              <th>Instalment &amp; Support Actions</th>
+            </tr>
+          </thead>
+          <tbody id="lms-table-body">
+            <tr><td colspan="12" style="text-align:center; color:#64748B; padding:1.5rem;">Click "Sync Live Records" to load learners.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 2: NOTIFICATION LOG, PENDING REMINDERS & RESEND FACILITY (SECTIONS 7 & 8) -->
+    <div id="apane-notifications" style="display:none;">
+      <div class="panel-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; margin-bottom:0.85rem;">
+          <div>
+            <h3 style="font-size:1.08rem; font-weight:800; color:#0F172A;">Notification Management Database &amp; Delivery History</h3>
+            <p style="font-size:0.8rem; color:#64748B;">Tracks every Email &amp; WhatsApp notification, Idempotency Key, consent status, scheduled unpaid reminders (30m/24h/72h), and provides 1-click Resend for eligible notifications.</p>
+          </div>
+          <div class="filter-pills">
+            <button type="button" class="filter-pill active" onclick="filterNotifications('ALL', this)">All Messages</button>
+            <button type="button" class="filter-pill" onclick="filterNotifications('SCHEDULED', this)">Pending Reminders (SCHEDULED)</button>
+            <button type="button" class="filter-pill" onclick="filterNotifications('DELIVERED', this)">Delivered</button>
+            <button type="button" class="filter-pill" onclick="filterNotifications('FAILED', this)">Failed (Retry Eligible)</button>
+            <button type="button" class="filter-pill" onclick="filterNotifications('CANCELLED_ON_PAYMENT', this)">Cancelled on Payment</button>
+          </div>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Notif ID</th>
+              <th>Reg ID</th>
+              <th>Learner</th>
+              <th>Channel</th>
+              <th>Consent</th>
+              <th>Notification Type</th>
+              <th>Scheduled / Sent Time</th>
+              <th>Status</th>
+              <th>Retries</th>
+              <th>Error / Preview</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="notif-table-body">
+            <tr><td colspan="11" style="text-align:center; color:#64748B; padding:1.5rem;">Click "Sync Live Records" to load notification logs.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 3: COURSE COMMENCEMENT DATES & TEMPLATE MANAGER (SECTIONS 6 & 8) -->
+    <div id="apane-templates" style="display:none;">
+      <div class="panel-card">
+        <h3 style="font-size:1.08rem; font-weight:800; color:#0F172A; margin-bottom:0.3rem;">Update Course Commencement Dates &amp; Communication Templates</h3>
+        <p style="font-size:0.82rem; color:#64748B; margin-bottom:1.1rem;">Update upcoming session schedules (`SCHEDULE_ADHAAR`, `SCHEDULE_DRISHTI`, etc.) or customize Email &amp; WhatsApp templates (`{{learnerName}}`, `{{registrationId}}`, `{{courseName}}`, `{{amountPaid}}`, `{{balanceDue}}`, `{{paymentLink}}`, `{{courseAccessLink}}`, `{{sessionDetails}}`).</p>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
+          <div>
+            <label style="font-size:0.78rem; font-weight:800; display:block; margin-bottom:0.3rem;">Select Schedule or Template Key</label>
+            <select id="tpl-select-key" onchange="populateTemplateEditor()" style="width:100%; padding:0.6rem; border:1.5px solid #CBD5E1; border-radius:8px; font-size:0.85rem;">
+              <option value="SCHEDULE_ADHAAR">SCHEDULE_ADHAAR (ADHAAR Commencement Date)</option>
+              <option value="SCHEDULE_DRISHTI">SCHEDULE_DRISHTI (DRISHTI Commencement Date)</option>
+              <option value="SCHEDULE_PRAVAH">SCHEDULE_PRAVAH (PRAVAH Commencement Date)</option>
+              <option value="SCHEDULE_BODH">SCHEDULE_BODH (BODH Commencement Date)</option>
+              <option value="SCHEDULE_KRIYA">SCHEDULE_KRIYA (KRIYA Standalone Commencement Date)</option>
+              <option value="REGISTRATION_ACK">REGISTRATION_ACK (Registration Acknowledgement)</option>
+              <option value="UNPAID_REMINDER_30M">UNPAID_REMINDER_30M (30-Min Unpaid Reminder)</option>
+              <option value="UNPAID_REMINDER_24H">UNPAID_REMINDER_24H (24-Hour Unpaid Reminder)</option>
+              <option value="UNPAID_REMINDER_72H">UNPAID_REMINDER_72H (72-Hour Final Unpaid Reminder)</option>
+              <option value="PAYMENT_FAILED">PAYMENT_FAILED (Payment Failed Notification)</option>
+              <option value="FIRST_INSTALMENT_RECEIVED">FIRST_INSTALMENT_RECEIVED (₹2,000 1st Instalment Confirmed)</option>
+              <option value="SECOND_INSTALMENT_REMINDER">SECOND_INSTALMENT_REMINDER (₹14,999 2nd Instalment Reminder Before DRISHTI)</option>
+              <option value="FINAL_PAYMENT_CONFIRMATION">FINAL_PAYMENT_CONFIRMATION (₹14,999 2nd Instalment Paid)</option>
+              <option value="WELCOME_PACKAGE_FULL">WELCOME_PACKAGE_FULL (Complete 4-Course Package Welcome)</option>
+              <option value="WELCOME_INST1_ADHAAR">WELCOME_INST1_ADHAAR (ADHAAR-Only Welcome on 1st Instalment)</option>
+              <option value="ACTIVATION_REMAINING_3_COURSES">ACTIVATION_REMAINING_3_COURSES (DRISHTI, PRAVAH &amp; BODH Activation)</option>
+              <option value="WELCOME_INDIVIDUAL_COURSE">WELCOME_INDIVIDUAL_COURSE (Individual Course Welcome)</option>
+              <option value="WELCOME_STANDALONE_KRIYA">WELCOME_STANDALONE_KRIYA (KRIYA Standalone Welcome)</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:0.78rem; font-weight:800; display:block; margin-bottom:0.3rem;">Email Subject / Schedule Title</label>
+            <input type="text" id="tpl-subject" placeholder="Email Subject or Schedule Label" style="width:100%; padding:0.6rem; border:1.5px solid #CBD5E1; border-radius:8px; font-size:0.85rem;">
+          </div>
+        </div>
+
+        <div style="margin-bottom:0.85rem;">
+          <label style="font-size:0.78rem; font-weight:800; display:block; margin-bottom:0.3rem;">Approved Meta WhatsApp Template Name (For WhatsApp Cloud API)</label>
+          <input type="text" id="tpl-wa-name" placeholder="e.g. skillansh_registration_ack" style="width:100%; padding:0.55rem; border:1.5px solid #CBD5E1; border-radius:8px; font-size:0.84rem;">
+        </div>
+
+        <div style="margin-bottom:1rem;">
+          <label style="font-size:0.78rem; font-weight:800; display:block; margin-bottom:0.3rem;">Template Body / Course Commencement Schedule Value</label>
+          <textarea id="tpl-body" rows="7" style="width:100%; padding:0.75rem; border:1.5px solid #CBD5E1; border-radius:8px; font-size:0.84rem; font-family:monospace;"></textarea>
+        </div>
+
+        <button type="button" onclick="saveTemplateOrSchedule()" class="btn-sm btn-unlock" style="padding:0.65rem 1.4rem; font-size:0.86rem;">💾 Save Template / Commencement Date to Google Sheet</button>
+      </div>
+    </div>
+
+    <!-- TAB 4: 15-SCENARIO AUTOMATED TEST SUITE RESULTS (SECTION 9) -->
+    <div id="apane-tests" style="display:none;">
+      <div class="panel-card">
+        <h3 style="font-size:1.08rem; font-weight:800; color:#0F172A; margin-bottom:0.35rem;">15-Requirement Automated Verification Suite (Section 9)</h3>
+        <p style="font-size:0.82rem; color:#64748B; margin-bottom:1rem;">Click <strong>"🧪 Run All 15 Automated Tests"</strong> above to execute all 15 required test scenarios end-to-end against the backend and view the pass/fail verification matrix.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Test #</th>
+              <th>Requirement Tested</th>
+              <th>Verification Status</th>
+            </tr>
+          </thead>
+          <tbody id="test-results-body">
+            <tr><td colspan="3" style="text-align:center; padding:1.5rem; color:#64748B;">Click "🧪 Run All 15 Automated Tests" in the top bar to run verification.</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 
@@ -191,6 +350,17 @@
   <script>
     const CFG = window.ACCOUNTPRO_CONFIG || {};
     const WEBHOOK_URL = CFG.GOOGLE_SHEET_WEBHOOK_URL || '';
+
+    let cachedLms = [];
+    let cachedNotifs = [];
+    let cachedTemplates = [];
+
+    function switchAdminTab(tab) {
+      ['learners', 'notifications', 'templates', 'tests'].forEach(t => {
+        document.getElementById('apane-' + t).style.display = (t === tab) ? 'block' : 'none';
+        document.getElementById('atab-' + t).classList.toggle('active', t === tab);
+      });
+    }
 
     async function loadAdminData() {
       const pin = document.getElementById('admin-pin').value.trim();
@@ -215,9 +385,16 @@
           return;
         }
         if (data.status === 'success') {
+          cachedLms = data.lmsRecords || [];
+          cachedNotifs = data.notifications || [];
+          cachedTemplates = data.templatesAndSchedules || [];
+
           msg.style.color = '#0F766E';
-          msg.textContent = '✓ Synced ' + (data.payments ? data.payments.length : 0) + ' payment records.';
-          renderAdminTables(data.payments || [], data.lmsRecords || []);
+          msg.textContent = `✓ Synced ${cachedLms.length} learners & ${cachedNotifs.length} notifications.`;
+          updateAdminKpis(data.payments || [], cachedLms, cachedNotifs);
+          renderLearnerTable('ALL');
+          renderNotificationTable('ALL');
+          populateTemplateEditor();
         }
       } catch (err) {
         msg.style.color = '#D97706';
@@ -225,30 +402,49 @@
       }
     }
 
-    function renderAdminTables(payments, lmsRecords) {
-      document.getElementById('kpi-total-reg').textContent = payments.length;
-      const paidCount = payments.filter(p => p.paymentStatus === 'PAID').length;
-      const partialCount = payments.filter(p => p.paymentStatus === 'PARTIALLY_PAID').length;
+    function updateAdminKpis(payments, lmsRecords, notifs) {
+      const unpaid = lmsRecords.filter(r => r.paymentStatus === 'PENDING').length;
+      const partial = lmsRecords.filter(r => r.paymentStatus === 'PARTIALLY_PAID').length;
+      const paid = lmsRecords.filter(r => r.paymentStatus === 'PAID').length;
+
       let totalBal = 0;
-      payments.forEach(p => {
-        if (p.paymentStatus === 'PARTIALLY_PAID') {
-          totalBal += Number(String(p.balanceDue || '0').replace(/[^\d]/g, '')) || 0;
+      lmsRecords.forEach(r => {
+        if (r.paymentStatus === 'PARTIALLY_PAID') {
+          totalBal += Number(String(r.balanceDue || '0').replace(/[^\d]/g, '')) || 0;
         }
       });
 
-      document.getElementById('kpi-paid').textContent = paidCount;
-      document.getElementById('kpi-partial').textContent = partialCount;
-      document.getElementById('kpi-balance-due').textContent = '₹' + totalBal.toLocaleString('en-IN');
+      const sched = notifs.filter(n => n.deliveryStatus === 'SCHEDULED').length;
+      const deliv = notifs.filter(n => n.deliveryStatus === 'DELIVERED').length;
+      const failed = notifs.filter(n => n.deliveryStatus === 'FAILED').length;
 
-      // Render LMS Access Table
-      const lmsBody = document.getElementById('lms-table-body');
-      lmsBody.innerHTML = lmsRecords.length ? '' : '<tr><td colspan="12" style="text-align:center;">No LMS records yet.</td></tr>';
-      lmsRecords.forEach(rec => {
+      document.getElementById('kpi-unpaid').textContent = unpaid;
+      document.getElementById('kpi-partial').textContent = partial;
+      document.getElementById('kpi-paid').textContent = paid;
+      document.getElementById('kpi-balance-due').textContent = '₹' + totalBal.toLocaleString('en-IN');
+      document.getElementById('kpi-sched-notif').textContent = sched;
+      document.getElementById('kpi-deliv-fail').textContent = `${deliv} / ${failed}`;
+    }
+
+    function filterLearners(statusFilter, btnEl) {
+      if (btnEl) {
+        btnEl.parentElement.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+        btnEl.classList.add('active');
+      }
+      renderLearnerTable(statusFilter);
+    }
+
+    function renderLearnerTable(statusFilter) {
+      const body = document.getElementById('lms-table-body');
+      const list = statusFilter === 'ALL' ? cachedLms : cachedLms.filter(r => r.paymentStatus === statusFilter);
+      body.innerHTML = list.length ? '' : '<tr><td colspan="12" style="text-align:center; padding:1.25rem;">No matching learner records.</td></tr>';
+
+      list.forEach(rec => {
         const isPartial = rec.paymentStatus === 'PARTIALLY_PAID';
         const payLink = `https://www.skillansh.com/enroll.html?action=pay_balance&regId=${encodeURIComponent(rec.registrationId)}`;
         const waPhone = '91' + String(rec.phone || '').replace(/\D/g, '').slice(-10);
         const waRemindText = encodeURIComponent(
-          `Hello ${rec.learnerName}, congratulations on completing ADHAAR – Excel Foundation! Before starting DRISHTI – MIS & Dashboards, please complete your 2nd Instalment balance of ₹14,999 to unlock DRISHTI, PRAVAH & BODH: ${payLink}`
+          `Hello ${rec.learnerName}, congratulations on progressing through ADHAAR – Excel Foundation! Before starting DRISHTI – MIS & Dashboards, please complete your 2nd Instalment balance of ₹14,999 to unlock DRISHTI, PRAVAH & BODH: ${payLink}`
         );
 
         const tr = document.createElement('tr');
@@ -266,37 +462,93 @@
           <td><span class="badge ${rec.KRIYA === 'ACTIVE' ? 'badge-paid' : 'badge-locked'}">${rec.KRIYA}</span></td>
           <td>
             ${isPartial ? `
-              <button type="button" class="btn-sm btn-remind" onclick="sendEmailReminder('${rec.registrationId}','${rec.email}','${rec.learnerName}')">📧 Email Reminder</button>
-              <a href="https://wa.me/${waPhone}?text=${waRemindText}" target="_blank" class="btn-sm btn-wa">💬 WA ₹14,999 Link</a>
+              <button type="button" class="btn-sm btn-remind" onclick="sendInstalmentReminder('${rec.registrationId}','${rec.email}','${rec.phone}','${rec.learnerName}')">📧+💬 Send ₹14,999 Reminder</button>
+              <a href="https://wa.me/${waPhone}?text=${waRemindText}" target="_blank" class="btn-sm btn-wa">💬 WA Direct</a>
             ` : `<a href="https://wa.me/${waPhone}" target="_blank" class="btn-sm btn-wa">💬 WhatsApp</a>`}
           </td>
         `;
-        lmsBody.appendChild(tr);
-      });
-
-      // Render Payment Tracker Table
-      const ptBody = document.getElementById('pt-table-body');
-      ptBody.innerHTML = payments.length ? '' : '<tr><td colspan="11" style="text-align:center;">No payment records yet.</td></tr>';
-      payments.forEach(p => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td><strong>${p.registrationId}</strong></td>
-          <td>${p.learnerId}</td>
-          <td>${p.learnerName}<br><small style="color:#64748B;">${p.email}</small></td>
-          <td>${p.courseName}</td>
-          <td>${p.totalPackageAmount}</td>
-          <td style="color:#059669; font-weight:800;">${p.amountReceived}</td>
-          <td style="color:#B45309; font-weight:800;">${p.balanceDue}</td>
-          <td><span class="badge ${p.paymentStatus === 'PAID' ? 'badge-paid' : (p.paymentStatus === 'PARTIALLY_PAID' ? 'badge-partial' : 'badge-pending')}">${p.paymentStatus}</span></td>
-          <td><small>${p.orderId || '—'}<br>${p.paymentId || '—'}</small></td>
-          <td><small>${p.lastUpdated}</small></td>
-          <td>${p.waLink ? `<a href="${p.waLink}" target="_blank" class="btn-sm btn-wa">💬 Chat</a>` : '—'}</td>
-        `;
-        ptBody.appendChild(tr);
+        body.appendChild(tr);
       });
     }
 
-    async function sendEmailReminder(regId, email, learnerName) {
+    function filterNotifications(statusFilter, btnEl) {
+      if (btnEl) {
+        btnEl.parentElement.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+        btnEl.classList.add('active');
+      }
+      renderNotificationTable(statusFilter);
+    }
+
+    function renderNotificationTable(statusFilter) {
+      const body = document.getElementById('notif-table-body');
+      const list = statusFilter === 'ALL' ? cachedNotifs : cachedNotifs.filter(n => n.deliveryStatus === statusFilter);
+      body.innerHTML = list.length ? '' : '<tr><td colspan="11" style="text-align:center; padding:1.25rem;">No matching notifications.</td></tr>';
+
+      list.forEach(n => {
+        const badgeCls = n.deliveryStatus === 'DELIVERED' ? 'badge-paid'
+          : (n.deliveryStatus === 'FAILED' ? 'badge-locked'
+          : (n.deliveryStatus === 'SCHEDULED' ? 'badge-partial' : 'badge-pending'));
+        const canResend = (n.deliveryStatus === 'FAILED' || n.deliveryStatus === 'DELIVERED' || n.deliveryStatus === 'SCHEDULED');
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${n.notificationId}</strong></td>
+          <td>${n.registrationId}</td>
+          <td>${n.learnerName}<br><small style="color:#64748B;">${n.channel === 'EMAIL' ? n.email : n.phone}</small></td>
+          <td><strong>${n.channel}</strong></td>
+          <td><small>${n.consent}</small></td>
+          <td><strong>${n.notificationType}</strong><br><small style="color:#64748B;">${n.triggerEvent}</small></td>
+          <td><small>Sched: ${n.scheduledTime || '—'}<br>Sent: ${n.lastSentDate || '—'}</small></td>
+          <td><span class="badge ${badgeCls}">${n.deliveryStatus}</span></td>
+          <td>${n.retryCount || 0}</td>
+          <td style="max-width:240px; overflow:hidden; text-overflow:ellipsis;"><small>${n.errorDetails || n.preview || '—'}</small></td>
+          <td>
+            ${canResend ? `<button type="button" class="btn-sm btn-navy" onclick="resendNotification('${n.notificationId}')">🔄 Resend</button>` : '—'}
+          </td>
+        `;
+        body.appendChild(tr);
+      });
+    }
+
+    function populateTemplateEditor() {
+      const key = document.getElementById('tpl-select-key').value;
+      const found = cachedTemplates.find(t => t.configKey === key);
+      if (found) {
+        document.getElementById('tpl-subject').value = found.titleOrSubject || '';
+        document.getElementById('tpl-wa-name').value = found.waTemplateName || '';
+        document.getElementById('tpl-body').value = found.bodyOrValue || '';
+      }
+    }
+
+    async function saveTemplateOrSchedule() {
+      const pin = document.getElementById('admin-pin').value.trim();
+      const key = document.getElementById('tpl-select-key').value;
+      const subj = document.getElementById('tpl-subject').value;
+      const waName = document.getElementById('tpl-wa-name').value;
+      const body = document.getElementById('tpl-body').value;
+
+      try {
+        const resp = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            action: 'admin_update_schedule_or_template',
+            passcode: pin,
+            configKey: key,
+            titleOrSubject: subj,
+            waTemplateName: waName,
+            bodyOrValue: body
+          })
+        });
+        const json = await resp.json();
+        alert(json.message || 'Saved!');
+        loadAdminData();
+      } catch (e) {
+        alert('Error saving template: ' + e);
+      }
+    }
+
+    async function sendInstalmentReminder(regId, email, phone, learnerName) {
       const pin = document.getElementById('admin-pin').value.trim();
       try {
         const resp = await fetch(WEBHOOK_URL, {
@@ -307,13 +559,83 @@
             passcode: pin,
             registrationId: regId,
             email: email,
+            phone: phone,
             learnerName: learnerName
           })
         });
         const json = await resp.json();
         alert(json.message || 'Reminder sent!');
+        loadAdminData();
       } catch (e) {
         alert('Error sending reminder: ' + e);
+      }
+    }
+
+    async function resendNotification(notifId) {
+      const pin = document.getElementById('admin-pin').value.trim();
+      try {
+        const resp = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            action: 'resend_notification',
+            passcode: pin,
+            notificationId: notifId
+          })
+        });
+        const json = await resp.json();
+        alert(json.message || ('Status: ' + json.deliveryStatus));
+        loadAdminData();
+      } catch (e) {
+        alert('Error resending notification: ' + e);
+      }
+    }
+
+    async function triggerScheduledRemindersNow() {
+      const msg = document.getElementById('admin-sync-msg');
+      msg.textContent = 'Processing scheduled unpaid reminders (30m / 24h / 72h)...';
+      try {
+        const resp = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({ action: 'run_scheduled_reminders' })
+        });
+        const json = await resp.json();
+        msg.textContent = `✓ Processed ${json.processed || 0} due reminders (${json.cancelled || 0} cancelled on payment).`;
+        loadAdminData();
+      } catch (e) {
+        msg.textContent = 'Error running queue.';
+      }
+    }
+
+    async function run15VerificationTests() {
+      switchAdminTab('tests');
+      const pin = document.getElementById('admin-pin').value.trim();
+      const tbody = document.getElementById('test-results-body');
+      tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; padding:1.5rem;">Running all 15 end-to-end automated tests...</td></tr>';
+
+      try {
+        const resp = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({ action: 'run_test_suite', passcode: pin })
+        });
+        const json = await resp.json();
+        if (json && json.results) {
+          tbody.innerHTML = '';
+          json.results.forEach(r => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+              <td><strong>#${r.id}</strong></td>
+              <td>${r.name}</td>
+              <td><span class="badge ${r.passed ? 'badge-paid' : 'badge-locked'}">${r.passed ? '✅ PASSED' : '❌ FAILED'}</span></td>
+            `;
+            tbody.appendChild(tr);
+          });
+          loadAdminData();
+        }
+      } catch (e) {
+        tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; color:#B45309; padding:1.5rem;">Deploy the updated google-sheets-webhook.js in your Google Sheet Apps Script to execute the live 15-test suite.</td></tr>';
       }
     }
 

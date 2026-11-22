@@ -329,6 +329,19 @@
               <input type="text" id="reg-promo" placeholder="Optional promo code" autocomplete="off">
             </div>
 
+            <!-- Separate Email & WhatsApp Communication Consent Checkboxes (Section 2) -->
+            <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:0.85rem 1rem; margin-bottom:1rem; font-size:0.82rem; color:#334155;">
+              <div style="font-weight:800; color:#1E3A5F; margin-bottom:0.45rem;">6. Communication Preferences &amp; Consent</div>
+              <label style="display:flex; align-items:flex-start; gap:0.5rem; margin-bottom:0.4rem; cursor:pointer;">
+                <input type="checkbox" id="reg-consent-email" checked style="margin-top:0.2rem; accent-color:#0F766E;">
+                <span>I consent to receive automated registration acknowledgements, payment receipts, reminders, and course welcome emails from Skillansh (<code>support@skillansh.com</code>).</span>
+              </label>
+              <label style="display:flex; align-items:flex-start; gap:0.5rem; cursor:pointer;">
+                <input type="checkbox" id="reg-consent-whatsapp" checked style="margin-top:0.2rem; accent-color:#0F766E;">
+                <span>I consent to receive automated WhatsApp updates (course welcome, payment status, and instalment reminders) on my registered WhatsApp number.</span>
+              </label>
+            </div>
+
             <!-- Live Authoritative Summary Box Before Checkout -->
             <div class="summary-box">
               <div style="font-size:0.75rem; font-weight:800; color:#FDE68A; text-transform:uppercase; margin-bottom:0.4rem;">Selected Product &amp; Payable Summary</div>
@@ -410,6 +423,23 @@
 
             <!-- 5 Course Cards Grid showing ACTIVE vs LOCKED state -->
             <div class="lms-course-grid" id="lms-course-cards-container"></div>
+
+            <!-- Communication Preferences & Opt-Out Manager -->
+            <div style="margin-top:1.75rem; padding-top:1.25rem; border-top:1px solid #E2E8F0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+              <div>
+                <h4 style="font-size:0.95rem; font-weight:800; color:#1E3A5F;">Communication Consent &amp; Opt-Out Preferences</h4>
+                <p style="font-size:0.8rem; color:#64748B;">Manage your Email and WhatsApp reminder preferences anytime. We respect all opt-out requests immediately.</p>
+              </div>
+              <div style="display:flex; gap:0.85rem; align-items:center; flex-wrap:wrap;">
+                <label style="font-size:0.82rem; font-weight:700; display:flex; align-items:center; gap:0.35rem;">
+                  <input type="checkbox" id="pref-email-chk" checked> Email Updates
+                </label>
+                <label style="font-size:0.82rem; font-weight:700; display:flex; align-items:center; gap:0.35rem;">
+                  <input type="checkbox" id="pref-wa-chk" checked> WhatsApp Updates
+                </label>
+                <button type="button" onclick="saveCommunicationPreferences()" style="background:#1E3A5F; color:#FFFFFF; border:none; padding:0.45rem 0.95rem; border-radius:8px; font-size:0.8rem; font-weight:700; cursor:pointer;">Update Preferences</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -464,6 +494,8 @@
       const phRaw = document.getElementById('reg-whatsapp').value.replace(/\D/g, '');
       const ph10 = phRaw.slice(-10);
       const promo = document.getElementById('reg-promo').value.trim().toUpperCase();
+      const emailConsent = document.getElementById('reg-consent-email') ? document.getElementById('reg-consent-email').checked : true;
+      const whatsappConsent = document.getElementById('reg-consent-whatsapp') ? document.getElementById('reg-consent-whatsapp').checked : true;
 
       let valid = true;
       document.getElementById('reg-err-fn').style.display = fn ? 'none' : 'block';
@@ -503,7 +535,9 @@
               email: em,
               whatsapp: ph10,
               planId: selectedKey,
-              promoCode: promo
+              promoCode: promo,
+              emailConsent: emailConsent,
+              whatsappConsent: whatsappConsent
             })
           });
           const json = await resp.json();
@@ -575,6 +609,22 @@
       if (typeof window.Razorpay === 'function') {
         const rzp = new window.Razorpay(rzpOptions);
         rzp.on('payment.failed', function (failResp) {
+          if (WEBHOOK_URL) {
+            fetch(WEBHOOK_URL, {
+              method: 'POST',
+              headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+              body: JSON.stringify({
+                action: 'payment_failed',
+                registrationId: opts.registrationId,
+                learnerId: opts.learnerId,
+                planId: opts.planId,
+                learnerName: opts.learnerName,
+                email: opts.email,
+                whatsapp: opts.phone,
+                reason: (failResp.error && failResp.error.code) || 'CHECKOUT_FAILED'
+              })
+            }).catch(() => {});
+          }
           alert('Payment was not completed: ' + ((failResp.error && failResp.error.description) || 'Please try again.'));
           btn.disabled = false;
           btnTxt.textContent = `Proceed to Payment (₹${Number(opts.amountInr).toLocaleString('en-IN')}) →`;
@@ -836,7 +886,7 @@
         r.dispatchEvent(new Event('change'));
       }
       const regIdParam = params.get('regId');
-      if (regIdParam || params.get('action') === 'pay_balance') {
+      if (regIdParam || params.get('action') === 'pay_balance' || params.get('action') === 'opt_out') {
         switchPortalTab('lms');
         if (regIdParam) {
           document.getElementById('lms-lookup-input').value = regIdParam;
@@ -844,6 +894,32 @@
         }
       }
     });
+
+    async function saveCommunicationPreferences() {
+      if (!currentLearnerState) return;
+      const emailChk = document.getElementById('pref-email-chk').checked;
+      const waChk = document.getElementById('pref-wa-chk').checked;
+      if (WEBHOOK_URL) {
+        try {
+          const resp = await fetch(WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({
+              action: 'update_consent',
+              registrationId: currentLearnerState.registrationId,
+              email: currentLearnerState.email,
+              phone: currentLearnerState.phone,
+              emailConsent: emailChk,
+              whatsappConsent: waChk
+            })
+          });
+          const json = await resp.json();
+          alert('Communication preferences updated (' + (json.optOutStatus || 'SAVED') + ').');
+        } catch (e) {
+          alert('Preferences saved locally.');
+        }
+      }
+    }
   </script>
 </body>
 </html>

@@ -1154,7 +1154,9 @@ function initEnrolModal() {
               email: em.value.trim(),
               whatsapp: phoneDigits.slice(-10),
               planId: currentPlan.id,
-              promoCode: appliedPromoCode || 'NONE'
+              promoCode: appliedPromoCode || 'NONE',
+              emailConsent: document.getElementById('enrol-consent-email') ? document.getElementById('enrol-consent-email').checked : true,
+              whatsappConsent: document.getElementById('enrol-consent-whatsapp') ? document.getElementById('enrol-consent-whatsapp').checked : true
             })
           });
           const ordJson = await ordResp.json();
