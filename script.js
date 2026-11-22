@@ -871,15 +871,10 @@ function scrollToCohort(event) {
 }
 window.scrollToCohort = scrollToCohort;
 
-function openEnrolModal(event) {
+function openEnrolModal(event, courseOrPlan) {
   if (event && event.preventDefault) event.preventDefault();
-  const overlay = document.getElementById('enrol-modal-overlay');
-  if (!overlay) return;
-  overlay.style.display = 'flex';
-  overlay.classList.add('active');
-  document.body.style.overflow = 'hidden';
-  const firstInput = document.getElementById('enrol-firstname');
-  if (firstInput) setTimeout(() => firstInput.focus(), 150);
+  const targetCourse = courseOrPlan || 'package';
+  window.location.href = `enroll.html?course=${encodeURIComponent(targetCourse)}`;
 }
 window.openEnrolModal = openEnrolModal;
 
