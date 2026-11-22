@@ -1,4 +1,6 @@
 User-agent: *
+Disallow: /admin.html
+Disallow: /admin
 Allow: /
 
 Sitemap: https://www.skillansh.com/sitemap.xml

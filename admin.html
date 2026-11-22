@@ -139,24 +139,45 @@
 </head>
 <body>
   <header class="admin-header">
-    <div class="admin-brand">🛡️ SKILLANSH ADMIN DASHBOARD &middot; PAYMENT TRACKER, SEQUENTIAL LMS &amp; AUTOMATED NOTIFICATION ENGINE</div>
+    <div class="admin-brand">🛡️ SKILLANSH SECURE ADMIN CONSOLE &middot; PAYMENT TRACKER &amp; LMS MANAGEMENT</div>
     <div style="display:flex; gap:0.75rem; align-items:center;">
-      <a href="enroll.html" style="color:#A7F3D0; font-size:0.85rem; font-weight:700; text-decoration:none;">Open Registration &amp; LMS Portal &rarr;</a>
+      <button type="button" id="btn-lock-session" onclick="lockAdminSession()" style="display:none; background:#EF4444; color:#fff; border:none; padding:0.4rem 0.85rem; border-radius:6px; font-size:0.8rem; font-weight:700; cursor:pointer;">🔒 Lock / Sign Out</button>
+      <a href="enroll.html" style="color:#A7F3D0; font-size:0.85rem; font-weight:700; text-decoration:none;">Open Registration &amp; LMS &rarr;</a>
       <a href="index.html" style="color:#CBD5E1; font-size:0.85rem; text-decoration:none;">Main Website</a>
     </div>
   </header>
 
-  <div class="admin-container">
+  <!-- Login Gatekeeper Modal / Screen -->
+  <div id="admin-login-barrier" style="max-width:480px; margin:4rem auto; background:#fff; border-radius:12px; box-shadow:0 12px 36px rgba(15,23,42,0.18); border:1px solid #E2E8F0; padding:2rem; text-align:center;">
+    <div style="font-size:2.4rem; margin-bottom:0.75rem;">🔐</div>
+    <h2 style="font-size:1.35rem; color:#0F172A; margin-bottom:0.5rem; font-weight:800;">Authorized Access Only</h2>
+    <p style="font-size:0.85rem; color:#64748B; margin-bottom:1.5rem; line-height:1.5;">This portal contains sensitive student CRM, transaction, and LMS access records. Enter the administrative passcode to authenticate your session.</p>
+    <form onsubmit="handleAdminLogin(event)" style="display:flex; flex-direction:column; gap:1rem; text-align:left;">
+      <div>
+        <label for="admin-pin-login" style="display:block; font-size:0.8rem; font-weight:700; color:#334155; margin-bottom:0.35rem;">Admin Passcode</label>
+        <input type="password" id="admin-pin-login" autocomplete="off" placeholder="Enter Admin Passcode" required style="width:100%; padding:0.7rem 0.9rem; border:1.5px solid #CBD5E1; border-radius:8px; font-size:0.95rem; box-sizing:border-box;">
+      </div>
+      <button type="submit" id="btn-login-submit" style="background:#0F766E; color:#fff; border:none; padding:0.75rem; border-radius:8px; font-weight:700; font-size:0.92rem; cursor:pointer; transition:background 0.2s;">Authenticate &amp; Open Console &rarr;</button>
+      <div id="login-error-msg" style="color:#DC2626; font-size:0.84rem; text-align:center; font-weight:700; min-height:1.2rem;"></div>
+    </form>
+    <div style="margin-top:1.25rem; font-size:0.75rem; color:#94A3B8;">
+      Session tokens are strictly stored in temporary browser memory and wiped on logout or tab closure.
+    </div>
+  </div>
+
+  <div class="admin-container" id="admin-dashboard-wrapper" style="display:none;">
     <!-- Auth & Quick Actions Bar -->
     <div class="panel-card" style="display:flex; gap:0.75rem; align-items:center; flex-wrap:wrap; justify-content:space-between;">
       <div style="display:flex; gap:0.65rem; align-items:center; flex-wrap:wrap;">
-        <strong style="font-size:0.88rem;">🔑 Admin Passcode:</strong>
-        <input type="password" id="admin-pin" value="SKILLANSH2026" placeholder="Enter Admin Passcode" style="padding:0.5rem 0.85rem; border:1.5px solid #CBD5E1; border-radius:8px; font-size:0.86rem;">
-        <button type="button" onclick="loadAdminData()" class="btn-sm btn-unlock" style="padding:0.55rem 1.1rem; font-size:0.84rem;">Sync Live Records &rarr;</button>
+        <span style="font-size:0.85rem; background:#DCFCE7; color:#166534; padding:0.35rem 0.75rem; border-radius:6px; font-weight:700;">🟢 Authenticated Session</span>
+        <button type="button" onclick="loadAdminData()" class="btn-sm btn-unlock" style="padding:0.55rem 1.1rem; font-size:0.84rem;">🔄 Refresh Live CRM Data</button>
         <button type="button" onclick="triggerScheduledRemindersNow()" class="btn-sm btn-remind" style="padding:0.55rem 1rem; font-size:0.82rem;">⚡ Run 30m/24h/72h Unpaid Reminder Queue</button>
         <button type="button" onclick="run15VerificationTests()" class="btn-sm btn-navy" style="padding:0.55rem 1rem; font-size:0.82rem;">🧪 Run All 15 Automated Tests</button>
       </div>
-      <span id="admin-sync-msg" style="font-size:0.82rem; color:#0F766E; font-weight:700;"></span>
+      <div style="display:flex; gap:0.75rem; align-items:center;">
+        <span id="admin-sync-msg" style="font-size:0.82rem; color:#0F766E; font-weight:700;"></span>
+        <button type="button" onclick="lockAdminSession()" class="btn-sm" style="background:#F1F5F9; color:#475569; border:1px solid #CBD5E1;">Sign Out</button>
+      </div>
     </div>
 
     <!-- KPI Summary -->
@@ -364,14 +385,107 @@
       });
     }
 
-    async function loadAdminData() {
-      const pin = document.getElementById('admin-pin').value.trim();
-      const msg = document.getElementById('admin-sync-msg');
-      msg.textContent = 'Syncing with Google Sheet CRM...';
+    function getAdminPasscode() {
+      return sessionStorage.getItem('SKILLANSH_ADMIN_PIN') || '';
+    }
 
-      if (!WEBHOOK_URL) {
-        msg.textContent = 'Webhook URL not configured.';
+    function setAdminPasscode(pin) {
+      if (pin) {
+        sessionStorage.setItem('SKILLANSH_ADMIN_PIN', pin);
+      } else {
+        sessionStorage.removeItem('SKILLANSH_ADMIN_PIN');
+      }
+    }
+
+    function lockAdminSession() {
+      setAdminPasscode('');
+      cachedLms = [];
+      cachedNotifs = [];
+      cachedTemplates = [];
+      document.getElementById('admin-dashboard-wrapper').style.display = 'none';
+      document.getElementById('btn-lock-session').style.display = 'none';
+      document.getElementById('admin-login-barrier').style.display = 'block';
+      const pinInput = document.getElementById('admin-pin-login');
+      if (pinInput) {
+        pinInput.value = '';
+        pinInput.focus();
+      }
+      const err = document.getElementById('login-error-msg');
+      if (err) err.textContent = 'Session locked. Please sign in again.';
+    }
+
+    async function handleAdminLogin(event) {
+      if (event) event.preventDefault();
+      const pinInput = document.getElementById('admin-pin-login');
+      const err = document.getElementById('login-error-msg');
+      const btn = document.getElementById('btn-login-submit');
+      const pin = pinInput ? pinInput.value.trim() : '';
+
+      if (!pin) {
+        err.textContent = 'Please enter your Admin Passcode.';
         return;
+      }
+
+      err.textContent = '';
+      btn.disabled = true;
+      btn.textContent = 'Authenticating...';
+
+      try {
+        const resp = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({ action: 'admin_dashboard', passcode: pin })
+        });
+        const data = await resp.json();
+
+        if (data.status === 'unauthorized') {
+          err.textContent = 'Access Denied: Invalid Admin Passcode.';
+          btn.disabled = false;
+          btn.textContent = 'Authenticate & Open Console →';
+          return;
+        }
+
+        if (data.status === 'success') {
+          setAdminPasscode(pin);
+          document.getElementById('admin-login-barrier').style.display = 'none';
+          document.getElementById('admin-dashboard-wrapper').style.display = 'block';
+          document.getElementById('btn-lock-session').style.display = 'inline-block';
+
+          cachedLms = data.lmsRecords || [];
+          cachedNotifs = data.notifications || [];
+          cachedTemplates = data.templatesAndSchedules || [];
+
+          const msg = document.getElementById('admin-sync-msg');
+          if (msg) {
+            msg.style.color = '#0F766E';
+            msg.textContent = `✓ Authenticated & Synced (${cachedLms.length} learners).`;
+          }
+          updateAdminKpis(data.payments || [], cachedLms, cachedNotifs);
+          renderLearnerTable('ALL');
+          renderNotificationTable('ALL');
+          populateTemplateEditor();
+        } else {
+          err.textContent = data.message || 'Authentication error. Please try again.';
+        }
+      } catch (e) {
+        err.textContent = 'Unable to connect to Google Sheets backend. Please verify your connection.';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Authenticate & Open Console →';
+      }
+    }
+
+    async function loadAdminData() {
+      const pin = getAdminPasscode();
+      const msg = document.getElementById('admin-sync-msg');
+      if (!pin) {
+        lockAdminSession();
+        return;
+      }
+
+      if (msg) {
+        msg.style.color = '#0F766E';
+        msg.textContent = 'Syncing live records...';
       }
 
       try {
@@ -382,8 +496,11 @@
         });
         const data = await resp.json();
         if (data.status === 'unauthorized') {
-          msg.style.color = '#DC2626';
-          msg.textContent = 'Invalid Admin Passcode.';
+          if (msg) {
+            msg.style.color = '#DC2626';
+            msg.textContent = 'Session expired or passcode changed.';
+          }
+          lockAdminSession();
           return;
         }
         if (data.status === 'success') {
@@ -391,16 +508,20 @@
           cachedNotifs = data.notifications || [];
           cachedTemplates = data.templatesAndSchedules || [];
 
-          msg.style.color = '#0F766E';
-          msg.textContent = `✓ Synced ${cachedLms.length} learners & ${cachedNotifs.length} notifications.`;
+          if (msg) {
+            msg.style.color = '#0F766E';
+            msg.textContent = `✓ Synced ${cachedLms.length} learners & ${cachedNotifs.length} notifications.`;
+          }
           updateAdminKpis(data.payments || [], cachedLms, cachedNotifs);
           renderLearnerTable('ALL');
           renderNotificationTable('ALL');
           populateTemplateEditor();
         }
       } catch (err) {
-        msg.style.color = '#D97706';
-        msg.textContent = 'Note: Please deploy the updated google-sheets-webhook.js in your Google Sheet Apps Script.';
+        if (msg) {
+          msg.style.color = '#D97706';
+          msg.textContent = 'Sync notice: Backend connection error.';
+        }
       }
     }
 
@@ -535,7 +656,8 @@
     }
 
     async function saveTemplateOrSchedule() {
-      const pin = document.getElementById('admin-pin').value.trim();
+      const pin = getAdminPasscode();
+      if (!pin) { lockAdminSession(); return; }
       const key = document.getElementById('tpl-select-key').value;
       const subj = document.getElementById('tpl-subject').value;
       const waName = document.getElementById('tpl-wa-name').value;
@@ -563,7 +685,8 @@
     }
 
     async function sendInstalmentReminder(regId, email, phone, learnerName) {
-      const pin = document.getElementById('admin-pin').value.trim();
+      const pin = getAdminPasscode();
+      if (!pin) { lockAdminSession(); return; }
       try {
         const resp = await fetch(WEBHOOK_URL, {
           method: 'POST',
@@ -586,7 +709,8 @@
     }
 
     async function resendNotification(notifId) {
-      const pin = document.getElementById('admin-pin').value.trim();
+      const pin = getAdminPasscode();
+      if (!pin) { lockAdminSession(); return; }
       try {
         const resp = await fetch(WEBHOOK_URL, {
           method: 'POST',
@@ -606,13 +730,15 @@
     }
 
     async function triggerScheduledRemindersNow() {
+      const pin = getAdminPasscode();
+      if (!pin) { lockAdminSession(); return; }
       const msg = document.getElementById('admin-sync-msg');
       msg.textContent = 'Processing scheduled unpaid reminders (30m / 24h / 72h)...';
       try {
         const resp = await fetch(WEBHOOK_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify({ action: 'run_scheduled_reminders' })
+          body: JSON.stringify({ action: 'run_scheduled_reminders', passcode: pin })
         });
         const json = await resp.json();
         msg.textContent = `✓ Processed ${json.processed || 0} due reminders (${json.cancelled || 0} cancelled on payment).`;
@@ -624,7 +750,8 @@
 
     async function run15VerificationTests() {
       switchAdminTab('tests');
-      const pin = document.getElementById('admin-pin').value.trim();
+      const pin = getAdminPasscode();
+      if (!pin) { lockAdminSession(); return; }
       const tbody = document.getElementById('test-results-body');
       tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; padding:1.5rem;">Running all 15 end-to-end automated tests...</td></tr>';
 
@@ -653,7 +780,18 @@
       }
     }
 
-    window.addEventListener('DOMContentLoaded', loadAdminData);
+    window.addEventListener('DOMContentLoaded', () => {
+      const existingPin = getAdminPasscode();
+      if (existingPin) {
+        // Attempt resume
+        loadAdminData();
+        document.getElementById('admin-login-barrier').style.display = 'none';
+        document.getElementById('admin-dashboard-wrapper').style.display = 'block';
+        document.getElementById('btn-lock-session').style.display = 'inline-block';
+      } else {
+        lockAdminSession();
+      }
+    });
   </script>
 </body>
 </html>
