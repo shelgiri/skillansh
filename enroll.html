@@ -8,9 +8,9 @@
   <link rel="canonical" href="https://www.skillansh.com/enroll.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="192x192" href="/skillansh-favicon-v4.png">
-  <link rel="stylesheet" href="style.css?v=20261122f">
+  <link rel="stylesheet" href="style.css?v=20261122g">
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <style>
     :root {
@@ -242,16 +242,16 @@
       </a>
       <nav>
         <ul class="nav-links" id="nav-links">
-          <li><a href="index.html"><span>Home</span></a></li>
-          <li><a href="enroll.html" aria-current="page"><span>Course Registration</span></a></li>
-          <li><a href="workshop.html"><span>Live Workshop</span><span class="nav-live-chip">FREE</span></a></li>
-          <li><a href="about.html"><span>About &amp; Approach</span></a></li>
-          <li><a href="contact.html"><span>Contact</span></a></li>
+          <li><a href="index.html"><span data-en="Home" data-mr="होम">Home</span></a></li>
+          <li><a href="enroll.html" aria-current="page"><span data-en="Course Registration" data-mr="कोर्स नोंदणी">Course Registration</span></a></li>
+          <li><a href="workshop.html"><span data-en="Live Workshop" data-mr="लाइव्ह कार्यशाळा">Live Workshop</span><span class="nav-live-chip">FREE</span></a></li>
+          <li><a href="about.html"><span data-en="About &amp; Approach" data-mr="बद्दल व दृष्टिकोन">About &amp; Approach</span></a></li>
+          <li><a href="contact.html"><span data-en="Contact" data-mr="संपर्क">Contact</span></a></li>
         </ul>
       </nav>
       <button type="button" class="nav-enquiry-btn" id="open-quick-enquiry-btn" aria-label="Quick Enquiry">
         <span class="nav-enquiry-icon">✉️</span>
-        <span>Quick Enquiry</span>
+        <span data-en="Quick Enquiry" data-mr="त्वरित विचारणा">Quick Enquiry</span>
       </button>
       <button class="mobile-menu-btn" id="mobile-menu" aria-expanded="false" aria-controls="nav-links"
         aria-label="Toggle menu">
@@ -1424,12 +1424,25 @@
           window.open('https://wa.me/919922045007?text=Hello%20Skillansh%20Team,%20I%20would%20like%20to%20enquire%20about%20course%20registration.', '_blank', 'noopener,noreferrer');
         });
       }
-      document.querySelectorAll('.lang-switcher .lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const lang = btn.getAttribute('data-lang') || 'en';
-          try { localStorage.setItem('growthcircle_lang', lang); } catch (e) {}
-          document.querySelectorAll('.lang-switcher .lang-btn').forEach(b => b.classList.toggle('lang-active', b === btn));
+      function applyHeaderLang(lang) {
+        const safeLang = (lang === 'mr') ? 'mr' : 'en';
+        try { localStorage.setItem('growthcircle_lang', safeLang); } catch (e) {}
+        document.documentElement.lang = safeLang;
+        document.documentElement.classList.remove('lang-en', 'lang-mr');
+        document.documentElement.classList.add('lang-' + safeLang);
+        document.querySelectorAll('.lang-switcher .lang-btn').forEach(b => {
+          b.classList.toggle('lang-active', b.getAttribute('data-lang') === safeLang);
         });
+        document.querySelectorAll('header [data-en][data-mr]').forEach(el => {
+          if (!el.dataset.origEn) el.dataset.origEn = el.innerHTML;
+          el.innerHTML = (safeLang === 'mr') ? el.getAttribute('data-mr') : el.dataset.origEn;
+        });
+      }
+      let initialLang = 'en';
+      try { initialLang = localStorage.getItem('growthcircle_lang') || 'en'; } catch (e) {}
+      applyHeaderLang(initialLang);
+      document.querySelectorAll('.lang-switcher .lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => applyHeaderLang(btn.getAttribute('data-lang') || 'en'));
       });
     })();
   </script>

@@ -349,6 +349,8 @@ header {
   display: flex;
   gap: 0.25rem;
   margin-left: 1rem;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .lang-btn {
@@ -6793,6 +6795,7 @@ p[style*="text-align: center"] {
   border-radius: 999px;
   border: none;
   cursor: pointer;
+  flex-shrink: 0;
   box-shadow: 0 2px 8px rgba(15, 118, 110, 0.25);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
