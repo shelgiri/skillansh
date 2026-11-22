@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skillansh | Courses &amp; Learning Programmes – ADHAAR, DRISHTI, PRAVAH, BODH &amp; KRIYA</title>
+  <meta name="description" content="Explore Skillansh practical learning programmes: the 4-Course Progressive Pathway (ADHAAR, DRISHTI, PRAVAH, BODH) and the standalone specialized course KRIYA (VBA &amp; Automation).">
+  <link rel="canonical" href="https://www.skillansh.com/courses.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Skillansh">
+  <meta property="og:url" content="https://www.skillansh.com/courses.html">
+  <meta property="og:title" content="Skillansh | Courses &amp; Learning Programmes">
+  <meta property="og:description" content="Skillansh – Learn. Apply. Implement. Grow. Explore ADHAAR, DRISHTI, PRAVAH, BODH, and standalone KRIYA.">
+  <meta property="og:image" content="https://www.skillansh.com/logo.png">
+  <meta name="theme-color" content="#1E3A5F">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="192x192" href="/skillansh-favicon-v4.png">
+  <link rel="icon" type="image/x-icon" href="/skillansh-favicon-v4.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/skillansh-apple-icon-v4.png">
+  <link rel="stylesheet" href="style.css?v=20261122b">
+  <link rel="stylesheet" href="chatbot.css?v=20261115c">
+  <style>
+    :root {
+      --sk-navy: #1E3A5F;
+      --sk-navy-dark: #142B4A;
+      --sk-gold: #F59E0B;
+      --sk-gold-soft: #FEF3C7;
+      --sk-light-blue: #EFF6FF;
+      --sk-light-blue-border: #BFDBFE;
+      --sk-white: #FFFFFF;
+    }
+    .courses-hero {
+      background: linear-gradient(135deg, var(--sk-navy-dark) 0%, var(--sk-navy) 100%);
+      color: var(--sk-white);
+      padding: 3.5rem 0 3rem;
+      border-bottom: 4px solid var(--sk-gold);
+    }
+    .courses-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: rgba(245, 158, 11, 0.18);
+      border: 1px solid var(--sk-gold);
+      color: #FDE68A;
+      padding: 0.35rem 0.95rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 1rem;
+    }
+    .courses-hero h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.65rem);
+      font-weight: 800;
+      color: var(--sk-white);
+      line-height: 1.2;
+      margin-bottom: 0.85rem;
+    }
+    .courses-hero p {
+      color: #DBEAFE;
+      font-size: 1.02rem;
+      line-height: 1.65;
+      max-width: 780px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-actions-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-gold-primary {
+      background: var(--sk-gold);
+      color: var(--sk-navy-dark);
+      font-weight: 800;
+      font-size: 0.94rem;
+      padding: 0.78rem 1.5rem;
+      border-radius: 10px;
+      text-decoration: none;
+      border: 2px solid var(--sk-gold);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .btn-gold-primary:hover {
+      background: #FBBF24;
+      transform: translateY(-1px);
+    }
+    .link-view-pricing {
+      color: #DBEAFE;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      padding: 0.5rem 0.75rem;
+      transition: color 0.2s ease;
+    }
+    .link-view-pricing:hover {
+      color: #FDE68A;
+    }
+
+    .pathway-section {
+      padding: 3.5rem 0;
+      background: var(--sk-light-blue);
+    }
+    .standalone-section {
+      padding: 3.5rem 0;
+      background: var(--sk-white);
+      border-top: 1px solid var(--sk-light-blue-border);
+    }
+    .pathway-header {
+      max-width: 820px;
+      margin: 0 auto 2.25rem;
+      text-align: center;
+    }
+    .pathway-eyebrow {
+      display: inline-block;
+      background: var(--sk-navy);
+      color: #FDE68A;
+      font-size: 0.76rem;
+      font-weight: 800;
+      padding: 0.28rem 0.85rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.6rem;
+    }
+    .pathway-header h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.65rem, 2.8vw, 2.2rem);
+      color: var(--sk-navy-dark);
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+    .pathway-header p {
+      color: #334155;
+      font-size: 0.96rem;
+      line-height: 1.6;
+    }
+
+    /* 4-Course Progressive Pathway Grid */
+    .pathway-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.75rem;
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+    @media (max-width: 860px) {
+      .pathway-grid-4 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Course Card Design (Navy, Golden Yellow, Light Blue & White) */
+    .sk-course-card {
+      background: var(--sk-white);
+      border: 1.5px solid var(--sk-light-blue-border);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 28px rgba(30, 58, 95, 0.07);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .sk-course-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px rgba(30, 58, 95, 0.12);
+      border-color: var(--sk-navy);
+    }
+
+    /* Strictly Consistent Course Image Dimensions (16:9 / 480x240 viewBox, fixed 210px height) */
+    .sk-course-img-wrap {
+      width: 100%;
+      height: 210px;
+      background: var(--sk-navy-dark);
+      border-bottom: 3px solid var(--sk-gold);
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .sk-course-img-wrap svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .sk-course-body {
+      padding: 1.5rem 1.6rem 1.25rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .sk-course-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.65rem;
+    }
+    .sk-step-pill {
+      background: var(--sk-navy);
+      color: var(--sk-white);
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 0.22rem 0.7rem;
+      border-radius: 999px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .sk-level-pill {
+      background: var(--sk-gold-soft);
+      color: #92400E;
+      border: 1px solid #FDE68A;
+      font-size: 0.73rem;
+      font-weight: 800;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+    }
+    .sk-course-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.32rem;
+      font-weight: 800;
+      color: var(--sk-navy-dark);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    .sk-course-desc {
+      color: #334155;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 1.1rem;
+    }
+    .sk-outcomes-box {
+      background: var(--sk-light-blue);
+      border: 1px solid var(--sk-light-blue-border);
+      border-radius: 12px;
+      padding: 0.95rem 1.1rem;
+      margin-top: auto;
+    }
+    .sk-outcomes-title {
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: var(--sk-navy);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+    }
+    .sk-outcomes-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sk-outcomes-list li {
+      font-size: 0.84rem;
+      color: #1E293B;
+      line-height: 1.5;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.45rem;
+    }
+    .sk-outcomes-list li:last-child {
+      margin-bottom: 0;
+    }
+    .sk-outcomes-list .chk-gold {
+      color: #D97706;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .sk-course-footer {
+      padding: 1rem 1.6rem 1.35rem;
+      border-top: 1px solid #E2E8F0;
+      background: #F8FAFC;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .btn-course-enquire {
+      background: var(--sk-navy);
+      color: var(--sk-white);
+      border: 1.5px solid var(--sk-navy);
+      padding: 0.62rem 1.15rem;
+      border-radius: 9px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .btn-course-enquire:hover {
+      background: var(--sk-gold);
+      color: var(--sk-navy-dark);
+      border-color: var(--sk-gold);
+    }
+    .link-card-pricing {
+      color: var(--sk-navy);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .link-card-pricing:hover {
+      color: #B45309;
+    }
+
+    /* Standalone KRIYA Feature Wrapper */
+    .standalone-card-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    .standalone-card-wrap .sk-course-card {
+      border: 2px solid var(--sk-navy);
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header>
+    <div class="top-bar">
+      <div class="container">
+        <span data-en="🎓 Skillansh – Learn. Apply. Implement. Grow. &middot; Structured Practical Data &amp; Automation Learning Programmes" data-mr="🎓 Skillansh – शिका. वापरा. अंमलात आणा. पुढे जा. &middot; प्रात्यक्षिक डेटा आणि ऑटोमेशन लर्निंग प्रोग्राम्स">🎓 Skillansh – Learn. Apply. Implement. Grow. &middot; Structured Practical Data &amp; Automation Learning Programmes</span>
+        <a href="enroll.html" class="top-bar-cta" data-en="View Pricing &amp; Enrol &rarr;" data-mr="फी पहा आणि प्रवेश घ्या &rarr;">View Pricing &amp; Enrol &rarr;</a>
+      </div>
+    </div>
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand" aria-label="Skillansh home">
+        <img src="skillansh-logo.png?v=20261115c" alt="Skillansh logo" width="140" height="42">
+      </a>
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html"><span data-en="Home" data-mr="होम">Home</span></a></li>
+          <li><a href="courses.html" aria-current="page"><span data-en="Courses" data-mr="अभ्यासक्रम">Courses</span></a></li>
+          <li><a href="workshop.html"><span data-en="Live Workshop" data-mr="लाइव्ह कार्यशाळा">Live Workshop</span><span class="nav-live-chip">FREE</span></a></li>
+          <li><a href="about.html"><span data-en="About &amp; Approach" data-mr="बद्दल व दृष्टिकोन">About &amp; Approach</span></a></li>
+          <li><a href="contact.html"><span data-en="Contact" data-mr="संपर्क">Contact</span></a></li>
+        </ul>
+      </nav>
+      <button type="button" class="nav-enquiry-btn" id="open-quick-enquiry-btn" aria-label="Quick Enquiry">
+        <span class="nav-enquiry-icon">✉️</span>
+        <span data-en="Quick Enquiry" data-mr="त्वरित विचारणा">Quick Enquiry</span>
+      </button>
+      <button class="mobile-menu-btn" id="mobile-menu" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
+        &#9776;
+      </button>
+      <div class="lang-switcher">
+        <button class="lang-btn lang-active" data-lang="en" id="lang-en">EN</button>
+        <button class="lang-btn" data-lang="mr" id="lang-mr">मराठी</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- ============ HERO BANNER ============ -->
+    <section class="courses-hero" aria-label="Skillansh Learning Programmes">
+      <div class="container">
+        <span class="courses-hero-badge" data-en="Skillansh – Learn. Apply. Implement. Grow." data-mr="Skillansh – शिका. वापरा. अंमलात आणा. पुढे जा.">Skillansh – Learn. Apply. Implement. Grow.</span>
+        <h1 data-en="Practical Learning Programmes Built for Real Workplace Execution" data-mr="प्रत्यक्ष ऑफिसच्या कामासाठी तयार केलेले प्रात्यक्षिक लर्निंग प्रोग्राम्स">Practical Learning Programmes Built for Real Workplace Execution</h1>
+        <p data-en="Explore our progressive Four-Course Learning Pathway (ADHAAR, DRISHTI, PRAVAH, and BODH) designed to take you from core spreadsheet foundations to automated business intelligence, alongside our separate standalone automation programme (KRIYA)." data-mr="स्प्रेडशीटच्या मूळ पायापासून ते ऑटोमेटेड बिझनेस इंटेलिजन्सपर्यंत नेणारा आमचा ४-कोर्स लर्निंग मार्ग (ADHAAR, DRISHTI, PRAVAH आणि BODH) आणि स्वतंत्र विशेष ऑटोमेशन कोर्स (KRIYA) जाणून घ्या.">Explore our progressive Four-Course Learning Pathway (ADHAAR, DRISHTI, PRAVAH, and BODH) designed to take you from core spreadsheet foundations to automated business intelligence, alongside our separate standalone automation programme (KRIYA).</p>
+        <div class="hero-actions-row">
+          <button type="button" class="btn-gold-primary" onclick="openCourseEnquiry('Skillansh Learning Programmes')" data-en="Explore Course Details / Enquire &rarr;" data-mr="कोर्स तपशील / विचारणा करा &rarr;">Explore Course Details / Enquire &rarr;</button>
+          <a href="enroll.html" class="link-view-pricing" data-en="View Pricing &amp; Enrolment Options &rarr;" data-mr="फी आणि प्रवेश पर्याय पहा &rarr;">View Pricing &amp; Enrolment Options &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SECTION 1: THE FOUR-COURSE PROGRESSIVE LEARNING PATHWAY ============ -->
+    <section class="pathway-section" id="four-course-pathway" aria-label="Four-Course Learning Pathway">
+      <div class="container">
+        <div class="pathway-header">
+          <span class="pathway-eyebrow" data-en="Progressive Four-Course Learning Pathway" data-mr="क्रमानुसार ४-कोर्स लर्निंग मार्ग">Progressive Four-Course Learning Pathway</span>
+          <h2 data-en="Structured 4-Stage Pathway: ADHAAR &rarr; DRISHTI &rarr; PRAVAH &rarr; BODH" data-mr="४ टप्प्यांचा अभ्यासक्रम: आधार &rarr; दृष्टी &rarr; प्रवाह &rarr; बोध">Structured 4-Stage Pathway: ADHAAR &rarr; DRISHTI &rarr; PRAVAH &rarr; BODH</h2>
+          <p data-en="Each programme in this four-course pathway builds systematically upon the previous stage—from clean spreadsheet architecture and executive MIS reporting to multi-source data transformation and interactive business intelligence." data-mr="या ४-कोर्स मार्गातील प्रत्येक कोर्स पुढील टप्प्यासाठी मजबूत पाया तयार करतो—स्प्रेडशीट रचनेपासून ते MIS रिपोर्टिंग, डेटा ट्रान्सफॉर्मेशन आणि Power BI व AI पर्यंत.">Each programme in this four-course pathway builds systematically upon the previous stage—from clean spreadsheet architecture and executive MIS reporting to multi-source data transformation and interactive business intelligence.</p>
+        </div>
+
+        <div class="pathway-grid-4">
+
+          <!-- CARD 1: ADHAAR – Excel Foundation -->
+          <article class="sk-course-card" id="course-adhaar">
+            <div>
+              <div class="sk-course-img-wrap">
+                <svg viewBox="0 0 480 240" preserveAspectRatio="xMidYMid slice" role="img" aria-label="ADHAAR Excel Foundation Course Visual">
+                  <rect width="480" height="240" fill="#142B4A"/>
+                  <rect x="24" y="22" width="432" height="196" rx="12" fill="#1E3A5F" stroke="#BFDBFE" stroke-width="1.5"/>
+                  <rect x="24" y="22" width="432" height="34" rx="12" fill="#0F223A"/>
+                  <circle cx="44" cy="39" r="5" fill="#F59E0B"/>
+                  <circle cx="60" cy="39" r="5" fill="#93C5FD"/>
+                  <text x="80" y="43" fill="#FFFFFF" font-family="Plus Jakarta Sans, sans-serif" font-size="11.5" font-weight="800">ADHAAR &middot; STRUCTURED SPREADSHEET MODEL</text>
+                  <rect x="364" y="30" width="76" height="18" rx="9" fill="#F59E0B"/>
+                  <text x="402" y="42.5" fill="#142B4A" font-family="Plus Jakarta Sans, sans-serif" font-size="9.5" font-weight="800" text-anchor="middle">STAGE 01</text>
+                  <!-- Formula Bar -->
+                  <rect x="40" y="68" width="400" height="26" rx="6" fill="#EFF6FF"/>
+                  <text x="52" y="85" fill="#1E3A5F" font-family="monospace" font-size="11" font-weight="700">fx =XLOOKUP(B4, Ledger_ID, Net_Amount, 0)</text>
+                  <!-- Clean Table Grid -->
+                  <rect x="40" y="104" width="250" height="96" rx="6" fill="#142B4A" stroke="#93C5FD" stroke-width="1"/>
+                  <line x1="40" y1="128" x2="290" y2="128" stroke="#3B82F6" stroke-width="1"/>
+                  <line x1="40" y1="152" x2="290" y2="152" stroke="#1E3A5F" stroke-width="1"/>
+                  <line x1="40" y1="176" x2="290" y2="176" stroke="#1E3A5F" stroke-width="1"/>
+                  <text x="52" y="120" fill="#FDE68A" font-family="Plus Jakarta Sans, sans-serif" font-size="9.5" font-weight="800">RECORD ID &middot; CATEGORY &middot; VALIDATED SUM</text>
+                  <text x="52" y="144" fill="#EFF6FF" font-family="Plus Jakarta Sans, sans-serif" font-size="10">INV-1041 &middot; Operations &middot; Dynamic Array</text>
+                  <text x="52" y="168" fill="#EFF6FF" font-family="Plus Jakarta Sans, sans-serif" font-size="10">INV-1042 &middot; Finance    &middot; Pivot Summary</text>
+                  <text x="52" y="192" fill="#93C5FD" font-family="Plus Jakarta Sans, sans-serif" font-size="10">INV-1043 &middot; Logistics  &middot; Error-Guarded</text>
+                  <!-- Side Summary Visual -->
+                  <rect x="304" y="104" width="136" height="96" rx="6" fill="#0F223A" stroke="#F59E0B" stroke-width="1.2"/>
+                  <text x="372" y="124" fill="#FDE68A" font-family="Plus Jakarta Sans, sans-serif" font-size="9" font-weight="800" text-anchor="middle">FORMULA ACCURACY</text>
+                  <text x="372" y="156" fill="#FFFFFF" font-family="Outfit, sans-serif" font-size="24" font-weight="800" text-anchor="middle">100%</text>
+                  <text x="372" y="178" fill="#93C5FD" font-family="Plus Jakarta Sans, sans-serif" font-size="9.5" font-weight="700" text-anchor="middle">Clean Data Tables</text>
+                </svg>
+              </div>
+
+              <div class="sk-course-body">
+                <div class="sk-course-meta-row">
+                  <span class="sk-step-pill" data-en="Pathway Course 01" data-mr="मार्ग कोर्स ०१">Pathway Course 01</span>
+                  <span class="sk-level-pill" data-en="Level: Foundation to Intermediate" data-mr="स्तर: बेसिक ते मध्यम">Level: Foundation to Intermediate</span>
+                </div>
+                <h3 class="sk-course-title" data-en="ADHAAR – Excel Foundation" data-mr="आधार (ADHAAR) – Excel फाउंडेशन">ADHAAR – Excel Foundation</h3>
+                <p class="sk-course-desc" data-en="Build a rock-solid foundation in structured spreadsheet design. Move from basic data entry to mastering modern lookup functions, conditional calculations, dynamic arrays, and Pivot Table analysis for reliable daily workbooks." data-mr="अचूक स्प्रेडशीट रचनेचा मजबूत पाया तयार करा. बेसिक डेटा एन्ट्रीपासून ते आधुनिक लुकअप फॉर्म्युले, डायनॅमिक सूत्रे आणि Pivot Table विश्लेषणापर्यंत सर्व काही प्रात्यक्षिकासह शिका.">Build a rock-solid foundation in structured spreadsheet design. Move from basic data entry to mastering modern lookup functions, conditional calculations, dynamic arrays, and Pivot Table analysis for reliable daily workbooks.</p>
+
+                <div class="sk-outcomes-box">
+                  <div class="sk-outcomes-title" data-en="Key Learning Outcomes:" data-mr="मुख्य शिक्षण निष्पत्ती:">Key Learning Outcomes:</div>
+                  <ul class="sk-outcomes-list">
+                    <li><span class="chk-gold">✔</span> <span data-en="Design normalized, error-resistant data tables with custom validation rules." data-mr="डेटा व्हॅलिडेशन नियमांसह चूक-मुक्त आणि सुटसुटीत डेटा टेबल्स तयार करणे.">Design normalized, error-resistant data tables with custom validation rules.</span></li>
+                    <li><span class="chk-gold">✔</span> <span data-en="Apply 25+ core functions including XLOOKUP, INDEX/MATCH, IF/IFS, SUMIFS, and Dynamic Arrays." data-mr="XLOOKUP, INDEX/MATCH, IF/IFS, SUMIFS आणि Dynamic Arrays सह २५+ महत्त्वाचे फॉर्म्युले वापरणे.">Apply 25+ core functions including XLOOKUP, INDEX/MATCH, IF/IFS, SUMIFS, and Dynamic Arrays.</span></li>
+                    <li><span class="chk-gold">✔</span> <span data-en="Construct multi-dimensional Pivot Tables and summary schedules from raw transactional logs." data-mr="कच्च्या डेटामधून Pivot Tables आणि सारांश रिपोर्ट्स तयार करणे.">Construct multi-dimensional Pivot Tables and summary schedules from raw transactional logs.</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="sk-course-footer">
+              <button type="button" class="btn-course-enquire" onclick="openCourseEnquiry('ADHAAR – Excel Foundation')" data-en="Explore Course Details / Enquire &rarr;" data-mr="तपशील पहा / विचारणा करा &rarr;">Explore Course Details / Enquire &rarr;</button>
+              <a href="enroll.html?plan=adhaar" class="link-card-pricing" data-en="View Pricing" data-mr="फी पहा">View Pricing</a>
+            </div>
+          </article>
+
+          <!-- CARD 2: DRISHTI – MIS & Dashboards -->
+          <article class="sk-course-card" id="course-drishti">
+            <div>
+              <div class="sk-course-img-wrap">
+                <svg viewBox="0 0 480 240" preserveAspectRatio="xMidYMid slice" role="img" aria-label="DRISHTI MIS and Dashboards Course Visual">
+                  <rect width="480" height="240" fill="#142B4A"/>
+                  <rect x="24" y="22" width="432" height="196" rx="12" fill="#1E3A5F" stroke="#BFDBFE" stroke-width="1.5"/>
+                  <rect x="24" y="22" width="432" height="34" rx="12" fill="#0F223A"/>
+                  <circle cx="44" cy="39" r="5" fill="#F59E0B"/>
+                  <circle cx="60" cy="39" r="5" fill="#93C5FD"/>
+                  <text x="80" y="43" fill="#FFFFFF" font-family="Plus Jakarta Sans, sans-serif" font-size="11.5" font-weight="800">DRISHTI &middot; EXECUTIVE MIS &amp; KPI DASHBOARD</text>
+                  <rect x="364" y="30" width="76" height="18" rx="9" fill="#F59E0B"/>
+                  <text x="402" y="42.5" fill="#142B4A" font-family="Plus Jakarta Sans, sans-serif" font-size="9.5" font-weight="800" text-anchor="middle">STAGE 02</text>
+                  <!-- 3 KPI Cards -->
+                  <rect x="40" y="68" width="124" height="46" rx="6" fill="#0F223A" stroke="#93C5FD" stroke-width="1"/>
+                  <text x="50" y="83" fill="#93C5FD" font-family="Plus Jakarta Sans, sans-serif" font-size="8.5" font-weight="800">MONTHLY MIS KPI</text>
+                  <text x="50" y="103" fill="#FFFFFF" font-family="Outfit, sans-serif" font-size="15" font-weight="800">Auto-Tallied</text>
+
+                  <rect x="176" y="68" width="124" height="46" rx="6" fill="#0F223A" stroke="#F59E0B" stroke-width="1"/>
+                  <text x="186" y="83" fill="#FDE68A" font-family="Plus Jakarta Sans, sans-serif" font-size="8.5" font-weight="800">VARIANCE TRACKER</text>
+                  <text x="186" y="103" fill="#FFFFFF" font-family="Outfit, sans-serif" font-size="15" font-weight="800">▲ Budget vs Act</text>
+
+                  <rect x="312" y="68" width="128" height="46" rx="6" fill="#EFF6FF"/>
+                  <text x="322" y="83" fill="#1E3A5F" font-family="Plus Jakarta Sans, sans-serif" font-size="8.5" font-weight="800">CONTROL CHECK</text>
+                  <text x="322" y="103" fill="#142B4A" font-family="Outfit, sans-serif" font-size="14" font-weight="800">✔ Reconciled</text>
+
+                  <!-- Visual Bar & MIS Chart Area -->
+                  <rect x="40" y="124" width="400" height="78" rx="6" fill="#0F223A" stroke="#3B82F6" stroke-width="1"/>
+                  <text x="54" y="142" fill="#DBEAFE" font-family="Plus Jakarta Sans, sans-serif" font-size="9.5" font-weight="800">1-PAGE INTERACTIVE MANAGEMENT SUMMARY</text>
+                  <rect x="56" y="172" width="36" height="18" rx="3" fill="#60A5FA"/>
+                  <rect x="106" y="162" width="36" height="28" rx="3" fill="#3B82F6"/>
+                  <rect x="156" y="152" width="36" height="38" rx="3" fill="#F59E0B"/>
+                  <rect x="206" y="144" width="36" height="46" rx="3" fill="#FBBF24"/>
+                  <text x="270" y="164" fill="#FFFFFF" font-family="Plus Jakarta Sans, sans-serif" font-size="11" font-weight="700">Dynamic Slicers &amp; Maker-Checker</text>
+                  <text x="270" y="182" fill="#93C5FD" font-family="Plus Jakarta Sans, sans-serif" font-size="9.5">Automated Ageing, P&amp;L &amp; Operations MIS</text>
+                </svg>
+              </div>
+
+              <div class="sk-course-body">
+                <div class="sk-course-meta-row">
+                  <span class="sk-step-pill" data-en="Pathway Course 02" data-mr="मार्ग कोर्स ०२">Pathway Course 02</span>
+                  <span class="sk-level-pill" data-en="Level: Intermediate" data-mr="स्तर: मध्यम (इंटरमीडिएट)">Level: Intermediate</span>
+                </div>
+                <h3 class="sk-course-title" data-en="DRISHTI – MIS &amp; Dashboards" data-mr="दृष्टी (DRISHTI) – MIS आणि डॅशबोर्ड्स">DRISHTI – MIS &amp; Dashboards</h3>
+                <p class="sk-course-desc" data-en="Transform raw operational, financial, sales, and inventory logs into automated Management Information System (MIS) reports and clear 1-page visual Excel dashboards equipped with built-in audit checks." data-mr="दैनंदिन सेल्स, अकाउंट्स, फायनान्स आणि ऑपरेशन्सच्या नोंदींचे रूपांतर ऑटोमेटेड मासिक MIS रिपोर्ट्स आणि १-पेज आकर्षक Excel डॅशबोर्डमध्ये करायला शिका.">Transform raw operational, financial, sales, and inventory logs into automated Management Information System (MIS) reports and clear 1-page visual Excel dashboards equipped with built-in audit checks.</p>
+
+                <div class="sk-outcomes-box">
+                  <div class="sk-outcomes-title" data-en="Key Learning Outcomes:" data-mr="मुख्य शिक्षण निष्पत्ती:">Key Learning Outcomes:</div>
+                  <ul class="sk-outcomes-list">
+                    <li><span class="chk-gold">✔</span> <span data-en="Build automated monthly MIS packs covering variance analysis, ageing schedules, and KPI tracking." data-mr="व्हेरियन्स विश्लेषण, एजिंग रिपोर्ट्स आणि KPI ट्रॅकिंगसह ऑटोमेटेड मासिक MIS तयार करणे.">Build automated monthly MIS packs covering variance analysis, ageing schedules, and KPI tracking.</span></li>
+                    <li><span class="chk-gold">✔</span> <span data-en="Implement Maker-Checker reconciliation flags to detect data discrepancies automatically." data-mr="डेटातील चुका आपोआप शोधण्यासाठी Maker-Checker पडताळणी नियंत्रणे बसवणे.">Implement Maker-Checker reconciliation flags to detect data discrepancies automatically.</span></li>
+                    <li><span class="chk-gold">✔</span> <span data-en="Design interactive 1-page Excel dashboards using form controls, slicers, and dynamic charts." data-mr="स्लाइसर्स आणि डायनॅमिक चार्ट्सचा वापर करून १-पेज संवादात्मक Excel डॅशबोर्ड डिझाइन करणे.">Design interactive 1-page Excel dashboards using form controls, slicers, and dynamic charts.</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="sk-course-footer">
+              <button type="button" class="btn-course-enquire" onclick="openCourseEnquiry('DRISHTI – MIS & Dashboards')" data-en="Explore Course Details / Enquire &rarr;" data-mr="तपशील पहा / विचारणा करा &rarr;">Explore Course Details / Enquire &rarr;</button>
+              <a href="enroll.html?plan=drishti" class="link-card-pricing" data-en="View Pricing" data-mr="फी पहा">View Pricing</a>
+            </div>
+          </article>
+
+          <!-- CARD 3: PRAVAH – Power Query -->
+          <article class="sk-course-card" id="course-pravah">
+            <div>
+              <div class="sk-course-img-wrap">
+                <svg viewBox="0 0 480 240" preserveAspectRatio="xMidYMid slice" role="img" aria-label="PRAVAH Power Query Data Pipeline Visual">
+                  <rect width="480" height="240" fill="#142B4A"/>
+                  <rect x="24" y="22" width="432" height="196" rx="12" fill="#1E3A5F" stroke="#BFDBFE" stroke-width="1.5"/>
+                  <rect x="24" y="22" width="432" height="34" rx="12" fill="#0F223A"/>
+                  <circle cx="44" cy="39" r="5" fill="#F59E0B"/>
+                  <circle cx="60" cy="39" r="5" fill="#93C5FD"/>
+                  <text x="80" y="43" fill="#FFFFFF" font-family="Plus Jakarta Sans, sans-serif" font-size="11.5" font-weight="800">PRAVAH &middot; POWER QUERY ETL AUTOMATION</text>
+                  <rect x="364" y="30" width="76" height="18" rx="9" fill="#F59E0B"/>
+                  <text x="402" y="42.5" fill="#142B4A" font-family="Plus Jakarta Sans, sans-serif" font-size="9.5" font-weight="800" text-anchor="middle">STAGE 03</text>
+                  <!-- Left Input Sources -->
+                  <rect x="40" y="74" width="110" height="32" rx="6" fill="#0F223A" stroke="#93C5FD" stroke-width="1"/>
+                  <text x="95" y="94" fill="#DBEAFE" font-family="Plus Jakarta Sans, sans-serif" font-size="9.5" font-weight="700" text-anchor="middle">12 Branch CSVs</text>
+                  <rect x="40" y="116" width="110" height="32" rx="6" fill="#0F223A" stroke="#93C5FD" stroke-width="1"/>
+                  <text x="95" y="136" fill="#DBEAFE" font-family="Plus Jakarta Sans, sans-serif" font-size="9.5" font-weight="700" text-anchor="middle">ERP / Tally Exports</text>
+                  <rect x="40" y="158" width="110" height="32" rx="6" fill="#0F223A" stroke="#93C5FD" stroke-width="1"/>
+                  <text x="95" y="178" fill="#DBEAFE" font-family="Plus Jakarta Sans, sans-serif" font-size="9.5" font-weight="700" text-anchor="middle">Unpivoted Sheets</text>
+
+                  <!-- Center Power Query Engine -->
+                  <rect x="180" y="92" width="124" height="80" rx="10" fill="#F59E0B"/>
+                  <text x="242" y="124" fill="#142B4A" font-family="Outfit, sans-serif" font-size="13" font-weight="800" text-anchor="middle">⚡ POWER QUERY</text>
+                  <text x="242" y="143" fill="#1E3A5F" font-family="Plus Jakarta Sans, sans-serif" font-size="9.5" font-weight="800" text-anchor="middle">Clean &middot; Merge &middot; Append</text>
+                  <text x="242" y="159" fill="#142B4A" font-family="Plus Jakarta Sans, sans-serif" font-size="8.5" font-weight="700" text-anchor="middle">Zero Copy-Paste</text>
+
+                  <!-- Right Clean Output -->
+                  <rect x="332" y="84" width="108" height="96" rx="8" fill="#EFF6FF" stroke="#F59E0B" stroke-width="1.5"/>
+                  <text x="386" y="114" fill="#142B4A" font-family="Outfit, sans-serif" font-size="13" font-weight="800" text-anchor="middle">1-Click</text>
+                  <text x="386" y="132" fill="#1E3A5F" font-family="Plus Jakarta Sans, sans-serif" font-size="10.5" font-weight="800" text-anchor="middle">Refreshable</text>
+                  <text x="386" y="148" fill="#1E3A5F" font-family="Plus Jakarta Sans, sans-serif" font-size="10.5" font-weight="800" text-anchor="middle">Master Table</text>
+                </svg>
+              </div>
+
+              <div class="sk-course-body">
+                <div class="sk-course-meta-row">
+                  <span class="sk-step-pill" data-en="Pathway Course 03" data-mr="मार्ग कोर्स ०३">Pathway Course 03</span>
+                  <span class="sk-level-pill" data-en="Level: Intermediate to Advanced" data-mr="स्तर: मध्यम ते प्रगत">Level: Intermediate to Advanced</span>
+                </div>
+                <h3 class="sk-course-title" data-en="PRAVAH – Power Query" data-mr="प्रवाह (PRAVAH) – Power Query">PRAVAH – Power Query</h3>
+                <p class="sk-course-desc" data-en="Eliminate repetitive manual copy-pasting and data cleaning. Learn how to connect folders, ERP exports, and multi-sheet workbooks into automated, 1-click refreshable data transformation pipelines." data-mr="वारंवार करावे लागणारे मॅन्युअल कॉपी-पेस्ट आणि डेटा साफसफाई कायमची बंद करा. अनेक फोल्डर्स, CSV आणि वर्कबुक्स जोडून १-क्लिकवर रिफ्रेश होणारी डेटा पाइपलाइन तयार करायला शिका.">Eliminate repetitive manual copy-pasting and data cleaning. Learn how to connect folders, ERP exports, and multi-sheet workbooks into automated, 1-click refreshable data transformation pipelines.</p>
+
+                <div class="sk-outcomes-box">
+                  <div class="sk-outcomes-title" data-en="Key Learning Outcomes:" data-mr="मुख्य शिक्षण निष्पत्ती:">Key Learning Outcomes:</div>
+                  <ul class="sk-outcomes-list">
+                    <li><span class="chk-gold">✔</span> <span data-en="Consolidate multiple CSVs, folders, and multi-tab Excel workbooks automatically." data-mr="अनेक CSV फाइल्स, फोल्डर्स आणि वर्कबुक्स आपोआप एकत्र (Consolidate) करणे.">Consolidate multiple CSVs, folders, and multi-tab Excel workbooks automatically.</span></li>
+                    <li><span class="chk-gold">✔</span> <span data-en="Unpivot cross-tabulated reports, split messy columns, and standardize inconsistent dates/text." data-mr="अस्ताव्यस्त टेबल्स Unpivot करणे आणि चुकीचे दिनांक/टेक्स्ट फॉरमॅट १-क्लिकमध्ये सुधारणे.">Unpivot cross-tabulated reports, split messy columns, and standardize inconsistent dates/text.</span></li>
+                    <li><span class="chk-gold">✔</span> <span data-en="Perform multi-table Merge joins for automated cross-ledger and invoice reconciliations." data-mr="क्रॉस-लेजर आणि इनव्हॉइस जुळवणीसाठी मल्टी-टेबल Merge जॉइन्स वापरणे.">Perform multi-table Merge joins for automated cross-ledger and invoice reconciliations.</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="sk-course-footer">
+              <button type="button" class="btn-course-enquire" onclick="openCourseEnquiry('PRAVAH – Power Query')" data-en="Explore Course Details / Enquire &rarr;" data-mr="तपशील पहा / विचारणा करा &rarr;">Explore Course Details / Enquire &rarr;</button>
+              <a href="enroll.html?plan=pravah" class="link-card-pricing" data-en="View Pricing" data-mr="फी पहा">View Pricing</a>
+            </div>
+          </article>
+
+          <!-- CARD 4: BODH – Power BI & AI -->
+          <article class="sk-course-card" id="course-bodh">
+            <div>
+              <div class="sk-course-img-wrap">
+                <svg viewBox="0 0 480 240" preserveAspectRatio="xMidYMid slice" role="img" aria-label="BODH Power BI and AI Course Visual">
+                  <rect width="480" height="240" fill="#142B4A"/>
+                  <rect x="24" y="22" width="432" height="196" rx="12" fill="#1E3A5F" stroke="#F59E0B" stroke-width="1.5"/>
+                  <rect x="24" y="22" width="432" height="34" rx="12" fill="#0F223A"/>
+                  <circle cx="44" cy="39" r="5" fill="#F59E0B"/>
+                  <circle cx="60" cy="39" r="5" fill="#93C5FD"/>
+                  <text x="80" y="43" fill="#FFFFFF" font-family="Plus Jakarta Sans, sans-serif" font-size="11.5" font-weight="800">BODH &middot; POWER BI ANALYTICS &amp; STRUCTURED AI</text>
+                  <rect x="364" y="30" width="76" height="18" rx="9" fill="#F59E0B"/>
+                  <text x="402" y="42.5" fill="#142B4A" font-family="Plus Jakarta Sans, sans-serif" font-size="9.5" font-weight="800" text-anchor="middle">STAGE 04</text>
+                  <!-- Left Donut & DAX -->
+                  <rect x="40" y="70" width="176" height="130" rx="8" fill="#0F223A" stroke="#93C5FD" stroke-width="1"/>
+                  <text x="128" y="88" fill="#FDE68A" font-family="Plus Jakarta Sans, sans-serif" font-size="9" font-weight="800" text-anchor="middle">POWER BI DAX VISUALS</text>
+                  <circle cx="90" cy="142" r="28" fill="none" stroke="#1E3A5F" stroke-width="10"/>
+                  <circle cx="90" cy="142" r="28" fill="none" stroke="#F59E0B" stroke-width="10" stroke-dasharray="115 176"/>
+                  <circle cx="90" cy="142" r="28" fill="none" stroke="#60A5FA" stroke-width="10" stroke-dasharray="45 176" stroke-dashoffset="-115"/>
+                  <text x="90" y="146" fill="#FFFFFF" font-family="Outfit, sans-serif" font-size="11" font-weight="800" text-anchor="middle">DAX</text>
+                  <rect x="136" y="148" width="14" height="24" rx="2" fill="#60A5FA"/>
+                  <rect x="156" y="132" width="14" height="40" rx="2" fill="#93C5FD"/>
+                  <rect x="176" y="114" width="14" height="58" rx="2" fill="#F59E0B"/>
+
+                  <!-- Right Structured AI Prompt Engine -->
+                  <rect x="230" y="70" width="210" height="130" rx="8" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+                  <text x="244" y="90" fill="#142B4A" font-family="Plus Jakarta Sans, sans-serif" font-size="9.5" font-weight="800">🤖 STRUCTURED AI PROMPTING</text>
+                  <rect x="242" y="100" width="186" height="26" rx="5" fill="#1E3A5F"/>
+                  <text x="252" y="117" fill="#FDE68A" font-family="monospace" font-size="9.5" font-weight="700">[Role] + [Schema] + [Constraint]</text>
+                  <text x="244" y="146" fill="#1E293B" font-family="Plus Jakarta Sans, sans-serif" font-size="9.5" font-weight="700">✔ Generates DAX &amp; M-Code</text>
+                  <text x="244" y="164" fill="#1E293B" font-family="Plus Jakarta Sans, sans-serif" font-size="9.5" font-weight="700">✔ Interactive Slicer Dashboards</text>
+                  <text x="244" y="182" fill="#1E3A5F" font-family="Plus Jakarta Sans, sans-serif" font-size="9.5" font-weight="800">✔ Verified Output Accuracy</text>
+                </svg>
+              </div>
+
+              <div class="sk-course-body">
+                <div class="sk-course-meta-row">
+                  <span class="sk-step-pill" data-en="Pathway Course 04" data-mr="मार्ग कोर्स ०४">Pathway Course 04</span>
+                  <span class="sk-level-pill" data-en="Level: Advanced" data-mr="स्तर: प्रगत (ॲडव्हान्स्ड)">Level: Advanced</span>
+                </div>
+                <h3 class="sk-course-title" data-en="BODH – Power BI &amp; AI" data-mr="बोध (BODH) – Power BI आणि AI">BODH – Power BI &amp; AI</h3>
+                <p class="sk-course-desc" data-en="Master modern Business Intelligence and structured AI workflows. Connect data models in Power BI, write essential DAX calculations, design executive visual dashboards, and use structured Prompt Engineering to accelerate analysis." data-mr="आधुनिक बिझनेस इंटेलिजन्स आणि स्ट्रक्चर्ड AI कार्यपद्धतींवर प्रभुत्व मिळवा. Power BI मध्ये डेटा मॉडेल्स जोडा, DAX सूत्रे लिहा, व्हिज्युअल डॅशबोर्ड्स बनवा आणि अचूक प्रॉम्प्ट इंजिनिअरिंग शिका.">Master modern Business Intelligence and structured AI workflows. Connect data models in Power BI, write essential DAX calculations, design executive visual dashboards, and use structured Prompt Engineering to accelerate analysis.</p>
+
+                <div class="sk-outcomes-box">
+                  <div class="sk-outcomes-title" data-en="Key Learning Outcomes:" data-mr="मुख्य शिक्षण निष्पत्ती:">Key Learning Outcomes:</div>
+                  <ul class="sk-outcomes-list">
+                    <li><span class="chk-gold">✔</span> <span data-en="Build star-schema relational data models and write DAX measures (CALCULATE, SUMX, Time Intelligence)." data-mr="रिलेशनल डेटा मॉडेल्स आणि महत्त्वाची DAX सूत्रे (CALCULATE, SUMX, Time Intelligence) तयार करणे.">Build star-schema relational data models and write DAX measures (CALCULATE, SUMX, Time Intelligence).</span></li>
+                    <li><span class="chk-gold">✔</span> <span data-en="Publish interactive Power BI dashboards with drill-downs, KPI cards, and dynamic slicers." data-mr="KPI कार्ड्स आणि डायनॅमिक स्लाइसर्ससह संवादात्मक Power BI डॅशबोर्ड्स तयार करणे.">Publish interactive Power BI dashboards with drill-downs, KPI cards, and dynamic slicers.</span></li>
+                    <li><span class="chk-gold">✔</span> <span data-en="Apply structured Prompt Engineering frameworks to generate and audit complex formulas, DAX, and analytical summaries." data-mr="क्लिष्ट फॉर्म्युले, DAX आणि रिपोर्ट्स अचूकपणे तयार करण्यासाठी स्ट्रक्चर्ड प्रॉम्प्ट इंजिनिअरिंग वापरणे.">Apply structured Prompt Engineering frameworks to generate and audit complex formulas, DAX, and analytical summaries.</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="sk-course-footer">
+              <button type="button" class="btn-course-enquire" onclick="openCourseEnquiry('BODH – Power BI & AI')" data-en="Explore Course Details / Enquire &rarr;" data-mr="तपशील पहा / विचारणा करा &rarr;">Explore Course Details / Enquire &rarr;</button>
+              <a href="enroll.html?plan=bodh" class="link-card-pricing" data-en="View Pricing" data-mr="फी पहा">View Pricing</a>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Pathway Optional Pricing & Enrolment Callout Bar (Zero Fees Displayed) -->
+        <div style="max-width:1160px; margin:2rem auto 0; background:var(--sk-navy-dark); color:var(--sk-white); border:2px solid var(--sk-gold); border-radius:16px; padding:1.35rem 1.75rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+          <div>
+            <span style="font-size:0.74rem; font-weight:800; color:#FDE68A; text-transform:uppercase; letter-spacing:0.04em;" data-en="Complete Four-Course Learning Pathway" data-mr="संपूर्ण ४-कोर्स लर्निंग मार्ग">Complete Four-Course Learning Pathway</span>
+            <h3 style="font-family:'Outfit',sans-serif; font-size:1.22rem; font-weight:800; color:#FFFFFF; margin-top:0.2rem;" data-en="Take Individual Courses or Enrol in the Complete 4-Course Package (ADHAAR + DRISHTI + PRAVAH + BODH)" data-mr="स्वतंत्र कोर्स निवडा किंवा संपूर्ण ४-कोर्स पॅकेजमध्ये (ADHAAR + DRISHTI + PRAVAH + BODH) प्रवेश घ्या">Take Individual Courses or Enrol in the Complete 4-Course Package (ADHAAR + DRISHTI + PRAVAH + BODH)</h3>
+          </div>
+          <div style="display:flex; align-items:center; gap:0.85rem; flex-wrap:wrap;">
+            <button type="button" class="btn-gold-primary" onclick="openCourseEnquiry('Complete 4-Course Package (ADHAAR + DRISHTI + PRAVAH + BODH)')" data-en="Enquire About 4-Course Pathway" data-mr="४-कोर्स पॅकेजबद्दल विचारणा करा">Enquire About 4-Course Pathway</button>
+            <a href="enroll.html" class="link-view-pricing" data-en="View Pricing &amp; Instalment Options &rarr;" data-mr="फी आणि हप्ते पर्याय पहा &rarr;">View Pricing &amp; Instalment Options &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SECTION 2: SEPARATE STANDALONE SPECIALIZED PROGRAMME (KRIYA) ============ -->
+    <section class="standalone-section" id="standalone-kriya" aria-label="Standalone Specialized Programme">
+      <div class="container">
+        <div class="pathway-header">
+          <span class="pathway-eyebrow" style="background:var(--sk-gold); color:var(--sk-navy-dark);" data-en="Separate Standalone Specialized Programme" data-mr="स्वतंत्र विशेष अभ्यासक्रम (४-कोर्स पॅकेजबाहेर)">Separate Standalone Specialized Programme</span>
+          <h2 data-en="Standalone Specialized Course: KRIYA – VBA &amp; Automation" data-mr="स्वतंत्र विशेष कोर्स: क्रिया (KRIYA) – VBA आणि ऑटोमेशन">Standalone Specialized Course: KRIYA – VBA &amp; Automation</h2>
+          <p data-en="KRIYA is offered strictly as a separate standalone programme (independent of the four-course learning pathway) for professionals who want to build custom 1-click macro buttons and automate repetitive workbook tasks inside Excel." data-mr="KRIYA हा ४-कोर्स पॅकेजचा भाग नसून पूर्णपणे स्वतंत्र कोर्स आहे. Excel मधील वारंवार करावे लागणारे काम १-क्लिक VBA मॅक्रो बटणाद्वारे स्वयंचलित करू इच्छिणाऱ्यांसाठी हा विशेष प्रोग्रॅम आहे.">KRIYA is offered strictly as a separate standalone programme (independent of the four-course learning pathway) for professionals who want to build custom 1-click macro buttons and automate repetitive workbook tasks inside Excel.</p>
+        </div>
+
+        <div class="standalone-card-wrap">
+          <!-- CARD 5: KRIYA – VBA & Automation (Standalone) -->
+          <article class="sk-course-card" id="course-kriya">
+            <div>
+              <div class="sk-course-img-wrap">
+                <svg viewBox="0 0 480 240" preserveAspectRatio="xMidYMid slice" role="img" aria-label="KRIYA VBA and Macro Automation Standalone Course Visual">
+                  <rect width="480" height="240" fill="#142B4A"/>
+                  <rect x="24" y="22" width="432" height="196" rx="12" fill="#1E3A5F" stroke="#F59E0B" stroke-width="2"/>
+                  <rect x="24" y="22" width="432" height="34" rx="12" fill="#0F223A"/>
+                  <circle cx="44" cy="39" r="5" fill="#F59E0B"/>
+                  <circle cx="60" cy="39" r="5" fill="#93C5FD"/>
+                  <text x="80" y="43" fill="#FFFFFF" font-family="Plus Jakarta Sans, sans-serif" font-size="11.5" font-weight="800">KRIYA &middot; VBA MACRO &amp; 1-CLICK WORKFLOW ENGINE</text>
+                  <rect x="336" y="30" width="104" height="18" rx="9" fill="#F59E0B"/>
+                  <text x="388" y="42.5" fill="#142B4A" font-family="Plus Jakarta Sans, sans-serif" font-size="9" font-weight="800" text-anchor="middle">STANDALONE</text>
+
+                  <!-- Left VBA Code Module Window -->
+                  <rect x="40" y="70" width="236" height="130" rx="8" fill="#0F223A" stroke="#93C5FD" stroke-width="1"/>
+                  <text x="52" y="90" fill="#FDE68A" font-family="monospace" font-size="10.5" font-weight="700">Sub RunOneClickAutomation()</text>
+                  <text x="62" y="110" fill="#93C5FD" font-family="monospace" font-size="9.5">Call CleanAndFormatLedger</text>
+                  <text x="62" y="128" fill="#93C5FD" font-family="monospace" font-size="9.5">Call SplitSheetsByBranch</text>
+                  <text x="62" y="146" fill="#EFF6FF" font-family="monospace" font-size="9.5">ActiveSheet.ExportAsFixedFormat _</text>
+                  <text x="72" y="162" fill="#EFF6FF" font-family="monospace" font-size="9.5">Type:=xlTypePDF</text>
+                  <text x="52" y="182" fill="#FDE68A" font-family="monospace" font-size="10.5" font-weight="700">End Sub</text>
+
+                  <!-- Right 1-Click Action Buttons -->
+                  <rect x="290" y="70" width="150" height="58" rx="8" fill="#F59E0B"/>
+                  <text x="365" y="96" fill="#142B4A" font-family="Outfit, sans-serif" font-size="12.5" font-weight="800" text-anchor="middle">🔘 1-CLICK MACRO</text>
+                  <text x="365" y="114" fill="#1E3A5F" font-family="Plus Jakarta Sans, sans-serif" font-size="9.5" font-weight="800" text-anchor="middle">Auto Split &amp; Export PDF</text>
+
+                  <rect x="290" y="138" width="150" height="62" rx="8" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+                  <text x="365" y="162" fill="#142B4A" font-family="Plus Jakarta Sans, sans-serif" font-size="10" font-weight="800" text-anchor="middle">✔ Custom UserForms</text>
+                  <text x="365" y="180" fill="#1E3A5F" font-family="Plus Jakarta Sans, sans-serif" font-size="9.5" font-weight="700" text-anchor="middle">✔ Loop &amp; Report Macros</text>
+                </svg>
+              </div>
+
+              <div class="sk-course-body">
+                <div class="sk-course-meta-row">
+                  <span class="sk-step-pill" style="background:var(--sk-gold); color:var(--sk-navy-dark);" data-en="Standalone Programme (Separate from 4-Course Pathway)" data-mr="स्वतंत्र प्रोग्राम (४-कोर्स पॅकेजबाहेर)">Standalone Programme (Separate from 4-Course Pathway)</span>
+                  <span class="sk-level-pill" data-en="Level: Intermediate to Advanced" data-mr="स्तर: मध्यम ते प्रगत">Level: Intermediate to Advanced</span>
+                </div>
+                <h3 class="sk-course-title" data-en="KRIYA – VBA &amp; Automation" data-mr="क्रिया (KRIYA) – VBA आणि ऑटोमेशन">KRIYA – VBA &amp; Automation</h3>
+                <p class="sk-course-desc" data-en="A dedicated standalone automation course focused on Visual Basic for Applications (VBA) in Excel. Learn how to record, customize, and write clean macro procedures to put repetitive multi-step formatting, sheet splitting, and batch PDF generation onto a single 1-click button." data-mr="Excel मधील Visual Basic for Applications (VBA) वर आधारित स्वतंत्र ऑटोमेशन कोर्स. वारंवार करावे लागणारे फॉरमॅटिंग, अनेक शीट्स वेगळ्या करणे आणि बॅच PDF रिपोर्ट्स बनवण्याचे काम एका १-क्लिक बटणावर आणायला शिका.">A dedicated standalone automation course focused on Visual Basic for Applications (VBA) in Excel. Learn how to record, customize, and write clean macro procedures to put repetitive multi-step formatting, sheet splitting, and batch PDF generation onto a single 1-click button.</p>
+
+                <div class="sk-outcomes-box">
+                  <div class="sk-outcomes-title" data-en="Key Learning Outcomes:" data-mr="मुख्य शिक्षण निष्पत्ती:">Key Learning Outcomes:</div>
+                  <ul class="sk-outcomes-list">
+                    <li><span class="chk-gold">✔</span> <span data-en="Record, edit, and structure reusable VBA subroutines, variables, loops, and conditional blocks." data-mr="पुनर्वापर करता येणारे VBA मॅक्रो, लूप्स आणि कंडिशनल कोड लिहिणे व संपादित करणे.">Record, edit, and structure reusable VBA subroutines, variables, loops, and conditional blocks.</span></li>
+                    <li><span class="chk-gold">✔</span> <span data-en="Build 1-click worksheet buttons to split master data into branch/party sheets and export automated PDFs." data-mr="मास्टर डेटामधून शाखा/पार्टीनुसार वेगळ्या शीट्स आणि ऑटोमेटेड PDF बनवणारी १-क्लिक बटणे तयार करणे.">Build 1-click worksheet buttons to split master data into branch/party sheets and export automated PDFs.</span></li>
+                    <li><span class="chk-gold">✔</span> <span data-en="Design custom data-entry UserForms with input validation and automated error-handling routines." data-mr="इनपुट पडताळणी आणि एरर-हँडलिंगसह कस्टम डेटा-एन्ट्री UserForms तयार करणे.">Design custom data-entry UserForms with input validation and automated error-handling routines.</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="sk-course-footer">
+              <button type="button" class="btn-course-enquire" onclick="openCourseEnquiry('KRIYA – VBA & Automation (Standalone)')" data-en="Explore Course Details / Enquire &rarr;" data-mr="तपशील पहा / विचारणा करा &rarr;">Explore Course Details / Enquire &rarr;</button>
+              <a href="enroll.html?plan=kriya" class="link-card-pricing" data-en="View Pricing" data-mr="फी पहा">View Pricing</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="footer-brand" aria-label="Skillansh home">
+            <img src="skillansh-logo.png?v=20261115c" alt="Skillansh logo" width="120" height="36">
+          </a>
+        </div>
+        <div class="footer-col">
+          <h5 data-en="Navigation" data-mr="नेव्हिगेशन">Navigation</h5>
+          <ul>
+            <li><a href="index.html" data-en="Home" data-mr="होम">Home</a></li>
+            <li><a href="courses.html" aria-current="page" data-en="Courses" data-mr="अभ्यासक्रम">Courses</a></li>
+            <li><a href="enroll.html" data-en="View Pricing &amp; Enrol" data-mr="फी व प्रवेश">View Pricing &amp; Enrol</a></li>
+            <li><a href="workshop.html" data-en="Live Workshop" data-mr="लाइव्ह कार्यशाळा">Live Workshop</a></li>
+            <li><a href="about.html" data-en="About &amp; Approach" data-mr="बद्दल व दृष्टिकोन">About &amp; Approach</a></li>
+            <li><a href="contact.html" data-en="Contact" data-mr="संपर्क">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5 data-en="Learning Programmes" data-mr="लर्निंग प्रोग्राम्स">Learning Programmes</h5>
+          <ul>
+            <li><a href="#course-adhaar">ADHAAR – Excel Foundation</a></li>
+            <li><a href="#course-drishti">DRISHTI – MIS &amp; Dashboards</a></li>
+            <li><a href="#course-pravah">PRAVAH – Power Query</a></li>
+            <li><a href="#course-bodh">BODH – Power BI &amp; AI</a></li>
+            <li><a href="#course-kriya">KRIYA – VBA &amp; Automation (Standalone)</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5 data-en="Legal" data-mr="कायदेशीर">Legal</h5>
+          <ul>
+            <li><a href="privacy.html" data-en="Privacy Policy" data-mr="गोपनीयता धोरण">Privacy Policy</a></li>
+            <li><a href="terms.html" data-en="Terms &amp; Conditions" data-mr="नियम आणि अटी">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5 data-en="Contact &amp; Support" data-mr="संपर्क व सहाय्य">Contact &amp; Support</h5>
+          <ul>
+            <li><a href="mailto:support@skillansh.com" style="color:#F8FAFC; font-weight:700;">✉️ support@skillansh.com</a></li>
+            <li><a href="https://wa.me/919922045007" target="_blank" rel="noopener noreferrer" style="color:#25D366; font-weight:700;">💬 +91 9922045007 (WhatsApp)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-note" style="border-top:1px solid rgba(255, 255, 255, 0.12); margin-top:2rem; padding-top:1.5rem; text-align:center; color:#CBD5E1; font-size:0.86rem;">
+        <span data-en="© 2026 Skillansh (www.skillansh.com). All Rights Reserved. Skillansh – Learn. Apply. Implement. Grow." data-mr="© २०२६ Skillansh (www.skillansh.com). सर्व हक्क राखीव.">© 2026 Skillansh (www.skillansh.com). All Rights Reserved. Skillansh – Learn. Apply. Implement. Grow.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="config.js?v=20261122b"></script>
+  <script src="script.js?v=20261122b"></script>
+  <script src="chatbot.js?v=20261122b" defer></script>
+  <script>
+    function openCourseEnquiry(courseTitle) {
+      var overlay = document.getElementById('quick-enquiry-overlay');
+      if (overlay) {
+        overlay.style.display = 'flex';
+        setTimeout(function() { overlay.classList.add('active'); }, 10);
+        document.body.style.overflow = 'hidden';
+        var topicSelect = document.getElementById('qe-topic');
+        if (topicSelect) {
+          var exists = false;
+          for (var i = 0; i < topicSelect.options.length; i++) {
+            if (topicSelect.options[i].value === courseTitle) {
+              topicSelect.selectedIndex = i;
+              exists = true;
+              break;
+            }
+          }
+          if (!exists) {
+            var opt = document.createElement('option');
+            opt.value = courseTitle;
+            opt.textContent = courseTitle;
+            topicSelect.appendChild(opt);
+            topicSelect.value = courseTitle;
+          }
+        }
+        var msgBox = document.getElementById('qe-message');
+        if (msgBox && !msgBox.value) {
+          msgBox.value = 'Please share curriculum details for ' + courseTitle + '.';
+        }
+      } else {
+        window.location.href = 'contact.html?topic=' + encodeURIComponent(courseTitle);
+      }
+    }
+  </script>
+</body>
+</html>
