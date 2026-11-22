@@ -769,7 +769,7 @@
         courseKey: regResponse.courseKey,
         planId: regResponse.defaultPlanId,
         eligibleOptions: regResponse.eligibleOptions,
-        paymentStatus: regResponse.paymentStatus || 'REGISTERED_ONLY',
+        paymentStatus: regResponse.paymentStatus || 'PAYMENT_PENDING',
         balanceDueInr: (regResponse.eligibleOptions[0] && regResponse.eligibleOptions[0].totalPackageAmountInr) || 0,
         courses: { ADHAAR: 'LOCKED', DRISHTI: 'LOCKED', PRAVAH: 'LOCKED', BODH: 'LOCKED', KRIYA: 'LOCKED' }
       };
@@ -799,7 +799,7 @@
       document.getElementById('act-learner-id').textContent = reg.learnerId;
       document.getElementById('act-learner-name').textContent = reg.learnerName;
       document.getElementById('act-learner-contact').textContent = `${reg.email} · +91 ${reg.phone}`;
-      document.getElementById('act-reg-status').textContent = reg.paymentStatus || 'REGISTERED_ONLY';
+      document.getElementById('act-reg-status').textContent = reg.paymentStatus || 'PAYMENT_PENDING';
 
       const listEl = document.getElementById('eligible-payment-options-list');
       listEl.innerHTML = '';
@@ -990,6 +990,22 @@
             if (disBox && disId) {
               disId.textContent = opts.registrationId;
               disBox.style.display = 'block';
+            }
+            // Requirement E: Record checkout abandonment without relying on payment.failed webhook
+            if (WEBHOOK_URL) {
+              fetch(WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify({
+                  action: 'checkout_abandoned',
+                  registrationId: opts.registrationId,
+                  learnerId: opts.learnerId,
+                  planId: opts.planId,
+                  learnerName: opts.learnerName,
+                  email: opts.email,
+                  whatsapp: opts.phone
+                })
+              }).catch(() => {});
             }
           }
         }
