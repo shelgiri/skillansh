@@ -276,33 +276,33 @@
             <span id="preselected-course-badge" style="font-size:0.75rem; font-weight:800; color:#0F766E; background:#ECFDF5; border:1px solid #34D399; padding:0.2rem 0.65rem; border-radius:999px;">Course Selected</span>
           </div>
           <h3 style="color:#1E3A5F; font-size:1.18rem; font-weight:800; margin-bottom:0.3rem;">Course Selection &amp; Learner Registration</h3>
-          <p style="color:#64748B; font-size:0.83rem; margin-bottom:1rem;">Select your course or the Complete 4-Course Learning Pathway and submit your details. Your registration is saved before payment and generates a unique Registration ID.</p>
+          <p style="color:#64748B; font-size:0.83rem; margin-bottom:1rem;">Select your learning journey or the Complete 5-Journey Programme and submit your details. Your registration is saved securely before payment and generates a unique Registration ID.</p>
 
           <form id="skillansh-reg-form" novalidate>
             <!-- Course / Package Selection (Zero Prices Displayed Prior to Registration Submission) -->
             <div style="margin-bottom:1.1rem;">
-              <label style="display:block; font-weight:800; color:#1E3A5F; font-size:0.86rem; margin-bottom:0.5rem;">1. Selected Course / Learning Pathway *</label>
+              <label style="display:block; font-weight:800; color:#1E3A5F; font-size:0.86rem; margin-bottom:0.5rem;">1. Selected Course / Learning Journey *</label>
 
-              <!-- Complete 4-Course Package (ADHAAR + DRISHTI + PRAVAH + BODH) -->
+              <!-- Complete 5-Journey Programme (ADHAAR + DRISHTI + KRIYA + PRAVAH + BODH) -->
               <label class="cat-option active" id="opt-course-package">
                 <div style="display:flex; gap:0.75rem;">
                   <input type="radio" name="selected_course" value="package" checked>
                   <div>
-                    <div class="cat-title">Complete 4-Course Package (ADHAAR + DRISHTI + PRAVAH + BODH) <span class="cat-tag">4-Stage Pathway</span></div>
-                    <div class="cat-desc">Includes ADHAAR (Excel Foundation), DRISHTI (MIS &amp; Dashboards), PRAVAH (Power Query), and BODH (Power BI &amp; AI). Both Full Payment and 2-Instalment options unlock upon registration.</div>
+                    <div class="cat-title">Complete 5-Journey Programme (ADHAAR + DRISHTI + KRIYA + PRAVAH + BODH) <span class="cat-tag">5-Stage Journey</span></div>
+                    <div class="cat-desc">Includes ADHAAR (Foundation), DRISHTI (Analysis), KRIYA (Automation), PRAVAH (Power Query &amp; Power BI), and BODH (AI Smart Automation &amp; Capstone). Both Full Payment and Instalment options unlock upon registration.</div>
                   </div>
                 </div>
               </label>
 
-              <div style="margin:0.75rem 0 0.45rem; font-size:0.74rem; font-weight:800; color:#64748B; text-transform:uppercase; letter-spacing:0.04em;">Or Register for an Individual Course:</div>
+              <div style="margin:0.75rem 0 0.45rem; font-size:0.74rem; font-weight:800; color:#64748B; text-transform:uppercase; letter-spacing:0.04em;">Or Register for an Individual Journey:</div>
 
               <!-- 1. ADHAAR -->
               <label class="cat-option" id="opt-course-adhaar">
                 <div style="display:flex; gap:0.75rem;">
                   <input type="radio" name="selected_course" value="adhaar">
                   <div>
-                    <div class="cat-title">ADHAAR – Excel Foundation</div>
-                    <div class="cat-desc">Pathway Course 01 &middot; 25+ core office formulas (XLOOKUP, INDEX/MATCH, Dynamic Arrays, IF, SUMIFS), Pivot Tables &amp; structured spreadsheet design.</div>
+                    <div class="cat-title">ADHAAR – Foundation <span style="font-size:0.75rem; color:#0F766E; font-weight:700;">(Journey 01)</span></div>
+                    <div class="cat-desc">The Foundation of Digital Skills &bull; Excel Foundation. Master spreadsheet design, data validation, modern lookups, dynamic arrays &amp; Pivot Tables.</div>
                   </div>
                 </div>
               </label>
@@ -312,30 +312,41 @@
                 <div style="display:flex; gap:0.75rem;">
                   <input type="radio" name="selected_course" value="drishti">
                   <div>
-                    <div class="cat-title">DRISHTI – MIS &amp; Dashboards</div>
-                    <div class="cat-desc">Pathway Course 02 &middot; Automated monthly MIS reporting, variance &amp; ageing trackers, Maker-Checker controls, and 1-page visual Excel dashboards.</div>
+                    <div class="cat-title">DRISHTI – Analysis <span style="font-size:0.75rem; color:#0F766E; font-weight:700;">(Journey 02)</span></div>
+                    <div class="cat-desc">The Power to Understand Data &bull; MIS &amp; Dashboards. Build automated monthly MIS reports, Maker-Checker reconciliation controls &amp; 1-page visual dashboards.</div>
                   </div>
                 </div>
               </label>
 
-              <!-- 3. PRAVAH -->
+              <!-- 3. KRIYA -->
+              <label class="cat-option" id="opt-course-kriya">
+                <div style="display:flex; gap:0.75rem;">
+                  <input type="radio" name="selected_course" value="kriya">
+                  <div>
+                    <div class="cat-title">KRIYA – Automation <span style="font-size:0.75rem; color:#0F766E; font-weight:700;">(Journey 03)</span></div>
+                    <div class="cat-desc">The Power to Take Action &bull; VBA &amp; Automation. Eliminate daily repetitive tasks with Excel VBA macros, automated PDF generation &amp; custom workflows.</div>
+                  </div>
+                </div>
+              </label>
+
+              <!-- 4. PRAVAH -->
               <label class="cat-option" id="opt-course-pravah">
                 <div style="display:flex; gap:0.75rem;">
                   <input type="radio" name="selected_course" value="pravah">
                   <div>
-                    <div class="cat-title">PRAVAH – Power Query</div>
-                    <div class="cat-desc">Pathway Course 03 &middot; 1-click multi-workbook &amp; CSV consolidation, unpivoting messy tables, and automated refreshable ETL pipelines.</div>
+                    <div class="cat-title">PRAVAH – Power Query &amp; Power BI <span style="font-size:0.75rem; color:#0F766E; font-weight:700;">(Journey 04)</span></div>
+                    <div class="cat-desc">The Flow of Data &bull; Power Query &amp; Power BI. Learn data cleaning, multi-source combining, repetitive data prep automation &amp; Power BI dashboards.</div>
                   </div>
                 </div>
               </label>
 
-              <!-- 4. BODH -->
+              <!-- 5. BODH -->
               <label class="cat-option" id="opt-course-bodh">
                 <div style="display:flex; gap:0.75rem;">
                   <input type="radio" name="selected_course" value="bodh">
                   <div>
-                    <div class="cat-title">BODH – Power BI &amp; AI</div>
-                    <div class="cat-desc">Pathway Course 04 &middot; Relational data modeling, essential DAX calculations, interactive Power BI visual dashboards, and structured AI Prompting.</div>
+                    <div class="cat-title">BODH – AI Smart Automation &amp; Capstone <span style="font-size:0.75rem; color:#0F766E; font-weight:700;">(Journey 05)</span></div>
+                    <div class="cat-desc">The Power of Intelligent Thinking &bull; AI Smart Automation &amp; Capstone. AI-assisted analysis, responsible automation, decision support &amp; practical productivity AI capstone.</div>
                   </div>
                 </div>
               </label>
@@ -580,12 +591,12 @@
     let currentLearnerState = null;
 
     const COURSE_DISPLAY_NAMES = {
-      package: 'Complete 4-Course Package (ADHAAR + DRISHTI + PRAVAH + BODH)',
-      adhaar: 'ADHAAR – Excel Foundation',
-      drishti: 'DRISHTI – MIS & Dashboards',
-      pravah: 'PRAVAH – Power Query',
-      bodh: 'BODH – Power BI & AI',
-      kriya: 'KRIYA – VBA & Automation (Standalone Course)'
+      package: 'Complete 5-Journey Programme (ADHAAR + DRISHTI + KRIYA + PRAVAH + BODH)',
+      adhaar: 'ADHAAR – Foundation (Excel Foundation)',
+      drishti: 'DRISHTI – Analysis (MIS & Dashboards)',
+      kriya: 'KRIYA – Automation (VBA & Automation)',
+      pravah: 'PRAVAH – Power Query & Power BI',
+      bodh: 'BODH – AI Smart Automation & Capstone'
     };
 
     // Official Razorpay Payment Links mapped by Plan ID (Activated ONLY after Step 1 Registration)
@@ -627,7 +638,7 @@
 
         const badge = document.getElementById('preselected-course-badge');
         if (badge) {
-          badge.textContent = 'Selected: ' + (selectedCourseKey === 'package' ? '4-Course Package' : selectedCourseKey.toUpperCase());
+          badge.textContent = 'Selected: ' + (selectedCourseKey === 'package' ? '5-Journey Programme' : selectedCourseKey.toUpperCase());
         }
 
         if (activeRegistration && activeRegistration.courseKey !== selectedCourseKey) {
