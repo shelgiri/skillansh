@@ -769,7 +769,7 @@
         courseKey: regResponse.courseKey,
         planId: regResponse.defaultPlanId,
         eligibleOptions: regResponse.eligibleOptions,
-        paymentStatus: 'PAYMENT_PENDING',
+        paymentStatus: regResponse.paymentStatus || 'REGISTERED_ONLY',
         balanceDueInr: (regResponse.eligibleOptions[0] && regResponse.eligibleOptions[0].totalPackageAmountInr) || 0,
         courses: { ADHAAR: 'LOCKED', DRISHTI: 'LOCKED', PRAVAH: 'LOCKED', BODH: 'LOCKED', KRIYA: 'LOCKED' }
       };
@@ -799,7 +799,7 @@
       document.getElementById('act-learner-id').textContent = reg.learnerId;
       document.getElementById('act-learner-name').textContent = reg.learnerName;
       document.getElementById('act-learner-contact').textContent = `${reg.email} · +91 ${reg.phone}`;
-      document.getElementById('act-reg-status').textContent = reg.paymentStatus || 'PAYMENT_PENDING';
+      document.getElementById('act-reg-status').textContent = reg.paymentStatus || 'REGISTERED_ONLY';
 
       const listEl = document.getElementById('eligible-payment-options-list');
       listEl.innerHTML = '';
@@ -918,6 +918,16 @@
         } catch (err) {
           console.warn('Dynamic order creation fallback to Standard Checkout:', err);
         }
+      }
+
+      // Upgrade status from REGISTERED_ONLY to PAYMENT_PENDING now that learner clicked Proceed to Payment
+      activeRegistration.paymentStatus = 'PAYMENT_PENDING';
+      const actStatusEl = document.getElementById('act-reg-status');
+      if (actStatusEl) actStatusEl.textContent = 'PAYMENT_PENDING';
+      if (currentLearnerState) {
+        currentLearnerState.paymentStatus = 'PAYMENT_PENDING';
+        currentLearnerState.planId = chosen.planId;
+        localStorage.setItem('skillansh_lms_learner', JSON.stringify(currentLearnerState));
       }
 
       const directPaymentLink = orderData.paymentLink || chosen.paymentLink || RAZORPAY_PAYMENT_LINKS[chosen.planId] || '';
@@ -1185,12 +1195,12 @@
       const bal = Number(state.balanceDueInr || 0);
       document.getElementById('lms-disp-balance').textContent = `Balance Due: ₹${bal.toLocaleString('en-IN')}`;
 
-      // Show Resume Pending Payment Box if status is PAYMENT_PENDING or PENDING
+      // Show Resume Pending Payment Box if status is REGISTERED_ONLY, PAYMENT_PENDING, or PENDING
       const resumeBox = document.getElementById('lms-resume-pending-box');
-      if (st === 'PAYMENT_PENDING' || st === 'PENDING') {
+      if (st === 'REGISTERED_ONLY' || st === 'PAYMENT_PENDING' || st === 'PENDING') {
         resumeBox.style.display = 'flex';
         document.getElementById('lms-resume-pending-desc').textContent =
-          `Your registration (${state.registrationId}) for ${state.packageName || 'your selected course'} is saved as PAYMENT_PENDING. Click Continue to Secure Payment to complete checkout.`;
+          `Your registration (${state.registrationId}) for ${state.packageName || 'your selected course'} is saved (${st}). Click Continue to Secure Payment to complete checkout.`;
       } else {
         resumeBox.style.display = 'none';
       }
