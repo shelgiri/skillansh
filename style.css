@@ -932,6 +932,16 @@ a.qe-contact-page-link {
   display: none !important;
 }
 
+/* Hide Courses link from top navigation and footer menu (activated when clicking Explore Details on home page) */
+li:has(> a[href="courses.html"]),
+li:has(> a[href="/courses.html"]),
+.nav-links li:has(a[href*="courses.html"]),
+.footer-col li:has(a[href*="courses.html"]),
+.nav-bar a[href="courses.html"],
+.mobile-nav a[href="courses.html"] {
+  display: none !important;
+}
+
 .footer-col a[aria-current="page"],
 .footer-col a[aria-current="page"][href*="contact.html"] {
   color: #38BDF8 !important;

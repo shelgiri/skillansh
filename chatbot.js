@@ -21,15 +21,15 @@
   const KB = {
     greetings: {
       en: {
-        text: `Hello! 👋 Welcome to <strong>Skillansh – Learn. Apply. Implement. Grow.</strong> I am <strong>Skillmitra</strong>, your 24/7 AI Guide.<br><br>🟢 <strong>We teach only what makes your daily office &amp; practical life easy!</strong> Explore our 4-Course Learning Pathway (ADHAAR, DRISHTI, PRAVAH, BODH), our standalone KRIYA automation programme, or join our <strong>FREE Introductory Session this Sunday</strong>.`,
+        text: `Hello! 👋 Welcome to <strong>Skillansh – Learn. Apply. Implement. Grow.</strong> I am <strong>Skillmitra</strong>, your 24/7 AI Guide.<br><br>🟢 <strong>We teach only what makes your daily office &amp; practical life easy!</strong> Explore our 4-Course Learning Pathway (ADHAAR, DRISHTI, PRAVAH, BODH) or join our <strong>FREE Introductory Session this Sunday</strong>.`,
         chips: ['🟢 Join Free Session', '📚 Learning Programmes', '💳 Enquire About Pricing', '👨‍🏫 Mentor Team', '💬 DM Us on WhatsApp']
       },
       mr: {
-        text: `नमस्कार! 👋 <strong>Skillansh</strong> मध्ये आपले स्वागत आहे. मी <strong>Skillmitra</strong>, आपला 24/7 AI गाइड आहे.<br><br>🟢 <strong>आम्ही फक्त रोजचे काम आणि जीवन सोपे करणाऱ्याच गोष्टी शिकवतो!</strong> आमचा ४-कोर्स लर्निंग मार्ग (ADHAAR, DRISHTI, PRAVAH, BODH), स्वतंत्र KRIYA ऑटोमेशन कोर्स किंवा या रविवारी होणाऱ्या <strong>मोफत परिचयात्मक सत्राबद्दल (FREE Introductory Session)</strong> माहिती मिळवा.`,
+        text: `नमस्कार! 👋 <strong>Skillansh</strong> मध्ये आपले स्वागत आहे. मी <strong>Skillmitra</strong>, आपला 24/7 AI गाइड आहे.<br><br>🟢 <strong>आम्ही फक्त रोजचे काम आणि जीवन सोपे करणाऱ्याच गोष्टी शिकवतो!</strong> आमचा ४-कोर्स लर्निंग मार्ग (ADHAAR, DRISHTI, PRAVAH, BODH) किंवा या रविवारी होणाऱ्या <strong>मोफत परिचयात्मक सत्राबद्दल (FREE Introductory Session)</strong> माहिती मिळवा.`,
         chips: ['🟢 मोफत सत्रात सहभागी व्हा', '📚 अभ्यासक्रम यादी', '💳 फी व प्रवेश माहिती', '👨‍🏫 मेंटर टीम माहिती', '💬 WhatsApp वर मेसेज करा']
       },
       hi: {
-        text: `नमस्ते! 👋 <strong>Skillansh</strong> में आपका स्वागत है। मैं <strong>Skillmitra</strong>, आपका 24/7 एआई गाइड हूँ।<br><br>🟢 <strong>हम केवल वही सिखाते हैं जो आपके रोज़मर्रा के काम और जीवन को आसान बनाए!</strong> हमारे 4-कोर्स लर्निंग पाथवे (ADHAAR, DRISHTI, PRAVAH, BODH), स्टैंडअलोन KRIYA कोर्स या इस रविवार के <strong>FREE Introductory Session</strong> के बारे में जानें।`,
+        text: `नमस्ते! 👋 <strong>Skillansh</strong> में आपका स्वागत है। मैं <strong>Skillmitra</strong>, आपका 24/7 एआई गाइड हूँ।<br><br>🟢 <strong>हम केवल वही सिखाते हैं जो आपके रोज़मर्रा के काम और जीवन को आसान बनाए!</strong> हमारे 4-कोर्स लर्निंग पाथवे (ADHAAR, DRISHTI, PRAVAH, BODH) या इस रविवार के <strong>FREE Introductory Session</strong> के बारे में जानें।`,
         chips: ['🟢 फ्री सेशन जॉइन करें', '📚 कोर्स स्ट्रक्चर', '💳 फीस व प्रवेश जानकारी', '👨‍🏫 मेंटर टीम', '💬 WhatsApp पर मैसेज करें']
       }
     },
@@ -41,9 +41,7 @@
 • <strong>1. ADHAAR – Excel Foundation:</strong> 25+ core office formulas, dynamic tables &amp; Pivot Table analysis.<br>
 • <strong>2. DRISHTI – MIS &amp; Dashboards:</strong> Automated monthly MIS reporting, Maker-Checker controls &amp; 1-page visual Excel dashboards.<br>
 • <strong>3. PRAVAH – Power Query:</strong> 1-click multi-file data cleaning, unpivoting &amp; automated consolidation pipelines.<br>
-• <strong>4. BODH – Power BI &amp; AI:</strong> Interactive Power BI data models, DAX measures &amp; structured AI Prompt Engineering.<br><br>
-<strong>Separate Standalone Specialized Course:</strong><br>
-• <strong>⚙️ KRIYA – VBA &amp; Automation:</strong> Separate standalone programme (outside the 4-course pathway) for custom 1-click VBA macro buttons &amp; automated PDF exports.`,
+• <strong>4. BODH – Power BI &amp; AI:</strong> Interactive Power BI data models, DAX measures &amp; structured AI Prompt Engineering.`,
         cta: { text: `🎓 Explore Courses & Register`, action: 'enrol_cohort' },
         chips: ['💳 Enquire About Pricing', '🟢 Join Free Session', '💬 DM Us on WhatsApp']
       },
@@ -53,9 +51,7 @@
 • <strong>१. ADHAAR (आधार) – Excel Foundation:</strong> २५+ ऑफिस फॉर्म्युले, डायनॅमिक टेबल्स व Pivot Tables.<br>
 • <strong>२. DRISHTI (दृष्टी) – MIS &amp; Dashboards:</strong> ऑटोमेटेड मासिक MIS रिपोर्ट्स आणि १-पेज Excel डॅशबोर्ड्स.<br>
 • <strong>३. PRAVAH (प्रवाह) – Power Query:</strong> १-क्लिक मल्टी-फाईल डेटा क्लिनिंग आणि एकत्रीकरण.<br>
-• <strong>४. BODH (बोध) – Power BI &amp; AI:</strong> संवादात्मक Power BI डॅशबोर्ड्स, DAX आणि स्ट्रक्चर्ड AI प्रॉम्प्ट्स.<br><br>
-<strong>स्वतंत्र विशेष कोर्स (४-कोर्स पॅकेजबाहेर):</strong><br>
-• <strong>⚙️ KRIYA (क्रिया) – VBA &amp; Automation:</strong> १-क्लिक VBA मॅक्रो बटणे आणि ऑटोमेटेड PDF रिपोर्ट्ससाठी स्वतंत्र कोर्स.`,
+• <strong>४. BODH (बोध) – Power BI &amp; AI:</strong> संवादात्मक Power BI डॅशबोर्ड्स, DAX आणि स्ट्रक्चर्ड AI प्रॉम्प्ट्स.`,
         cta: { text: `🎓 अभ्यासक्रम पहा आणि नोंदणी करा`, action: 'enrol_cohort' },
         chips: ['💳 फी व प्रवेश माहिती', '🟢 मोफत सत्रात सहभागी व्हा', '💬 WhatsApp वर मेसेज करा']
       },
@@ -65,9 +61,7 @@
 • <strong>1. ADHAAR – Excel Foundation:</strong> 25+ ऑफिस फ़ॉर्मूले, डायनेमिक टेबल्स व पिवट टेबल्स।<br>
 • <strong>2. DRISHTI – MIS &amp; Dashboards:</strong> ऑटोमेटेड मासिक MIS रिपोर्ट्स व 1-पेज एक्सेल डैशबोर्ड।<br>
 • <strong>3. PRAVAH – Power Query:</strong> 1-क्लिक मल्टी-फाइल डेटा क्लीनिंग व ऑटोमेशन।<br>
-• <strong>4. BODH – Power BI &amp; AI:</strong> इंटरएक्टिव Power BI डैशबोर्ड, DAX व स्ट्रक्चर्ड AI प्रॉम्प्ट्स।<br><br>
-<strong>स्टैंडअलोन कोर्स (4-कोर्स पैकेज से अलग):</strong><br>
-• <strong>⚙️ KRIYA – VBA &amp; Automation:</strong> कस्टम 1-क्लिक VBA मैक्रो बटन और ऑटोमेटेड PDF रिपोर्टिंग।`,
+• <strong>4. BODH – Power BI &amp; AI:</strong> इंटरएक्टिव Power BI डैशबोर्ड, DAX व स्ट्रक्चर्ड AI प्रॉम्प्ट्स।`,
         cta: { text: `🎓 कोर्स देखें और रजिस्टर करें`, action: 'enrol_cohort' },
         chips: ['💳 फीस व प्रवेश जानकारी', '🟢 फ्री सेशन जॉइन करें', '💬 WhatsApp पर मैसेज करें']
       }
