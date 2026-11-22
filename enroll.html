@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="192x192" href="/skillansh-favicon-v4.png">
-  <link rel="stylesheet" href="style.css?v=20261122c">
+  <link rel="stylesheet" href="style.css?v=20261122f">
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <style>
     :root {
@@ -242,13 +242,25 @@
       </a>
       <nav>
         <ul class="nav-links" id="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="enroll.html" aria-current="page">Course Registration</a></li>
-          <li><a href="workshop.html">Live Workshop</a></li>
-          <li><a href="about.html">About &amp; Approach</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="index.html"><span>Home</span></a></li>
+          <li><a href="enroll.html" aria-current="page"><span>Course Registration</span></a></li>
+          <li><a href="workshop.html"><span>Live Workshop</span><span class="nav-live-chip">FREE</span></a></li>
+          <li><a href="about.html"><span>About &amp; Approach</span></a></li>
+          <li><a href="contact.html"><span>Contact</span></a></li>
         </ul>
       </nav>
+      <button type="button" class="nav-enquiry-btn" id="open-quick-enquiry-btn" aria-label="Quick Enquiry">
+        <span class="nav-enquiry-icon">✉️</span>
+        <span>Quick Enquiry</span>
+      </button>
+      <button class="mobile-menu-btn" id="mobile-menu" aria-expanded="false" aria-controls="nav-links"
+        aria-label="Toggle menu">
+        &#9776;
+      </button>
+      <div class="lang-switcher">
+        <button type="button" class="lang-btn lang-active" data-lang="en" id="lang-en">EN</button>
+        <button type="button" class="lang-btn" data-lang="mr" id="lang-mr">मराठी</button>
+      </div>
     </div>
   </header>
 
@@ -1396,6 +1408,30 @@
         }
       }
     }
+    // Isolated header navbar interactions (without importing script.js)
+    (function () {
+      const mobileBtn = document.getElementById('mobile-menu');
+      const navList = document.getElementById('nav-links');
+      if (mobileBtn && navList) {
+        mobileBtn.addEventListener('click', () => {
+          const isOpen = navList.classList.toggle('open');
+          mobileBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+      }
+      const enquiryBtn = document.getElementById('open-quick-enquiry-btn');
+      if (enquiryBtn) {
+        enquiryBtn.addEventListener('click', () => {
+          window.open('https://wa.me/919922045007?text=Hello%20Skillansh%20Team,%20I%20would%20like%20to%20enquire%20about%20course%20registration.', '_blank', 'noopener,noreferrer');
+        });
+      }
+      document.querySelectorAll('.lang-switcher .lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const lang = btn.getAttribute('data-lang') || 'en';
+          try { localStorage.setItem('growthcircle_lang', lang); } catch (e) {}
+          document.querySelectorAll('.lang-switcher .lang-btn').forEach(b => b.classList.toggle('lang-active', b === btn));
+        });
+      });
+    })();
   </script>
 </body>
 </html>

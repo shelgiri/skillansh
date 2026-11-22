@@ -36,6 +36,8 @@ html {
   scroll-padding-top: 80px;
   max-width: 100%;
   overflow-x: clip;
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -248,9 +250,10 @@ header {
 }
 
 .nav-links a {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  padding: 0.42rem 1rem;
+  padding: 0.42rem 1rem 0.42rem 1.35rem;
   font-size: 0.88rem;
   font-weight: 600;
   color: #475569;
@@ -271,18 +274,22 @@ header {
 .nav-links a[aria-current="page"] {
   background: #FFFFFF !important;
   color: var(--color-primary) !important;
-  font-weight: 800;
+  font-weight: 600;
+  text-shadow: 0 0 0.45px currentColor;
   box-shadow: 0 2px 8px rgba(30, 58, 95, 0.12), 0 1px 2px rgba(30, 58, 95, 0.06);
 }
 
 .nav-links a[aria-current="page"]::before {
   content: "";
-  display: inline-block;
+  position: absolute;
+  left: 0.52rem;
+  top: 50%;
+  transform: translateY(-50%);
   width: 7px;
   height: 7px;
   border-radius: 50%;
   background: #0F766E;
-  margin-right: 0.45rem;
+  margin-right: 0;
   box-shadow: 0 0 6px rgba(15, 118, 110, 0.7);
   flex-shrink: 0;
 }
@@ -1478,7 +1485,7 @@ li:has(> a[href="/courses.html"]),
   .nav-links li a {
     width: 100%;
     border-radius: 10px;
-    padding: 0.65rem 0.85rem;
+    padding: 0.65rem 0.85rem 0.65rem 1.65rem;
     font-size: 0.95rem;
     justify-content: flex-start;
   }
@@ -1489,6 +1496,10 @@ li:has(> a[href="/courses.html"]),
     border-left: 4px solid #0F766E !important;
     border-radius: 8px !important;
     box-shadow: none !important;
+  }
+
+  .nav-links a[aria-current="page"]::before {
+    left: 0.75rem;
   }
 
   .nav-links .mobile-menu-cta {
