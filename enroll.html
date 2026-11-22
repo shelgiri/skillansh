@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skillansh | Course Registration, Razorpay Checkout &amp; Sequential LMS Portal</title>
+  <meta name="description" content="Official Skillansh Course Registration, 2-Instalment Payment Portal, and Sequential LMS Access for ADHAAR, DRISHTI, PRAVAH, BODH, and KRIYA.">
+  <link rel="canonical" href="https://www.skillansh.com/enroll.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="192x192" href="/skillansh-favicon-v4.png">
+  <link rel="stylesheet" href="style.css?v=20261122a">
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <style>
+    .portal-shell {
+      background: #F8FAFC;
+      padding: 2.5rem 0 4rem;
+      min-height: calc(100vh - 140px);
+    }
+    .portal-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .portal-tab-btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 999px;
+      border: 1.5px solid #CBD5E1;
+      background: #FFFFFF;
+      color: #1E3A5F;
+      font-weight: 800;
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .portal-tab-btn.active {
+      background: #1E3A5F;
+      color: #FFFFFF;
+      border-color: #1E3A5F;
+      box-shadow: 0 6px 18px rgba(30, 58, 95, 0.2);
+    }
+    .reg-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 1.75rem;
+      max-width: 1160px;
+      margin: 0 auto;
+      align-items: start;
+    }
+    @media (max-width: 920px) {
+      .reg-grid { grid-template-columns: 1fr; }
+    }
+    .reg-card {
+      background: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 18px;
+      padding: 1.75rem;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    }
+    .cat-option {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.85rem;
+      padding: 1rem 1.15rem;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 12px;
+      margin-bottom: 0.75rem;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      background: #FFFFFF;
+    }
+    .cat-option:hover { border-color: #94A3B8; }
+    .cat-option.active {
+      border-color: #0F766E;
+      background: #F0FDF4;
+      box-shadow: 0 4px 14px rgba(15, 118, 110, 0.1);
+    }
+    .cat-option input[type="radio"] {
+      margin-top: 0.25rem;
+      accent-color: #0F766E;
+      transform: scale(1.15);
+    }
+    .cat-title { font-weight: 800; color: #1E3A5F; font-size: 0.98rem; }
+    .cat-desc { font-size: 0.82rem; color: #475569; margin-top: 0.2rem; line-height: 1.45; }
+    .cat-price { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.2rem; color: #0F766E; white-space: nowrap; }
+    .cat-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 0.12rem 0.55rem;
+      border-radius: 999px;
+      background: #DCFCE7;
+      color: #065F46;
+      margin-left: 0.4rem;
+    }
+    .cat-tag-amber { background: #FEF3C7; color: #92400E; }
+    .cat-tag-purple { background: #F3E8FF; color: #6B21A8; }
+
+    .summary-box {
+      background: #0F172A;
+      color: #F8FAFC;
+      border-radius: 14px;
+      padding: 1.25rem;
+      margin: 1.25rem 0;
+      border: 1px solid #334155;
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.35rem 0;
+      font-size: 0.88rem;
+      color: #CBD5E1;
+    }
+    .summary-row.total {
+      border-top: 1px solid rgba(255,255,255,0.15);
+      margin-top: 0.5rem;
+      padding-top: 0.65rem;
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: #34D399;
+    }
+
+    .lms-course-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.15rem;
+      margin-top: 1.25rem;
+    }
+    .lms-course-card {
+      background: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 1.25rem;
+      position: relative;
+    }
+    .lms-course-card.active-course {
+      border-color: #10B981;
+      background: linear-gradient(180deg, #FFFFFF 0%, #F0FDF4 100%);
+    }
+    .lms-course-card.locked-course {
+      border-color: #CBD5E1;
+      background: #F8FAFC;
+      opacity: 0.88;
+    }
+    .status-pill {
+      display: inline-block;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .status-active { background: #DCFCE7; color: #065F46; border: 1px solid #34D399; }
+    .status-locked { background: #F1F5F9; color: #64748B; border: 1px solid #CBD5E1; }
+    .status-partial { background: #FEF3C7; color: #92400E; border: 1px solid #F59E0B; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="top-bar">
+      <div class="container">
+        <span>🎓 Skillansh – Learn. Apply. Implement. Grow. &middot; Automated Razorpay Checkout &amp; Sequential LMS Portal</span>
+        <a href="index.html" class="top-bar-cta">&larr; Back to Home</a>
+      </div>
+    </div>
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand" aria-label="Skillansh home">
+        <img src="skillansh-logo.png?v=20261115c" alt="Skillansh logo" width="140" height="42">
+      </a>
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="enroll.html" aria-current="page">Courses &amp; Enrol</a></li>
+          <li><a href="workshop.html">Live Workshop</a></li>
+          <li><a href="about.html">About &amp; Approach</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="portal-shell">
+    <div class="container">
+      <div style="text-align:center; max-width:780px; margin:0 auto 1.5rem;">
+        <span class="eyebrow" style="color:#0F766E; font-weight:800;">Skillansh Authoritative Course Catalogue &amp; LMS</span>
+        <h1 style="font-size:clamp(1.75rem, 3vw, 2.3rem); color:#1E3A5F; font-weight:800; margin:0.3rem 0 0.5rem;">Course Registration, Razorpay Checkout &amp; Sequential LMS Access</h1>
+        <p style="color:#475569; font-size:0.95rem;">Select the Complete 4-Course Package (Full or 2-Instalment Option) or any individual course, complete secure Razorpay Standard Checkout, or view your sequential LMS course access.</p>
+      </div>
+
+      <!-- Mode Switcher Tabs -->
+      <div class="portal-tabs">
+        <button type="button" class="portal-tab-btn active" id="tab-btn-register" onclick="switchPortalTab('register')">1. New Course Registration &amp; Checkout</button>
+        <button type="button" class="portal-tab-btn" id="tab-btn-lms" onclick="switchPortalTab('lms')">2. My LMS Course Access &amp; Pay 2nd Instalment (₹14,999)</button>
+      </div>
+
+      <!-- TAB 1: REGISTRATION & RAZORPAY STANDARD CHECKOUT -->
+      <div id="pane-register" class="reg-grid">
+        <!-- Left Column: Authoritative Course & Package Selection -->
+        <div class="reg-card">
+          <h3 style="color:#1E3A5F; font-size:1.18rem; font-weight:800; margin-bottom:0.35rem;">Step 1: Select Course or 4-Course Package</h3>
+          <p style="color:#64748B; font-size:0.84rem; margin-bottom:1rem;">The 4-Course Package includes ADHAAR, DRISHTI, PRAVAH, and BODH (Total Individual Value: ₹20,996). KRIYA (VBA &amp; Automation) is a separate standalone course.</p>
+
+          <div id="catalogue-options-wrap">
+            <!-- Complete 4-Course Package: Option A (Full Payment ₹14,999) -->
+            <label class="cat-option active" id="opt-pkg_full">
+              <div style="display:flex; gap:0.75rem;">
+                <input type="radio" name="course_selection" value="pkg_full" checked>
+                <div>
+                  <div class="cat-title">Complete 4-Course Package – Option A: Full Payment <span class="cat-tag">Save ₹5,997</span></div>
+                  <div class="cat-desc">Includes <strong>ADHAAR + DRISHTI + PRAVAH + BODH</strong> (Individual value ₹20,996). One-time payment unlocks all 4 courses immediately upon payment verification.</div>
+                </div>
+              </div>
+              <div class="cat-price">₹14,999</div>
+            </label>
+
+            <!-- Complete 4-Course Package: Option B (2-Instalment Payment: ₹2,000 + ₹14,999 = ₹16,999) -->
+            <label class="cat-option" id="opt-pkg_inst1">
+              <div style="display:flex; gap:0.75rem;">
+                <input type="radio" name="course_selection" value="pkg_inst1">
+                <div>
+                  <div class="cat-title">Complete 4-Course Package – Option B: 1st Instalment <span class="cat-tag cat-tag-amber">2-Instalment Plan</span></div>
+                  <div class="cat-desc">Total Package: <strong>₹16,999</strong> (Pay <strong>₹2,000 today</strong> to unlock <strong>ADHAAR – Excel Foundation</strong> · Remaining balance of <strong>₹14,999</strong> due before starting DRISHTI to unlock DRISHTI, PRAVAH &amp; BODH).</div>
+                </div>
+              </div>
+              <div class="cat-price">₹2,000<div style="font-size:0.7rem; color:#92400E; font-weight:700;">1st Instalment</div></div>
+            </label>
+
+            <div style="margin:1.1rem 0 0.6rem; font-size:0.78rem; font-weight:800; color:#64748B; text-transform:uppercase; letter-spacing:0.04em;">Or Select an Individual Course:</div>
+
+            <!-- 1. ADHAAR -->
+            <label class="cat-option" id="opt-adhaar">
+              <div style="display:flex; gap:0.75rem;">
+                <input type="radio" name="course_selection" value="adhaar">
+                <div>
+                  <div class="cat-title">ADHAAR – Excel Foundation</div>
+                  <div class="cat-desc">25+ essential office formulas (XLOOKUP, INDEX/MATCH, Dynamic Arrays, IF, SUMIFS), Pivot Tables &amp; clean spreadsheet architecture.</div>
+                </div>
+              </div>
+              <div class="cat-price">₹1,999</div>
+            </label>
+
+            <!-- 2. DRISHTI -->
+            <label class="cat-option" id="opt-drishti">
+              <div style="display:flex; gap:0.75rem;">
+                <input type="radio" name="course_selection" value="drishti">
+                <div>
+                  <div class="cat-title">DRISHTI – MIS &amp; Dashboards</div>
+                  <div class="cat-desc">Automated monthly MIS reports, variance &amp; ageing trackers, Maker-Checker controls, and 1-page interactive Excel executive dashboards.</div>
+                </div>
+              </div>
+              <div class="cat-price">₹3,999</div>
+            </label>
+
+            <!-- 3. PRAVAH -->
+            <label class="cat-option" id="opt-pravah">
+              <div style="display:flex; gap:0.75rem;">
+                <input type="radio" name="course_selection" value="pravah">
+                <div>
+                  <div class="cat-title">PRAVAH – Power Query</div>
+                  <div class="cat-desc">Eliminate manual copy-pasting: 1-click multi-workbook &amp; CSV consolidation, unpivoting messy tables, and automated refresh pipelines.</div>
+                </div>
+              </div>
+              <div class="cat-price">₹6,999</div>
+            </label>
+
+            <!-- 4. BODH -->
+            <label class="cat-option" id="opt-bodh">
+              <div style="display:flex; gap:0.75rem;">
+                <input type="radio" name="course_selection" value="bodh">
+                <div>
+                  <div class="cat-title">BODH – Power BI &amp; AI</div>
+                  <div class="cat-desc">Relational data modeling, essential DAX calculations, interactive Power BI visual dashboards, and structured AI Prompt Engineering.</div>
+                </div>
+              </div>
+              <div class="cat-price">₹7,999</div>
+            </label>
+
+            <!-- 5. KRIYA (Standalone Only) -->
+            <label class="cat-option" id="opt-kriya">
+              <div style="display:flex; gap:0.75rem;">
+                <input type="radio" name="course_selection" value="kriya">
+                <div>
+                  <div class="cat-title">KRIYA – VBA &amp; Automation <span class="cat-tag cat-tag-purple">Standalone Course</span></div>
+                  <div class="cat-desc">Separate standalone course (not part of the 4-course package): build custom 1-click VBA macro buttons for formatting, sheet splitting &amp; PDF export.</div>
+                </div>
+              </div>
+              <div class="cat-price">₹4,999</div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Right Column: Learner Registration Form & Order Summary -->
+        <div class="reg-card">
+          <h3 style="color:#1E3A5F; font-size:1.18rem; font-weight:800; margin-bottom:0.35rem;">Step 2: Learner Registration Details</h3>
+          <p style="color:#64748B; font-size:0.84rem; margin-bottom:1.1rem;">All fields marked with * are mandatory. A unique Skillansh Registration ID is generated automatically.</p>
+
+          <form id="skillansh-reg-form" novalidate>
+            <div class="enrol-form-row">
+              <div class="enrol-form-group">
+                <label for="reg-firstname">1. First Name *</label>
+                <input type="text" id="reg-firstname" required placeholder="e.g. Rahul" autocomplete="given-name">
+                <span class="enrol-field-error" id="reg-err-fn">Please enter your First Name.</span>
+              </div>
+              <div class="enrol-form-group">
+                <label for="reg-surname">2. Surname *</label>
+                <input type="text" id="reg-surname" required placeholder="e.g. Sharma" autocomplete="family-name">
+                <span class="enrol-field-error" id="reg-err-ln">Please enter your Surname.</span>
+              </div>
+            </div>
+
+            <div class="enrol-form-group">
+              <label for="reg-email">3. Email Address *</label>
+              <input type="email" id="reg-email" required placeholder="learner@example.com" autocomplete="email">
+              <span class="enrol-field-error" id="reg-err-em">Please enter a valid Email Address.</span>
+            </div>
+
+            <div class="enrol-form-group">
+              <label for="reg-whatsapp">4. WhatsApp Number (10-Digit Indian Mobile) *</label>
+              <input type="tel" id="reg-whatsapp" required placeholder="9876543210" maxlength="14" autocomplete="tel">
+              <span class="enrol-field-error" id="reg-err-ph">Please enter a valid 10-digit Indian WhatsApp number.</span>
+            </div>
+
+            <div class="enrol-form-group">
+              <label for="reg-promo">5. Promo Code (Optional)</label>
+              <input type="text" id="reg-promo" placeholder="Optional promo code" autocomplete="off">
+            </div>
+
+            <!-- Live Authoritative Summary Box Before Checkout -->
+            <div class="summary-box">
+              <div style="font-size:0.75rem; font-weight:800; color:#FDE68A; text-transform:uppercase; margin-bottom:0.4rem;">Selected Product &amp; Payable Summary</div>
+              <div class="summary-row">
+                <span>Selected Product:</span>
+                <strong id="sum-product-name" style="color:#FFFFFF; text-align:right;">4-Course Package (Full Payment)</strong>
+              </div>
+              <div class="summary-row">
+                <span>Total Package / Course Value:</span>
+                <span id="sum-total-pkg">₹14,999</span>
+              </div>
+              <div class="summary-row">
+                <span>Courses Unlocked on Payment:</span>
+                <span id="sum-unlocked" style="color:#A7F3D0; font-weight:700;">ADHAAR, DRISHTI, PRAVAH, BODH</span>
+              </div>
+              <div class="summary-row">
+                <span>Balance Due After This Payment:</span>
+                <span id="sum-balance">₹0 (Fully Paid)</span>
+              </div>
+              <div class="summary-row total">
+                <span>Payable Now (INR):</span>
+                <span id="sum-payable-now">₹14,999</span>
+              </div>
+            </div>
+
+            <button type="submit" class="enrol-submit-btn" id="reg-submit-btn" style="width:100%;">
+              <span id="reg-submit-text">Proceed to Payment (₹14,999) &rarr;</span>
+            </button>
+          </form>
+
+          <!-- Verified Confirmation Box -->
+          <div id="reg-confirmation-box" style="display:none; margin-top:1.25rem; background:#ECFDF5; border:2px solid #10B981; border-radius:14px; padding:1.35rem;">
+            <div style="font-size:1.8rem; margin-bottom:0.3rem;">✅</div>
+            <h4 style="color:#065F46; font-size:1.15rem; font-weight:800; margin-bottom:0.35rem;" id="conf-heading">Payment Verified &amp; LMS Access Activated!</h4>
+            <p style="font-size:0.86rem; color:#047857; line-height:1.55; margin-bottom:0.85rem;" id="conf-details"></p>
+            <button type="button" class="btn-primary" onclick="openLmsWithCurrentLearner()" style="padding:0.65rem 1.25rem; border-radius:8px; border:none; cursor:pointer; font-weight:800;">Open My Sequential LMS Dashboard &rarr;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: SEQUENTIAL LMS ACCESS PORTAL & 2ND INSTALMENT (₹14,999) CHECKOUT -->
+      <div id="pane-lms" style="display:none; max-width:1080px; margin:0 auto;">
+        <div class="reg-card">
+          <h3 style="color:#1E3A5F; font-size:1.22rem; font-weight:800; margin-bottom:0.35rem;">Check Sequential Course Access &amp; Pay 2nd Instalment Balance</h3>
+          <p style="color:#475569; font-size:0.88rem; margin-bottom:1.15rem;">Enter your registered Email Address, 10-digit WhatsApp Number, or Skillansh Registration ID (`SKL-REG-...`) to view your unlocked courses and pay any outstanding instalment balance.</p>
+
+          <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:1.25rem;">
+            <input type="text" id="lms-lookup-input" placeholder="Enter Registered Email, 10-Digit Mobile, or Registration ID" style="flex:1; min-width:240px; padding:0.75rem 1rem; border:1.5px solid #CBD5E1; border-radius:10px; font-size:0.92rem;">
+            <button type="button" onclick="lookupLmsAccess()" class="btn-primary" style="padding:0.75rem 1.5rem; border-radius:10px; border:none; font-weight:800; cursor:pointer;">Load My LMS Courses &rarr;</button>
+          </div>
+
+          <div id="lms-lookup-feedback" style="display:none; padding:0.85rem 1rem; border-radius:10px; margin-bottom:1rem; font-size:0.88rem; font-weight:700;"></div>
+
+          <!-- Learner Status Summary Banner -->
+          <div id="lms-learner-banner" style="display:none;">
+            <div style="background:#0F172A; color:#F8FAFC; border-radius:14px; padding:1.25rem 1.5rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.25rem;">
+              <div>
+                <div style="font-size:0.76rem; color:#94A3B8; font-weight:700; text-transform:uppercase;">Skillansh Learner Profile</div>
+                <div style="font-size:1.2rem; font-weight:800; color:#FFFFFF;" id="lms-disp-name">—</div>
+                <div style="font-size:0.82rem; color:#CBD5E1; margin-top:0.15rem;" id="lms-disp-meta">Reg ID: — | Package: —</div>
+              </div>
+              <div style="text-align:right;">
+                <span id="lms-disp-status-badge" class="status-pill status-partial">PARTIALLY_PAID</span>
+                <div style="font-size:0.9rem; color:#FDE68A; font-weight:800; margin-top:0.35rem;" id="lms-disp-balance">Balance Due: ₹14,999</div>
+              </div>
+            </div>
+
+            <!-- 2nd Instalment Pay Now Alert Box (Visible only when PARTIALLY_PAID and Balance Due = ₹14,999) -->
+            <div id="lms-pay-balance-box" style="display:none; background:linear-gradient(90deg, #FEF3C7 0%, #FFFBEB 100%); border:2px solid #F59E0B; border-radius:14px; padding:1.25rem 1.5rem; margin-bottom:1.5rem; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+              <div style="flex:1; min-width:260px;">
+                <div style="font-size:0.78rem; font-weight:800; color:#B45309; text-transform:uppercase;">🔓 Sequential Course Progression Notice</div>
+                <h4 style="color:#78350F; font-size:1.08rem; font-weight:800; margin:0.2rem 0;">Ready to Start DRISHTI – MIS &amp; Dashboards?</h4>
+                <p style="color:#92400E; font-size:0.86rem; line-height:1.5;">You have paid the 1st Instalment (₹2,000) and unlocked <strong>ADHAAR – Excel Foundation</strong>. Complete your 2nd Instalment balance of <strong>₹14,999</strong> before starting DRISHTI to mark your package as <strong>PAID</strong> and immediately unlock <strong>DRISHTI, PRAVAH &amp; BODH</strong>.</p>
+              </div>
+              <button type="button" onclick="paySecondInstalmentNow()" style="background:#D97706; color:#FFFFFF; border:none; padding:0.85rem 1.5rem; border-radius:10px; font-weight:800; font-size:0.94rem; cursor:pointer; white-space:nowrap; box-shadow:0 6px 16px rgba(217,119,6,0.3);">
+                Pay 2nd Instalment (₹14,999) Now &rarr;
+              </button>
+            </div>
+
+            <!-- 5 Course Cards Grid showing ACTIVE vs LOCKED state -->
+            <div class="lms-course-grid" id="lms-course-cards-container"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="config.js?v=20261122a"></script>
+  <script>
+    const CFG = window.ACCOUNTPRO_CONFIG || {};
+    const PLANS = CFG.PAYMENT_PLANS || {};
+    const WEBHOOK_URL = CFG.GOOGLE_SHEET_WEBHOOK_URL || '';
+
+    let selectedKey = 'pkg_full';
+    let currentLearnerState = null;
+
+    function switchPortalTab(tab) {
+      const isReg = (tab === 'register');
+      document.getElementById('pane-register').style.display = isReg ? 'grid' : 'none';
+      document.getElementById('pane-lms').style.display = isReg ? 'none' : 'block';
+      document.getElementById('tab-btn-register').classList.toggle('active', isReg);
+      document.getElementById('tab-btn-lms').classList.toggle('active', !isReg);
+    }
+
+    function updateSummaryBox() {
+      const p = PLANS[selectedKey] || PLANS.pkg_full;
+      document.getElementById('sum-product-name').textContent = p.shortName || p.name;
+      document.getElementById('sum-total-pkg').textContent = '₹' + Number(p.totalPackageAmount || p.amount).toLocaleString('en-IN');
+      document.getElementById('sum-unlocked').textContent = (p.unlockedCourses || []).join(', ');
+      document.getElementById('sum-balance').textContent = p.balanceDueAfter > 0
+        ? ('₹' + Number(p.balanceDueAfter).toLocaleString('en-IN') + ' (Due before DRISHTI)')
+        : '₹0 (Fully Paid)';
+      document.getElementById('sum-payable-now').textContent = '₹' + Number(p.amount).toLocaleString('en-IN');
+      document.getElementById('reg-submit-text').textContent = `Proceed to Payment (₹${Number(p.amount).toLocaleString('en-IN')}) →`;
+    }
+
+    document.querySelectorAll('input[name="course_selection"]').forEach(radio => {
+      radio.addEventListener('change', () => {
+        selectedKey = radio.value;
+        document.querySelectorAll('.cat-option').forEach(el => el.classList.remove('active'));
+        const card = document.getElementById('opt-' + selectedKey);
+        if (card) card.classList.add('active');
+        updateSummaryBox();
+      });
+    });
+
+    // Registration Form Submit & Automatic Razorpay Standard Checkout
+    document.getElementById('skillansh-reg-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const fn = document.getElementById('reg-firstname').value.trim();
+      const ln = document.getElementById('reg-surname').value.trim();
+      const em = document.getElementById('reg-email').value.trim();
+      const phRaw = document.getElementById('reg-whatsapp').value.replace(/\D/g, '');
+      const ph10 = phRaw.slice(-10);
+      const promo = document.getElementById('reg-promo').value.trim().toUpperCase();
+
+      let valid = true;
+      document.getElementById('reg-err-fn').style.display = fn ? 'none' : 'block';
+      document.getElementById('reg-err-ln').style.display = ln ? 'none' : 'block';
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em);
+      document.getElementById('reg-err-em').style.display = emailOk ? 'none' : 'block';
+      const phoneOk = /^[6-9]\d{9}$/.test(ph10);
+      document.getElementById('reg-err-ph').style.display = phoneOk ? 'none' : 'block';
+
+      if (!fn || !ln || !emailOk || !phoneOk) return;
+
+      const plan = PLANS[selectedKey] || PLANS.pkg_full;
+      const btn = document.getElementById('reg-submit-btn');
+      const btnTxt = document.getElementById('reg-submit-text');
+      btn.disabled = true;
+      btnTxt.textContent = 'Creating Secure Order & Registration ID...';
+
+      // Step 1: Request Order ID & Unique Registration ID from Server-Side Catalogue
+      let orderData = {
+        registrationId: 'SKL-REG-' + new Date().toISOString().slice(0,10).replace(/-/g,'') + '-' + Math.floor(1000 + Math.random() * 9000),
+        learnerId: 'SKL-LRN-' + ph10.slice(-6) + '-' + Math.floor(100 + Math.random() * 900),
+        keyId: CFG.RAZORPAY_KEY_ID || 'rzp_test_TxynQtDHnvxC1V',
+        orderId: '',
+        amountInr: plan.amount,
+        amountPaise: Number(plan.amount) * 100
+      };
+
+      if (WEBHOOK_URL) {
+        try {
+          const resp = await fetch(WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({
+              action: 'create_order',
+              firstName: fn,
+              surname: ln,
+              email: em,
+              whatsapp: ph10,
+              planId: selectedKey,
+              promoCode: promo
+            })
+          });
+          const json = await resp.json();
+          if (json && json.status === 'success') {
+            orderData = Object.assign(orderData, json);
+          }
+        } catch (err) {
+          console.warn('Order API fallback to Standard Checkout:', err);
+        }
+      }
+
+      // Step 2: Launch Razorpay Standard Checkout Automatically
+      launchRazorpayStandardCheckout({
+        keyId: orderData.keyId,
+        orderId: orderData.orderId,
+        amountPaise: orderData.amountPaise,
+        amountInr: orderData.amountInr,
+        registrationId: orderData.registrationId,
+        learnerId: orderData.learnerId,
+        planId: selectedKey,
+        courseName: plan.name,
+        learnerName: `${fn} ${ln}`,
+        firstName: fn,
+        surname: ln,
+        email: em,
+        phone: ph10
+      });
+    });
+
+    function launchRazorpayStandardCheckout(opts) {
+      const btn = document.getElementById('reg-submit-btn');
+      const btnTxt = document.getElementById('reg-submit-text');
+
+      const rzpOptions = {
+        key: opts.keyId || CFG.RAZORPAY_KEY_ID,
+        amount: opts.amountPaise, // Server-validated paise
+        currency: 'INR',
+        name: 'Skillansh',
+        description: `${opts.courseName} (${opts.registrationId})`,
+        image: 'https://www.skillansh.com/skillansh-logo.png',
+        prefill: {
+          name: opts.learnerName,
+          email: opts.email,
+          contact: '+91' + opts.phone
+        },
+        notes: {
+          registration_id: opts.registrationId,
+          learner_id: opts.learnerId,
+          plan_id: opts.planId,
+          course_name: opts.courseName
+        },
+        theme: { color: '#1E3A5F' },
+        handler: async function (response) {
+          btnTxt.textContent = 'Verifying Payment Signature...';
+          await verifyAndActivateLms(opts, response);
+        },
+        modal: {
+          ondismiss: function () {
+            btn.disabled = false;
+            btnTxt.textContent = `Proceed to Payment (₹${Number(opts.amountInr).toLocaleString('en-IN')}) →`;
+          }
+        }
+      };
+
+      if (opts.orderId) {
+        rzpOptions.order_id = opts.orderId;
+      }
+
+      if (typeof window.Razorpay === 'function') {
+        const rzp = new window.Razorpay(rzpOptions);
+        rzp.on('payment.failed', function (failResp) {
+          alert('Payment was not completed: ' + ((failResp.error && failResp.error.description) || 'Please try again.'));
+          btn.disabled = false;
+          btnTxt.textContent = `Proceed to Payment (₹${Number(opts.amountInr).toLocaleString('en-IN')}) →`;
+        });
+        rzp.open();
+      }
+    }
+
+    async function verifyAndActivateLms(opts, rzpResp) {
+      const plan = PLANS[opts.planId] || PLANS.pkg_full;
+      let verifiedState = {
+        registrationId: opts.registrationId,
+        learnerId: opts.learnerId,
+        learnerName: opts.learnerName,
+        email: opts.email,
+        phone: opts.phone,
+        packageName: plan.name,
+        paymentStatus: plan.paymentStatusOnSuccess,
+        balanceDueInr: plan.balanceDueAfter,
+        paymentId: rzpResp.razorpay_payment_id,
+        courses: {
+          ADHAAR: (plan.unlockedCourses || []).includes('ADHAAR') ? 'ACTIVE' : 'LOCKED',
+          DRISHTI: (plan.unlockedCourses || []).includes('DRISHTI') ? 'ACTIVE' : 'LOCKED',
+          PRAVAH: (plan.unlockedCourses || []).includes('PRAVAH') ? 'ACTIVE' : 'LOCKED',
+          BODH: (plan.unlockedCourses || []).includes('BODH') ? 'ACTIVE' : 'LOCKED',
+          KRIYA: (plan.unlockedCourses || []).includes('KRIYA') ? 'ACTIVE' : 'LOCKED'
+        }
+      };
+
+      // Preserve ADHAAR if upgrading from 1st instalment to 2nd instalment
+      if (opts.planId === 'pkg_inst2') {
+        verifiedState.courses.ADHAAR = 'ACTIVE';
+        verifiedState.courses.DRISHTI = 'ACTIVE';
+        verifiedState.courses.PRAVAH = 'ACTIVE';
+        verifiedState.courses.BODH = 'ACTIVE';
+      }
+
+      if (WEBHOOK_URL) {
+        try {
+          const vResp = await fetch(WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({
+              action: 'verify_payment',
+              registrationId: opts.registrationId,
+              learnerId: opts.learnerId,
+              planId: opts.planId,
+              learnerName: opts.learnerName,
+              firstName: opts.firstName,
+              surname: opts.surname,
+              email: opts.email,
+              whatsapp: opts.phone,
+              razorpay_order_id: rzpResp.razorpay_order_id || opts.orderId || '',
+              razorpay_payment_id: rzpResp.razorpay_payment_id || '',
+              razorpay_signature: rzpResp.razorpay_signature || ''
+            })
+          });
+          const vJson = await vResp.json();
+          if (vJson && vJson.status === 'success' && vJson.lmsAccess) {
+            verifiedState.courses = vJson.lmsAccess;
+            verifiedState.paymentStatus = vJson.paymentStatus;
+            verifiedState.balanceDueInr = vJson.balanceDueInr;
+          }
+        } catch (err) {
+          console.warn('Backend verification sync notice:', err);
+        }
+      }
+
+      currentLearnerState = verifiedState;
+      localStorage.setItem('skillansh_lms_learner', JSON.stringify(verifiedState));
+
+      const confBox = document.getElementById('reg-confirmation-box');
+      const confDetails = document.getElementById('conf-details');
+      if (confBox && confDetails) {
+        confBox.style.display = 'block';
+        confDetails.innerHTML = `
+          <strong>Registration ID:</strong> ${verifiedState.registrationId} &middot; <strong>Learner ID:</strong> ${verifiedState.learnerId}<br>
+          <strong>Razorpay Payment ID:</strong> ${verifiedState.paymentId}<br>
+          <strong>Payment Status:</strong> ${verifiedState.paymentStatus} &middot; <strong>Balance Due:</strong> ₹${Number(verifiedState.balanceDueInr).toLocaleString('en-IN')}<br>
+          <strong>Unlocked LMS Courses:</strong> ${(plan.unlockedCourses || []).join(', ')}
+        `;
+      }
+
+      const btn = document.getElementById('reg-submit-btn');
+      const btnTxt = document.getElementById('reg-submit-text');
+      btn.disabled = false;
+      btnTxt.textContent = 'Payment Verified ✓';
+      renderLmsDashboard(verifiedState);
+    }
+
+    function openLmsWithCurrentLearner() {
+      switchPortalTab('lms');
+      if (currentLearnerState) {
+        renderLmsDashboard(currentLearnerState);
+      }
+    }
+
+    async function lookupLmsAccess() {
+      const q = document.getElementById('lms-lookup-input').value.trim();
+      const fb = document.getElementById('lms-lookup-feedback');
+      if (!q) {
+        fb.style.display = 'block';
+        fb.style.background = '#FEE2E2';
+        fb.style.color = '#991B1B';
+        fb.textContent = 'Please enter your registered Email, 10-digit WhatsApp number, or Registration ID.';
+        return;
+      }
+
+      fb.style.display = 'block';
+      fb.style.background = '#EFF6FF';
+      fb.style.color = '#1E40AF';
+      fb.textContent = 'Checking your registration & sequential course access...';
+
+      // Check local storage first if matching
+      const cached = localStorage.getItem('skillansh_lms_learner');
+      if (cached) {
+        try {
+          const parsed = JSON.parse(cached);
+          if (parsed && (
+            q.toLowerCase() === (parsed.email || '').toLowerCase() ||
+            q.toLowerCase() === (parsed.registrationId || '').toLowerCase() ||
+            q.replace(/\D/g, '').slice(-10) === (parsed.phone || '')
+          )) {
+            currentLearnerState = parsed;
+          }
+        } catch (e) {}
+      }
+
+      if (WEBHOOK_URL) {
+        try {
+          const resp = await fetch(WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({ action: 'get_learner_status', query: q })
+          });
+          const json = await resp.json();
+          if (json && json.status === 'success') {
+            currentLearnerState = json;
+            localStorage.setItem('skillansh_lms_learner', JSON.stringify(json));
+          }
+        } catch (err) {
+          console.warn('LMS lookup notice:', err);
+        }
+      }
+
+      if (currentLearnerState) {
+        fb.style.display = 'none';
+        renderLmsDashboard(currentLearnerState);
+      } else {
+        fb.style.display = 'block';
+        fb.style.background = '#FEF3C7';
+        fb.style.color = '#92400E';
+        fb.textContent = 'No record found for "' + q + '". Please register in Tab 1 or verify your registered email/mobile number.';
+      }
+    }
+
+    function renderLmsDashboard(state) {
+      document.getElementById('lms-learner-banner').style.display = 'block';
+      document.getElementById('lms-disp-name').textContent = state.learnerName || 'Skillansh Learner';
+      document.getElementById('lms-disp-meta').textContent = `Registration ID: ${state.registrationId} · Learner ID: ${state.learnerId || '—'} · ${state.packageName || ''}`;
+
+      const badge = document.getElementById('lms-disp-status-badge');
+      badge.textContent = state.paymentStatus || 'PENDING';
+      badge.className = 'status-pill ' + (state.paymentStatus === 'PAID' ? 'status-active' : 'status-partial');
+
+      const bal = Number(state.balanceDueInr || 0);
+      document.getElementById('lms-disp-balance').textContent = `Balance Due: ₹${bal.toLocaleString('en-IN')}`;
+
+      // Show 2nd Instalment Pay Now box when PARTIALLY_PAID & Balance Due = ₹14,999
+      const payBalBox = document.getElementById('lms-pay-balance-box');
+      if (state.paymentStatus === 'PARTIALLY_PAID' && bal > 0) {
+        payBalBox.style.display = 'flex';
+      } else {
+        payBalBox.style.display = 'none';
+      }
+
+      const cat = CFG.COURSE_CATALOGUE || {};
+      const courseOrder = ['ADHAAR', 'DRISHTI', 'PRAVAH', 'BODH', 'KRIYA'];
+      const container = document.getElementById('lms-course-cards-container');
+      container.innerHTML = '';
+
+      courseOrder.forEach(code => {
+        const cInfo = cat[code] || { title: code, price: 0, description: '' };
+        const cStatus = (state.courses && state.courses[code]) ? state.courses[code] : 'LOCKED';
+        const isActive = (cStatus === 'ACTIVE');
+
+        const card = document.createElement('div');
+        card.className = 'lms-course-card ' + (isActive ? 'active-course' : 'locked-course');
+        card.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+            <span style="font-size:0.75rem; font-weight:800; color:#64748B;">${cInfo.inFourCoursePackage ? ('4-Course Package · Step ' + cInfo.order) : 'Standalone Course'}</span>
+            <span class="status-pill ${isActive ? 'status-active' : 'status-locked'}">${isActive ? '🔓 ACTIVE' : '🔒 LOCKED'}</span>
+          </div>
+          <h4 style="color:#1E3A5F; font-size:1.05rem; font-weight:800; margin-bottom:0.35rem;">${cInfo.title}</h4>
+          <p style="font-size:0.82rem; color:#475569; line-height:1.5; margin-bottom:0.9rem;">${cInfo.description}</p>
+          ${isActive
+            ? `<a href="resources.html" style="display:inline-block; background:#0F766E; color:#FFFFFF; text-decoration:none; padding:0.5rem 1rem; border-radius:8px; font-size:0.82rem; font-weight:800;">Enter Course Modules &amp; Practice Sheets &rarr;</a>`
+            : (state.paymentStatus === 'PARTIALLY_PAID' && cInfo.inFourCoursePackage
+                ? `<button type="button" onclick="paySecondInstalmentNow()" style="background:#D97706; color:#FFFFFF; border:none; padding:0.5rem 1rem; border-radius:8px; font-size:0.8rem; font-weight:800; cursor:pointer;">Unlock with 2nd Instalment (₹14,999) &rarr;</button>`
+                : `<span style="font-size:0.78rem; color:#64748B; font-weight:700;">Individual Fee: ₹${Number(cInfo.price).toLocaleString('en-IN')}</span>`)
+          }
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // Pay 2nd Instalment (₹14,999) before starting DRISHTI
+    async function paySecondInstalmentNow() {
+      if (!currentLearnerState) return;
+      const plan = PLANS.pkg_inst2;
+      let orderId = '';
+      if (WEBHOOK_URL) {
+        try {
+          const names = (currentLearnerState.learnerName || 'Skillansh Learner').split(' ');
+          const resp = await fetch(WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({
+              action: 'create_order',
+              existingRegistrationId: currentLearnerState.registrationId,
+              existingLearnerId: currentLearnerState.learnerId,
+              firstName: names[0] || 'Learner',
+              surname: names.slice(1).join(' ') || 'Skillansh',
+              email: currentLearnerState.email,
+              whatsapp: currentLearnerState.phone,
+              planId: 'pkg_inst2'
+            })
+          });
+          const json = await resp.json();
+          if (json && json.orderId) orderId = json.orderId;
+        } catch (e) {}
+      }
+
+      launchRazorpayStandardCheckout({
+        keyId: CFG.RAZORPAY_KEY_ID,
+        orderId: orderId,
+        amountPaise: 1499900, // ₹14,999 = 1499900 paise
+        amountInr: 14999,
+        registrationId: currentLearnerState.registrationId,
+        learnerId: currentLearnerState.learnerId,
+        planId: 'pkg_inst2',
+        courseName: plan.name,
+        learnerName: currentLearnerState.learnerName,
+        firstName: (currentLearnerState.learnerName || '').split(' ')[0] || 'Learner',
+        surname: (currentLearnerState.learnerName || '').split(' ').slice(1).join(' ') || 'Skillansh',
+        email: currentLearnerState.email,
+        phone: currentLearnerState.phone
+      });
+    }
+
+    // Auto-select plan or LMS tab from URL query params
+    window.addEventListener('DOMContentLoaded', () => {
+      updateSummaryBox();
+      const params = new URLSearchParams(window.location.search);
+      const planParam = params.get('plan');
+      if (planParam && document.querySelector(`input[name="course_selection"][value="${planParam}"]`)) {
+        const r = document.querySelector(`input[name="course_selection"][value="${planParam}"]`);
+        r.checked = true;
+        r.dispatchEvent(new Event('change'));
+      }
+      const regIdParam = params.get('regId');
+      if (regIdParam || params.get('action') === 'pay_balance') {
+        switchPortalTab('lms');
+        if (regIdParam) {
+          document.getElementById('lms-lookup-input').value = regIdParam;
+          lookupLmsAccess();
+        }
+      }
+    });
+  </script>
+</body>
+</html>

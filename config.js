@@ -21,68 +21,216 @@ window.ACCOUNTPRO_CONFIG = {
   RAZORPAY_KEY_ID: 'rzp_test_TxynQtDHnvxC1V',
   RAZORPAY_BUTTON_ID: '',
   RAZORPAY_PAYMENT_LINK: 'https://rzp.io/rzp/BVYNZBfG',
-  PROGRAM_PRICE_INR: 34000,
+  PROGRAM_PRICE_INR: 14999,
 
-  // Live Workshop Attendee Scholarship & Payment Plans Configuration
-  // Public website hides pricing/structure; these plans are used in the Live Workshop Checkout Portal (₹34,000 Value -> ₹17,000 50% Grant)
-  PAYMENT_PLANS: {
-    full: {
-      id: 'full',
-      name: 'Complete Practical Office & Lifestyle Mastery Program (Standard Fee)',
-      amount: 34000,
-      link: 'https://razorpay.me/@skillansh'
+  // Authoritative Server & Frontend Course Price Catalogue (Sections 3 & 8)
+  // 4-Course Package includes ONLY: ADHAAR + DRISHTI + PRAVAH + BODH (Individual sum = ₹20,996)
+  // Exclusions: KRIYA (VBA & Automation, ₹4,999) is strictly a standalone course. Personal Branding & Resume Building is excluded.
+  COURSE_CATALOGUE: {
+    ADHAAR: {
+      code: 'ADHAAR',
+      id: 'adhaar',
+      title: 'ADHAAR – Excel Foundation',
+      titleMr: 'आधार (ADHAAR) – Excel फाउंडेशन',
+      price: 1999,
+      inFourCoursePackage: true,
+      order: 1,
+      description: 'Core Excel foundation, 25+ everyday office formulas (XLOOKUP, INDEX/MATCH, Dynamic Arrays, SUMIFS), Pivot Tables & error-proof spreadsheet structure.'
     },
-    special: {
-      id: 'special',
-      name: 'Live Workshop 50% Founding Scholarship (All Phases + Career Lab)',
-      amount: 17000,
-      link: 'https://rzp.io/rzp/BVYNZBfG'
+    DRISHTI: {
+      code: 'DRISHTI',
+      id: 'drishti',
+      title: 'DRISHTI – MIS & Dashboards',
+      titleMr: 'दृष्टी (DRISHTI) – MIS आणि डॅशबोर्ड्स',
+      price: 3999,
+      inFourCoursePackage: true,
+      order: 2,
+      description: 'Automated monthly MIS reporting, Ageing & P&L summaries, Maker-Checker controls, and 1-page interactive Excel executive dashboards.'
     },
-    spot: {
-      id: 'spot',
-      name: 'Spot Booking Token (Locks ₹17,000 Live Workshop 50% Scholarship Seat)',
-      amount: 500,
-      link: 'https://rzp.io/rzp/enMyDgi'
+    PRAVAH: {
+      code: 'PRAVAH',
+      id: 'pravah',
+      title: 'PRAVAH – Power Query',
+      titleMr: 'प्रवाह (PRAVAH) – Power Query ऑटोमेशन',
+      price: 6999,
+      inFourCoursePackage: true,
+      order: 3,
+      description: '1-click multi-file data cleaning, unpivoting messy tables, combining 12+ Tally/ERP/CSV exports, and automated repeatable refresh pipelines.'
     },
-    inst1: {
-      id: 'inst1',
-      name: '1st Installment (50% Easy Split of ₹17,000 Live Scholarship)',
-      amount: 8500,
-      link: 'https://rzp.io/rzp/e1bWeKi'
+    BODH: {
+      code: 'BODH',
+      id: 'bodh',
+      title: 'BODH – Power BI & AI',
+      titleMr: 'बोध (BODH) – Power BI आणि स्मार्ट AI',
+      price: 7999,
+      inFourCoursePackage: true,
+      order: 4,
+      description: 'Interactive Power BI data modeling, essential DAX measures, slicer-driven KPI visuals, and structured AI Prompt Engineering for data automation.'
     },
-    inst2: {
-      id: 'inst2',
-      name: 'Part Payment / Fee Balance',
-      amount: 4000,
-      link: 'https://rzp.io/rzp/mfkvE1Px'
+    KRIYA: {
+      code: 'KRIYA',
+      id: 'kriya',
+      title: 'KRIYA – VBA & Automation (Standalone)',
+      titleMr: 'क्रिया (KRIYA) – VBA आणि १-क्लिक ऑटोमेशन (स्वतंत्र कोर्स)',
+      price: 4999,
+      inFourCoursePackage: false,
+      order: 5,
+      description: 'Standalone specialized course: build 1-click VBA macro buttons inside Excel to automate repetitive formatting, sheet splitting, and instant PDF exports.'
     }
   },
 
-  // Secret Promo Codes for Unlocking the ₹17,000 (50% OFF from ₹34,000) Live Workshop Scholarship
+  // Authoritative Payment Plans (Individual Courses + 4-Course Package Full & 2-Instalment Options)
+  PAYMENT_PLANS: {
+    pkg_full: {
+      id: 'pkg_full',
+      code: 'PKG_4COURSE_FULL',
+      name: 'Complete 4-Course Package (ADHAAR + DRISHTI + PRAVAH + BODH) – Option A: Full Payment',
+      shortName: '4-Course Package (Full Payment)',
+      amount: 14999,
+      totalPackageAmount: 14999,
+      balanceDueAfter: 0,
+      individualValue: 20996,
+      unlockedCourses: ['ADHAAR', 'DRISHTI', 'PRAVAH', 'BODH'],
+      lockedCourses: ['KRIYA'],
+      paymentStatusOnSuccess: 'PAID',
+      link: 'https://rzp.io/rzp/BVYNZBfG'
+    },
+    pkg_inst1: {
+      id: 'pkg_inst1',
+      code: 'PKG_4COURSE_INST1',
+      name: 'Complete 4-Course Package – Option B: 1st Instalment (Unlocks ADHAAR Now)',
+      shortName: '4-Course Package (1st Instalment – ₹2,000)',
+      amount: 2000,
+      totalPackageAmount: 16999,
+      balanceDueAfter: 14999,
+      individualValue: 20996,
+      unlockedCourses: ['ADHAAR'],
+      lockedCourses: ['DRISHTI', 'PRAVAH', 'BODH', 'KRIYA'],
+      paymentStatusOnSuccess: 'PARTIALLY_PAID',
+      link: 'https://razorpay.me/@skillansh'
+    },
+    pkg_inst2: {
+      id: 'pkg_inst2',
+      code: 'PKG_4COURSE_INST2',
+      name: 'Complete 4-Course Package – Option B: 2nd Instalment Balance (Unlocks DRISHTI, PRAVAH & BODH)',
+      shortName: '4-Course Package (2nd Instalment Balance – ₹14,999)',
+      amount: 14999,
+      totalPackageAmount: 16999,
+      balanceDueAfter: 0,
+      individualValue: 20996,
+      unlockedCourses: ['ADHAAR', 'DRISHTI', 'PRAVAH', 'BODH'],
+      lockedCourses: ['KRIYA'],
+      paymentStatusOnSuccess: 'PAID',
+      link: 'https://rzp.io/rzp/BVYNZBfG'
+    },
+    adhaar: {
+      id: 'adhaar',
+      code: 'ADHAAR',
+      name: 'ADHAAR – Excel Foundation (Individual Course)',
+      shortName: 'ADHAAR – Excel Foundation',
+      amount: 1999,
+      totalPackageAmount: 1999,
+      balanceDueAfter: 0,
+      unlockedCourses: ['ADHAAR'],
+      lockedCourses: ['DRISHTI', 'PRAVAH', 'BODH', 'KRIYA'],
+      paymentStatusOnSuccess: 'PAID',
+      link: 'https://razorpay.me/@skillansh'
+    },
+    drishti: {
+      id: 'drishti',
+      code: 'DRISHTI',
+      name: 'DRISHTI – MIS & Dashboards (Individual Course)',
+      shortName: 'DRISHTI – MIS & Dashboards',
+      amount: 3999,
+      totalPackageAmount: 3999,
+      balanceDueAfter: 0,
+      unlockedCourses: ['DRISHTI'],
+      lockedCourses: ['ADHAAR', 'PRAVAH', 'BODH', 'KRIYA'],
+      paymentStatusOnSuccess: 'PAID',
+      link: 'https://razorpay.me/@skillansh'
+    },
+    pravah: {
+      id: 'pravah',
+      code: 'PRAVAH',
+      name: 'PRAVAH – Power Query (Individual Course)',
+      shortName: 'PRAVAH – Power Query',
+      amount: 6999,
+      totalPackageAmount: 6999,
+      balanceDueAfter: 0,
+      unlockedCourses: ['PRAVAH'],
+      lockedCourses: ['ADHAAR', 'DRISHTI', 'BODH', 'KRIYA'],
+      paymentStatusOnSuccess: 'PAID',
+      link: 'https://razorpay.me/@skillansh'
+    },
+    bodh: {
+      id: 'bodh',
+      code: 'BODH',
+      name: 'BODH – Power BI & AI (Individual Course)',
+      shortName: 'BODH – Power BI & AI',
+      amount: 7999,
+      totalPackageAmount: 7999,
+      balanceDueAfter: 0,
+      unlockedCourses: ['BODH'],
+      lockedCourses: ['ADHAAR', 'DRISHTI', 'PRAVAH', 'KRIYA'],
+      paymentStatusOnSuccess: 'PAID',
+      link: 'https://razorpay.me/@skillansh'
+    },
+    kriya: {
+      id: 'kriya',
+      code: 'KRIYA',
+      name: 'KRIYA – VBA & Automation (Separate Standalone Course)',
+      shortName: 'KRIYA – VBA & Automation',
+      amount: 4999,
+      totalPackageAmount: 4999,
+      balanceDueAfter: 0,
+      unlockedCourses: ['KRIYA'],
+      lockedCourses: ['ADHAAR', 'DRISHTI', 'PRAVAH', 'BODH'],
+      paymentStatusOnSuccess: 'PAID',
+      link: 'https://razorpay.me/@skillansh'
+    },
+    // Backwards-compatible aliases
+    full: {
+      id: 'pkg_full',
+      code: 'PKG_4COURSE_FULL',
+      name: 'Complete 4-Course Package (ADHAAR + DRISHTI + PRAVAH + BODH) – Full Payment',
+      amount: 14999,
+      totalPackageAmount: 14999,
+      balanceDueAfter: 0,
+      unlockedCourses: ['ADHAAR', 'DRISHTI', 'PRAVAH', 'BODH'],
+      paymentStatusOnSuccess: 'PAID',
+      link: 'https://rzp.io/rzp/BVYNZBfG'
+    },
+    inst1: {
+      id: 'pkg_inst1',
+      code: 'PKG_4COURSE_INST1',
+      name: 'Complete 4-Course Package – 1st Instalment (Unlocks ADHAAR Now)',
+      amount: 2000,
+      totalPackageAmount: 16999,
+      balanceDueAfter: 14999,
+      unlockedCourses: ['ADHAAR'],
+      paymentStatusOnSuccess: 'PARTIALLY_PAID',
+      link: 'https://razorpay.me/@skillansh'
+    },
+    inst2: {
+      id: 'pkg_inst2',
+      code: 'PKG_4COURSE_INST2',
+      name: 'Complete 4-Course Package – 2nd Instalment Balance (₹14,999)',
+      amount: 14999,
+      totalPackageAmount: 16999,
+      balanceDueAfter: 0,
+      unlockedCourses: ['ADHAAR', 'DRISHTI', 'PRAVAH', 'BODH'],
+      paymentStatusOnSuccess: 'PAID',
+      link: 'https://rzp.io/rzp/BVYNZBfG'
+    }
+  },
+
+  // Promo Codes Configuration
   PROMO_CODES: {
-    'LIVE50': {
-      planId: 'special',
-      discount: 17000,
-      messageEn: '🎉 50% Live Workshop Scholarship Applied! ₹17,000 Grant Unlocked (Pay ₹17,000 instead of ₹34,000).',
-      messageMr: '🎉 ५०% लाइव्ह वर्कशॉप स्कॉलरशिप कोड लागू झाला! ₹१७,००० विशेष सवलत अनलॉक झाली (₹३४,००० ऐवजी फक्त ₹१७,०००).'
-    },
-    'FIRST51': {
-      planId: 'special',
-      discount: 17000,
-      messageEn: '🎉 First 51 Learners 50% Scholarship Code Applied! ₹17,000 Off Unlocked!',
-      messageMr: '🎉 पहिले ५१ विद्यार्थी ५०% स्कॉलरशिप कोड लागू झाला! ₹१७,००० सवलत अनलॉक झाली!'
-    },
-    'FIRSTBATCH': {
-      planId: 'special',
-      discount: 17000,
-      messageEn: '🎉 1st Batch 50% Scholarship Code FIRSTBATCH Applied! ₹17,000 Off Unlocked!',
-      messageMr: '🎉 पहिली बॅच ५०% स्कॉलरशिप कोड FIRSTBATCH लागू झाला! ₹१७,००० सवलत अनलॉक झाली!'
-    },
-    'SPECIAL5999': {
-      planId: 'special',
-      discount: 17000,
-      messageEn: '🎉 Live Session 50% Scholarship Applied! ₹17,000 Off Unlocked!',
-      messageMr: '🎉 लाइव्ह सत्र ५०% स्कॉलरशिप लागू झाली! ₹१७,००० सवलत अनलॉक झाली!'
+    'SKILLANSH': {
+      planId: 'pkg_full',
+      discount: 0,
+      messageEn: '✓ Official Skillansh 4-Course Package Selected (Save ₹5,997 off ₹20,996 individual value — Pay ₹14,999).',
+      messageMr: '✓ अधिकृत Skillansh ४-कोर्स पॅकेज निवडले (स्वतंत्र मूल्य ₹२०,९९६ ऐवजी फक्त ₹१४,९९९).'
     }
   },
 

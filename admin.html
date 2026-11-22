@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Skillansh Admin Dashboard | Learners, Registrations, Payment Tracker &amp; LMS Access</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0F172A;
+      --card: #FFFFFF;
+      --teal: #0F766E;
+      --gold: #F59E0B;
+      --border: #E2E8F0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #F1F5F9;
+      color: #1E293B;
+      padding-bottom: 3rem;
+    }
+    .admin-header {
+      background: var(--navy);
+      color: #FFFFFF;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .admin-brand {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: #FDE68A;
+    }
+    .admin-container {
+      max-width: 1280px;
+      margin: 1.75rem auto;
+      padding: 0 1.25rem;
+    }
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .kpi-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.15rem 1.35rem;
+      box-shadow: 0 4px 12px rgba(15,23,42,0.04);
+    }
+    .kpi-lbl { font-size: 0.75rem; font-weight: 800; color: #64748B; text-transform: uppercase; }
+    .kpi-val { font-family: 'Outfit', sans-serif; font-size: 1.75rem; font-weight: 800; color: #0F172A; margin-top: 0.25rem; }
+    .panel-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 14px rgba(15,23,42,0.04);
+      overflow-x: auto;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
+    th, td { padding: 0.7rem 0.75rem; text-align: left; border-bottom: 1px solid #E2E8F0; white-space: nowrap; }
+    th { background: #F8FAFC; color: #334155; font-weight: 800; font-size: 0.76rem; text-transform: uppercase; }
+    .badge {
+      display: inline-block;
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 800;
+    }
+    .badge-paid { background: #DCFCE7; color: #065F46; }
+    .badge-partial { background: #FEF3C7; color: #92400E; }
+    .badge-pending { background: #F1F5F9; color: #64748B; }
+    .badge-locked { background: #FEE2E2; color: #991B1B; }
+    .btn-sm {
+      padding: 0.35rem 0.7rem;
+      border-radius: 6px;
+      border: none;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-wa { background: #25D366; color: #fff; }
+    .btn-remind { background: #D97706; color: #fff; }
+    .btn-unlock { background: #0F766E; color: #fff; }
+  </style>
+</head>
+<body>
+  <header class="admin-header">
+    <div class="admin-brand">🛡️ SKILLANSH ADMIN DASHBOARD &middot; PAYMENT TRACKER &amp; SEQUENTIAL LMS CONTROL</div>
+    <div style="display:flex; gap:0.75rem; align-items:center;">
+      <a href="enroll.html" style="color:#A7F3D0; font-size:0.85rem; font-weight:700; text-decoration:none;">Open Registration &amp; LMS Portal &rarr;</a>
+      <a href="index.html" style="color:#CBD5E1; font-size:0.85rem; text-decoration:none;">Main Website</a>
+    </div>
+  </header>
+
+  <div class="admin-container">
+    <!-- Auth Bar -->
+    <div class="panel-card" style="display:flex; gap:0.75rem; align-items:center; flex-wrap:wrap;">
+      <strong style="font-size:0.9rem;">🔑 Admin Passcode:</strong>
+      <input type="password" id="admin-pin" value="SKILLANSH2026" placeholder="Enter Admin Passcode" style="padding:0.55rem 0.9rem; border:1.5px solid #CBD5E1; border-radius:8px; font-size:0.88rem;">
+      <button type="button" onclick="loadAdminData()" class="btn-sm btn-unlock" style="padding:0.6rem 1.2rem; font-size:0.85rem;">Sync Live Records from Google Sheet &rarr;</button>
+      <span id="admin-sync-msg" style="font-size:0.82rem; color:#0F766E; font-weight:700;"></span>
+    </div>
+
+    <!-- KPI Summary -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-lbl">Total Registrations</div>
+        <div class="kpi-val" id="kpi-total-reg">0</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-lbl">Fully Paid (PAID)</div>
+        <div class="kpi-val" id="kpi-paid" style="color:#059669;">0</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-lbl">1st Instalment (PARTIALLY_PAID)</div>
+        <div class="kpi-val" id="kpi-partial" style="color:#D97706;">0</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-lbl">Pending 2nd Instalment Balance</div>
+        <div class="kpi-val" id="kpi-balance-due" style="color:#B45309;">₹0</div>
+      </div>
+    </div>
+
+    <!-- Table 1: Sequential LMS Course Access & 2nd Instalment Reminders -->
+    <div class="panel-card">
+      <h3 style="font-size:1.1rem; font-weight:800; color:#0F172A; margin-bottom:0.35rem;">1. Sequential LMS Course Access &amp; 2nd Instalment Actions</h3>
+      <p style="font-size:0.82rem; color:#64748B; margin-bottom:1rem;">For learners on the 2-Instalment Plan (`PARTIALLY_PAID`), only `ADHAAR` is `ACTIVE`. Send a 1-click Email or WhatsApp payment reminder for the `₹14,999` balance before `DRISHTI` starts.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Reg ID</th>
+            <th>Learner Name</th>
+            <th>Contact</th>
+            <th>Package</th>
+            <th>Status</th>
+            <th>Balance Due</th>
+            <th>ADHAAR</th>
+            <th>DRISHTI</th>
+            <th>PRAVAH</th>
+            <th>BODH</th>
+            <th>KRIYA</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="lms-table-body">
+          <tr><td colspan="12" style="text-align:center; color:#64748B; padding:1.5rem;">Click "Sync Live Records from Google Sheet" to load learners.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Table 2: Payment Tracker -->
+    <div class="panel-card">
+      <h3 style="font-size:1.1rem; font-weight:800; color:#0F172A; margin-bottom:0.35rem;">2. Authoritative Payment Tracker</h3>
+      <p style="font-size:0.82rem; color:#64748B; margin-bottom:1rem;">Tracks every Registration ID, Total Package Amount, Amount Received, Balance Due, and Razorpay Order/Payment IDs.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Registration ID</th>
+            <th>Learner ID</th>
+            <th>Learner Name</th>
+            <th>Selected Course / Package</th>
+            <th>Total Pkg</th>
+            <th>Received</th>
+            <th>Balance Due</th>
+            <th>Status</th>
+            <th>Razorpay Order / Payment ID</th>
+            <th>Last Updated</th>
+            <th>WhatsApp</th>
+          </tr>
+        </thead>
+        <tbody id="pt-table-body">
+          <tr><td colspan="11" style="text-align:center; color:#64748B; padding:1.5rem;">Click "Sync Live Records from Google Sheet" to load payment history.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="config.js?v=20261122a"></script>
+  <script>
+    const CFG = window.ACCOUNTPRO_CONFIG || {};
+    const WEBHOOK_URL = CFG.GOOGLE_SHEET_WEBHOOK_URL || '';
+
+    async function loadAdminData() {
+      const pin = document.getElementById('admin-pin').value.trim();
+      const msg = document.getElementById('admin-sync-msg');
+      msg.textContent = 'Syncing with Google Sheet CRM...';
+
+      if (!WEBHOOK_URL) {
+        msg.textContent = 'Webhook URL not configured.';
+        return;
+      }
+
+      try {
+        const resp = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({ action: 'admin_dashboard', passcode: pin })
+        });
+        const data = await resp.json();
+        if (data.status === 'unauthorized') {
+          msg.style.color = '#DC2626';
+          msg.textContent = 'Invalid Admin Passcode.';
+          return;
+        }
+        if (data.status === 'success') {
+          msg.style.color = '#0F766E';
+          msg.textContent = '✓ Synced ' + (data.payments ? data.payments.length : 0) + ' payment records.';
+          renderAdminTables(data.payments || [], data.lmsRecords || []);
+        }
+      } catch (err) {
+        msg.style.color = '#D97706';
+        msg.textContent = 'Note: Please deploy the updated google-sheets-webhook.js in your Google Sheet Apps Script.';
+      }
+    }
+
+    function renderAdminTables(payments, lmsRecords) {
+      document.getElementById('kpi-total-reg').textContent = payments.length;
+      const paidCount = payments.filter(p => p.paymentStatus === 'PAID').length;
+      const partialCount = payments.filter(p => p.paymentStatus === 'PARTIALLY_PAID').length;
+      let totalBal = 0;
+      payments.forEach(p => {
+        if (p.paymentStatus === 'PARTIALLY_PAID') {
+          totalBal += Number(String(p.balanceDue || '0').replace(/[^\d]/g, '')) || 0;
+        }
+      });
+
+      document.getElementById('kpi-paid').textContent = paidCount;
+      document.getElementById('kpi-partial').textContent = partialCount;
+      document.getElementById('kpi-balance-due').textContent = '₹' + totalBal.toLocaleString('en-IN');
+
+      // Render LMS Access Table
+      const lmsBody = document.getElementById('lms-table-body');
+      lmsBody.innerHTML = lmsRecords.length ? '' : '<tr><td colspan="12" style="text-align:center;">No LMS records yet.</td></tr>';
+      lmsRecords.forEach(rec => {
+        const isPartial = rec.paymentStatus === 'PARTIALLY_PAID';
+        const payLink = `https://www.skillansh.com/enroll.html?action=pay_balance&regId=${encodeURIComponent(rec.registrationId)}`;
+        const waPhone = '91' + String(rec.phone || '').replace(/\D/g, '').slice(-10);
+        const waRemindText = encodeURIComponent(
+          `Hello ${rec.learnerName}, congratulations on completing ADHAAR – Excel Foundation! Before starting DRISHTI – MIS & Dashboards, please complete your 2nd Instalment balance of ₹14,999 to unlock DRISHTI, PRAVAH & BODH: ${payLink}`
+        );
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${rec.registrationId}</strong></td>
+          <td>${rec.learnerName}</td>
+          <td>${rec.phone}<br><small style="color:#64748B;">${rec.email}</small></td>
+          <td>${rec.packageName}</td>
+          <td><span class="badge ${rec.paymentStatus === 'PAID' ? 'badge-paid' : (isPartial ? 'badge-partial' : 'badge-pending')}">${rec.paymentStatus}</span></td>
+          <td><strong>${rec.balanceDue}</strong></td>
+          <td><span class="badge ${rec.ADHAAR === 'ACTIVE' ? 'badge-paid' : 'badge-locked'}">${rec.ADHAAR}</span></td>
+          <td><span class="badge ${rec.DRISHTI === 'ACTIVE' ? 'badge-paid' : 'badge-locked'}">${rec.DRISHTI}</span></td>
+          <td><span class="badge ${rec.PRAVAH === 'ACTIVE' ? 'badge-paid' : 'badge-locked'}">${rec.PRAVAH}</span></td>
+          <td><span class="badge ${rec.BODH === 'ACTIVE' ? 'badge-paid' : 'badge-locked'}">${rec.BODH}</span></td>
+          <td><span class="badge ${rec.KRIYA === 'ACTIVE' ? 'badge-paid' : 'badge-locked'}">${rec.KRIYA}</span></td>
+          <td>
+            ${isPartial ? `
+              <button type="button" class="btn-sm btn-remind" onclick="sendEmailReminder('${rec.registrationId}','${rec.email}','${rec.learnerName}')">📧 Email Reminder</button>
+              <a href="https://wa.me/${waPhone}?text=${waRemindText}" target="_blank" class="btn-sm btn-wa">💬 WA ₹14,999 Link</a>
+            ` : `<a href="https://wa.me/${waPhone}" target="_blank" class="btn-sm btn-wa">💬 WhatsApp</a>`}
+          </td>
+        `;
+        lmsBody.appendChild(tr);
+      });
+
+      // Render Payment Tracker Table
+      const ptBody = document.getElementById('pt-table-body');
+      ptBody.innerHTML = payments.length ? '' : '<tr><td colspan="11" style="text-align:center;">No payment records yet.</td></tr>';
+      payments.forEach(p => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${p.registrationId}</strong></td>
+          <td>${p.learnerId}</td>
+          <td>${p.learnerName}<br><small style="color:#64748B;">${p.email}</small></td>
+          <td>${p.courseName}</td>
+          <td>${p.totalPackageAmount}</td>
+          <td style="color:#059669; font-weight:800;">${p.amountReceived}</td>
+          <td style="color:#B45309; font-weight:800;">${p.balanceDue}</td>
+          <td><span class="badge ${p.paymentStatus === 'PAID' ? 'badge-paid' : (p.paymentStatus === 'PARTIALLY_PAID' ? 'badge-partial' : 'badge-pending')}">${p.paymentStatus}</span></td>
+          <td><small>${p.orderId || '—'}<br>${p.paymentId || '—'}</small></td>
+          <td><small>${p.lastUpdated}</small></td>
+          <td>${p.waLink ? `<a href="${p.waLink}" target="_blank" class="btn-sm btn-wa">💬 Chat</a>` : '—'}</td>
+        `;
+        ptBody.appendChild(tr);
+      });
+    }
+
+    async function sendEmailReminder(regId, email, learnerName) {
+      const pin = document.getElementById('admin-pin').value.trim();
+      try {
+        const resp = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            action: 'send_instalment_reminder',
+            passcode: pin,
+            registrationId: regId,
+            email: email,
+            learnerName: learnerName
+          })
+        });
+        const json = await resp.json();
+        alert(json.message || 'Reminder sent!');
+      } catch (e) {
+        alert('Error sending reminder: ' + e);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', loadAdminData);
+  </script>
+</body>
+</html>

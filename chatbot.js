@@ -42,72 +42,85 @@
 
     curriculum: {
       en: {
-        text: `<strong>🏡 Only Daily-Life Practical Skills — Zero Useless Textbook Theory:</strong><br><br>
-Instead of overwhelming you with 500 academic formulas you never use, we solve your 6 biggest everyday struggles:<br>
-• <strong>1. Zero Formula Fear:</strong> Finish 2 hours of daily tallying in 5 minutes without #N/A panic.<br>
-• <strong>2. 10-Second Boss Reports:</strong> Turn daily logs into self-updating 1-page visual summaries.<br>
-• <strong>3. 1-Click Morning Routine:</strong> Put boring daily formatting & PDF splitting on a 1-click button.<br>
-• <strong>4. Zero Copy-Paste:</strong> Combine 12+ messy files in 1 click into visual dashboards.<br>
-• <strong>5. Smart Free AI:</strong> Stop wasting ₹2,000/mo on paid AI subscriptions—use exact structured prompts.<br>
-• <strong>6. Peaceful Work-Life:</strong> Leave office on time at 6 PM and let promotions chase you!<br><br>
-🔒 <em>Our confidential step-by-step mastery structure is revealed live via PPT inside the Free 90-Min Masterclass!</em>`,
-        cta: { text: `🟢 Join Free 90-Min Live Class to See Full Roadmap`, action: 'workshop_page' },
-        chips: ['🔑 50% Live Class Scholarship', '🎯 Spot Booking (₹500)', '🟢 Free Live Workshop', '💬 WhatsApp Support']
+        text: `<strong>📚 Skillansh Authoritative Course Catalogue:</strong><br><br>
+• <strong>1. ADHAAR – Excel Foundation:</strong> <strong>₹1,999</strong> (25+ office formulas, dynamic tables & Pivots)<br>
+• <strong>2. DRISHTI – MIS &amp; Dashboards:</strong> <strong>₹3,999</strong> (Automated monthly MIS & 1-page dashboards)<br>
+• <strong>3. PRAVAH – Power Query:</strong> <strong>₹6,999</strong> (1-click multi-file data cleaning & consolidation)<br>
+• <strong>4. BODH – Power BI &amp; AI:</strong> <strong>₹7,999</strong> (Interactive Power BI visuals, DAX & Smart AI Prompts)<br>
+• <strong>⚙️ KRIYA – VBA &amp; Automation (Standalone):</strong> <strong>₹4,999</strong> (Separate standalone course; not included in the 4-course package)<br><br>
+🏆 <strong>Complete 4-Course Package (ADHAAR + DRISHTI + PRAVAH + BODH &middot; Value ₹20,996):</strong><br>
+• <strong>Option A (Full Payment):</strong> <strong>₹14,999</strong> (Unlocks all 4 courses immediately)<br>
+• <strong>Option B (2-Instalment Plan &middot; Total ₹16,999):</strong> Pay <strong>₹2,000</strong> now to unlock ADHAAR + <strong>₹14,999</strong> before starting DRISHTI.`,
+        cta: { text: `🎓 Open Course Registration & LMS Portal`, action: 'enrol_cohort' },
+        chips: ['🚀 4-Course Package & Instalments', '🟢 Free Live Workshop', '💬 WhatsApp Support']
       },
       mr: {
-        text: `<strong>🏡 फक्त दैनंदिन जीवनात उपयोगी पडणारे कौशल्य — पुस्तकी ज्ञान नाही:</strong><br><br>
-कधीही न वापरले जाणारे ५०० फॉर्म्युले शिकवण्याऐवजी आम्ही तुमच्या रोजच्या ६ अडचणी सोडवतो:<br>
-• <strong>१. फॉर्म्युल्यांची भीती नाही:</strong> २ तासांचे काम ५ मिनिटांत पूर्ण करा.<br>
-• <strong>२. १०-सेकंदांत बॉससाठी रिपोर्ट:</strong> आपोआप अपडेट होणारे १-पेज रिपोर्ट्स.<br>
-• <strong>३. १-क्लिकवर रोजचे काम:</strong> कंटाळवाणे फॉरमॅटिंग आणि PDF एका बटणावर.<br>
-• <strong>४. कॉपी-पेस्ट बंद:</strong> १२+ फाइल्स १-क्लिकमध्ये जोडा.<br>
-• <strong>५. पैसे न घालवता स्मार्ट AI:</strong> महागडे सबस्क्रिप्शन न घेता मोफत AI चा अचूक वापर.<br>
-• <strong>६. तणावमुक्त जीवन:</strong> संध्याकाळी ६ वाजता वेळेवर घरी जा!<br><br>
-🔒 <em>आमचा संपूर्ण स्टेप-बाय-स्टेप रोडमॅप मोफत लाइव्ह मास्टरक्लासमध्ये PPT द्वारे सादर केला जातो!</em>`,
-        cta: { text: `🟢 संपूर्ण रोडमॅपसाठी मोफत लाइव्ह क्लास जॉइन करा`, action: 'workshop_page' },
-        chips: ['🔑 ५०% लाइव्ह स्कॉलरशिप', '🎯 स्पॉट बुकिंग (₹५००)', '🟢 मोफत लाइव्ह कार्यशाळा', '💬 WhatsApp सपोर्ट']
+        text: `<strong>📚 Skillansh अधिकृत अभ्यासक्रम आणि फी रचना:</strong><br><br>
+• <strong>१. ADHAAR (आधार) – Excel Foundation:</strong> <strong>₹१,९९९</strong><br>
+• <strong>२. DRISHTI (दृष्टी) – MIS &amp; Dashboards:</strong> <strong>₹३,९९९</strong><br>
+• <strong>३. PRAVAH (प्रवाह) – Power Query:</strong> <strong>₹६,९९९</strong><br>
+• <strong>४. BODH (बोध) – Power BI &amp; AI:</strong> <strong>₹७,९९९</strong><br>
+• <strong>⚙️ KRIYA (क्रिया) – VBA &amp; Automation (स्वतंत्र कोर्स):</strong> <strong>₹४,९९९</strong> (४-कोर्स पॅकेजबाहेर)<br><br>
+🏆 <strong>संपूर्ण ४-कोर्स पॅकेज (ADHAAR + DRISHTI + PRAVAH + BODH &middot; मूल्य ₹२०,९९६):</strong><br>
+• <strong>पर्याय A (पूर्ण पेमेंट):</strong> <strong>₹१४,९९९</strong> (चारही कोर्सेस लगेच अनलॉक)<br>
+• <strong>पर्याय B (२-हप्ते योजना &middot; एकूण ₹१६,९९९):</strong> आज <strong>₹२,०००</strong> भरून ADHAAR अनलॉक करा + DRISHTI सुरू होण्यापूर्वी <strong>₹१४,९९९</strong> भरा.`,
+        cta: { text: `🎓 कोर्स नोंदणी व LMS पोर्टल उघडा`, action: 'enrol_cohort' },
+        chips: ['🚀 ४-कोर्स पॅकेज व हप्ते', '🟢 मोफत लाइव्ह कार्यशाळा', '💬 WhatsApp सपोर्ट']
       },
       hi: {
-        text: `<strong>🏡 केवल रोज़मर्रा के काम आने वाले प्रैक्टिकल स्किल्स — कोई किताबी ज्ञान नहीं:</strong><br><br>
-• <strong>1. फॉर्मूलों का डर खत्म:</strong> 2 घंटे का काम 5 मिनट में पूरा करें।<br>
-• <strong>2. 10-सेकंड बॉस रिपोर्ट्स:</strong> अपने आप अपडेट होने वाले 1-पेज डैशबोर्ड।<br>
-• <strong>3. 1-क्लिक मॉर्निंग रूटीन:</strong> रोज़ का बोरिंग काम एक बटन पर।<br>
-• <strong>4. कॉपी-पेस्ट बंद:</strong> 12+ फाइलों को 1 क्लिक में जोड़ें।<br>
-• <strong>5. स्मार्ट फ्री AI:</strong> महंगे AI सब्सक्रिप्शन का पैसा बचाएं।<br>
-• <strong>6. तनाव-मुक्त जीवन:</strong> शाम 6 बजे समय पर घर जाएं!<br><br>
-🔒 <em>हमारा पूरा कोर्स रोडमैप फ्री 90-मिनट लाइव वर्कशॉप में PPT के माध्यम से दिखाया जाता है!</em>`,
-        cta: { text: `🟢 फ्री 90-मिनट लाइव क्लास जॉइन करें`, action: 'workshop_page' },
-        chips: ['🔑 50% लाइव स्कॉलरशिप', '🎯 स्पॉट बुकिंग (₹500)', '🟢 फ्री लाइव वर्कशॉप', '💬 WhatsApp सहायता']
+        text: `<strong>📚 Skillansh आधिकारिक कोर्स और फीस संरचना:</strong><br><br>
+• <strong>1. ADHAAR – Excel Foundation:</strong> <strong>₹1,999</strong><br>
+• <strong>2. DRISHTI – MIS &amp; Dashboards:</strong> <strong>₹3,999</strong><br>
+• <strong>3. PRAVAH – Power Query:</strong> <strong>₹6,999</strong><br>
+• <strong>4. BODH – Power BI &amp; AI:</strong> <strong>₹7,999</strong><br>
+• <strong>⚙️ KRIYA – VBA &amp; Automation (स्टैंडअलोन कोर्स):</strong> <strong>₹4,999</strong><br><br>
+🏆 <strong>संपूर्ण 4-कोर्स पैकेज (ADHAAR + DRISHTI + PRAVAH + BODH &middot; मूल्य ₹20,996):</strong><br>
+• <strong>विकल्प A (पूर्ण भुगतान):</strong> <strong>₹14,999</strong> (चारों कोर्स तुरंत अनलॉक)<br>
+• <strong>विकल्प B (2-किस्त योजना &middot; कुल ₹16,999):</strong> अभी <strong>₹2,000</strong> देकर ADHAAR अनलॉक करें + DRISHTI से पहले <strong>₹14,999</strong> जमा करें।`,
+        cta: { text: `🎓 कोर्स रजिस्ट्रेशन व LMS पोर्टल खोलें`, action: 'enrol_cohort' },
+        chips: ['🚀 4-कोर्स पैकेज व किस्त', '🟢 फ्री लाइव वर्कशॉप', '💬 WhatsApp सहायता']
       }
     },
 
     pricing: {
       en: {
-        text: `<strong>🔒 Why We Reveal Pricing Inside the Free 90-Min Live Masterclass:</strong><br><br>
-We want you to experience our teaching <strong>100% FREE first</strong> before spending a rupee!<br><br>
-• <strong>Step 1:</strong> Attend the <strong>90-Min Live Practical Masterclass for FREE</strong> (Regular Worth ₹1,099).<br>
-• <strong>Step 2:</strong> At the end of the live session, we present our confidential Mastery Roadmap PPT (Total Program Value <strong>₹34,000/-</strong>) and unlock a <strong>Flat 50% Founding Batch Scholarship (₹17,000/- only)</strong> for the <strong>First 51 Learners (15–20 per Live Batch)</strong>.<br>
-• <strong>🎯 Already Attended Live Class?</strong> You can lock your 50% Scholarship seat right now with a <strong>₹500 Spot Token</strong>!`,
-        cta: { text: `🟢 Join Free Live Class First (or Unlock 50% Grant)`, action: 'workshop_page' },
-        chips: ['🎯 Spot Booking (₹500)', '🏡 How Daily Life Gets Easy', '💬 WhatsApp Support']
+        text: `<strong>💳 Skillansh Course Fees &amp; 2-Instalment Policy:</strong><br><br>
+• <strong>Complete 4-Course Package (ADHAAR + DRISHTI + PRAVAH + BODH):</strong><br>
+  - Individual Course Value: ₹20,996<br>
+  - <strong>Option A – Full Payment:</strong> <strong>₹14,999</strong> (One-time payment &middot; All 4 courses ACTIVE immediately)<br>
+  - <strong>Option B – 2-Instalment Payment:</strong> Total <strong>₹16,999</strong><br>
+    &bull; <strong>1st Instalment: ₹2,000</strong> (Collected at registration &middot; Unlocks ADHAAR – Excel Foundation &middot; Status: PARTIALLY_PAID)<br>
+    &bull; <strong>2nd Instalment: ₹14,999</strong> (Due before starting DRISHTI &middot; Marks package PAID &amp; unlocks DRISHTI, PRAVAH &amp; BODH)<br><br>
+• <strong>Individual Course Prices:</strong><br>
+  - ADHAAR (Excel Foundation): ₹1,999<br>
+  - DRISHTI (MIS &amp; Dashboards): ₹3,999<br>
+  - PRAVAH (Power Query): ₹6,999<br>
+  - BODH (Power BI &amp; AI): ₹7,999<br>
+  - KRIYA (VBA &amp; Automation – Standalone Only): ₹4,999`,
+        cta: { text: `🚀 Register & Pay via Razorpay Checkout`, action: 'enrol_cohort' },
+        chips: ['📚 Course Catalogue', '🟢 Free Live Workshop', '💬 WhatsApp Support']
       },
       mr: {
-        text: `<strong>🔒 आम्ही कोर्सची फी मोफत लाइव्ह मास्टरक्लासमध्येच का जाहीर करतो:</strong><br><br>
-तुम्ही एकही रुपया खर्च करण्यापूर्वी आमची शिकवण्याची पद्धत <strong>१००% मोफत अनुभवावी</strong> अशी आमची इच्छा आहे!<br><br>
-• <strong>पाऊल १:</strong> आमच्या <strong>९०-मिनिटांच्या लाइव्ह प्रॅक्टिकल मास्टरक्लासला मोफत</strong> उपस्थित रहा (मूल्य ₹१,०९९).<br>
-• <strong>पाऊल २:</strong> लाइव्ह सत्राच्या शेवटी आम्ही PPT द्वारे संपूर्ण प्रोग्राम (नियमित मूल्य <strong>₹३४,०००/-</strong>) सादर करतो आणि पहिल्या ५१ विद्यार्थ्यांसाठी <strong>थेट ५०% स्कॉलरशिप (फक्त ₹१७,०००/-)</strong> अनलॉक करतो.<br>
-• <strong>🎯 लाइव्ह क्लास पूर्ण केला का?</strong> तुम्ही केवळ <strong>₹५०० स्पॉट टोकनने</strong> तुमची ५०% स्कॉलरशिप जागा आजच लॉक करू शकता!`,
-        cta: { text: `🟢 मोफत लाइव्ह क्लासमध्ये जागा बुक करा`, action: 'workshop_page' },
-        chips: ['🎯 स्पॉट बुकिंग (₹५००)', '🏡 रोजचे काम कसे सोपे होईल?', '💬 WhatsApp सपोर्ट']
+        text: `<strong>💳 Skillansh कोर्स फी आणि २-हप्ते (Instalment) धोरण:</strong><br><br>
+• <strong>संपूर्ण ४-कोर्स पॅकेज (ADHAAR + DRISHTI + PRAVAH + BODH &middot; मूल्य ₹२०,९९६):</strong><br>
+  - <strong>पर्याय A – पूर्ण पेमेंट:</strong> <strong>₹१४,९९९</strong> (चारही कोर्सेस लगेच ACTIVE होतात)<br>
+  - <strong>पर्याय B – २-हप्ते योजना (एकूण ₹१६,९९९):</strong><br>
+    &bull; <strong>पहिला हप्ता: ₹२,०००</strong> (नोंदणीच्या वेळी &middot; ADHAAR अनलॉक करतो)<br>
+    &bull; <strong>दुसरा हप्ता: ₹१४,९९९</strong> (DRISHTI सुरू होण्यापूर्वी &middot; DRISHTI, PRAVAH आणि BODH अनलॉक करतो)<br><br>
+• <strong>स्वतंत्र कोर्स फी:</strong> ADHAAR ₹१,९९९ | DRISHTI ₹३,९९९ | PRAVAH ₹६,९९९ | BODH ₹७,९९९ | KRIYA (स्वतंत्र) ₹४,९९९`,
+        cta: { text: `🚀 आताच नोंदणी करा`, action: 'enrol_cohort' },
+        chips: ['📚 अभ्यासक्रम यादी', '🟢 मोफत लाइव्ह कार्यशाळा', '💬 WhatsApp सपोर्ट']
       },
       hi: {
-        text: `<strong>🔒 हम कोर्स की फीस फ्री लाइव वर्कशॉप में ही क्यों बताते हैं:</strong><br><br>
-हम चाहते हैं कि आप पहले हमारी प्रैक्टिकल टीचिंग <strong>100% FREE</strong> अनुभव करें!<br><br>
-• <strong>स्टेप 1:</strong> <strong>90-मिनट की लाइव वर्कशॉप FREE</strong> अटेंड करें (मूल्य ₹1,099)।<br>
-• <strong>स्टेप 2:</strong> लाइव क्लास के अंत में हम PPT में पूरा रोडमैप (कुल मूल्य <strong>₹34,000/-</strong>) दिखाते हैं और प्रथम 51 शिक्षार्थियों (15–20 प्रति बैच) के लिए <strong>50% फाउंडिंग स्कॉलरशिप (केवल ₹17,000/-)</strong> देते हैं।<br>
-• <strong>🎯 लाइव क्लास अटेंड कर चुके हैं?</strong> आप <strong>₹500 स्पॉट टोकन</strong> से अपनी 50% स्कॉलरशिप सीट तुरंत लॉक कर सकते हैं!`,
-        cta: { text: `🟢 फ्री लाइव वर्कशॉप सीट बुक करें`, action: 'workshop_page' },
-        chips: ['🎯 स्पॉट बुकिंग (₹500)', '🏡 रोज़ का काम कैसे आसान होगा?', '💬 WhatsApp सहायता']
+        text: `<strong>💳 Skillansh कोर्स फीस और 2-किस्त (Instalment) नीति:</strong><br><br>
+• <strong>संपूर्ण 4-कोर्स पैकेज (ADHAAR + DRISHTI + PRAVAH + BODH &middot; मूल्य ₹20,996):</strong><br>
+  - <strong>विकल्प A – पूर्ण भुगतान:</strong> <strong>₹14,999</strong> (चारों कोर्स तुरंत ACTIVE)<br>
+  - <strong>विकल्प B – 2-किस्त योजना (कुल ₹16,999):</strong><br>
+    &bull; <strong>पहली किस्त: ₹2,000</strong> (रजिस्ट्रेशन के समय &middot; केवल ADHAAR अनलॉक)<br>
+    &bull; <strong>दूसरी किस्त: ₹14,999</strong> (DRISHTI शुरू होने से पहले &middot; DRISHTI, PRAVAH व BODH अनलॉक)<br><br>
+• <strong>व्यक्तिगत कोर्स फीस:</strong> ADHAAR ₹1,999 | DRISHTI ₹3,999 | PRAVAH ₹6,999 | BODH ₹7,999 | KRIYA (स्टैंडअलोन) ₹4,999`,
+        cta: { text: `🚀 अभी रजिस्टर करें`, action: 'enrol_cohort' },
+        chips: ['📚 कोर्स स्ट्रक्चर', '🟢 फ्री लाइव वर्कशॉप', '💬 WhatsApp सहायता']
       }
     },
 

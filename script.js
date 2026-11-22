@@ -905,14 +905,17 @@ function initEnrolModal() {
 
   const cfg = window.ACCOUNTPRO_CONFIG || {};
   const plans = cfg.PAYMENT_PLANS || {
-    spot: { id: 'spot', name: 'Spot Booking Token (Locks ₹17,000 Live Workshop 50% Scholarship Seat)', amount: 500, link: 'https://rzp.io/rzp/enMyDgi' },
-    special: { id: 'special', name: 'Live Workshop 50% Founding Scholarship (All Phases + Career Lab)', amount: 17000, link: 'https://rzp.io/rzp/BVYNZBfG' },
-    inst1: { id: 'inst1', name: '1st Installment (50% Easy Split of ₹17,000 Live Scholarship)', amount: 8500, link: 'https://rzp.io/rzp/e1bWeKi' },
-    inst2: { id: 'inst2', name: 'Part Payment / Balance', amount: 4000, link: 'https://rzp.io/rzp/mfkvE1Px' },
-    full: { id: 'full', name: 'Complete Practical Office & Lifestyle Mastery Program (Standard Fee)', amount: 34000, link: 'https://razorpay.me/@skillansh' }
+    pkg_full: { id: 'pkg_full', name: 'Complete 4-Course Package (ADHAAR + DRISHTI + PRAVAH + BODH) – Option A: Full Payment', amount: 14999, totalPackageAmount: 14999, balanceDueAfter: 0, unlockedCourses: ['ADHAAR', 'DRISHTI', 'PRAVAH', 'BODH'], paymentStatusOnSuccess: 'PAID', link: 'https://rzp.io/rzp/BVYNZBfG' },
+    pkg_inst1: { id: 'pkg_inst1', name: 'Complete 4-Course Package – Option B: 1st Instalment (Unlocks ADHAAR)', amount: 2000, totalPackageAmount: 16999, balanceDueAfter: 14999, unlockedCourses: ['ADHAAR'], paymentStatusOnSuccess: 'PARTIALLY_PAID', link: 'https://razorpay.me/@skillansh' },
+    pkg_inst2: { id: 'pkg_inst2', name: 'Complete 4-Course Package – Option B: 2nd Instalment Balance (Unlocks DRISHTI, PRAVAH & BODH)', amount: 14999, totalPackageAmount: 16999, balanceDueAfter: 0, unlockedCourses: ['ADHAAR', 'DRISHTI', 'PRAVAH', 'BODH'], paymentStatusOnSuccess: 'PAID', link: 'https://rzp.io/rzp/BVYNZBfG' },
+    adhaar: { id: 'adhaar', name: 'ADHAAR – Excel Foundation', amount: 1999, totalPackageAmount: 1999, balanceDueAfter: 0, unlockedCourses: ['ADHAAR'], paymentStatusOnSuccess: 'PAID', link: 'https://razorpay.me/@skillansh' },
+    drishti: { id: 'drishti', name: 'DRISHTI – MIS & Dashboards', amount: 3999, totalPackageAmount: 3999, balanceDueAfter: 0, unlockedCourses: ['DRISHTI'], paymentStatusOnSuccess: 'PAID', link: 'https://razorpay.me/@skillansh' },
+    pravah: { id: 'pravah', name: 'PRAVAH – Power Query', amount: 6999, totalPackageAmount: 6999, balanceDueAfter: 0, unlockedCourses: ['PRAVAH'], paymentStatusOnSuccess: 'PAID', link: 'https://razorpay.me/@skillansh' },
+    bodh: { id: 'bodh', name: 'BODH – Power BI & AI', amount: 7999, totalPackageAmount: 7999, balanceDueAfter: 0, unlockedCourses: ['BODH'], paymentStatusOnSuccess: 'PAID', link: 'https://razorpay.me/@skillansh' },
+    kriya: { id: 'kriya', name: 'KRIYA – VBA & Automation (Standalone Course)', amount: 4999, totalPackageAmount: 4999, balanceDueAfter: 0, unlockedCourses: ['KRIYA'], paymentStatusOnSuccess: 'PAID', link: 'https://razorpay.me/@skillansh' }
   };
 
-  let selectedPlanId = 'spot';
+  let selectedPlanId = 'pkg_full';
   let appliedPromoCode = '';
 
   const openButtons = document.querySelectorAll('#open-enrol-modal-btn, .cohort-enrol-btn, [data-open-enrol-modal]');
@@ -1128,47 +1131,116 @@ function initEnrolModal() {
         submitted_at: new Date().toISOString()
       };
 
-      // 1. Send to Google Sheets Webhook (Direct to Private Learner Spreadsheet)
+      // 1. Request Razorpay Order ID & Unique Registration ID from Server-Side Authoritative Catalogue
       const googleSheetUrl = cfg.GOOGLE_SHEET_WEBHOOK_URL;
+      let orderData = {
+        registrationId: 'SKL-REG-' + new Date().toISOString().slice(0, 10).replace(/-/g, '') + '-' + Math.floor(1000 + Math.random() * 9000),
+        learnerId: 'SKL-LRN-' + phoneDigits.slice(-6) + '-' + Math.floor(100 + Math.random() * 900),
+        keyId: cfg.RAZORPAY_KEY_ID || 'rzp_test_TxynQtDHnvxC1V',
+        orderId: '',
+        amountInr: currentPlan.amount,
+        amountPaise: Number(currentPlan.amount) * 100
+      };
+
       if (googleSheetUrl) {
         try {
-          fetch(googleSheetUrl, {
+          const ordResp = await fetch(googleSheetUrl, {
             method: 'POST',
-            mode: 'no-cors',
-            cache: 'no-cache',
             headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-            body: JSON.stringify(payload)
-          }).catch(err => console.warn('Google Sheet background sync notice:', err));
+            body: JSON.stringify({
+              action: 'create_order',
+              firstName: fn.value.trim(),
+              surname: ln.value.trim(),
+              email: em.value.trim(),
+              whatsapp: phoneDigits.slice(-10),
+              planId: currentPlan.id,
+              promoCode: appliedPromoCode || 'NONE'
+            })
+          });
+          const ordJson = await ordResp.json();
+          if (ordJson && ordJson.status === 'success') {
+            orderData = Object.assign(orderData, ordJson);
+          }
         } catch (err) {
-          console.warn('Google Sheet fetch notice:', err);
+          console.warn('Order API notice (using Standard Checkout):', err);
         }
       }
 
-      // 2. Send to Formspree endpoint in background (Instant Email Notification Backup)
+      // 2. Send backup notification to Formspree
       const endpoint = cfg.ENQUIRY_SUBMISSION_ENDPOINT || 'https://formspree.io/f/xqppyvgd';
       try {
         fetch(endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(payload)
-        }).catch(err => console.warn('Formspree background sync warning:', err));
-      } catch (err) {
-        console.warn('Formspree fetch failed:', err);
+          body: JSON.stringify(Object.assign({}, payload, { registrationId: orderData.registrationId, learnerId: orderData.learnerId }))
+        }).catch(() => {});
+      } catch (err) {}
+
+      // 3. Launch Razorpay Standard Checkout Automatically (Paise conversion + prefill + verification handler)
+      if (typeof window.Razorpay === 'function') {
+        const rzpOpts = {
+          key: orderData.keyId || cfg.RAZORPAY_KEY_ID,
+          amount: orderData.amountPaise,
+          currency: 'INR',
+          name: 'Skillansh',
+          description: `${currentPlan.name} (${orderData.registrationId})`,
+          image: 'https://www.skillansh.com/skillansh-logo.png',
+          prefill: {
+            name: `${fn.value.trim()} ${ln.value.trim()}`,
+            email: em.value.trim(),
+            contact: '+91' + phoneDigits.slice(-10)
+          },
+          notes: {
+            registration_id: orderData.registrationId,
+            learner_id: orderData.learnerId,
+            plan_id: currentPlan.id
+          },
+          theme: { color: '#1E3A5F' },
+          handler: async function (rzpResponse) {
+            if (btnText) btnText.textContent = 'Verifying Payment & Activating LMS...';
+            if (googleSheetUrl) {
+              try {
+                await fetch(googleSheetUrl, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                  body: JSON.stringify({
+                    action: 'verify_payment',
+                    registrationId: orderData.registrationId,
+                    learnerId: orderData.learnerId,
+                    planId: currentPlan.id,
+                    learnerName: `${fn.value.trim()} ${ln.value.trim()}`,
+                    firstName: fn.value.trim(),
+                    surname: ln.value.trim(),
+                    email: em.value.trim(),
+                    whatsapp: phoneDigits.slice(-10),
+                    razorpay_order_id: rzpResponse.razorpay_order_id || orderData.orderId || '',
+                    razorpay_payment_id: rzpResponse.razorpay_payment_id || '',
+                    razorpay_signature: rzpResponse.razorpay_signature || ''
+                  })
+                });
+              } catch (vErr) {
+                console.warn('Payment verification sync notice:', vErr);
+              }
+            }
+            window.location.href = `enroll.html?regId=${encodeURIComponent(orderData.registrationId)}`;
+          },
+          modal: {
+            ondismiss: function () {
+              submitBtn.disabled = false;
+              updateButtonLabel();
+            }
+          }
+        };
+        if (orderData.orderId) {
+          rzpOpts.order_id = orderData.orderId;
+        }
+        const rzp = new window.Razorpay(rzpOpts);
+        rzp.open();
+        return;
       }
 
-      // Open Razorpay payment link (specific plan link or fallback)
-      const payLink = currentPlan.link || cfg.RAZORPAY_PAYMENT_LINK || 'https://razorpay.me/@skillansh';
-      window.open(payLink, '_blank', 'noopener,noreferrer');
-
-      // Update manual payment button href in redirect box
-      const manualPayBtn = document.querySelector('.enrol-manual-pay-btn');
-      if (manualPayBtn) {
-        manualPayBtn.href = payLink;
-      }
-
-      // Switch modal to redirect box
-      form.style.display = 'none';
-      if (redirectBox) redirectBox.style.display = 'block';
+      // Fallback if checkout.js blocked by adblocker: redirect to enroll.html
+      window.location.href = `enroll.html?plan=${encodeURIComponent(currentPlan.id)}`;
     });
   }
 }
