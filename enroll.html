@@ -677,6 +677,7 @@
       btnTxt.textContent = 'Saving Registration & Retrieving Payment Options...';
 
       let regResponse = null;
+      let rawBackendJson = null;
 
       if (WEBHOOK_URL) {
         try {
@@ -696,6 +697,7 @@
             })
           });
           const json = await resp.json();
+          rawBackendJson = json;
           if (json && json.status === 'already_paid') {
             alert(json.message || 'You are already registered and marked PAID for this course.');
             btn.disabled = false;
@@ -705,8 +707,24 @@
             lookupLmsAccess();
             return;
           }
-          if (json && json.status === 'success' && json.eligibleOptions) {
+          if (json && json.status === 'success' && Array.isArray(json.eligibleOptions) && json.eligibleOptions.length > 0) {
             regResponse = json;
+          } else if (json && json.status === 'success' && json.registrationId) {
+            // Secondary lookup via get_payment_options if registrationId was returned without inline options
+            const optResp = await fetch(WEBHOOK_URL, {
+              method: 'POST',
+              headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+              body: JSON.stringify({
+                action: 'get_payment_options',
+                registrationId: json.registrationId,
+                email: em,
+                whatsapp: ph10
+              })
+            });
+            const optJson = await optResp.json();
+            if (optJson && optJson.status === 'success' && Array.isArray(optJson.eligibleOptions)) {
+              regResponse = Object.assign({}, json, optJson);
+            }
           }
         } catch (err) {
           console.warn('Backend registration sync notice:', err);
@@ -714,7 +732,11 @@
       }
 
       if (!regResponse) {
-        alert('Could not retrieve payment options from the secure backend. Please ensure the latest Google Apps Script backend is deployed or contact us on WhatsApp at 9922045007.');
+        const isLegacyDeployment = rawBackendJson && rawBackendJson.tab === 'Quick Enquiries' && !rawBackendJson.eligibleOptions;
+        if (isLegacyDeployment) {
+          console.error('[Skillansh Backend Diagnostic] The live Web App URL returned legacy response {"status":"success","tab":"Quick Enquiries"}. Please paste c:\\My offer\\google-sheets-webhook.js into Extensions -> Apps Script and click Deploy -> Manage deployments -> Edit -> Version: New version -> Deploy.');
+        }
+        alert('Could not retrieve payment options from the secure backend. Please ensure the latest Google Apps Script backend is deployed (Deploy -> Manage deployments -> Edit -> New version -> Deploy) or contact us on WhatsApp at 9922045007.');
         btn.disabled = false;
         btnTxt.textContent = 'Complete Registration & Unlock Payment Option →';
         return;
