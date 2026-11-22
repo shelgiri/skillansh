@@ -923,6 +923,15 @@ footer {
   color: #38BDF8 !important;
 }
 
+/* Temporarily hide Contact link in navigation bars, mobile menus & footers */
+li:has(> a[href*="contact.html"]),
+.nav-links li:has(a[href*="contact.html"]),
+.footer-col li:has(a[href*="contact.html"]),
+a.nav-contact-link,
+a.qe-contact-page-link {
+  display: none !important;
+}
+
 .footer-col a[aria-current="page"],
 .footer-col a[aria-current="page"][href*="contact.html"] {
   color: #38BDF8 !important;
