@@ -405,7 +405,7 @@
     }
 
     function updateAdminKpis(payments, lmsRecords, notifs) {
-      const unpaid = lmsRecords.filter(r => r.paymentStatus === 'PENDING').length;
+      const unpaid = lmsRecords.filter(r => r.paymentStatus === 'PENDING' || r.paymentStatus === 'PAYMENT_PENDING' || r.paymentStatus === 'REGISTERED_ONLY').length;
       const partial = lmsRecords.filter(r => r.paymentStatus === 'PARTIALLY_PAID').length;
       const paid = lmsRecords.filter(r => r.paymentStatus === 'PAID').length;
 
@@ -449,6 +449,18 @@
           `Dear ${rec.learnerName}, congratulations on progressing through ADHAAR – Excel Foundation! Before starting DRISHTI – MIS & Dashboards, please complete your 2nd Instalment balance of ₹14,999 to unlock DRISHTI, PRAVAH & BODH: ${payLink}`
         );
 
+        const pkgLower = String(rec.packageName || '').toLowerCase();
+        let coursePayUrl = 'https://rzp.io/rzp/I1fMWG6j';
+        if (pkgLower.includes('adhaar') && !pkgLower.includes('package')) coursePayUrl = 'https://rzp.io/rzp/10SFkB6b';
+        else if (pkgLower.includes('drishti') && !pkgLower.includes('package')) coursePayUrl = 'https://rzp.io/rzp/JXFUSEJ7';
+        else if (pkgLower.includes('pravah') && !pkgLower.includes('package')) coursePayUrl = 'https://rzp.io/rzp/pMRU3ZC';
+        else if (pkgLower.includes('bodh') && !pkgLower.includes('package')) coursePayUrl = 'https://rzp.io/rzp/V8W6d1g';
+        else if (pkgLower.includes('instalment') || pkgLower.includes('inst')) coursePayUrl = 'https://rzp.io/rzp/lohKikI';
+
+        const waPendingText = encodeURIComponent(
+          `Dear ${rec.learnerName},\n\nThank you for registering with Skillansh – Learn. Apply. Implement. Grow!\n\nREGISTRATION DETAILS:\n• Registration ID: ${rec.registrationId}\n• Selected Course / Package: ${rec.packageName}\n• Payable Amount: ${rec.balanceDue}\n• Payment Status: ${rec.paymentStatus}\n\nCOMPLETE YOUR PAYMENT TO UNLOCK COURSE ACCESS:\n${coursePayUrl}\n\nWarm regards,\nTeam Skillansh`
+        );
+
         const tr = document.createElement('tr');
         tr.innerHTML = `
           <td><strong>${rec.registrationId}</strong></td>
@@ -466,7 +478,7 @@
             ${isPartial ? `
               <button type="button" class="btn-sm btn-remind" onclick="sendInstalmentReminder('${rec.registrationId}','${rec.email}','${rec.phone}','${rec.learnerName}')">📧+💬 Send ₹14,999 Reminder</button>
               <a href="https://wa.me/${waPhone}?text=${waRemindText}" target="_blank" class="btn-sm btn-wa">💬 WA Direct</a>
-            ` : `<a href="https://wa.me/${waPhone}" target="_blank" class="btn-sm btn-wa">💬 WhatsApp</a>`}
+            ` : `<a href="https://wa.me/${waPhone}?text=${waPendingText}" target="_blank" class="btn-sm btn-wa">💬 Send WA Link</a>`}
           </td>
         `;
         body.appendChild(tr);
