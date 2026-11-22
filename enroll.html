@@ -600,6 +600,17 @@
       kriya: 'KRIYA – VBA & Automation (Standalone Course)'
     };
 
+    // Official Razorpay Payment Links mapped by Plan ID (Activated ONLY after Step 1 Registration)
+    const RAZORPAY_PAYMENT_LINKS = {
+      adhaar: 'https://rzp.io/rzp/10SFkB6b',
+      drishti: 'https://rzp.io/rzp/JXFUSEJ7',
+      pravah: 'https://rzp.io/rzp/pMRU3ZC',
+      bodh: 'https://rzp.io/rzp/V8W6d1g',
+      pkg_full: 'https://rzp.io/rzp/I1fMWG6j',
+      pkg_inst1: 'https://rzp.io/rzp/lohKikI',
+      pkg_inst2: 'https://rzp.io/rzp/I1fMWG6j'
+    };
+
     function normalizeCourseKey(raw) {
       const c = String(raw || 'package').toLowerCase().trim();
       if (c === 'adhaar' || c === 'course1') return 'adhaar';
@@ -907,6 +918,13 @@
         } catch (err) {
           console.warn('Dynamic order creation fallback to Standard Checkout:', err);
         }
+      }
+
+      const directPaymentLink = orderData.paymentLink || chosen.paymentLink || RAZORPAY_PAYMENT_LINKS[chosen.planId] || '';
+      if (directPaymentLink) {
+        payTxt.textContent = 'Redirecting to Secure Razorpay Payment Page...';
+        window.location.href = directPaymentLink;
+        return;
       }
 
       launchRazorpayStandardCheckout({
@@ -1276,6 +1294,11 @@
         });
         const json = await resp.json();
         if (json && json.status === 'success') {
+          const inst2Link = json.paymentLink || RAZORPAY_PAYMENT_LINKS.pkg_inst2;
+          if (inst2Link) {
+            window.location.href = inst2Link;
+            return;
+          }
           launchRazorpayStandardCheckout({
             keyId: json.keyId || CFG.RAZORPAY_KEY_ID,
             orderId: json.orderId || '',
@@ -1293,6 +1316,10 @@
           });
         }
       } catch (e) {
+        if (RAZORPAY_PAYMENT_LINKS.pkg_inst2) {
+          window.location.href = RAZORPAY_PAYMENT_LINKS.pkg_inst2;
+          return;
+        }
         alert('Could not initialize 2nd instalment order. Please contact Skillansh Support on WhatsApp at 9922045007.');
       }
     }

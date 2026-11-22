@@ -442,10 +442,10 @@
 
       list.forEach(rec => {
         const isPartial = rec.paymentStatus === 'PARTIALLY_PAID';
-        const payLink = `https://www.skillansh.com/enroll.html?action=pay_balance&regId=${encodeURIComponent(rec.registrationId)}`;
+        const payLink = 'https://rzp.io/rzp/I1fMWG6j';
         const waPhone = '91' + String(rec.phone || '').replace(/\D/g, '').slice(-10);
         const waRemindText = encodeURIComponent(
-          `Hello ${rec.learnerName}, congratulations on progressing through ADHAAR – Excel Foundation! Before starting DRISHTI – MIS & Dashboards, please complete your 2nd Instalment balance of ₹14,999 to unlock DRISHTI, PRAVAH & BODH: ${payLink}`
+          `Dear ${rec.learnerName}, congratulations on progressing through ADHAAR – Excel Foundation! Before starting DRISHTI – MIS & Dashboards, please complete your 2nd Instalment balance of ₹14,999 to unlock DRISHTI, PRAVAH & BODH: ${payLink}`
         );
 
         const tr = document.createElement('tr');
