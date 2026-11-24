@@ -9,8 +9,8 @@ window.ACCOUNTPRO_CONFIG = {
   // Consultation booking link
   CLARITY_CALL_BOOKING_URL: 'https://calendly.com/ai-girish-shelar/skillansh-free-clarity-call',
 
-  // Configurable Free Sunday Introductory Session Registration Link (Overridable via Admin Settings SCHEDULE_FREE_SESSION_URL)
-  FREE_SESSION_REGISTRATION_URL: 'workshop.html',
+  // Separate Google Form URL for Free Sunday Introductory Session Registration
+  FREE_SESSION_REGISTRATION_URL: 'https://forms.gle/TqDgYuWZYLHGGpYTA',
 
   // Contact configuration
   CONTACT_EMAIL: 'support@skillansh.com',

@@ -12,7 +12,7 @@
   const config = window.ACCOUNTPRO_CONFIG || {};
   const WA_NUMBER = config.WHATSAPP_NUMBER || '919922045007';
   const YT_CHANNEL = config.YOUTUBE_CHANNEL_URL || 'https://www.youtube.com/@SkillAnsh';
-  const FREE_SESSION_URL = config.FREE_SESSION_REGISTRATION_URL || 'workshop.html';
+  const FREE_SESSION_URL = config.FREE_SESSION_REGISTRATION_URL || 'https://forms.gle/TqDgYuWZYLHGGpYTA';
   const AVATAR_IMG_SRC = 'assets/skillmitra-avatar.png';
 
   let currentLang = 'en';
@@ -415,7 +415,11 @@ Subscribe to <strong>@SkillAnsh</strong> on YouTube for free practical Excel tip
       window.location.href = 'enroll.html';
     } else if (action === 'workshop_page') {
       toggleChat(false);
-      window.location.href = FREE_SESSION_URL;
+      if (/^https?:\/\//i.test(FREE_SESSION_URL)) {
+        window.open(FREE_SESSION_URL, '_blank', 'noopener,noreferrer');
+      } else {
+        window.location.href = FREE_SESSION_URL;
+      }
     } else if (action === 'link') {
       if (targetUrl) window.open(targetUrl, '_blank', 'noopener,noreferrer');
     } else if (action === 'whatsapp') {
