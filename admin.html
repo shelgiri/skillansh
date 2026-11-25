@@ -142,6 +142,7 @@
     <div class="admin-brand">🛡️ SKILLANSH SECURE ADMIN CONSOLE &middot; PAYMENT TRACKER &amp; LMS MANAGEMENT</div>
     <div style="display:flex; gap:0.75rem; align-items:center;">
       <button type="button" id="btn-lock-session" onclick="lockAdminSession()" style="display:none; background:#EF4444; color:#fff; border:none; padding:0.4rem 0.85rem; border-radius:6px; font-size:0.8rem; font-weight:700; cursor:pointer;">🔒 Lock / Sign Out</button>
+      <a href="https://forms.gle/bFvbcy4B5TwgJMYKA" target="_blank" rel="noopener noreferrer" style="color:#FDE68A; font-size:0.85rem; font-weight:700; text-decoration:none;">📋 Masterclass Form ↗</a>
       <a href="enroll.html" style="color:#A7F3D0; font-size:0.85rem; font-weight:700; text-decoration:none;">Open Registration &amp; LMS &rarr;</a>
       <a href="index.html" style="color:#CBD5E1; font-size:0.85rem; text-decoration:none;">Main Website</a>
     </div>
@@ -206,6 +207,10 @@
         <div class="kpi-lbl">Delivered / Failed Messages</div>
         <div class="kpi-val" id="kpi-deliv-fail" style="font-size:1.35rem;">0 / 0</div>
       </div>
+      <div class="kpi-card">
+        <div class="kpi-lbl">Google Form Regs</div>
+        <div class="kpi-val" id="kpi-form-regs" style="color:#0F766E;">0</div>
+      </div>
     </div>
 
     <!-- Main Admin Navigation Tabs (Section 8) -->
@@ -214,6 +219,7 @@
       <button type="button" class="admin-tab-btn" id="atab-notifications" onclick="switchAdminTab('notifications')">2. Notification Delivery History, Pending Reminders &amp; Resend</button>
       <button type="button" class="admin-tab-btn" id="atab-templates" onclick="switchAdminTab('templates')">3. Course Commencement Dates &amp; Email/WhatsApp Templates</button>
       <button type="button" class="admin-tab-btn" id="atab-tests" onclick="switchAdminTab('tests')">4. 15-Requirement Automated Test Report</button>
+      <button type="button" class="admin-tab-btn" id="atab-form-responses" onclick="switchAdminTab('form-responses')">5. Google Form Responses (<span id="tab-form-count">0</span>)</button>
     </div>
 
     <!-- TAB 1: LEARNERS, PAYMENT TRACKER & SEQUENTIAL LMS -->
@@ -367,19 +373,77 @@
         </table>
       </div>
     </div>
+
+    <!-- TAB 5: CONNECTED GOOGLE FORM RESPONSES -->
+    <div id="apane-form-responses" style="display:none;">
+      <div class="panel-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; margin-bottom:0.85rem;">
+          <div>
+            <h3 style="font-size:1.08rem; font-weight:800; color:#0F172A;">Connected Google Form Responses (Skillansh – Free Digital Skills Masterclass)</h3>
+            <p style="font-size:0.8rem; color:#64748B;">Synced live from your linked Google Sheet tab <span id="form-sheet-badge" style="color:#0F766E; font-weight:700;">—</span>.</p>
+          </div>
+          <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap;">
+            <a href="https://forms.gle/bFvbcy4B5TwgJMYKA" target="_blank" rel="noopener noreferrer" class="btn-sm btn-navy">📋 Open Form ↗</a>
+            <button type="button" onclick="exportFormResponsesCsv()" class="btn-sm btn-unlock">⬇️ Export CSV</button>
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; margin-bottom:1rem;">
+          <div class="filter-pills" style="margin-bottom:0;">
+            <button type="button" class="filter-pill active" onclick="filterFormResponses('ALL', this)">All</button>
+            <button type="button" class="filter-pill" onclick="filterFormResponses('Beginner', this)">Beginner</button>
+            <button type="button" class="filter-pill" onclick="filterFormResponses('Intermediate', this)">Intermediate</button>
+            <button type="button" class="filter-pill" onclick="filterFormResponses('Advanced', this)">Advanced</button>
+          </div>
+          <input type="text" id="form-search-input" oninput="renderFormResponsesTable()" placeholder="Search name, email, phone, profession..." style="padding:0.42rem 0.75rem; border:1.5px solid #CBD5E1; border-radius:8px; font-size:0.82rem; min-width:250px;">
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Submitted At</th>
+              <th>Learner Name</th>
+              <th>Contact</th>
+              <th>Current Profession</th>
+              <th>Experience</th>
+              <th>Session Expectation</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="form-responses-table-body">
+            <tr><td colspan="8" style="text-align:center; color:#64748B; padding:1.5rem;">Authenticate to load Google Form responses.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 
-  <script src="config.js?v=20261122a"></script>
+  <script src="config.js?v=20261125a"></script>
   <script>
     const CFG = window.ACCOUNTPRO_CONFIG || {};
     const WEBHOOK_URL = CFG.GOOGLE_SHEET_WEBHOOK_URL || '';
+    const CONNECTED_GOOGLE_FORM_URL = 'https://forms.gle/bFvbcy4B5TwgJMYKA';
 
     let cachedLms = [];
     let cachedNotifs = [];
     let cachedTemplates = [];
+    let cachedFormResponses = [];
+    let cachedFormSheetName = '';
+    let formResponsesSupported = false;
+    let activeFormExpFilter = 'ALL';
+
+    function escapeHtml(val) {
+      return String(val == null ? '' : val)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
 
     function switchAdminTab(tab) {
-      ['learners', 'notifications', 'templates', 'tests'].forEach(t => {
+      ['learners', 'notifications', 'templates', 'tests', 'form-responses'].forEach(t => {
         document.getElementById('apane-' + t).style.display = (t === tab) ? 'block' : 'none';
         document.getElementById('atab-' + t).classList.toggle('active', t === tab);
       });
@@ -402,6 +466,10 @@
       cachedLms = [];
       cachedNotifs = [];
       cachedTemplates = [];
+      cachedFormResponses = [];
+      cachedFormSheetName = '';
+      formResponsesSupported = false;
+      activeFormExpFilter = 'ALL';
       document.getElementById('admin-dashboard-wrapper').style.display = 'none';
       document.getElementById('btn-lock-session').style.display = 'none';
       document.getElementById('admin-login-barrier').style.display = 'block';
@@ -451,19 +519,13 @@
           document.getElementById('admin-dashboard-wrapper').style.display = 'block';
           document.getElementById('btn-lock-session').style.display = 'inline-block';
 
-          cachedLms = data.lmsRecords || [];
-          cachedNotifs = data.notifications || [];
-          cachedTemplates = data.templatesAndSchedules || [];
+          hydrateDashboardState(data);
 
           const msg = document.getElementById('admin-sync-msg');
           if (msg) {
             msg.style.color = '#0F766E';
-            msg.textContent = `✓ Authenticated & Synced (${cachedLms.length} learners).`;
+            msg.textContent = `✓ Authenticated & Synced (${cachedLms.length} learners, ${cachedFormResponses.length} form regs).`;
           }
-          updateAdminKpis(data.payments || [], cachedLms, cachedNotifs);
-          renderLearnerTable('ALL');
-          renderNotificationTable('ALL');
-          populateTemplateEditor();
         } else {
           err.textContent = data.message || 'Authentication error. Please try again.';
         }
@@ -473,6 +535,26 @@
         btn.disabled = false;
         btn.textContent = 'Authenticate & Open Console →';
       }
+    }
+
+    function hydrateDashboardState(data) {
+      cachedLms = data.lmsRecords || [];
+      cachedNotifs = data.notifications || [];
+      cachedTemplates = data.templatesAndSchedules || [];
+      formResponsesSupported = Array.isArray(data.freeSessionRegistrations);
+      cachedFormResponses = data.freeSessionRegistrations || [];
+      cachedFormSheetName = data.formResponsesSheetName || '';
+
+      const kpiForm = document.getElementById('kpi-form-regs');
+      if (kpiForm) kpiForm.textContent = formResponsesSupported ? cachedFormResponses.length : '—';
+      const tabCount = document.getElementById('tab-form-count');
+      if (tabCount) tabCount.textContent = cachedFormResponses.length;
+
+      updateAdminKpis(data.payments || [], cachedLms, cachedNotifs);
+      renderLearnerTable('ALL');
+      renderNotificationTable('ALL');
+      populateTemplateEditor();
+      renderFormResponsesTable();
     }
 
     async function loadAdminData() {
@@ -504,18 +586,12 @@
           return;
         }
         if (data.status === 'success') {
-          cachedLms = data.lmsRecords || [];
-          cachedNotifs = data.notifications || [];
-          cachedTemplates = data.templatesAndSchedules || [];
+          hydrateDashboardState(data);
 
           if (msg) {
             msg.style.color = '#0F766E';
-            msg.textContent = `✓ Synced ${cachedLms.length} learners & ${cachedNotifs.length} notifications.`;
+            msg.textContent = `✓ Synced ${cachedLms.length} learners, ${cachedNotifs.length} notifications & ${cachedFormResponses.length} form regs.`;
           }
-          updateAdminKpis(data.payments || [], cachedLms, cachedNotifs);
-          renderLearnerTable('ALL');
-          renderNotificationTable('ALL');
-          populateTemplateEditor();
         }
       } catch (err) {
         if (msg) {
@@ -523,6 +599,125 @@
           msg.textContent = 'Sync notice: Backend connection error.';
         }
       }
+    }
+
+    function filterFormResponses(expFilter, btnEl) {
+      activeFormExpFilter = expFilter || 'ALL';
+      if (btnEl) {
+        btnEl.parentElement.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+        btnEl.classList.add('active');
+      }
+      renderFormResponsesTable();
+    }
+
+    function getFilteredFormResponses() {
+      const qEl = document.getElementById('form-search-input');
+      const q = qEl ? qEl.value.trim().toLowerCase() : '';
+      return cachedFormResponses.filter(rec => {
+        if (activeFormExpFilter !== 'ALL') {
+          const exp = String(rec.experienceLevel || '').toLowerCase();
+          if (exp !== activeFormExpFilter.toLowerCase()) return false;
+        }
+        if (q) {
+          const hay = [
+            rec.fullName, rec.email, rec.phone, rec.profession,
+            rec.experienceLevel, rec.expectation, rec.timestamp
+          ].join(' ').toLowerCase();
+          if (!hay.includes(q)) return false;
+        }
+        return true;
+      });
+    }
+
+    function renderFormResponsesTable() {
+      const body = document.getElementById('form-responses-table-body');
+      const badge = document.getElementById('form-sheet-badge');
+      if (!body) return;
+
+      if (!formResponsesSupported) {
+        if (badge) badge.textContent = 'Backend update required';
+        body.innerHTML = '<tr><td colspan="8" style="text-align:center; white-space:normal; color:#B45309; padding:1.5rem; line-height:1.6;">Live Google Form sync is not enabled on the deployed Google Apps Script yet. Copy the updated <strong>google-sheets-webhook.js</strong> into your Google Sheet\'s Apps Script editor and redeploy the Web App to automatically load responses from your <strong>Form Responses 1</strong> tab here.</td></tr>';
+        return;
+      }
+
+      if (badge) {
+        badge.textContent = cachedFormSheetName ? `Sheet: "${cachedFormSheetName}" (${cachedFormResponses.length} total)` : 'No linked Form Responses sheet found yet';
+      }
+
+      const list = getFilteredFormResponses();
+      if (!list.length) {
+        body.innerHTML = '<tr><td colspan="8" style="text-align:center; padding:1.25rem; color:#64748B;">No matching Google Form responses found.</td></tr>';
+        return;
+      }
+
+      body.innerHTML = '';
+      list.forEach((rec, idx) => {
+        const displayName = rec.fullName || [rec.firstName, rec.surname].filter(Boolean).join(' ') || 'Learner';
+        const digits = String(rec.phone || '').replace(/\D/g, '');
+        const phone10 = digits.slice(-10);
+        const waPhone = phone10.length === 10 ? ('91' + phone10) : digits;
+        const waGreeting = encodeURIComponent(
+          `Hello ${displayName}, thank you for registering for the Skillansh – Free Digital Skills Masterclass! We look forward to seeing you in the live session.\n\nForm Link: ${CONNECTED_GOOGLE_FORM_URL}\nTeam Skillansh`
+        );
+        const waBtn = waPhone
+          ? `<a href="https://wa.me/${encodeURIComponent(waPhone)}?text=${waGreeting}" target="_blank" rel="noopener noreferrer" class="btn-sm btn-wa">💬 WA Direct</a>`
+          : '';
+        const emailBtn = rec.email
+          ? `<a href="mailto:${encodeURIComponent(rec.email)}?subject=${encodeURIComponent('Skillansh – Free Digital Skills Masterclass Confirmation')}" class="btn-sm btn-navy">✉️ Email</a>`
+          : '';
+
+        const expText = rec.experienceLevel || '—';
+        const expBadgeCls = expText.toLowerCase() === 'advanced'
+          ? 'badge-paid'
+          : (expText.toLowerCase() === 'intermediate' ? 'badge-partial' : 'badge-pending');
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${escapeHtml(rec.rowNumber || (idx + 1))}</strong></td>
+          <td>${escapeHtml(rec.timestamp || '—')}</td>
+          <td><strong>${escapeHtml(displayName)}</strong></td>
+          <td>${escapeHtml(rec.phone || '—')}<br><small style="color:#64748B;">${escapeHtml(rec.email || '—')}</small></td>
+          <td>${escapeHtml(rec.profession || '—')}</td>
+          <td><span class="badge ${expBadgeCls}">${escapeHtml(expText)}</span></td>
+          <td style="white-space:normal; min-width:220px; max-width:340px;">${escapeHtml(rec.expectation || '—')}</td>
+          <td style="display:flex; gap:0.35rem; flex-wrap:wrap;">${waBtn}${emailBtn || (!waBtn ? '—' : '')}</td>
+        `;
+        body.appendChild(tr);
+      });
+    }
+
+    function exportFormResponsesCsv() {
+      const list = getFilteredFormResponses();
+      if (!list.length) {
+        alert('No Google Form responses available to export.');
+        return;
+      }
+      const csvCell = v => '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"';
+      const headers = ['Row', 'Timestamp', 'First Name', 'Surname', 'Full Name', 'Email', 'WhatsApp Number', 'Current Profession', 'Experience Level', 'Session Expectation'];
+      const lines = [headers.map(csvCell).join(',')];
+      list.forEach((r, idx) => {
+        lines.push([
+          r.rowNumber || (idx + 1),
+          r.timestamp || '',
+          r.firstName || '',
+          r.surname || '',
+          r.fullName || '',
+          r.email || '',
+          r.phone || '',
+          r.profession || '',
+          r.experienceLevel || '',
+          r.expectation || ''
+        ].map(csvCell).join(','));
+      });
+      const blob = new Blob([lines.join('\r\n')], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'skillansh-masterclass-form-responses.csv';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
     }
 
     function updateAdminKpis(payments, lmsRecords, notifs) {
