@@ -135,6 +135,43 @@
     .btn-remind { background: #D97706; color: #fff; }
     .btn-unlock { background: #0F766E; color: #fff; }
     .btn-navy { background: #1E3A5F; color: #fff; }
+    .live-visitor-window {
+      background: linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%);
+      color: #F8FAFC;
+      border-radius: 16px;
+      padding: 1.15rem 1.4rem;
+      margin-bottom: 1.25rem;
+      border: 1.5px solid #0F766E;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.14);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .live-dot-pulse {
+      display: inline-block;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #22C55E;
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+      animation: livePulse 1.8s infinite;
+    }
+    @keyframes livePulse {
+      0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+    }
+    .live-stat-chip {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 10px;
+      padding: 0.45rem 0.8rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #E2E8F0;
+    }
   </style>
 </head>
 <body>
@@ -181,8 +218,39 @@
       </div>
     </div>
 
+    <!-- Live Website Visitor Window -->
+    <div class="live-visitor-window" id="live-visitor-window">
+      <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+        <div style="display:flex; align-items:center; gap:0.55rem;">
+          <span class="live-dot-pulse"></span>
+          <div>
+            <div style="font-size:0.72rem; font-weight:800; color:#86EFAC; text-transform:uppercase; letter-spacing:0.05em;">LIVE VISITORS NOW <span style="color:#94A3B8; font-weight:600;">(Last 5 min)</span></div>
+            <div style="font-family:'Outfit',sans-serif; font-size:2rem; font-weight:800; line-height:1.1; color:#FFFFFF;" id="live-window-count">—</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:0.55rem; flex-wrap:wrap;">
+          <div class="live-stat-chip">Today Views: <strong id="live-today-views" style="color:#FDE68A;">—</strong></div>
+          <div class="live-stat-chip">Today Unique: <strong id="live-today-unique" style="color:#A7F3D0;">—</strong></div>
+          <div class="live-stat-chip">All-Time Views: <strong id="live-total-views" style="color:#FFFFFF;">—</strong></div>
+          <div class="live-stat-chip">Devices: <strong id="live-device-split" style="color:#CBD5E1;">—</strong></div>
+        </div>
+      </div>
+      <div style="display:flex; gap:0.65rem; align-items:center; flex-wrap:wrap;">
+        <span id="live-last-updated" style="font-size:0.76rem; color:#CBD5E1;">—</span>
+        <label style="display:inline-flex; align-items:center; gap:0.35rem; font-size:0.78rem; font-weight:700; color:#E2E8F0; cursor:pointer;">
+          <input type="checkbox" id="live-autorefresh-chk" checked onchange="toggleLiveAutoRefresh()" style="accent-color:#22C55E;"> Auto-Refresh (15s)
+        </label>
+        <button type="button" onclick="refreshLiveVisitors(true)" class="btn-sm btn-unlock" style="padding:0.42rem 0.85rem;">↻ Refresh Live</button>
+        <button type="button" onclick="switchAdminTab('visitors')" class="btn-sm" style="background:#F59E0B; color:#0F172A; padding:0.42rem 0.85rem;">View Live Traffic &rarr;</button>
+      </div>
+    </div>
+
     <!-- KPI Summary -->
     <div class="kpi-grid">
+      <div class="kpi-card" onclick="switchAdminTab('visitors')" style="cursor:pointer; border-color:#A7F3D0; background:#F0FDF4;">
+        <div class="kpi-lbl" style="color:#065F46;">🟢 Live Visitors Now</div>
+        <div class="kpi-val" id="kpi-live-visitors" style="color:#0F766E;">—</div>
+      </div>
       <div class="kpi-card">
         <div class="kpi-lbl">Unpaid (PENDING)</div>
         <div class="kpi-val" id="kpi-unpaid" style="color:#64748B;">0</div>
@@ -220,6 +288,7 @@
       <button type="button" class="admin-tab-btn" id="atab-templates" onclick="switchAdminTab('templates')">3. Course Commencement Dates &amp; Email/WhatsApp Templates</button>
       <button type="button" class="admin-tab-btn" id="atab-tests" onclick="switchAdminTab('tests')">4. 15-Requirement Automated Test Report</button>
       <button type="button" class="admin-tab-btn" id="atab-form-responses" onclick="switchAdminTab('form-responses')">5. Google Form Responses (<span id="tab-form-count">0</span>)</button>
+      <button type="button" class="admin-tab-btn" id="atab-visitors" onclick="switchAdminTab('visitors')">6. Live Visitors &amp; Traffic (<span id="tab-live-count">0</span>)</button>
     </div>
 
     <!-- TAB 1: LEARNERS, PAYMENT TRACKER & SEQUENTIAL LMS -->
@@ -417,9 +486,71 @@
         </table>
       </div>
     </div>
+
+    <!-- TAB 6: LIVE VISITORS & WEBSITE TRAFFIC ANALYTICS -->
+    <div id="apane-visitors" style="display:none;">
+      <div class="panel-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; margin-bottom:0.85rem;">
+          <div>
+            <h3 style="font-size:1.08rem; font-weight:800; color:#0F172A;">Active Visitors Right Now (Last 5 Minutes)</h3>
+            <p style="font-size:0.8rem; color:#64748B;">Anonymous live presence across public pages (auto-refreshes every 15s while open).</p>
+          </div>
+          <button type="button" onclick="refreshLiveVisitors(true)" class="btn-sm btn-unlock">↻ Refresh Live Visitors</button>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Page</th>
+              <th>Device</th>
+              <th>Referrer</th>
+              <th>Last Active</th>
+            </tr>
+          </thead>
+          <tbody id="live-sessions-table-body">
+            <tr><td colspan="4" style="text-align:center; color:#64748B; padding:1.25rem;">Authenticate to view active visitors.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(360px, 1fr)); gap:1.25rem;">
+        <div class="panel-card" style="margin-bottom:0;">
+          <h3 style="font-size:1.02rem; font-weight:800; color:#0F172A; margin-bottom:0.75rem;">Page-by-Page Breakdown</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Page</th>
+                <th>Today's Views</th>
+                <th>All-Time Views</th>
+              </tr>
+            </thead>
+            <tbody id="top-pages-table-body">
+              <tr><td colspan="3" style="text-align:center; color:#64748B; padding:1.25rem;">No page views logged yet.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="panel-card" style="margin-bottom:0;">
+          <h3 style="font-size:1.02rem; font-weight:800; color:#0F172A; margin-bottom:0.75rem;">Recent Page Visits (Latest 25)</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Timestamp (IST)</th>
+                <th>Page</th>
+                <th>Device</th>
+                <th>Referrer</th>
+                <th>Visitor ID</th>
+              </tr>
+            </thead>
+            <tbody id="recent-visits-table-body">
+              <tr><td colspan="5" style="text-align:center; color:#64748B; padding:1.25rem;">No recent visits logged yet.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <script src="config.js?v=20261125a"></script>
+  <script src="config.js?v=20261126a"></script>
   <script>
     const CFG = window.ACCOUNTPRO_CONFIG || {};
     const WEBHOOK_URL = CFG.GOOGLE_SHEET_WEBHOOK_URL || '';
@@ -432,6 +563,9 @@
     let cachedFormSheetName = '';
     let formResponsesSupported = false;
     let activeFormExpFilter = 'ALL';
+    let cachedVisitorStats = null;
+    let visitorStatsSupported = false;
+    let liveVisitorTimer = null;
 
     function escapeHtml(val) {
       return String(val == null ? '' : val)
@@ -443,7 +577,7 @@
     }
 
     function switchAdminTab(tab) {
-      ['learners', 'notifications', 'templates', 'tests', 'form-responses'].forEach(t => {
+      ['learners', 'notifications', 'templates', 'tests', 'form-responses', 'visitors'].forEach(t => {
         document.getElementById('apane-' + t).style.display = (t === tab) ? 'block' : 'none';
         document.getElementById('atab-' + t).classList.toggle('active', t === tab);
       });
@@ -462,6 +596,7 @@
     }
 
     function lockAdminSession() {
+      stopLiveVisitorPolling();
       setAdminPasscode('');
       cachedLms = [];
       cachedNotifs = [];
@@ -470,6 +605,8 @@
       cachedFormSheetName = '';
       formResponsesSupported = false;
       activeFormExpFilter = 'ALL';
+      cachedVisitorStats = null;
+      visitorStatsSupported = false;
       document.getElementById('admin-dashboard-wrapper').style.display = 'none';
       document.getElementById('btn-lock-session').style.display = 'none';
       document.getElementById('admin-login-barrier').style.display = 'block';
@@ -544,6 +681,8 @@
       formResponsesSupported = Array.isArray(data.freeSessionRegistrations);
       cachedFormResponses = data.freeSessionRegistrations || [];
       cachedFormSheetName = data.formResponsesSheetName || '';
+      visitorStatsSupported = Boolean(data.visitorStats && typeof data.visitorStats === 'object');
+      cachedVisitorStats = data.visitorStats || null;
 
       const kpiForm = document.getElementById('kpi-form-regs');
       if (kpiForm) kpiForm.textContent = formResponsesSupported ? cachedFormResponses.length : '—';
@@ -555,6 +694,160 @@
       renderNotificationTable('ALL');
       populateTemplateEditor();
       renderFormResponsesTable();
+      renderVisitorStats();
+      startLiveVisitorPolling();
+    }
+
+    function stopLiveVisitorPolling() {
+      if (liveVisitorTimer) {
+        clearInterval(liveVisitorTimer);
+        liveVisitorTimer = null;
+      }
+    }
+
+    function startLiveVisitorPolling() {
+      stopLiveVisitorPolling();
+      const chk = document.getElementById('live-autorefresh-chk');
+      if (!chk || !chk.checked || !getAdminPasscode()) return;
+      liveVisitorTimer = setInterval(() => {
+        if (document.visibilityState === 'visible') {
+          refreshLiveVisitors(false);
+        }
+      }, 15000);
+    }
+
+    function toggleLiveAutoRefresh() {
+      const chk = document.getElementById('live-autorefresh-chk');
+      if (chk && chk.checked) {
+        refreshLiveVisitors(true);
+        startLiveVisitorPolling();
+      } else {
+        stopLiveVisitorPolling();
+      }
+    }
+
+    async function refreshLiveVisitors(manual) {
+      const pin = getAdminPasscode();
+      if (!pin || !WEBHOOK_URL) return;
+      const updatedEl = document.getElementById('live-last-updated');
+      if (manual && updatedEl) updatedEl.textContent = 'Refreshing...';
+
+      try {
+        const resp = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({ action: 'get_live_visitors', passcode: pin })
+        });
+        const data = await resp.json();
+        if (data.status === 'unauthorized') {
+          lockAdminSession();
+          return;
+        }
+        if (data && data.status === 'success' && data.visitorStats) {
+          visitorStatsSupported = true;
+          cachedVisitorStats = data.visitorStats;
+          renderVisitorStats();
+        } else if (manual && updatedEl) {
+          updatedEl.textContent = 'Backend update needed';
+        }
+      } catch (e) {
+        if (manual && updatedEl) updatedEl.textContent = 'Live sync offline';
+      }
+    }
+
+    function renderVisitorStats() {
+      const winCount = document.getElementById('live-window-count');
+      const kpiLive = document.getElementById('kpi-live-visitors');
+      const tabLive = document.getElementById('tab-live-count');
+      const todayViewsEl = document.getElementById('live-today-views');
+      const todayUniqEl = document.getElementById('live-today-unique');
+      const totalViewsEl = document.getElementById('live-total-views');
+      const deviceSplitEl = document.getElementById('live-device-split');
+      const updatedEl = document.getElementById('live-last-updated');
+      const liveBody = document.getElementById('live-sessions-table-body');
+      const pagesBody = document.getElementById('top-pages-table-body');
+      const recentBody = document.getElementById('recent-visits-table-body');
+
+      if (!visitorStatsSupported || !cachedVisitorStats) {
+        if (winCount) winCount.textContent = '—';
+        if (kpiLive) kpiLive.textContent = '—';
+        if (tabLive) tabLive.textContent = '0';
+        if (todayViewsEl) todayViewsEl.textContent = '—';
+        if (todayUniqEl) todayUniqEl.textContent = '—';
+        if (totalViewsEl) totalViewsEl.textContent = '—';
+        if (deviceSplitEl) deviceSplitEl.textContent = '—';
+        if (updatedEl) updatedEl.textContent = 'Apps Script update required';
+        if (liveBody) liveBody.innerHTML = '<tr><td colspan="4" style="text-align:center; white-space:normal; color:#B45309; padding:1.25rem;">Deploy updated <strong>google-sheets-webhook.js</strong> to Apps Script to enable live visitor tracking.</td></tr>';
+        if (pagesBody) pagesBody.innerHTML = '<tr><td colspan="3" style="text-align:center; color:#64748B; padding:1.25rem;">Backend update required.</td></tr>';
+        if (recentBody) recentBody.innerHTML = '<tr><td colspan="5" style="text-align:center; color:#64748B; padding:1.25rem;">Backend update required.</td></tr>';
+        return;
+      }
+
+      const s = cachedVisitorStats;
+      const liveNow = Number(s.liveNow || 0);
+      if (winCount) winCount.textContent = liveNow.toLocaleString('en-IN');
+      if (kpiLive) kpiLive.textContent = liveNow.toLocaleString('en-IN');
+      if (tabLive) tabLive.textContent = liveNow.toLocaleString('en-IN');
+      if (todayViewsEl) todayViewsEl.textContent = Number(s.todayViews || 0).toLocaleString('en-IN');
+      if (todayUniqEl) todayUniqEl.textContent = Number(s.todayUniqueVisitors || 0).toLocaleString('en-IN');
+      if (totalViewsEl) totalViewsEl.textContent = Number(s.totalViews || 0).toLocaleString('en-IN');
+
+      const dev = s.deviceBreakdown || {};
+      if (deviceSplitEl) {
+        deviceSplitEl.textContent = `Mobile ${Number(dev.Mobile || 0)} · Desktop ${Number(dev.Desktop || 0)}`;
+      }
+      if (updatedEl) {
+        const timePart = String(s.serverTimeIst || '').split(' ')[1] || '';
+        updatedEl.textContent = timePart ? `Updated: ${timePart} IST` : 'Live synced';
+      }
+
+      const sessions = Array.isArray(s.liveSessions) ? s.liveSessions : [];
+      if (liveBody) {
+        if (!sessions.length) {
+          liveBody.innerHTML = '<tr><td colspan="4" style="text-align:center; color:#64748B; padding:1.25rem;">No active visitors on public pages in the last 5 minutes.</td></tr>';
+        } else {
+          liveBody.innerHTML = sessions.map(sess => `
+            <tr>
+              <td><code>${escapeHtml(sess.page || '/')}</code></td>
+              <td><span class="badge ${sess.device === 'Mobile' ? 'badge-partial' : 'badge-paid'}">${escapeHtml(sess.device || 'Desktop')}</span></td>
+              <td>${escapeHtml(sess.referrer || 'Direct')}</td>
+              <td>${escapeHtml(sess.secondsAgo != null ? (sess.secondsAgo + 's ago') : 'Active')}</td>
+            </tr>
+          `).join('');
+        }
+      }
+
+      const pages = Array.isArray(s.topPages) ? s.topPages : [];
+      if (pagesBody) {
+        if (!pages.length) {
+          pagesBody.innerHTML = '<tr><td colspan="3" style="text-align:center; color:#64748B; padding:1.25rem;">No page views logged yet.</td></tr>';
+        } else {
+          pagesBody.innerHTML = pages.map(pg => `
+            <tr>
+              <td><code>${escapeHtml(pg.page || '/')}</code></td>
+              <td><strong>${escapeHtml(Number(pg.todayViews || 0).toLocaleString('en-IN'))}</strong></td>
+              <td>${escapeHtml(Number(pg.totalViews || 0).toLocaleString('en-IN'))}</td>
+            </tr>
+          `).join('');
+        }
+      }
+
+      const visits = Array.isArray(s.recentVisits) ? s.recentVisits : [];
+      if (recentBody) {
+        if (!visits.length) {
+          recentBody.innerHTML = '<tr><td colspan="5" style="text-align:center; color:#64748B; padding:1.25rem;">No recent visits logged yet.</td></tr>';
+        } else {
+          recentBody.innerHTML = visits.map(v => `
+            <tr>
+              <td>${escapeHtml(v.timestamp || '—')}</td>
+              <td><code>${escapeHtml(v.page || '/')}</code></td>
+              <td><span class="badge ${v.device === 'Mobile' ? 'badge-partial' : 'badge-paid'}">${escapeHtml(v.device || 'Desktop')}</span></td>
+              <td>${escapeHtml(v.referrer || 'Direct')}</td>
+              <td><code>${escapeHtml(v.visitorShortId || '—')}</code></td>
+            </tr>
+          `).join('');
+        }
+      }
     }
 
     async function loadAdminData() {

@@ -171,3 +171,86 @@ window.ACCOUNTPRO_CONFIG = {
     SHOW_COUNTDOWN: false
   }
 };
+
+/* Non-blocking Anonymous Website Visitor Counter & Live Presence Beacon */
+(function () {
+  if (typeof window === 'undefined' || typeof fetch !== 'function') return;
+  try {
+    var proto = window.location && window.location.protocol;
+    var path = (window.location && window.location.pathname) || '/';
+    if (!/^https?:$/i.test(proto) || /\/admin\.html$/i.test(path)) return;
+
+    var cfg = window.ACCOUNTPRO_CONFIG || {};
+    var webhookUrl = cfg.GOOGLE_SHEET_WEBHOOK_URL;
+    if (!webhookUrl) return;
+
+    var makeId = function (prefix) {
+      return prefix + Math.random().toString(36).slice(2, 10) + Date.now().toString(36);
+    };
+
+    var visitorId = '';
+    var sessionId = '';
+    try {
+      visitorId = localStorage.getItem('skillansh_vid') || '';
+      if (!visitorId) {
+        visitorId = makeId('v_');
+        localStorage.setItem('skillansh_vid', visitorId);
+      }
+      sessionId = sessionStorage.getItem('skillansh_sid') || '';
+      if (!sessionId) {
+        sessionId = makeId('s_');
+        sessionStorage.setItem('skillansh_sid', sessionId);
+      }
+    } catch (storageErr) {
+      visitorId = visitorId || makeId('v_');
+      sessionId = sessionId || makeId('s_');
+    }
+
+    var isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test((navigator && navigator.userAgent) || '') || (window.innerWidth && window.innerWidth < 768);
+    var device = isMobile ? 'Mobile' : 'Desktop';
+    var refHost = 'Direct';
+    if (document.referrer) {
+      try {
+        var refUrl = new URL(document.referrer);
+        refHost = refUrl.hostname || 'Direct';
+      } catch (refErr) {
+        refHost = 'Direct';
+      }
+    }
+
+    var sendBeaconPing = function (isHeartbeat) {
+      try {
+        fetch(webhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            action: 'track_visit',
+            visitorId: visitorId,
+            sessionId: sessionId,
+            page: path,
+            device: device,
+            referrer: refHost,
+            isHeartbeat: !!isHeartbeat
+          }),
+          keepalive: true
+        }).catch(function () {});
+      } catch (e) {}
+    };
+
+    setTimeout(function () {
+      sendBeaconPing(false);
+    }, 1200);
+
+    var heartbeats = 0;
+    var hbTimer = setInterval(function () {
+      if (heartbeats >= 20) {
+        clearInterval(hbTimer);
+        return;
+      }
+      if (typeof document.visibilityState === 'undefined' || document.visibilityState === 'visible') {
+        heartbeats += 1;
+        sendBeaconPing(true);
+      }
+    }, 60000);
+  } catch (err) {}
+})();
