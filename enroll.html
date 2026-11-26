@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="192x192" href="/skillansh-favicon-v4.png">
-  <link rel="stylesheet" href="style.css?v=20261122g">
+  <link rel="stylesheet" href="style.css?v=20261126b">
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <style>
     :root {
@@ -264,7 +264,7 @@
     </div>
   </header>
 
-  <main class="portal-shell">
+  <main class="portal-shell protected-copy-zone">
     <div class="container">
       <div style="text-align:center; max-width:800px; margin:0 auto 1.5rem;">
         <span class="eyebrow" style="color:#0F766E; font-weight:800;" data-en="Skillansh – Learn. Apply. Implement. Grow." data-mr="Skillansh – शिका. वापरा. अंमलात आणा. पुढे जा.">Skillansh – Learn. Apply. Implement. Grow.</span>
@@ -1483,6 +1483,70 @@
       applyPageLang(initialLang);
       document.querySelectorAll('.lang-switcher .lang-btn').forEach(btn => {
         btn.addEventListener('click', () => applyPageLang(btn.getAttribute('data-lang') || 'en'));
+      });
+
+      // Checkout-safe content copy protection (preserves form inputs, Registration ID <code> copying, and OTP/Razorpay focus switching)
+      const isAllowedTarget = (target) => {
+        if (!target) return false;
+        const tag = (target.tagName || '').toUpperCase();
+        if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || tag === 'CODE' || target.isContentEditable) {
+          return true;
+        }
+        return Boolean(target.closest && target.closest('input, textarea, select, code, [contenteditable="true"]'));
+      };
+      const showCheckoutShieldToast = (msg) => {
+        let toast = document.getElementById('skillansh-security-toast');
+        if (!toast) {
+          toast = document.createElement('div');
+          toast.id = 'skillansh-security-toast';
+          toast.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#0F172A;color:#F8FAFC;border:1.5px solid #F59E0B;padding:0.65rem 1.25rem;border-radius:999px;font-size:0.82rem;font-weight:700;z-index:999999;box-shadow:0 10px 25px rgba(15,23,42,0.45);pointer-events:none;opacity:0;transition:opacity 0.2s ease;';
+          document.body.appendChild(toast);
+        }
+        toast.textContent = msg;
+        toast.style.opacity = '1';
+        clearTimeout(window.__skillanshToastTimer);
+        window.__skillanshToastTimer = setTimeout(() => { if (toast) toast.style.opacity = '0'; }, 2600);
+      };
+      document.addEventListener('selectstart', (e) => {
+        if (isAllowedTarget(e.target)) return;
+        if (e.target && e.target.closest && e.target.closest('.protected-copy-zone')) e.preventDefault();
+      });
+      document.addEventListener('contextmenu', (e) => {
+        if (isAllowedTarget(e.target)) return;
+        if (e.target && e.target.closest && e.target.closest('.protected-copy-zone')) {
+          e.preventDefault();
+          showCheckoutShieldToast('🔒 Content Protected © Skillansh (www.skillansh.com)');
+        }
+      });
+      document.addEventListener('dragstart', (e) => {
+        if (isAllowedTarget(e.target)) return;
+        const tag = (e.target && e.target.tagName || '').toUpperCase();
+        if (tag === 'IMG' || tag === 'SVG' || (e.target && e.target.closest && e.target.closest('.protected-copy-zone'))) {
+          e.preventDefault();
+        }
+      });
+      const blockClipboard = (e) => {
+        if (isAllowedTarget(e.target)) return;
+        if (e.clipboardData) {
+          e.clipboardData.setData('text/plain', 'Protected 5-Step Practical Curriculum © Skillansh (www.skillansh.com) by Girish Shelar. Unauthorized reproduction prohibited.');
+        }
+        e.preventDefault();
+        showCheckoutShieldToast('🔒 Copying Restricted — © Skillansh (www.skillansh.com)');
+      };
+      document.addEventListener('copy', blockClipboard);
+      document.addEventListener('cut', blockClipboard);
+      document.addEventListener('keydown', (e) => {
+        if (isAllowedTarget(e.target)) return;
+        const k = (e.key || '').toLowerCase();
+        if (e.key === 'F12' || e.keyCode === 123 || ((e.ctrlKey || e.metaKey) && e.shiftKey && (k === 'i' || k === 'j' || k === 'c'))) {
+          e.preventDefault();
+          showCheckoutShieldToast('🔒 Inspect & Source Viewing Restricted — © Skillansh (www.skillansh.com)');
+          return;
+        }
+        if ((e.ctrlKey || e.metaKey) && (k === 'c' || k === 'x' || k === 'a' || k === 'u' || k === 's' || k === 'p')) {
+          e.preventDefault();
+          showCheckoutShieldToast('🔒 Copying & Printing Restricted — © Skillansh (www.skillansh.com)');
+        }
       });
     })();
   </script>

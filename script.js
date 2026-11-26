@@ -1222,6 +1222,15 @@ function initQuickEnquiryModal() {
 }
 
 function initContentCopyProtection() {
+  const isEditableOrAllowed = (target) => {
+    if (!target) return false;
+    const tag = (target.tagName || '').toUpperCase();
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || tag === 'CODE' || target.isContentEditable) {
+      return true;
+    }
+    return Boolean(target.closest && target.closest('input, textarea, select, code, [contenteditable="true"], .sa-chat-input'));
+  };
+
   const showSecurityShieldNotice = (reason) => {
     let badge = document.getElementById('skillansh-security-toast');
     if (!badge) {
@@ -1230,7 +1239,7 @@ function initContentCopyProtection() {
       badge.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#0F172A;color:#F8FAFC;border:1.5px solid #F59E0B;padding:0.65rem 1.25rem;border-radius:999px;font-size:0.82rem;font-weight:700;z-index:999999;box-shadow:0 10px 25px rgba(15,23,42,0.45);pointer-events:none;opacity:0;transition:opacity 0.2s ease;';
       document.body.appendChild(badge);
     }
-    badge.textContent = reason || '🔒 Protected Curriculum © Skillansh (www.skillansh.com) — Copying & Screenshots Restricted';
+    badge.textContent = reason || '🔒 Protected Content © Skillansh (www.skillansh.com) — Copying & Screenshots Restricted';
     badge.style.opacity = '1';
     clearTimeout(window.__skillanshToastTimer);
     window.__skillanshToastTimer = setTimeout(() => {
@@ -1253,7 +1262,7 @@ function initContentCopyProtection() {
 
   // Instant Snipping Tool / External Snapshot App Shield:
   // When user clicks Snipping Tool, Lightshot, or presses Win+Shift+S, the browser window loses focus (blur).
-  // Immediately blur all curriculum cards while the browser is unfocused, and unblur when user clicks back!
+  // Immediately blur protected content while unfocused, and unblur when user clicks back!
   window.addEventListener('blur', () => {
     document.body.classList.add('skillansh-capture-shield');
   });
@@ -1271,47 +1280,45 @@ function initContentCopyProtection() {
     }
   });
 
-  // 1. Block Right-Click & Image/Card Dragging on Curriculum Sections
-  document.addEventListener('contextmenu', (e) => {
-    const target = e.target;
-    if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) {
-      return;
-    }
-    if (target && target.closest && target.closest('.protected-copy-zone, .bento-card, .cohort-split-layout, .smart-visible-card, .curriculum-card-stage')) {
+  // 1. Block Text Selection, Right-Click & Image/Card Dragging on Protected Sections
+  document.addEventListener('selectstart', (e) => {
+    if (isEditableOrAllowed(e.target)) return;
+    if (e.target && e.target.closest && e.target.closest('.protected-copy-zone, .sk-course-card, .bento-card, .cohort-split-layout, .smart-visible-card, .curriculum-card-stage')) {
       e.preventDefault();
-      showSecurityShieldNotice('🔒 Curriculum Protected © Skillansh (www.skillansh.com)');
+    }
+  });
+
+  document.addEventListener('contextmenu', (e) => {
+    if (isEditableOrAllowed(e.target)) return;
+    if (e.target && e.target.closest && e.target.closest('.protected-copy-zone, .sk-course-card, .bento-card, .cohort-split-layout, .smart-visible-card, .curriculum-card-stage')) {
+      e.preventDefault();
+      showSecurityShieldNotice('🔒 Content Protected © Skillansh (www.skillansh.com)');
     }
   });
 
   document.addEventListener('dragstart', (e) => {
-    const target = e.target;
-    if (target && (target.tagName === 'IMG' || (target.closest && target.closest('.bento-card, .smart-visible-card, .cohort-split-layout')))) {
+    if (isEditableOrAllowed(e.target)) return;
+    const tag = (e.target && e.target.tagName || '').toUpperCase();
+    if (tag === 'IMG' || tag === 'SVG' || (e.target && e.target.closest && e.target.closest('.protected-copy-zone, .sk-course-card, .bento-card, .smart-visible-card, .cohort-split-layout'))) {
       e.preventDefault();
     }
   });
 
-  // 2. Intercept Copy event — replace any copied curriculum text with copyright attribution
-  document.addEventListener('copy', (e) => {
-    const target = e.target;
-    if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) {
-      return;
+  // 2. Intercept Copy & Cut events — replace any non-input copied text with copyright attribution
+  const handleClipboardBlock = (e) => {
+    if (isEditableOrAllowed(e.target)) return;
+    if (e.clipboardData) {
+      e.clipboardData.setData('text/plain', 'Protected 5-Step Practical Curriculum © Skillansh (www.skillansh.com) by Girish Shelar. Unauthorized reproduction prohibited.');
     }
-    const sel = window.getSelection ? window.getSelection().toString() : '';
-    if (sel && sel.length > 60) {
-      if (e.clipboardData) {
-        e.clipboardData.setData('text/plain', 'Protected 5-Step Practical Curriculum © Skillansh (www.skillansh.com) by Girish Shelar. Unauthorized reproduction prohibited.');
-        e.preventDefault();
-        showSecurityShieldNotice('🔒 Copying Restricted — © Skillansh (www.skillansh.com)');
-      }
-    }
-  });
+    e.preventDefault();
+    showSecurityShieldNotice('🔒 Copying Restricted — © Skillansh (www.skillansh.com)');
+  };
+  document.addEventListener('copy', handleClipboardBlock);
+  document.addEventListener('cut', handleClipboardBlock);
 
-  // 3. Detect PrintScreen, Snipping shortcuts (Win+Shift+S, Cmd+Shift+3/4), Ctrl+P, Ctrl+S, Ctrl+U
+  // 3. Detect PrintScreen, Snipping shortcuts, DevTools, Print/Save/View-Source & Copy/Select-All keys
   document.addEventListener('keydown', (e) => {
-    const target = e.target;
-    if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) {
-      return;
-    }
+    if (isEditableOrAllowed(e.target)) return;
     const key = (e.key || '').toLowerCase();
     if (e.key === 'PrintScreen' || e.keyCode === 44) {
       triggerCurriculumBlurFlash();
@@ -1320,9 +1327,18 @@ function initContentCopyProtection() {
       }
       return;
     }
-    // Windows Snipping Tool (Meta+Shift+S) or Mac Screenshot (Meta+Shift+3/4/5) or Alt+PrintScreen
     if (e.key === 'Meta' || e.key === 'OS' || (e.metaKey && e.shiftKey) || (e.altKey && e.key === 'PrintScreen')) {
       triggerCurriculumBlurFlash();
+      return;
+    }
+    if (e.key === 'F12' || e.keyCode === 123 || ((e.ctrlKey || e.metaKey) && e.shiftKey && (key === 'i' || key === 'j' || key === 'c'))) {
+      e.preventDefault();
+      showSecurityShieldNotice('🔒 Inspect & Source Viewing Restricted — © Skillansh (www.skillansh.com)');
+      return;
+    }
+    if ((e.ctrlKey || e.metaKey) && (key === 'c' || key === 'x' || key === 'a')) {
+      e.preventDefault();
+      showSecurityShieldNotice('🔒 Copying & Text Selection Restricted — © Skillansh (www.skillansh.com)');
       return;
     }
     if ((e.ctrlKey || e.metaKey) && (key === 'u' || key === 's' || key === 'p')) {
